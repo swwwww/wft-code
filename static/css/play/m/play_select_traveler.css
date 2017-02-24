@@ -1,0 +1,131 @@
+.traveller {
+  margin: 30px 26px;
+  color: #000;
+}
+.traveller .traveller-form {
+  background-color: #fefefe;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d9d9d9;
+}
+.traveller .form-label {
+  margin: 30px 20px 30px 36px;
+}
+.traveller .form-name {
+  font-size: 32px;
+  margin-right: 20px;
+  padding-left: 10px;
+  width: 150px;
+}
+.traveller .form-id {
+  margin-top: 15px;
+  font-size: 24px;
+  color: #a5a5a5;
+}
+.traveller .form-edit {
+  position: absolute;
+  margin-left: 30px;
+  right: 25px;
+  top: 35px;
+  color: #a5a5a5;
+  font-size: 28px;
+}
+.traveller .form-radio {
+  width: 44px;
+  height: 44px;
+  background-color: #FFFFFF;
+  border: 1px #ccccd0 solid;
+  -webkit-border-radius: 100px;
+  position: relative;
+  left: 20px;
+  top: 30px;
+  float: left;
+}
+.traveller .form-radio:checked {
+  background: url(/static/img/site/mobile/icons_c.png) no-repeat 0px -7695px;
+}
+.add-contact {
+  width: 100%;
+  margin-top: 52px;
+  text-align: center;
+  color: #fa6e51;
+  font-size: 38px;
+  margin-bottom: 200px;
+}
+.traveller-button {
+  width: 750px;
+  height: 80px;
+  background-color: #fa6e51;
+  color: white;
+  font-size: 36px;
+  position: fixed;
+  bottom: 0;
+}
+.back {
+  background-color: #cccccc;
+  color: #1a1a1a;
+}
+/*弹出窗*/
+.make-sure {
+  width: 540px;
+  background: #ffffff;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 30px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 9;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.make-sure .sure-icon {
+  margin: 20px auto;
+  width: 80px;
+  height: 80px;
+  background: url(/static/img/site/mobile/icons_c.png) no-repeat -219px -4140px;
+}
+.make-sure .sure-info {
+  text-align: center;
+  line-height: 45px;
+}
+.make-btn {
+  width: 100%;
+  margin-top: 35px;
+  border-top: 1px solid #cccccc;
+  line-height: 80px;
+}
+.make-btn .cancel-btn,
+.make-btn .sure-btn {
+  display: inline-block;
+  text-align: center;
+  width: 49%;
+}
+.make-btn .cancel-btn {
+  border-right: 1px solid #cccccc;
+}
+#tips-dia {
+  display: none;
+  width: 60%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  z-index: 99999;
+  text-align: center;
+  letter-spacing: 2px;
+  -webkit-transform: translate(-50%, -40%);
+  -moz-transform: translate(-50%, -40%);
+  -ms-transform: translate(-50%, -40%);
+  transform: translate(-50%, -40%);
+  padding: 5%;
+  box-sizing: border-box;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 26px;
+}

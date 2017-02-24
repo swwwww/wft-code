@@ -1,0 +1,121 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+body,.container,.com-panel{
+    width: 100%;
+    max-width: none;
+}
+td{
+    text-align: center;
+}
+input[type=text]{
+    border-bottom: 1px solid #eee;
+    color: #f90;
+    text-align: center;
+}
+.p-type{
+    width: 50px;
+}
+.p-p-id{
+    width: 60px;
+}
+.p-name{
+    width: 240px;
+}
+.p-image{
+    width: 320px;
+}
+.p-p-type{
+    width: 90px;
+}
+.p-new-price, .p-old-price, .p-sell-status, .p-seq{
+    width: 60px;
+}
+.p-status{
+    width: 90px;
+}
+</style>
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        {include file="ad/status/ele_status_nav.html"}
+    </div>
+    <div class="row">
+        <h3>商品管理</h3>
+        <form action="{$BASE_URL_MODULE}stats/updateLotteryProduct?lottery_id={$lottery_id}" method="post">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td style="width: 20px;">商品类型</td>
+                    <td>展示期数</td>
+                    <td>时间段</td>
+                    <td>城市</td>
+                    <td>商品/活动id</td>
+                    <td>名称</td>
+                    <td>图片地址</td>
+                    <td>商品类型<br>(0-商品|1-活动)</td>
+                    <td>折扣价格</td>
+                    <td>原始价格</td>
+                    <td>销售状态</td>
+                    <td>顺序</td>
+                    <td>是否展现<br>(0-否|1-是)</td>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $lottery.lottery_product as $val}
+                <tr>
+                    <td>{$val.id}</td>
+                    <td><input class="p-type" type="text" name='type_{$val.id}' value="{$val.type}"></td>
+                    <td><input class="p-new-price" type="text" name='period_{$val.id}' value="{$val.period}"></td>
+                    <td><input class="p-new-price" type="text" name='during_{$val.id}' value="{$val.during}"></td>
+                    <td><input class="p-new-price" type="text" name='city_{$val.id}' value="{$val.city}"></td>
+                    <td><input class="p-p-id" type="text" name='product_id_{$val.id}' value="{$val.product_id}"></td>
+                    <td><input class="p-name" type="text" name='product_name_{$val.id}' value="{$val.product_name}"></td>
+                    <td><input class="p-image" type="text" name='product_image_{$val.id}' value="{$val.product_image}"></td>
+                    <td><input class="p-p-type" type="text" name='product_type_{$val.id}' value="{$val.product_type}"></td>
+                    <td><input class="p-new-price" type="text" name='new_price_{$val.id}' value="{$val.new_price}"></td>
+                    <td><input class="p-old-price" type="text" name='old_price_{$val.id}' value="{$val.old_price}"></td>
+                    <td><input class="p-sell-status" type="text" name='sell_status_{$val.id}' value="{$val.sell_status}"></td>
+                    <td><input class="p-seq" type="text" name='seq_{$val.id}' value="{$val.seq}"></td>
+                    <td><input class="p-status" type="text" name='status_{$val.id}' value="{$val.status}"></td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <input type="hidden" name="YII_CSRF_TOKEN" value="{$token|csrfToken}" />
+            <input type="hidden" name="city" value="{$city}" />
+            <button class="btn btn-danger" type="submit">Submit</button>
+            <button class="btn btn-danger" id="add_attr" style="color: #a94442">增加商品</button>
+        </form>
+    </div>
+    <input type="hidden" id="hide_lottery_id" value="{$lottery_id}">
+</div>
+
+{/block}
+
+{block name="js" append}
+{literal}
+<script>
+$(document).on('click', '#add_attr', function(){
+    var dao = DAO.stats;
+    var param = {
+        lottery_id: $('#hide_lottery_id').val(),
+        type: 'product'
+    };
+    dao.addLotteryAttr(param, function(res){
+        window.location.href = window.location;
+    });
+});
+</script>
+{/literal}
+{/block}

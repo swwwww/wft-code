@@ -1,0 +1,81 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的免费玩亲子游"}{/block}
+
+{block name="css" append}
+{css file="css/member/m/free_kids_travel.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="free-travel">
+    <div class="window pr"> {*{if $res.unactivated_number}vip-win{/if}*}
+        <a class="travel-chance db {if $res.is_vip}mb20{/if}" href="
+            {if $res.activated_number}
+                {$BASE_URL_MODULE}member/specialArea
+            {else}
+                {$BASE_URL_MODULE}orderWap/chargeMoney
+            {/if}
+        ">
+            <div class="title-info dib pr">
+                {if $res.is_vip}
+                    <span class="info-msg db">会员免费亲子游</span>
+                {else}
+                    <span class="info-msg db">免费亲子游</span>
+                {/if}
+
+                <span class="info-chance db">免费玩次数</span>
+                <i class="dot-top db pa"></i>
+                <i class="dot-bottom db pa"></i>
+            </div>
+
+            <div class="chance-info dib pr">
+                <p class="chance-num"><mark class="num-msg">{$res.activated_number}</mark>次</p>
+                <i class="arrow-right db pa chance-pos"></i>
+            </div>
+        </a>
+
+        {*{if $res.unactivated_number}
+        <div class="can-get clearfix js-share-btn">
+            <span class="get-title fl">还可以获得</span>
+            <p class="get-msg fr pr">
+                <span class="msg-info">{$res.unactivated_number}次</span>
+                <i class="arrow-right dib pa can-pos"></i>
+            </p>
+        </div>
+        {/if}*}
+
+    </div>
+
+  {*<!--{if $res.share_recharge_number != 0}
+    <a class="state db tc" href="javascript:;"> &lt;!&ndash;有引导分享弹窗&ndash;&gt;
+        已有<mark class="state-num">{$res.share_recharge_number}</mark>人通过分享的链接获得会员免费亲子游
+    </a>
+    {/if}
+
+    {if $res.unactivated_number}
+    <a class="db tc share-friend js-share-btn" href="javascript:;">分享好友购买再送{$res.unactivated_number}次</a>
+    {/if}
+    <a class="db tc again-charge" href="{$BASE_URL_MODULE}orderWap/chargeMoney">充值再送{$res.recharge_send_number}次</a>-->
+    *}
+</section>
+<input type="hidden" name="data_json" id="data_json" value={$res.data_json}>
+<section class="rule-msg">
+    <h2 class="rules-title db pr">
+        <i class="icon-line dib pa"></i>
+        <span class="title-msg">免费玩资格说明</span>
+    </h2>
+    <div class="rule-item">
+        <pre class="rule-info db">{$res.instruction}</pre>
+    </div>
+</section>
+<div class="matte" style="display: none"></div>
+<input type="hidden" value={$res.data_json} id="wechat_share_config_json">
+{include file="widget/common/ele_wechat_share.html"}
+{include file="widget/common/ele_share_guide.html"}
+
+
+{/block}
+
+{block name="js" append}
+{js file="js/share/share.js"}
+{/block}

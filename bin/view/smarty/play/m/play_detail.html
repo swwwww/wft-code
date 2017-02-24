@@ -1,0 +1,215 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"{$res.title}"}{/block}
+
+{block name="meta_keyword"}
+<meta name="keywords" content="{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子游玩地，{$wft_global_set.custom_city_cn}亲子户外活动，{$wft_global_set.custom_city_cn}亲子游攻略，{$wft_global_set.custom_city_cn}孩子游玩的好地方，{$wft_global_set.custom_city_cn}农家乐活动，{$wft_global_set.custom_city_cn}少儿户外活动，{$res.title}，亲子活动策划方案，亲子互动游戏" />
+{/block}
+
+{block name="meta_desc"}
+<meta name="description" content="{$wft_global_set.custom_city_cn}亲子游玩地，带孩子去的好玩处。{$res.title}是玩翻天为{$wft_global_set.custom_city_cn}和家长精选的遛娃好地方，我们的遛娃师将会不定期的在此处做专场亲子活动，{$res.title}值得您的选择与青睐。官方微信公众号:玩翻天亲子">
+{/block}
+
+{block name="css" append}
+{css file="css/play/m/play_detail.css"}
+{/block}
+
+{block name="inner"} <!--游玩地详情-->
+<!-- 主界面具体展示内容 -->
+<a id="download" href="http://wan.wanfantian.com/app/index.php" title="点击下载">
+    <img src="/static/img/site/mobile/download.png" alt="">
+</a>
+
+<section class="align fixed-bottom" id="content">
+    <section class="wrapper clear">
+        <div class="pk-head pr">
+            <div class="cover">
+                <img src={$res.cover}>
+                <em></em>
+            </div>
+            <div class="pk-addr">{$res.address}</div>
+            <h2 class="pk-title">{$res.title}</h2>
+        </div>
+    </section>
+    <a id="sign" title=""></a>
+
+    <section class="wrapper clear">
+        <!--中部nav-->
+        <div class="sub-nav">
+            <ul class="category">
+                <li><a class="item active" href="javascript:;">看攻略</a></li>
+                <li><a class="item" href="javascript:;">猜你喜欢</a></li>
+                <li><a class="item" href="javascript:;">查周边</a></li>
+            </ul>
+        </div>
+        <!--看攻略-->
+        <div class="con" id="info" style="">
+                <div class="pk-main com-main">
+                    {$res.information}
+                </div>
+                <a class="com-more btn" href="javascript:;" data-more="more" id="getmore"><i></i>点击加载更多</a>
+                <section class="wrapper">
+                    <div class="pk-remark">
+                        <div class="stars">
+                            <span>整体评分</span>
+                            <div class="product-bar">
+                                <div class="product-bar-cur" style="width:({$res.whole_score}/5)*100%"></div>
+                            </div>
+                            <em>{$res.whole_score}</em>
+                        </div>
+                    </div>
+                    <ul class="pk-user">
+                        {foreach $res.post_list as $key => $val}
+                        <li>
+                            <img class="photo" src={$val.author_img}>
+                            <div class="info">
+                                <div class="stars">
+                                    <span>{$val.author}</span>
+                                    <div class="product-bar">
+                                        <div class="product-bar-cur" style="width: 80%"></div>
+                                    </div>
+                                    <!--小编采纳可选-->
+                                </div>
+                                <time>{$val.dateline|date_format: '%Y-%m-%d'}</time>
+                                <div class="con">
+                                    <p>可额度</p>
+                                    <div class="con-pic">
+                                    </div>
+                                    <div class="handle">
+                                        <span>萤火虫梦幻空间一日游0321团长有奖</span>
+                                        <div class="ctr">
+                                            <!--有点赞和点评时添加active-->
+                                            <div class="like active">
+                                                <a class="" href="">1</a>
+                                            </div>
+                                            <div class="collect active">
+                                                <a class="" href="">0</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </section>
+                <section class="wrapper">
+                    <ul class="pk-intro">
+                        <li>
+                            <a href="#" title="" id="go_baidu">
+                                <i class="icon place"></i>
+                                <span class="address fr">蔡甸区 索河镇龚家渡金龙湖畔</span>
+                                <i class="arrowent"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:027-84981567">
+                                <i class="icon tele"></i>
+                                <span>027-84981567</span>
+                                <i class="arrowent"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="icon timer"></i>
+                            <span>8:30-18:30</span>
+                        </li>
+                        <li class="i-bnr">
+                            <i class="icon age"></i>
+                            <span>适合0.0岁及以上</span>
+                        </li>
+                        <li>
+                            <i class="icon price"></i>
+                            <span>人均280.00元</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        <!--猜你喜欢-->
+        <div class="con" style="display: none">
+            <ul class="list">
+                <li class="list-li clearfix">
+                    <a class="by-img db fl pr" href="/web/place/index?id=31">
+                        <img class="acti-img" src="/static/img/site/sample/truth.jpg" title=" ">
+                    </a>
+                    <div class="by-info fl">
+                        <a class="shopname db" href="/web/place/index?id=31" title="">爱语DIY烘焙坊</a>
+                        <div class="title">沌口中心万达广场的烘焙DIY手工坊，店主超级耐心，还是不是研发新的品种哦！</div>
+                        <aside class="clearfix">
+                            <span class="sale">分享有礼</span>
+                            <span class="address fr">沌口</span>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="list-li clearfix">
+                    <a class="by-img db fl pr" href="/web/place/index?id=56" title="">
+                        <img class="acti-img" src="/static/img/site/sample/truth.jpg"></a>
+                    <div class="by-info fl">
+                        <a class="shopname db" href="/web/place/index?id=56" title="">Miss I Cake</a>
+                        <div class="title">Miss I Cake位于大光谷尚都公寓，小朋友绝对会喜欢的卡通动漫款！是非常适合亲子活动的场地哦。</div>
+                        <aside class="clearfix">
+                            <span class="sale">分享有礼</span>
+                            <span class="address">光谷/鲁巷</span>
+                        </aside>
+                    </div>
+                </li>
+
+                <li class="list-li clearfix">
+                    <a class="by-img db fl pr" href="/web/place/index?id=36" title="">
+                        <img class="acti-img" src="/static/img/site/sample/truth.jpg"></a>
+                    <div class="by-info fl">
+                        <a class="shopname db" href="/web/place/index?id=36" title="">V+cake</a>
+                        <div class="title">带孩子亲手做个蛋糕或者去学学怎么烤饼干，再也不怕没有礼物送人啦！</div>
+                        <aside class="clearfix">
+                            <span class="sale">分享有礼</span>
+                            <span class="address fr">石牌岭/街道口</span>
+                        </aside>
+                    </div>
+                </li>
+                <li class="list-li clearfix">
+                    <a class="by-img db fl pr" href="/web/place/index?id=197" title="">
+                        <img class="acti-img" src="/static/img/site/sample/truth.jpg"></a>
+                    <div class="by-info fl">
+                        <a class="shopname db" href="/web/place/index?id=197" title="">必胜客江汉欢乐餐厅</a>
+                        <div class="title">位于江汉路步行街中间，交通在周边挖开的情况下也很便利，亲子DIY活动相对便宜，就是高峰期人很多。</div>
+                        <aside class="clearfix">
+                            <span class="sale">分享有礼</span>
+                            <span class="address fr">江汉路步行街</span>
+                        </aside>
+                    </div>
+                </li>
+                <li class="list-li clearfix">
+                    <a class="by-img db fl pr" href="/web/place/index?id=1282" title="">
+                        <img class="acti-img" src="/static/img/site/sample/truth.jpg"></a>
+                    <div class="by-info fl">
+                        <a class="shopname db" href="/web/place/index?id=1282" title="">果果DIY蛋糕</a>
+                        <div class="title">手把手专业指导您创干净卫生的环境，品质保证的原料，让您在享受DIY烘焙乐趣的同时获得味蕾的最大满足。</div>
+                        <aside class="clearfix">
+                            <span class="sale">分享有礼</span>
+                            <span class="address fr">武昌区</span>
+                        </aside>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--查周边-->
+        <div class="con" style="display: none">
+            <section class="wrapper nb-around oh clear">
+                <div class="nodata tc">
+                    <img  class="vt bn" src="/static/img/site/mobile/nodata.gif">
+                </div>
+            </section>
+        </div>
+    </section>
+
+</section>
+</main>
+
+<div id="footer">
+    <input type="hidden" name="uid" value="182043" id="uid">
+    <div class="touch mb15">
+        <a class="shouc dib fl" href="javascript:;" title="" id="collect" data="500">收藏</a>
+        <a class="dianp dib pr fr" href="/web/comment/index?type=3&amp;id=500" title="">点评<em>2</em></a>
+    </div>
+</div>
+
+{/block}

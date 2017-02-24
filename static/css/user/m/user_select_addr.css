@@ -1,0 +1,71 @@
+.address-info {
+  padding: 28px 22px 22px 36px;
+  margin: 5px 0 15px;
+  background: #fff;
+}
+.address-info .name-phone,
+.address-info .address-line {
+  overflow: hidden;
+  line-height: 36px;
+  padding-bottom: 20px;
+}
+.address-info .address-name {
+  width: 200px;
+  font-size: 32px;
+}
+.address-info .address-tel {
+  font-size: 26px;
+  margin-left: 70px;
+  width: 300px;
+}
+.address-info .address-line {
+  border-bottom: 1px solid #d5d5d5;
+}
+.address-info .address-position {
+  width: 694px;
+  font-size: 28px;
+  color: #929292;
+}
+.address-btn {
+  font-size: 28px;
+  line-height: 44px;
+  margin-top: 25px;
+  overflow: hidden;
+}
+.address-btn .address_check {
+  height: 44px;
+  width: 190px;
+  background: #fff url('/static/img/site/mobile/icons1.png') no-repeat -7px -3001px;
+}
+.address-btn .address_check .address-select {
+  margin-left: 62px;
+}
+.address-btn .address-edit {
+  margin-left: 245px;
+  width: 110px;
+  text-align: right;
+  background: #fff url('/static/img/site/mobile/icons1.png') no-repeat -4px -3197px;
+}
+.address-btn .address-del {
+  margin-left: 40px;
+  width: 105px;
+  background: #fff url('/static/img/site/mobile/icons1.png') no-repeat -4px -3292px;
+}
+.add-list {
+  margin: 40px auto;
+  font-size: 34px;
+  color: #fa6e51;
+}
+.traveller-button {
+  width: 750px;
+  height: 80px;
+  background-color: #fa6e51;
+  color: white;
+  font-size: 2.2rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+.address-btn input:checked + label {
+  background: #fff url('/static/img/site/mobile/icons1.png') no-repeat -7px -3097px;
+}

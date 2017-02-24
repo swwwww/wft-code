@@ -1,0 +1,148 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"玩翻天商家后台--设置密码"}{/block}
+
+{block name="css" append}
+{css file="css/admin/business/mer_other.css"}
+{/block}
+
+{block name="inner"}
+<!--头部-->
+{include file="admin/business/elem_mer_header.html"}
+
+<div class="nav dib">
+    {include file="admin/business/elem_mer_nav.html"}
+</div>
+
+<article class="goods-detail pr">
+    <header class="nav-map">
+        <a class="dib" href="javascript:;">首页</a> >
+        <a class="dib" href="javascript:;">订单管理</a>
+    </header><!--修改密码-->
+    <nav class="nav-list search pr">
+        <div class="check-account manage-order clearfix">
+            <p class="remian-money dib fl">
+                <label class="title-name dib">验证码</label>
+                <input type="text" class="dib start-time" id="js-verify-code" value="{$res.post_data.code}">
+            </p>
+            <p class="remian-money dib fl">
+                <label class="title-name dib">订单号</label>
+                <input type="text" class="dib start-time" id="js-order-sn" value="{$res.post_data.order_sn}">
+            </p>
+
+            <div class="search-type dib">
+                <label class="title-name dib">排序规则</label>
+                <select class="sel-form" name="sel" id="js-sel-option">
+                    {foreach $res.object_type as $key => $val}
+                    <option value="{$key}" data-index="{$key}" {if $key == $res.post_data.sort_type}selected{/if}>{$val}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+
+        <div class="check-account manage-order clearfix">
+            <div class="search-time dib">
+                <label class="title-name dib">验证时间</label>
+                <input type="date" class="dib start-time" id="js-start-time" value="{$res.post_data.time_start}">
+                &nbsp;至&nbsp;
+                <input type="date" class="dib end-time" id="js-end-time" value="{$res.post_data.time_end}">
+            </div>
+
+            <div class="remian-money dib fl">
+                <label class="title-name dib">商品名</label>
+                <input type="text" class="dib start-time" id="js-coupon-name" value="{$res.post_data.coupon_name}">
+            </div>
+        </div>
+
+        <div class="manage-type">
+            <a class="dib search-btn clear-btn" id="js-clear-op" href="javascript:;">清空所有选项</a>
+            <a class="dib search-btn" id="js-search-btn" href="javascript:;">搜索</a>
+            <a class="dib search-btn" id="js-export-btn" target="_blank" href="{$res.out_url}/selleradmin/order/outorder?page={$res.post_data.page}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type={$res.post_data.view_type}&organizer_id={$res.post_data.organizer_id}&rc_auth={$res.post_data.rc_auth}">导出</a>
+        </div>
+    </nav>
+
+    <!--订单-->
+    <table class="goods-info db price-system">
+        <nav class="nav-type pr" id="js-nav-select">
+            <a class="order-item {if $res.post_data.view_type == ''||$res.post_data.view_type == 1}active-item{/if}" data-view-type = '1'
+               href="{$BASE_URL_MODULE}business/manageOrder?page={$res.post_data.page}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type=1">
+                所有订单（{$res.count.all_list_count}）
+            </a>
+            <a class="order-item {if $res.post_data.view_type == 2}active-item{/if}" data-view-type = '2'
+               href="{$BASE_URL_MODULE}business/manageOrder?page={$res.post_data.page}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type=2">
+                已使用（{$res.count.use_list_count}）
+            </a>
+            <a class="order-item {if $res.post_data.view_type == 3}active-item{/if}" data-view-type = '3'
+               href="{$BASE_URL_MODULE}business/manageOrder?page={$res.post_data.page}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type=3">
+                待使用（{$res.count.wait_list_count}）
+            </a>
+            <a class="order-item {if $res.post_data.view_type == 4}active-item{/if}" data-view-type = '4'
+               href="{$BASE_URL_MODULE}business/manageOrder?page={$res.post_data.page}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type=4">
+                退款（{$res.count.back_list_count}）
+            </a>
+        </nav>
+        <thead class="thead-info table-padding">
+        <!--头部-->
+        <tr class="tr-title order-mange">
+            <th class="order-code"><mark class="item-style">验证码</mark></th>
+            <th class="order-num"><mark class="item-style">订单编号</mark></th>
+            <th class="order-name"><mark class="item-style">商品名</mark></th>
+            <th class="order-sys"><mark class="item-style">套系名</mark></th>
+            <th class="order-price"><mark class="item-style">结算价</mark></th>
+            <th class="order-buy-time"><mark class="item-style">购买时间</mark></th>
+            <th class="order-use-time"><mark class="item-style">使用时间</mark></th>
+            <th class="order-merchant"><mark class="item-style">验证商家</mark></th>
+            <th class="order-bk-time"><mark class="item-style">退款时间</mark></th>
+            <th class="order-code-status"><mark class="item-style">验证码状态</mark></th>
+            <th class="order-pay"><mark class="item-style">结算状态</mark></th>
+        </tr>
+        </thead>
+        <tbody class="goods-msg trade-tbody">
+        <!--表单部分-->
+        {foreach $res.list as $key => $val}
+        <tr class="tr-title tr-font order-mange">
+            <th class="order-code"><mark class="tbody-item tc">{$val.code}</mark></th>
+            <th class="order-num"><mark class="tbody-item tc">{$val.order_sn}</mark></th>
+            <th class="order-name"><mark class="tbody-item tc">{$val.coupon_name}</mark></th>
+            <th class="order-sys"><mark class="tbody-item tc">{$val.price_name}</mark></th>
+            <th class="order-price"><mark class="tbody-item tc">￥{$val.account_money}</mark></th>
+            <th class="order-buy-time"><mark class="tbody-item tc">{$val.buy_time|date_format: "%Y-%m-%d %H:%M:%S"}</mark></th>
+            <th class="order-use-time"><mark class="tbody-item tc">{$val.use_time|date_format: "%Y-%m-%d %H:%M:%S"}</mark></th>
+            <th class="order-merchant"><mark class="tbody-item tc">{$val.use_shop}</mark></th>
+            <th class="order-bk-time"><mark class="tbody-item tc">{$val.back_time|date_format: "%Y-%m-%d %H:%M:%S"}</mark></th>
+            <th class="order-code-status"><mark class="tbody-item tc">{$val.code_status}</mark></th>
+            <th class="order-pay"><mark class="tbody-item tc">{$val.charge_status}</mark></th>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+    {if $res.page_count > 1}
+    <div class="footer">
+        <ul class="pagination">
+            <li><span>{$res.count_num}条记录1/<mark>{$res.page_count}</mark>页</span></li>
+            {section name=total loop={$res.page_count}}
+            {if $smarty.section.total.index+1 < 8}
+            <li> <a class="{if $smarty.section.total.index+1 == 1}active{/if}" href="{$BASE_URL_MODULE}business/manageOrder?page={$smarty.section.total.index+1}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type={$res.post_data.view_type}">{$smarty.section.total.index+1}</a></li>
+            {else if $smarty.section.total.index+1 ==8}
+            <li> <a href="javascript:;">...</a></li>
+            {/if}
+            {/section}
+            <li> <a href="javascript:;">下一页</a> </li>
+            <li> <a href="{$BASE_URL_MODULE}business/manageOrder?page={$res.page_count}&code={$res.post_data.code}&order_sn={$res.post_data.order_sn}&coupon_name={$res.post_data.coupon_name}&time_start={$res.post_data.time_start}&time_end={$res.post_data.time_end}&sort_type={$res.post_data.sort_type}&view_type={$res.post_data.view_type}">末页</a> </li>
+        </ul>
+    </div>
+    {/if}
+</article>
+
+<div class="footer">
+    <ul class="pagination"></ul>
+</div>
+<input type="hidden" id="js-page-info" value='{$res.page_info}'>
+{/block}
+
+{block name="js" append}
+
+{js file="js/admin/business/page.js"}
+{js file="js/admin/business/manage_order.js"}
+
+{/block}

@@ -1,0 +1,132 @@
+#comment-list {
+  margin-bottom: 170px;
+}
+.comment {
+  background: #fff;
+  margin-top: 20px;
+}
+.comment .comment-content {
+  padding: 30px 33px 0 120px;
+}
+.comment .comment-content img {
+  width: 80px;
+  height: 80px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  background-clip: padding-box;
+  position: absolute;
+  top: 30px;
+  right: auto;
+  bottom: auto;
+  left: 20px;
+}
+.comment .comment-content .head-info {
+  color: #929292;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.comment .comment-content .head-info .content-id {
+  font-size: 28px;
+}
+.comment .comment-content .head-info .content-time {
+  font-size: 24px;
+}
+.comment .comment-content .content-msg {
+  font-size: 28px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.comment .comment-pic {
+  padding: 0 51px 50px 120px;
+}
+.comment .pic-ul {
+  width: 582px;
+  height: 193px;
+  font-size: 0;
+}
+.comment .pic-ul .pic-li {
+  font-size: 30px;
+}
+.comment .pic-ul .pic-li img {
+  width: 193px;
+  height: 193px;
+}
+.comment .comment-btn {
+  height: 70px;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 26px;
+  color: #929292;
+}
+.comment .comment-btn-like,
+.comment .comment-btn-write {
+  height: 31px;
+  width: 120px;
+  padding: 0 91px 0 163px;
+  margin-top: 19px;
+}
+.comment .comment-btn-like a,
+.comment .comment-btn-write a {
+  display: block;
+  width: 120px;
+  overflow: hidden;
+  height: 31px;
+}
+.comment .comment-btn-like a mark,
+.comment .comment-btn-write a mark {
+  margin-left: 45px;
+}
+.comment .comment-btn-like {
+  border-right: 1px solid #dbdbdb;
+}
+.comment .comment-btn-like a {
+  background: #fff url(/static/img/site/mobile/icons.png) no-repeat -15px -2149px;
+}
+.comment .comment-btn-like a mark {
+  line-height: 36px;
+}
+.comment .comment-btn-write a {
+  background: #fff url(/static/img/site/mobile/icons.png) no-repeat -14px -2187px;
+}
+.comment .comment-btn-write a mark {
+  line-height: 32px;
+}
+.remark-fixed {
+  height: 98px;
+  width: 750px;
+  position: fixed;
+  bottom: 0;
+  background: #f7f7f7;
+  border-top: 1px solid #a9a9a9;
+  overflow: hidden;
+}
+.remark-fixed .remark-span {
+  width: 518px;
+  height: 68px;
+  line-height: 68px;
+  font-size: 30px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background-clip: padding-box;
+  background: #fff;
+  margin: 15px 0 0 18px;
+  padding-left: 30px;
+  border: 1px solid #dbdbdb;
+  color: #d5d5d5;
+}
+.remark-fixed .remark-mark {
+  width: 152px;
+  line-height: 70px;
+  height: 70px;
+  font-size: 36px;
+  background: #fa6f52;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background-clip: padding-box;
+  color: #fff;
+  margin: 15px 0 0 18px;
+}

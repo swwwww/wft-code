@@ -1,0 +1,179 @@
+.in-list .item .info .operate .align {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 1;
+  margin: 0 auto;
+}
+.in-header {
+  background: #ec5565;
+  color: #fff;
+}
+.in-header .user {
+  line-height: 60px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 3% 0 0;
+}
+.in-header .user-img {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #fff;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.in-header .user-name {
+  font-size: 32px;
+  margin: 0 2%;
+}
+.in-header .user-type {
+  font-style: normal;
+  font-size: 24px;
+}
+.in-header .points-rule {
+  font-size: 28px;
+  color: #fff;
+}
+.in-header .marks {
+  font-size: 28px;
+  padding: 3% 0;
+  box-sizing: border-box;
+}
+.in-header .marks-num {
+  font-size: 84px;
+  text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.3);
+  margin-right: 3%;
+}
+.in-header .mid-nav {
+  font-size: 28px;
+  background-color: #d94453;
+  padding: 15px 50px;
+  overflow: hidden;
+}
+.in-header .nav-a {
+  color: #fff;
+  vertical-align: middle;
+  border-radius: 30px;
+}
+.in-header .nav-a .icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+.in-header .nav-sign {
+  padding: 5px 10px;
+  border: 2px solid #fff;
+}
+.in-header .nav-sign .icon {
+  background: url("/static/img/site/mobile/score-01.gif") no-repeat 0px -64px;
+}
+.in-header .sign-done .icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  vertical-align: middle;
+  background: url("/static/img/site/mobile/score-01.gif") no-repeat -6px -70px;
+}
+.in-header .sign-done .tips {
+  font-size: 25px;
+  margin-top: 10px;
+  text-align: center;
+}
+.in-header .nav-share {
+  padding: 5px 40px;
+  border: 2px solid #fff;
+}
+.in-header .nav-share .icon {
+  background: url("/static/img/site/mobile/score-01.gif") no-repeat -9px -126px;
+}
+.has-chance {
+  background-color: #fff;
+  padding: 10px 30px;
+  box-sizing: border-box;
+}
+.has-chance .title {
+  font-size: 30px;
+}
+.has-chance .num {
+  font-size: 26px;
+  color: #000;
+}
+.has-chance .arrowent {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  border: 2px solid #999;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+  right: 25px;
+  top: 42%;
+}
+.in-list {
+  margin-top: 20px;
+}
+.in-list .item {
+  background-color: #fff;
+  border-bottom: 1px solid #999;
+  padding: 20px 30px;
+  overflow: hidden;
+}
+.in-list .item-pic {
+  float: left;
+  border-radius: 10px;
+}
+.in-list .item-img {
+  width: 170px;
+  height: 170px;
+  border-radius: 10px;
+}
+.in-list .item-info {
+  width: 490px;
+}
+.in-list .item-info h2 {
+  font-size: 32px;
+  line-height: 35px;
+  margin-bottom: 10px;
+}
+.intro {
+  height: 70px;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+.intro .item-intro {
+  font-size: 24px;
+  color: #6f6f6f;
+  line-height: 36px;
+}
+.item-operate {
+  margin-top: 5px;
+  overflow: hidden;
+}
+.item-operate .status {
+  font-size: 32px;
+}
+.item-operate .status-i {
+  font-size: 26px;
+  font-style: normal;
+}
+.item-operate .status-mark {
+  color: #fa6e51;
+}
+.item-operate .status-score {
+  font-size: 26px;
+  color: #3c3c3c;
+}
+.item-operate .button {
+  background-color: #fa6e51;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 28px;
+}
+.item-operate .disabled {
+  background-color: #8d8d8d;
+}

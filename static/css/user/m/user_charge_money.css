@@ -1,0 +1,234 @@
+.fix {
+  max-width: 750px;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.order-info {
+  background-color: #FFFFFF;
+  margin: 10px auto 20px auto;
+}
+.order-info .order-item,
+.order-info .order-name {
+  padding: 32px 20px;
+}
+.order-info .order-item {
+  font-size: 30px;
+  border-bottom: 1px solid #ccc;
+}
+.order-info .order-name {
+  font-size: 36px;
+  font-weight: 600;
+}
+.vip-list {
+  background-color: #ffffff;
+  height: auto;
+  font-size: 0;
+}
+.vip-list .item-li {
+  width: 49.668%;
+  height: 180px;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 2px solid #ededed;
+  border-bottom: 2px solid #ededed;
+  margin-left: 0.5px;
+}
+.vip-list .item-li .vip-title {
+  font-size: 36px;
+  color: #FB5F39;
+  margin-top: 38px;
+  text-align: center;
+}
+.vip-list .item-li .vip-content {
+  font-size: 22px;
+  color: #929292;
+  margin: 12px auto 0 auto;
+  text-align: center;
+  width: 181px;
+  height: auto;
+}
+.vip-list .tap-on {
+  border: 1px red solid;
+}
+.vip-list .tap-on:after {
+  display: inline-block;
+  content: '';
+  width: 38px;
+  height: 38px;
+  background: #fff url(/static/img/site/mobile/my.png) no-repeat -9px -2356px;
+  position: absolute;
+  bottom: -5px;
+  right: -1px;
+}
+.vip-list input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+}
+#vip-gift-word {
+  width: 100%;
+  height: 83px;
+}
+#vip-gift-word #vip-gift-word-p {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #929292;
+}
+.shop-info {
+  font-size: 30px;
+  background-color: #fff;
+  padding: 32px 20px;
+  margin-bottom: 10px;
+}
+.shop-info .time-item {
+  margin-bottom: 20px;
+}
+.shop-info .good-item {
+  margin-top: 20px;
+}
+.shop-title {
+  padding: 32px 0;
+  font-size: 28px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #c1c1c1;
+}
+.shop-title .icon-line {
+  width: 7px;
+  height: 41.5px;
+  background-color: #fa6e51;
+  margin-right: 20px;
+}
+.vip-margin {
+  margin: 20px 0 50px 0;
+}
+.shop-coupon {
+  font-size: 30px;
+  background-color: #fff;
+  padding: 12px 30px;
+}
+.shop-coupon .title-font {
+  font-size: 34px;
+  margin-right: 20px;
+}
+.shop-coupon .ticket-limit {
+  height: 70px;
+  line-height: 70px;
+  width: 480px;
+  color: #fa6e51;
+}
+.shop-coupon .arrowent {
+  right: 35px;
+  top: 35%;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  border: 2px solid #999;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+.pay-item {
+  font-size: 24px;
+  display: block;
+  padding: 32px 30px;
+  overflow: hidden;
+  background-color: #fff;
+  border-bottom: 1px solid #c1c1c1;
+}
+.pay-item .option-input {
+  display: none;
+}
+.pay-item .item-icon-size {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.pay-item .item-icon01 {
+  background: #fff url("/static/img/site/mobile/my.png") no-repeat -2px -1480px;
+}
+.pay-item .item-icon02 {
+  background: #fff url("/static/img/site/mobile/my.png") no-repeat -2px -1600px;
+}
+.pay-item .item-icon03 {
+  background: #fff url("/static/img/site/mobile/my.png") no-repeat -6px -2009px;
+}
+.pay-item .item-msg {
+  padding-left: 82px;
+}
+.pay-item .way-notice {
+  color: #929292;
+  font-size: 20px;
+}
+.pay-item .choose {
+  line-height: 60px;
+}
+.pay-item .choose .icon {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  vertical-align: middle;
+  margin-left: 30px;
+  background: #fff url("/static/img/site/mobile/my.png") no-repeat -6px -1860px;
+}
+.pay-item .choose .icon.active {
+  background: #fff url("/static/img/site/mobile/my.png") no-repeat -6px -1933px;
+}
+.pay-item .active .choose .icon {
+  background: #fff url("/static/img/site/mobile/my.png") no-repeat -6px -1780px;
+}
+.pay-item .mark {
+  background: none;
+  color: #fa6e51;
+}
+.shop-last {
+  margin-top: 40px;
+}
+.shop-last .amount {
+  font-size: 32px;
+  width: 60%;
+  text-indent: 20px;
+  line-height: 80px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.shop-last .amount .money-sign {
+  font-size: 20px;
+}
+.shop-last .submit {
+  width: 40%;
+  background-color: #fa6e51;
+  color: #fff;
+  font-size: 36px;
+  line-height: 86px;
+  box-sizing: border-box;
+}
+.shop-last .real-pay {
+  font-size: 40px;
+  color: #fa6e51;
+}
+.pop-notice {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  padding: 15px 20px;
+  font-size: 26px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.main {
+  padding-bottom: 140px;
+}

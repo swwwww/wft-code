@@ -1,0 +1,162 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"会员专区"}{/block}
+{block name="css" append}
+{css file="css/member/m/special_area.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="main">
+    <div class="wrapper">
+        <div class="swipe" id="slider">
+            <div class="container">
+                <ul class="swipe-wrap">
+                    {foreach $res.data.maps as $val}
+                    {if $val.type} <!--这里需要对type值做出判断-->
+                    <li class="pic">
+                        <a href="{if $val.type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$val.id}{else if $val.type==2}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}{else if $val.type==4}{$BASE_URL_MODULE}discover/playDetail?id={$val.id}{else if $val.type==5}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}{else if $val.type==16}{$BASE_URL_MODULE}play/playActivity?id={$val.id}{else}{$val.url}{/if}">
+                            <img class="banner-img db" src="{$val.cover}" />
+                        </a>
+                    </li>
+                    {/if}
+                    {/foreach}
+                </ul>
+
+            </div>
+            <ol class="dots" id="dots">
+                {foreach $res.data.maps as $key => $val}
+                {if $val@index == 0}
+                <li class="item active"></li>
+                {else}
+                <li class="item"></li>
+                {/if}
+                {/foreach}
+            </ol>
+        </div>
+        <!--<img class="banner-img" src="/static/img/site/sample/truth.jpg">-->
+        <h2 class="vip-title pr">
+            <i class="red-icon dib pa"></i>
+            <span class="title-msg">会员免费玩</span>
+        </h2>
+    </div>
+
+    <section class="activity-item">
+        {if $res.data.choice_list|@count}
+        {foreach $res.data.choice_list as $key => $val}
+        <a class="db" href="
+       {if $val.type == 16}{$BASE_URL_MODULE}play/playActivity?id={$val.id}{/if}
+       ">
+            {if $val.n_tags[0]}
+            <div class="n_tags pa">
+                {foreach $val.n_tags as $key => $n_msg}
+                <img class="crazy-logo dib" src="{$n_msg.img}" alt="{$n_msg.name}" />
+                {/foreach}
+            </div>
+            {/if}
+            <div class="adv-list-info list-bottom pr">
+                <span class="adv-img" style="background: url({$val.cover}) no-repeat center center;background-size: cover;"></span>
+                <div class="tag-list">
+                    {if $val.tags|@count}
+                    {foreach $val.tags as $key => $tags}
+                    <i class="adv-tag dib">{$tags}</i>
+                    {/foreach}
+                    {/if}
+                </div>
+                <p class="adv-font clearfix">
+                    <span class="adv-title">{$val.title}</span><br>
+                    <span class="time">{$val.session_str}</span>
+                    <span class="addr dib pa addr-circle"><i class="addr-icon dib"></i>{$val.note}</span>
+                </p>
+                <div class="new pa join-in">
+                    {if $val.status == 2}
+                    累计有{$val.buy_num}人参加
+                    {else if $val.status == 1}
+                    活动报名中
+                    {/if}
+                </div>
+                <div class="least-price pa">￥<mark>{$val.low_money}</mark>起</div>
+                {if $val.vip_free}
+                <div class="vip-tag pa">
+                    <img class="vip-logo db" src="/static/img/site/mobile/vips/vip_five.png">
+                </div>
+                {/if}
+            </div>
+        </a>
+        {/foreach}
+        {else if ($res|@count)}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {/if}
+
+        <div class="list-item"></div>
+    </section>
+
+    <section div class="foot-in">
+        {if $res.data.is_vip}
+            {if $res.data.free_coupon_number}
+                <a class="db vip-account" href="{$BASE_URL_MODULE}member/kidsTravel">我的免费亲子游</a>
+            {else}
+                <a class="db vip-account" href="{$BASE_URL_MODULE}orderWap/chargeMoney">获取免费玩资格</a>
+            {/if}
+        {else}
+        <a class="db vip-account" href="{$BASE_URL_MODULE}orderWap/chargeMoney">开通会员免费玩</a>
+        {/if}
+    </section>
+</div>
+
+{/block}
+
+{block name="js" append}
+{js file="js/lib/fx.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{js file="js/member/special_area.js"}
+{literal}
+<script id="list" type="text/html">
+    <input type="hidden" value="{{res|json_encode}}">
+    {{if res[0]}}
+    {{each res as val i}}
+    <a class="db" href="{{if val.type == 16}}/play/playActivity?id={{val.id}}{{/if}}">
+        {{if val.n_tags[0]}}
+        <div class="n_tags pa">
+            {{each val.n_tags as n_msg}}
+            <img class="crazy-logo dib" src="{{n_msg.img}}" alt="{{n_msg.name}}" />
+            {{/each}}
+        </div>
+        {{/if}}
+        <div class="adv-list-info list-bottom pr">
+            <span class="adv-img" style="background: url({{val.cover}}) no-repeat center center;background-size: cover;"></span>
+            <div class="tag-list">
+                {{if val.tags[0]}}
+                {{each val.tags as tags}}
+                <i class="adv-tag dib">{{tags}}</i>
+                {{/each}}
+                {{/if}}
+            </div>
+            <p class="adv-font clearfix">
+                <span class="adv-title">{{val.title}}</span><br>
+                    <span class="time">
+                        {{val.session_str}}
+                    </span>
+                <span class="addr dib pa addr-circle"><i class="addr-icon dib"></i>{{val.note}}</span>
+            </p>
+            <div class="new pa join-in">
+                {{if val.status == 2}}
+                累计有{{val.buy_num}}人参加
+                {{else if val.status == 1}}
+                活动报名中
+                {{/if}}
+            </div>
+            <div class="least-price pa">￥<mark>{{val.low_money}}</mark>起</div>
+            {{if val.vip_free}}
+            <div class="vip-tag pa">
+                <img class="vip-logo db" src="/static/img/site/mobile/vips/vip_five.png">
+            </div>
+            {{/if}}
+        </div>
+    </a>
+    {{/each}}
+    {{/if}}
+</script>
+{/literal}
+{/block}

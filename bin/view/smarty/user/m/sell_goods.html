@@ -1,0 +1,194 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"推广列表"}{/block}
+{block name="css" append}
+{css file="css/user/m/sell_goods.css"}
+{/block}
+{block name="inner"}
+<section class="inner">
+    <div class="header-main">
+        <div class="header-nav">遛娃活动</div>
+        <div class="header-content">
+            <div class="category">
+                <a class="item active">遛娃活动</a>
+                <a class="item">商品</a>
+                <span class="matte-l"></span>
+                <span class="matte-r"></span>
+            </div>
+            <i class="i-bottom"></i>
+        </div>
+    </div>
+    <div class="main">
+        <!--    溜娃活动列表-->
+        <section class="adv" id="activity">
+        </section>
+
+        <!--   商品列表-->
+        <section class="adv" id="goods">
+        </section>
+    </div>
+    <input type="hidden" id="activity_num" value="{$res.count_activity}" />
+    <input type="hidden" id="goods_num" value="{$res.count_goods}" />
+    <input type="hidden" id="is_seller" value="{$res.is_seller}" />
+</section>
+{/block}
+{block name="js" append}
+{js file="js/user/sell_goods.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="activity_list" type="text/html">
+    <div class="ticket-list">
+        {{each activity}}
+        {{each $value}}
+        <a class="ticket-list-item" href="/play/playactivity?id={{$value.id}}{{if $value.seller_id > 0}}&seller_id={{$value.seller_id}}{{/if}}">
+            <img src="{{$value.cover}}" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.title}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <i>{{$value.start_time | dateFormat:'MM月dd日'}}-{{$value.end_time | dateFormat:'MM月dd日'}} {{$value.events_num}}场</i>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已有{{$value.buy_number}}人报名</span>
+                        {{else}}
+                        <span>报名中</span>
+                        {{/if}}
+                        <i>{{$value.address}}</i>
+                    </span>
+            </div>
+            {{if $value.is_seller == 1}}
+            <div class="profit">
+                <span class="profit-title">预计收益（单份）：</span>
+                {{if $value.pre_income.min == $value.pre_income.max}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>
+                {{else}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>~
+                <mark class="profit-info">￥{{$value.pre_income.max}}</mark>
+                    {{/if}}
+            </div>
+            {{/if}}
+        </a>
+        {{/each}}
+        {{/each}}
+    </div>
+</script>
+
+<script id="goods_list" type="text/html">
+    <div class="ticket-list">
+        {{each goods}}
+        {{each $value}}
+        <a class="ticket-list-item" href="/ticket/commodityDetail?id={{$value.id}}{{if $value.seller_id > 0}}&seller_id={{$value.seller_id}}{{/if}}">
+            <img src="{{$value.cover}}" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.title}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <mark>￥{{$value.low_money}}</mark>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已售{{$value.buy_number}}份</span>
+                        {{else}}
+                        <span>有票</span>
+                        {{/if}}
+                        <i>{{$value.address}}</i>
+                    </span>
+            </div>
+            {{if $value.is_seller == 1}}
+            <div class="profit">
+                <span class="profit-title">预计收益（单份）：</span>
+                {{if $value.pre_income.min == $value.pre_income.max}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>
+                {{else}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>~
+                <mark class="profit-info">￥{{$value.pre_income.max}}</mark>
+                    {{/if}}
+            </div>
+            {{/if}}
+        </a>
+        {{/each}}
+        {{/each}}
+    </div>
+</script>
+<script id="activity_more" type="text/html">
+    <div class="ticket-list">
+        {{each activity}}
+        {{each $value}}
+        <a class="ticket-list-item" href="/play/playactivity?id={{$value.id}}{{if $value.seller_id > 0}}&seller_id={{$value.seller_id}}{{/if}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.title}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <i>{{$value.start_time | dateFormat:'MM月dd日'}}-{{$value.end_time | dateFormat:'MM月dd日'}} {{$value.events_num}}场</i>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已有{{$value.buy_number}}人报名</span>
+                        {{else}}
+                        <span>报名中</span>
+                        {{/if}}
+                        <i>{{$value.address}}</i>
+                    </span>
+            </div>
+            {{if $value.is_seller == 1}}
+            <div class="profit">
+                <span class="profit-title">预计收益（单份）：</span>
+                {{if $value.pre_income.min == $value.pre_income.max}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>
+                {{else}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>~
+                <mark class="profit-info">￥{{$value.pre_income.max}}</mark>
+                {{/if}}
+            </div>
+            {{/if}}
+        </a>
+        {{/each}}
+        {{/each}}
+    </div>
+</script>
+
+<script id="goods_more" type="text/html">
+    <div class="ticket-list">
+        {{each goods}}
+        {{each $value}}
+        <a class="ticket-list-item" href="/ticket/commodityDetail?id={{$value.id}}{{if $value.seller_id > 0}}&seller_id={{$value.seller_id}}{{/if}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.title}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <mark>￥{{$value.low_money}}</mark>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已售{{$value.buy_number}}份</span>
+                        {{else}}
+                        <span>有票</span>
+                        {{/if}}
+                        <i>{{$value.address}}</i>
+                    </span>
+            </div>
+            {{if $value.is_seller == 1}}
+            <div class="profit">
+                <span class="profit-title">预计收益（单份）：</span>
+                {{if $value.pre_income.min == $value.pre_income.max}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>
+                {{else}}
+                <mark class="profit-info">￥{{$value.pre_income.min}}</mark>~
+                <mark class="profit-info">￥{{$value.pre_income.max}}</mark>
+                {{/if}}
+            </div>
+            {{/if}}
+        </a>
+        {{/each}}
+        {{/each}}
+    </div>
+</script>
+{/literal}
+{/block}

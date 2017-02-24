@@ -1,0 +1,56 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"玩翻天商家后台--商家入驻"}{/block}
+
+{block name="css" append}
+{css file="css/admin/business/mer_other.css"}
+{/block}
+
+
+{block name="inner"}
+    <!--头部-->
+    {include file="admin/business/elem_mer_header.html"}
+
+    <!--商家入驻-->
+    <article class="join content-area">
+        <header class="nav-map">玩翻天商家版 >> 申请入驻</header>
+
+        <section class="join-from content-inner" id="js-get-info">
+
+            <div class="from-item">
+                <label class="item-name dib" for="business_name">商家名称</label>
+                <input class="item-input" type="text" id="business_name" required autofocus>
+            </div>
+
+            <div class="from-item">
+                <label class="item-name dib" for="address">商家地址</label>
+                <input class="item-input" type="text" id="address" required>
+            </div>
+
+            <div class="from-item">
+                <label class="item-name textarea-name dib" for="management">经营内容</label>
+                <textarea rows="6" class="item-input" type="text" id="management" required></textarea>
+            </div>
+
+            <div class="from-item">
+                <label class="item-name dib" for="contact_name">联系人姓名</label>
+                <input class="item-input" type="text" id="contact_name" required>
+            </div>
+
+            <div class="from-item">
+                <label class="item-name dib" for="contact_phone">联系人电话</label>
+                <input class="item-input" type="tel" id="contact_phone" required>
+            </div>
+            <span class="join-tips">提出申请的商家，玩翻天会在3个工作日内与联系人联系，请保持联系电话畅通。</span>
+
+            <input id="js-application-in" class="submit-btn db" type="submit" value="提交">
+        </section>
+
+    </article>
+
+
+{/block}
+
+{block name="js" append}
+    {js file="js/admin/business/application_in.js"}
+
+{/block}

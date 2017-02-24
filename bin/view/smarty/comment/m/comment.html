@@ -1,0 +1,49 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"点评"}{/block}
+
+{block name="css" append}
+    {css file="css/comment/m/review.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<main class="align" id="content">
+    <section class="wrapper">
+        <form id="form" action="#" method="post" class="comm-frame" autocomplete="off">
+            <div class="all-comment">
+                <span class="name">评分</span>
+                <a href="javascript:;" data-star="10" title="总体点评" class="comm-star"></a>
+                <a href="javascript:;" data-star="20" title="总体点评" class="comm-star"></a>
+                <a href="javascript:;" data-star="30" title="总体点评" class="comm-star"></a>
+                <a href="javascript:;" data-star="40" title="总体点评" class="comm-star"></a>
+                <a href="javascript:;" data-star="50" title="总体点评" class="comm-star"></a>
+
+                <input id="w_star_holder" type="hidden" name="star" value="0">
+                <input id="data" type="hidden" name="data" value='{$res}'>
+            </div>
+            <div class="all-con">
+                <textarea class="tarea w" id="w_describe" placeholder="提交15个字并带有插图的评论，会获得5个积分" name="textarea" cols="" rows="8"></textarea>
+                <div class="upload-area">
+                    <ul class="upload-list" id="upload-list">
+                    </ul>
+                    <label class="upload-btn pr">
+                        <input class="input-file" id="upload-image" type="file" accept="image/*;capture=camera">
+                        <a class="w_photo" href="javascript:;" title=""></a>
+                    </label>
+                </div>
+            </div>
+            <a id="w_submit" href="javascript:;" title="提交" class="icon-btn icon-btn-orange tc db">提交</a>
+        </form>
+    </section>
+</main>
+{/block}
+{block name ="foot-btn"}
+{/block}
+{block name="js" append}
+{js file="js/lib/localResizeIMG.js"}
+{js file="js/comment/comment.js"}
+{js file="js/lib/weixin.main.js"}
+{js file="js/lib/binaryajax.js"}
+{js file="js/lib/exif.js"}
+{js file="js/lib/mobileBUGFix.js"}
+{/block}

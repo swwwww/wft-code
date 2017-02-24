@@ -1,0 +1,41 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"购买成功"}{/block}
+
+{block name="css" append}
+{css file="css/order/m/buy_completed.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="buy">
+    <header class="buy-banner">
+        <p class="banner-msg">
+            <span class="banner-succ db">购买成功</span>
+            <mark class="banner-addr db">{$res.title}</mark> <!--星期六婴儿游泳馆(菱角湖万达店)-->
+        </p>
+        <a class="banner-order fl tc" href="">查看订单</a>
+        <a class="banner-index fl tc" href="">返回首页</a>
+    </header>
+    {foreach $res.share_feedback as $key => $bk}
+    <p class="buy-title db clearfix">
+        <img class="buy-bg fl dib" src={$bk.image}>
+        <span class="title-msg fl dib size">{$bk.title}</span>
+    </p>
+    {/foreach}
+
+   <!-- <p class="buy-info dib">
+        <span class="info-msg fl size">分享活动给好友你将获得10元现金券</span>
+    </p>
+    <p class="buy-info rebate dib">
+        <span class="info-msg rebate-msg fl size tl">好友通过你的分享成功报名参加活动你将返利5元</span>
+    </p>-->
+    <div class="buy-link">
+        <a class="buy-link-wechat a-link fl" href="#">
+            <span class="db tc link-media">微信好友</span>
+        </a>
+        <a class="buy-link-friends a-link fl" href="#">
+            <span class="db tc link-media">微信朋友圈</span>
+        </a>
+    </div>
+</section>
+{/block}

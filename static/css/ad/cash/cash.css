@@ -1,0 +1,73 @@
+.scan {
+  background: url('/static/img/ad/cash/index.jpg') no-repeat center;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.scan .from-ct {
+  top: 44%;
+  left: 11.5%;
+}
+.scan .from-ct .ph-com {
+  width: 530px;
+  height: 110px;
+  line-height: 110px;
+  margin: 0 auto;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  padding: 0 20px;
+}
+.scan .from-ct .ph-num {
+  background-color: #ffffff;
+  font-size: 30px;
+  color: #97d0ee;
+}
+.scan .from-ct .ph-sub {
+  width: 532px;
+  font-size: 49px;
+  color: #ffffff;
+  margin-top: 42px;
+  background-color: #03a9f4;
+}
+.rule {
+  background: url('/static/img/ad/cash/result.jpg') no-repeat center;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.rule .rule-msg {
+  top: 50.5%;
+}
+.rule .msg-one,
+.rule .msg-two {
+  width: 750px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 55px;
+  letter-spacing: 5px;
+}
+.rule .down-load {
+  top: 62%;
+  left: 16.5%;
+  background-color: #03a9f4;
+  border-radius: 25px;
+  color: #ffffff;
+  width: 470px;
+  padding: 25px 0;
+}
+.rule .load-msg {
+  font-size: 49px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.rule .load-act {
+  font-size: 22px;
+}

@@ -1,0 +1,23 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"几古家活动-首页"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/grasp.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="main pr">
+    <img class="main-bg" src="/static/img/ad/grasp/sale_out.png">
+    <a href="{$BASE_URL_MODULE}lottery/record/lottery_id/{$lottery_vo.lottery_id}/luck/1" id="js_go_prise" class="sale-out db pa"></a>
+</div>
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/ad/grasp/grasp.js"}
+{/block}
+

@@ -1,0 +1,11 @@
+{
+    "build_service_port": 8888,
+    "is_db_enabled": true,
+    "db": {
+        "host": "172.16.2.10",
+        "port": 3306,
+        "database": "wft",
+        "user": "root",
+        "password": "12345677"
+    }
+}

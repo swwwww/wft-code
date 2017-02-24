@@ -1,0 +1,65 @@
+{extends file="widget/layout/base.html"}
+{block name="in_title"}{$title|default:""}{/block}
+
+{block name="meta_viewport"}
+{/block}
+
+{block name="css" append}
+{/block}
+
+{block name="body"}
+    {resource resource="User" var="user_resource" method="nowUser"}
+    {resource resource="Init" var="init_resource" method="set"}
+    <!-- 主页面容器 -->
+    <section class="com-panel" id="mobh5">
+
+        <!-- 主页面标题 -->
+        {block name="header"}
+        {/block}
+
+        {block name="inner"}
+        <!-- 主界面具体展示内容 -->
+        <section class="inner">
+        </section>
+        {/block}
+
+        {block name="footer"}
+        <!--&lt;!&ndash;<section class="fullscreen-v2">-->
+            <!--<h3 class="copyright tc">2016 © 玩翻天</h3>-->
+             <!--<a target="_blank" href="http://www.miibeian.gov.cn">鄂ICP备15022646号-3</a>-->
+        <!--</section>&ndash;&gt;-->
+        {/block}
+
+        {block name="toTop"}
+        <a class="toTop green-top" href="javascript: window.scrollTo(0,0);">
+            <i></i>顶部
+        </a>
+        {/block}
+
+        {block name ="foot-btn"}
+        <div class="foot-btn df green-top">
+            <div class="foot-item">
+                <a class="item-icon" href="/recommend/index"></a>
+                {if $user_resource.user}
+                <a class="item-enter" href="/user/center">您好,{$user_resource.user.username}</a>
+                <a class="item-register" href="/auth/logout">注销</a>
+                {else}
+                <a class="item-enter" href="/auth/login">登录</a>
+                <a class="item-register" href="/auth/login">注册</a>
+                {/if}
+                <!--<a class="item-return" href="javascript: window.scrollTo(0,0);">回到顶部</a>-->
+            </div>
+
+            <div class="copyright">Copyright ©2016 玩翻天</div>
+        </div>
+        {/block}
+
+    </section>
+{/block}
+
+{block name="js" append}
+<script>
+$('.ui-tab-ul').on('click', '.ui-tab-item', M.util.tab_handlers.onTabItemHover);
+</script>
+{/block}
+

@@ -1,0 +1,46 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"玩翻天"}{/block}
+{block name="css" append}
+{css file="css/member/m/goods_more.css"}
+{/block}
+{block name="inner"}
+<div class="cate-list">
+    <img src="/static/img/site/mobile/good_banner.png">
+    <a class="paycheck-btn" href="javascript:;"></a>
+</div>
+<div class="goods">
+    <ul class="goods-list">
+        {foreach $res.goods as $val}
+        <li class="item">
+            <a class="item-wrap" href="{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}">
+                {if $val.img}
+                <img class="item-pic" src="/static/img/ad/guide/{$val.img}">
+                {else}
+                <img class="item-pic" src="/static/img/site/mobile/com_small.png">
+                {/if}
+                <p class="item-name">{$val.info}</p>
+                <p class="item-info">
+                    <span class="current-price">￥{$val.price}</span>
+                    <span class="pre-price">￥{$val.old_price}</span>
+                    <span class="num">已售{$val.sold}份</span>
+                </p>
+            </a>
+        </li>
+        {/foreach}
+    </ul>
+</div>
+<section class="footer-banner">
+    <img src="/static/img/site/mobile/footer-code.png">
+</section>
+<a class="fixed-btn {if $platform.version|string_format:'%d' >= 4}js-action-redirect{/if}" href="{if $platform.version|string_format:'%d' >= 4}javascript:;{else}{$BASE_URL_MODULE}orderWap/chargeMoney{/if}" data-type="2" data-id="{$vip_share_user_id}">
+    <img src="/static/img/site/mobile/fixed-btn.png" />
+</a>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+{block name="toTop"}
+{/block}
+{block name ="foot-btn"}
+{/block}
+{block name="js" append}
+    {js file="js/util/app_bridge.js"}
+{/block}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="build">
+<head>
+<meta charset="utf-8">
+<title>玩翻天一键上线平台</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="telephone=no" name="format-detection">
+<link rel="shortcut icon" href="http://www.baidu.com/favicon.ico">
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css">
+<style>
+.nav,.pagination,.carousel,.panel-title a {
+    cursor: pointer;
+}
+
+* {
+    font-family: '微软雅黑';
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div ng-controller="BuildController">
+            <tabset>
+                <tab ng-repeat="site in sites" heading="{{site.name}}" select="site.lazyLoad()">
+                    <h2 ng-bind="site.title"></h2>
+
+                    <div class="pull-right">
+                        <button class="btn btn-primary" ng-click="site.deployPreview()" ng-disabled="site.deployPreviewingStatus">部署到预览</button>
+                        <button class="btn btn-primary" ng-click="site.deploy()" ng-disabled="site.deployingStatus">部署到线上</button>
+                    </div>
+
+                    <div>
+                        <span>线上地址：</span><a ng-href="{{site.url}}" target="_blank" ng-bind="site.url"></a><br>
+                        <span>预览环境：</span><a ng-href="{{site.preview_url}}" target="_blank" ng-bind="site.preview_url"></a>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-4 form-horizontal" ng-init="site.buildParam=site.buildParam||{};buildParam=site.buildParam">
+                            <h3>构建版本</h3>
+                            <input class="form-control" ng-model="buildParam.author" type="text" placeholder="您的大名">
+                            <textarea rows="6" class="form-control" ng-model="buildParam.message" placeholder="写下新版的改进的功能吧"></textarea>
+                            <br>
+                            <div ng-repeat="(optionName, option) in site.buildOption" class="form-group">
+                                <label ng-bind="option.title" class="col-sm-2 control-label"></label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" ng-model="$parent.buildParam[optionName]" ng-options="key for (key, value) in option.options">
+                                    </select>
+                                </div>
+                            </div>
+                            <button ng-click="site.build(buildParam)" type="button" class="btn btn-primary" ng-disabled="site.buildingStatus">构建新版本</button>
+                        </div>
+                        <div class="col-md-8">
+                            <h3>最近版本</h3>
+                            <accordion close-others="false">
+                            <accordion-group is-open="version.isOpen" ng-repeat="version in site.versionList" ng-class="{'panel-primary': version.version===site.currentVersion}">
+                            <accordion-heading>
+                                <span ng-bind="version.createTime" class="pull-right"></span>
+                                <span ng-bind="version.version"></span> &nbsp;-&nbsp;
+                                <span ng-bind="version.author"></span>
+                            </accordion-heading>
+                            <pre ng-bind="version.diff_info"></pre>
+                            <button ng-if="version.version!==site.currentVersion" class="btn btn-primary" ng-click="site.selectBuild(version.version)">选择版本</button>
+                            <a class="btn btn-info" target="_blank" ng-href="http://thebeet.baidu.com/repos/build-online/{{version.version}}">查看代码</a>
+                            <button class="btn pull-right" ng-class="{
+                                            'btn-success': (version.utResult && version.utResult.status),
+                                            'btn-danger': (version.utResult && !version.utResult.status),
+                                            'btn-warning': (!version.utResult)
+                                        }"
+                                ng-click="site.unittest(version.version)" ng-disabled="site.unittestingStatus">单元测试</button>
+                            <div ng-if="version.utResult && !version.utResult.status">
+                                <hr>
+                                <pre ng-bind="version.utResult.output" class="bg-danger"></pre>
+                            </div>
+                            </accordion-group>
+                            </accordion>
+                        </div>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-2/esl.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.js"></script>
+    <script src="./js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+
+    <script>
+                    var buildModule = angular.module('build', [ 'ui.bootstrap' ]).factory('SiteManager', [ '$http', '$q', function($http, $q) {
+                        var Site = function(site) {
+                            this.name = site.name;
+                            for ( var key in site) {
+                                if (site.hasOwnProperty(key)) {
+                                    this[key] = site[key];
+                                }
+                            }
+                            this.buildingStatus = false;
+                            this.unittestingStatus = false;
+
+                            if (window.localStorage['site_' + this.name + '_build_param']) {
+                                this.buildParam = JSON.parse(window.localStorage['site_' + this.name + '_build_param']);
+                            }
+                        };
+
+                        Site.prototype.refresh = function() {
+                            var _this = this;
+                            $http.get('/build/' + this.name).success(function(result) {
+                                var versionList = [];
+                                result = result.output;
+                                _this.versionListRaw = result.versions;
+                                for ( var key in result.versions) {
+                                    result.versions[key].isOpen = (result.versions[key].version === result.now_version);
+
+                                    result.versions[key].diff_info = result.versions[key].log.diff_info;
+
+                                    result.versions[key].createTime = result.versions[key].log.created;
+
+                                    result.versions[key].author = result.versions[key].log.create_user;
+
+                                    versionList.push(result.versions[key]);
+                                }
+                                versionList.sort(function(a, b) {
+                                    return b.version - a.version
+                                });
+
+                                _this.versionList = versionList;
+                                _this.currentVersion = result.now_version;
+                            });
+                        };
+
+                        /**
+                         * option.author option.message option.module
+                         */
+                        Site.prototype.build = function(option) {
+                            window.localStorage['site_' + this.name + '_build_param'] = JSON.stringify(option);
+                            var _this = this;
+                            _this.buildingStatus = true;
+                            $http.post('/build/' + _this.name + '/build', option).success(function(result) {
+                                _this.buildingStatus = false;
+                                _this.refresh();
+                            });
+                        };
+
+                        Site.prototype.lazyLoad = function() {
+                            if (!this.versionList) {
+                                this.refresh();
+                            }
+                        };
+
+                        Site.prototype.selectBuild = function(id) {
+                            var _this = this;
+                            $http.post('/build/' + _this.name + '/select', {
+                                version : id
+                            }).success(function(result) {
+                                _this.currentVersion = id;
+                            });
+                        };
+
+                        Site.prototype.unittest = function(id) {
+                            var _this = this;
+                            _this.unittestingStatus = true;
+                            $http.post('/build/' + _this.name + '/unittest', {
+                                version : id
+                            }).success(function(result) {
+                                _this.unittestingStatus = false;
+                                _this.versionListRaw[id].utResult = result;
+                            });
+                        };
+
+                        Site.prototype.deploy = function() {
+                            var _this = this;
+                            _this.deployingStatus = true;
+                            $http.post('/role/' + _this.name + '/deploy').success(function(result) {
+                                _this.deployingStatus = false;
+                            });
+                        };
+
+                        Site.prototype.deployPreview = function() {
+                            var _this = this;
+                            _this.deployPreviewingStatus = true;
+                            $http.post('/role/' + _this.name + '_preview/deploy').success(function(result) {
+                                _this.deployPreviewingStatus = false;
+                            });
+                        };
+
+                        return {
+                            Factory : Site
+                        };
+                    } ]).controller('BuildController', [ '$scope', '$http', 'SiteManager', function($scope, $http, SiteManager) {
+                        $http.get('/build/').success(function(result) {
+                            $scope.sites = result.sites.map(function(site) {
+                                return new SiteManager.Factory(site);
+                            });
+                        });
+
+                    } ]).controller('AgentListController', [ '$interval', '$http', '$scope', function($interval, $http, $scope) {
+                    } ]).controller('UpdateController', [ '$http', '$scope', function($http, $scope) {
+                    } ]);
+                </script>
+</body>
+</html>
+
+

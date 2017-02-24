@@ -1,0 +1,117 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"遛娃学院：让孩子们在快乐中成长"}{/block}
+
+{block name="css" append}
+{css file="css/pc/bootstrap.min.css"}
+{css file="css/pc/wft.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+{include file="pc/elem_header.html"}
+<!--crumbs-->
+<section class="container" id="crumbs">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="crumbs">当前位置：
+                <span><a href="school.html">遛娃学院/用户版</a></span>&nbsp;&gt;&nbsp;
+                <a href="hotlist.html">热门推荐</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--crumbs end-->
+
+<!--content list start-->
+<section class="container">
+    <div class="row list-info">
+        <div class="col-md-6 col-sm-6 center-img">
+            <a class="leftImg" href="javascript:;">
+                <img src="/static/img/pc/sub_r3_c1.jpg" class="img-responsive hlist-img">
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="rightText">
+                <h4><a href="javascript:;">热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门推荐标题热</a></h4>
+                <p>2016-2-14</p>
+                <p><span>玩翻天</span>&nbsp;&nbsp;&nbsp;&nbsp;阅读<span>458</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-info">
+        <div class="col-md-6 col-sm-6">
+            <a class="leftImg" href="#">
+                <img src="/static/img/pc/sub_r3_c1.jpg" class="img-responsive hlist-img">
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="rightText">
+                <h4><a href="#">热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门推荐标题热</a></h4>
+                <p>2016-2-14</p>
+                <p><span>玩翻天</span>&nbsp;&nbsp;&nbsp;&nbsp;阅读<span>458</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-info">
+        <div class="col-md-6 col-sm-6">
+            <a class="leftImg" href="#">
+                <img src="/static/img/pc/sub_r3_c1.jpg" class="img-responsive hlist-img">
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="rightText">
+                <h4><a href="#">热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门推荐标题热</a></h4>
+                <p>2016-2-14</p>
+                <p><span>玩翻天</span>&nbsp;&nbsp;&nbsp;&nbsp;阅读<span>458</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row list-info">
+        <div class="col-md-6 col-sm-6">
+            <a class="leftImg" href="#">
+                <img src="/static/img/pc/sub_r3_c1.jpg" class="img-responsive hlist-img">
+            </a>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="rightText">
+                <h4><a href="#">热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门热门推荐标题热门热门推荐标题热</a></h4>
+                <p>2016-2-14</p>
+                <p><span>玩翻天</span>&nbsp;&nbsp;&nbsp;&nbsp;阅读<span>458</span></p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--page nav-->
+<section class="container" id="page">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 center-img">
+            <nav class="pagination">
+                <ul>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>...</li>
+                    <li><a href="#" class="page">下一页</a> </li>
+                    <li><a href="#" class="page">15页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<!--page nav end-->
+
+
+{include file="widget/common/elem_site_contact.html"}
+{/block}
+
+{block name="js" append}
+
+{/block}

@@ -1,0 +1,112 @@
+.special {
+  width: 100%;
+  background: #fff;
+}
+.special .special-title {
+  height: 70px;
+  padding-left: 22px;
+  font-size: 32.8px;
+  line-height: 70px;
+  border-bottom: 1px solid  #dededf;
+}
+.special .special-content {
+  height: 388px;
+  padding: 15px 15px 0 15px;
+}
+.special .special-content a {
+  float: left;
+  width: 340px;
+  height: 170px;
+  margin-bottom: 15px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+}
+.special .special-content a img {
+  float: left;
+  width: 340px;
+  height: 170px;
+}
+.special .special-content a:nth-child(odd) {
+  margin-right: 24px;
+}
+.special .special-more {
+  display: block;
+  height: 60px;
+  margin: 0 auto;
+  font-size: 28px;
+  line-height: 60px;
+  text-align: center;
+  color: #929292;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f8f8f8;
+}
+.cate {
+  width: 100%;
+  background: #fff;
+}
+.cate .cate-title {
+  height: 70px;
+  padding-left: 22px;
+  font-size: 32.8px;
+  line-height: 70px;
+  border-bottom: 1px solid  #dededf;
+}
+.cate .cate-content {
+  width: 100%;
+  overflow: hidden;
+}
+.cate .cate-content .item {
+  float: left;
+  width: 374px;
+  height: 145px;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+.cate .cate-content .item .item-info {
+  float: left;
+  width: 200px;
+  height: 134px;
+  padding: 15px 0 0 20px;
+}
+.cate .cate-content .item .item-info .item-info-title {
+  float: left;
+  width: 200px;
+  font-size: 32.8px;
+  line-height: 45px;
+  color: #000;
+}
+.cate .cate-content .item .item-info .item-info-detail {
+  float: left;
+  width: 200px;
+  height: 60px;
+  font-size: 23.4px;
+  color: #4a4a4a;
+  line-height: 30px;
+  overflow: hidden;
+}
+.cate .cate-content .item img {
+  float: left;
+  width: 118px;
+  height: 118px;
+  border-radius: 59px 59px 59px 59px;
+  -webkit-border-radius: 59px 59px 59px 59px;
+  margin: 12px 0 0 12px;
+}
+.cate .cate-content a:nth-child(odd) {
+  width: 375px;
+  border-right: 1px solid #e5e5e5;
+}
+.cate .cate-more {
+  display: block;
+  height: 60px;
+  margin: 0 auto;
+  font-size: 28px;
+  line-height: 60px;
+  text-align: center;
+  color: #929292;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f8f8f8;
+}

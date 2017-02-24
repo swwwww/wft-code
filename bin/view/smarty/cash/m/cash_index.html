@@ -1,0 +1,70 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"现金刮奖"}{/block}
+
+{block name="css" append}
+    {css file="css/cash/m/cash_index.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<article class="cash pr">
+    {if $platform.wft}
+        <i class="icon-share-btn db pa"></i>
+    {/if}
+    <section class="cash-top">
+        <i class="icon-title db"></i>
+        <div class="head-msg">
+            <i class="icon head-flag db"></i>
+            <span class="flag-msg db pa">您有<mark class="flag-num">{$lottery_vo.op_total|default: 0}</mark>次刮奖机会 </span>
+            <span class="pv-msg db">累计有<mark class="flag-num">{$lottery_vo.pv|default: 0}</mark>人浏览您分享的界面</span>
+        </div>
+
+        <!--刮奖区-->
+        <div class="lottery-area pr">
+            <i class="lottery-icon db"></i> <!--bg-->
+            {if $lottery_vo.op_total}
+            <div id="lottery-container"></div>
+            <span class="lottery-value pa"></span> <!--显示奖券金额的-->
+            {else}
+            <i id="js-no-chance" class="no-lottery-chance db"></i>
+            {/if}
+        </div>
+        <span class="cash-notice db">关注<mark class="flag-num">玩翻天</mark>，获得更多刮奖机会</span>
+        <div class="pr">
+            <a class="share-btn db {if $platform.wft}
+            icon-share-btn
+            {else}
+            js-share-btn
+            {/if}" href="javascript:;">分享领取</a>
+            <!--<i class="icon-hand db pa"></i>-->
+            <a class="link-to-guide db pa" href="{$BASE_URL_MODULE}member/guide">查看会员活动</a>
+            <i class="icon-line db"></i>
+        </div>
+    </section>
+
+    <section class="lottery-rule">
+        <span class="rules-title db">活动规则</span>
+        <p class="rule-msg">首次分享可以获得<mark class="flag-num">5</mark>次刮奖机会</p>
+        <p class="rule-msg">可直接刮奖1次，分享给好友点击，可领取其他4次刮奖机会</p>
+        <i class="cash-bottom db"></i>
+    </section>
+</article>
+
+<section class="pop-share pr dn" id="js-pop-win">
+    <i class="db share-bg"></i>
+    <a class="try-again db" href="javascript:;">再刮一次</a>
+    <span class="lottery-value pa pop-lottery-top"></span>
+</section>
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+
+<div class="matte" style="display: none"></div>
+{include file="widget/common/ele_share_guide.html"}
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/lottery_card.js"}
+{js file="js/cash/cash_lottery.js"}
+{js file="js/share/share.js"}
+{/block}

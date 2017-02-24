@@ -1,0 +1,99 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"充值"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_charge_money.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main">
+{if $res.show_recharge_vip}
+<article class="vip-head"> <!--style="display: none"-->
+    <h2 class="shop-title">
+        <i class="icon-line dib vm"></i>
+        会员套餐
+    </h2>
+    <div class="vip-list">
+        {foreach $res.vip_session as $k => $v}
+        {if $k == 0}
+        {$price = $v.price}
+        <label class="item-li pr tap-on" for="item{$v.id}">
+        {else}
+        <label class="item-li pr" for="item{$v.id}">
+        {/if}
+            <p class="vip-title">充<mark class="money-value" data-value="{$v.price}">{$v.price}</mark> 元</p>
+            <p class="vip-content">送{$v.free_number}次免费亲子游(价值{$v.free_money}元)</p>
+            <input class="item-radio" type="radio" name="radio" id="item{$v.id}">
+        </label>
+        {/foreach}
+
+    </div>
+    <div id="vip-gift-word">
+        <p id="vip-gift-word-p">赠送的免费亲子游资格可用于参加玩翻天活动, 1年内有效</p>
+    </div>
+
+    <h2 class="shop-title">
+        <i class="icon-line dib vm"></i>
+        自定义充值
+    </h2>
+</article>
+{/if}
+<a class="shop-coupon pr db" href="javascript: ;"> <!--vip-margin -->
+    <span class="title-font dib">充值金额</span>
+    {if $res.show_recharge_vip}
+    ￥<input class="ticket-limit dib" type="tel" placeholder="充值{$price}元即可自动开通会员服务" value='' /> <!--请输入充值金额-->
+    {else}
+    ￥<input class="ticket-limit dib" type="tel" placeholder="" value="100" /> <!--请输入充值金额-->
+    {/if}
+</a>
+
+<h2 class="shop-title">
+    <i class="icon-line dib vm"></i>
+    充值方式
+</h2>
+
+<div class="pay">
+    <label class="pay-item" data="zhifubao" id="zhifubao">
+        <span class="pay fl pr">
+            <i class="item-icon02 item-icon-size dib pa"></i>
+            <p class="dib item-msg">
+                <span class="way-name db">支付宝</span>
+                <span class="way-notice db">推荐有支付宝的用户使用</span>
+            </p>
+        </span>
+        <span class="choose fr">
+            <i class="icon"></i>
+        </span>
+    </label>
+    <label class="pay-item" data="weixin" id="weixin">
+         <span class="pay fl">
+             <i class="item-icon03 item-icon-size"></i>
+             <p class="dib item-msg">
+                 <span class="way-name db">微信支付</span>
+                 <span class="way-notice db">推荐有微信的用户使用</span>
+             </p>
+         </span>
+         <span class="choose fr">
+             <i class="icon"></i>
+         </span>
+    </label>
+</div>
+
+<div class="fix shop-last">
+     <span class="amount fl">实付
+         <i class="money-sign">¥</i>
+         <mark class="mark real-pay">{$price}</mark>
+     </span>
+    <a class="submit fr tc" href="javascript:;" id="pay">去充值</a>
+</div>
+</section>
+<input type="hidden" id="isVip" value="{$res.is_vip}">
+<input type="hidden" id="hide_vip_session" value='{$res.vip_session|json_encode}'>
+<input type="hidden" id="isShowVip" value="{$res.show_recharge_vip}">
+<input type="hidden" id="from_uid" value="{$res.from_uid}">
+{/block}
+{block name="js" append}
+{js file="js/user/charge_money.js"}
+{/block}

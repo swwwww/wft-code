@@ -1,0 +1,57 @@
+<div class="traveller">
+    <div class="list"></div>
+
+    <div class="add-contact">
+        <span class="dib">
+            <a href="javascript:;" id="js_add_travel" data-type="新增" class="edit" data="2">+添加出行人</a>
+        </span>
+    </div>
+</div>
+
+<button class="traveller-button back db tc" id="js_choice_sub" data-ids="">提交</button>
+
+<input type="hidden" id="hide_checked_traveller" value='{$res.associates|json_encode}'> <!--order_detail.html-->
+
+<!--弹出窗-->
+<div class="matte" style="display: none"></div>
+<section class="make-sure"  style="display: none">
+    <i class="sure-icon db"></i>
+    <span class="sure-info db">确认出行人信息<br/>提交后不可修改</span>
+    <div class="make-btn">
+        <a class="cancel-btn"  href="javascript: ;">取消</a>
+        <a class="sure-btn" href="javascript: ;">提交</a>
+    </div>
+</section>
+
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list-item" type="text/html">
+    {{if res[0]}}
+    {{each res as list i}}
+    <form class="traveller-form pr">
+        <label class="js-select-person form-label dib c_{{list.associates_id}}" for="person{{list.associates_id}}" data-id="{{list.associates_id}}" data-name="{{list.name}}" data-select="">
+            <div class="form-info">
+                <span class="form-name dib">{{list.name}}</span>
+                <span class="form-id">{{list.id_num}}</span>
+                <span class="form-edit dib">
+                    <a id="js-edit-elem" href="javascript:;" data-pid="{{list.id_num}}" data-name="{{list.name}}" data-id="{{list.associates_id}}" class="edit dib" >编辑</a>
+                    <input type="hidden" class="js_person_info" data-ass-id="{{list.associates_id}}">
+                </span>
+            </div>
+        </label>
+        <input type="checkbox" id="person{{list.associates_id}}" name="radio" class="form-radio r_{{list.associates_id}}" data-id="{{list.associates_id}}" data-name="{{list.name}}" value="0">
+    </form>
+    {{/each}}
+    {{else}}
+        {{if gif_flag==1}}
+            <div class="no-data">
+                <img src="/static/img/site/mobile/nodata.gif" />
+            </div>
+        {{/if}}
+    {{/if}}
+</script>
+{/literal}
+{/block}
+

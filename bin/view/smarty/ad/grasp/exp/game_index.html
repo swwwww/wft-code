@@ -1,0 +1,43 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"抓娃娃"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/grasp.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="content db">
+    <div class="home db">
+        <section class="head tc pa">
+            <img class="head-img dib" src="/static/img/ad/grasp/1_game_title.png">
+            <img class="head-notice dib" src="/static/img/ad/grasp/1_midd.png">
+        </section>
+
+        <section class="start tc pa db">
+            <a class="start-btn dib" href="javascript: ;">
+                <img class="start-img dib" src="/static/img/ad/grasp/1_start_game.png">
+                <span class="game-change dib fr pa">30</span>
+                <i class="tri-css pa"></i>
+            </a>
+            <p class="game-pv">已有10000人登陆几古星球</p>
+        </section>
+    </div>
+    <div class="foot db">
+        <a class="rule-btn dib clearfix" href="javascript: ;">
+            <img class="rule-img fl" src="/static/img/ad/grasp/1_act_rule.png">
+        </a>
+        <img class="rule-handle dib" src="/static/img/ad/grasp/1_handle.png">
+        <a class="prise-btn dib clearfix" href="javascript: ;">
+            <img class="rule-img fr" src="/static/img/ad/grasp/1_my_prise.png">
+        </a>
+    </div>
+ <!--   <div class="db prise-foot clearfix">
+        <a class="rule-btn dib fl" href="javascript: ;"></a>
+        <i class="rule-handle dib"></i>
+        <a class="prise-btn dib fr" href="javascript: ;"></a>
+    </div>-->
+</div>
+{/block}
+
+

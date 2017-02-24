@@ -1,0 +1,80 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"打开链接"}{/block}
+{block name="css" append}
+{css file="css/order/m/coupon_share.css"}
+{/block}
+{block name="inner"}
+<header class="banner use">
+    <div class="use-info">
+                <span class="use-info-id">
+                    <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg">
+                    <mark>沈伟</mark>
+                </span>
+        <div class="use-info-content">
+            <p><mark>10</mark>元</p>
+            <span>[遛娃学院]10元券</span>
+            <mark class="date">2016-12-12</mark>
+        </div>
+        <p class="use-info-count">红包已放入你的玩翻天账户
+            <mark>18271860246</mark></p>
+        <button id="go-use">去使用</button>
+    </div>
+</header>
+<h5>
+    <span>看朋友们的手气如何</span>
+</h5>
+<div class="item">
+    <div class="item-list">
+        <div class="item-list-content">
+            <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg">
+                <span>
+                    <mark class="name">sw</mark>
+                    <mark class="time">2016-12-12</mark><br/>
+                    <mark class="info">换个姿势领，金额会更高</mark>
+                </span>
+            <span class="price">3.00元</span>
+        </div>
+    </div>
+</div>
+<div class="ticket inner">
+    <div class="ticket-title">
+        <p>用券即省</p>
+    </div>
+    <div class="ticket-list more">
+        <div class="ticket-list-content">
+            <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg">
+            <div class="detail">
+                <p class="detail-info">
+                    <span class="detail-info-address">活动列表</span>
+                        <span class="detail-info-price">
+                            <mark class="ticket-price">￥100</mark>
+                            <a class="ticket-button" href="#">立即报名</a>
+                        </span>
+                </p>
+                <p class="detail-time">
+                    <span class="detail-time-num">已10人报名</span>
+                    <span class="detail-time-date">2016-12-12-2016-12-25 5场可选</span>
+                    <i class="icon"></i>
+                </p>
+            </div>
+        </div>
+        <div class="ticket-list-content">
+            <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg">
+            <div class="detail">
+                <p class="detail-info">
+                    <span class="detail-info-address">商品列表</span>
+                        <span class="detail-info-price">
+                            <mark class="ticket-price">￥50</mark>
+                            <a class="ticket-button" href="#">立即报名</a>
+                        </span>
+                </p>
+                <p class="detail-time">
+                    <span class="detail-time-num">剩余：50</span>
+                    <span class="detail-time-date">结束购买 2016-12-30</span>
+                    <i class="icon"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

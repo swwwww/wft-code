@@ -1,0 +1,145 @@
+.cash {
+  width: 700px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  background-clip: padding-box;
+  border: 1px solid #ddd;
+  margin: 25px auto 0;
+  background: #fff;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.cash .cash-shape {
+  border: none;
+  width: 700px;
+  height: 10px;
+  background: #fff url(/static/img/site/mobile/coupon.png) no-repeat 0 0;
+  border-radius: 15px 15px 0 0;
+}
+.cash .cash-price {
+  width: 220px;
+  height: 175px;
+  text-align: center;
+  line-height: 175px;
+  font-size: 48px;
+  color: #fa6e51;
+  border-right: 2px dashed #e7e7e7;
+}
+.cash .cash-price .price-content {
+  font-size: 56px;
+  font-weight: 600;
+}
+.cash .cash-info {
+  margin-left: 20px;
+  width: 445px;
+}
+.cash .cash-info .info-type {
+  font-size: 36px;
+  line-height: 36px;
+  margin: 28px 0 25px 0;
+}
+.cash .cash-info .info-intro {
+  font-size: 26px;
+  line-height: 36px;
+  color: #888888;
+}
+.buy-title {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  overflow: hidden;
+  padding: 28px 0 33px 0;
+  border-bottom: 1px solid #d3d3d3;
+}
+.buy-title:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #888888;
+}
+.buy-title .title-info {
+  background: #eee;
+  padding: 0 23px;
+  font-size: 26px;
+  line-height: 30px;
+  color: #888888;
+}
+.item {
+  background: #fff;
+  margin-bottom: 45px;
+}
+.item .item-title {
+  font-size: 24px;
+  color: #888888;
+  line-height: 60px;
+  border-bottom: 1px solid #d3d3d3;
+  padding-left: 25px;
+}
+.list-shop {
+  display: block;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+.list-shop .list-shop-img {
+  float: left;
+  width: 150px;
+  height: 150px;
+}
+.list-shop .list-tag {
+  position: absolute;
+  padding: 4px 8px;
+  color: #ffffff;
+  font-size: 20px;
+  margin-left: -140px;
+  background-color: #fa6e51;
+}
+.list-shop .shop-info {
+  float: left;
+  width: 530px;
+  margin-left: 15px;
+}
+.list-shop .shop-info-price {
+  float: left;
+  width: 530px;
+  line-height: 34px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.list-shop .shop-info-price span {
+  font-size: 22px;
+  color: #666666;
+}
+.list-shop .shop-info-price mark {
+  float: left;
+  font-size: 28px;
+  color: #fa6e51;
+}
+.list-shop .shop-info-price .date {
+  margin-right: 35px;
+}
+.list-shop .shop-info-name {
+  float: left;
+  height: 80px;
+  vertical-align: text-top;
+  font-size: 32px;
+}
+.list-shop .shop-info-time {
+  float: left;
+  width: 530px;
+  font-size: 22px;
+  color: #929292;
+  overflow: hidden;
+}
+.address {
+  margin: -12px 0 0 210px;
+}
+.addr-icon {
+  width: 28px;
+  height: 34px;
+  background: #fff url(/static/img/site/mobile/coupon.png) no-repeat -927px 13px;
+}

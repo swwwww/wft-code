@@ -1,0 +1,70 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/ad/god/god.css"}
+{/block}
+
+{block name="title"}{$title|default:"选男神，抢玩翻天遛娃红包！"}{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="act-part">
+    <div class="p3_head">
+        <div class="head-title clearfix">
+            <img src="{$user_resource.user.img|imageFix}" class="user-img dib fl">
+            <i class="my_prise dib"></i>
+            <a class="go-index dib fr" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$award_vo.lottery_id}"></a>
+            <a class="go-result dib fr" href="{$BASE_URL_MODULE}lottery/friend/lottery_id/2?vote_id={$award_vo.newest_vote_id}">我要刮奖</a>
+        </div>
+        <ul class="prise-list">
+            {foreach $award_vo.award_list as $key => $list}
+            <li class="item-prise clearfix">
+                <p class="prise-value dib">{$list.cash_alias}</p>
+                {if $list.status == 0}
+                <i class="to-got get-status dib fr" data-status="1" data-id="{$list.id}"" data-lottery-cash-id="{$list.lottery_cash_id}" data-cash-id="{$list.cash_id}"></i>
+                <i class="has-got get-status dib fr" style="display: none;"></i>
+                {else}
+                <i class="has-got get-status dib fr"></i>
+                {/if}
+            </li>
+            {/foreach}
+        </ul>
+        <input type="hidden" id="hide_user_phone" value='{$user_resource.user.phone}'/>
+    </div>
+    <i class="mid-cloud dib"></i>
+    <i class="list-title dib"></i>
+
+    {include file="ad/god/ele_good_list.html" lottery_vo=$award_vo}
+
+
+    <section class="lot-rules">
+        <i class="rules-title db"></i>
+        <p>1.每人每日有3次抽奖机会。抽奖机会不使用则当日清零。如何增加抽奖机会及其他活动问题，请咨询玩翻天小七（微信号：wanfantian1）</p>
+        <img src="/static/img/ad/god/Qcode.jpg" class="code-img db">
+        <p>2.奖品可用于在玩翻天上购买对应的商品/活动直接抵现。抽到奖品请及时领取。微信用户查看奖品及订单，可在微信服务号【玩翻天亲子（微信号：wftapp）】中查看。app用户在玩翻天app中直接查看。</p>
+        <p>3.活动开始时间:2016年9月14日，活动结束时间:2016年10月8日16:00.</p>
+        <p>4.活动中若发现作弊行为，玩翻天有权取消用户所获得的奖励，让更多小玩家可以享受到福利。</p>
+        <p>*本次活动在法律范围内 最终解释权归玩翻天所有</p>
+    </section>
+
+    <i class="act-foot db"></i>
+</div>
+
+<!--新用户注册弹窗-->
+<i class="matte" style="display: none"></i> <!-- 遮罩层-->
+<section class="pop-win js-register pr" style="display: none;">
+    <i class="close-btn db pa"></i>
+    <div class="from-ct db">
+        <input id="js_com_phone" class="ph-num ph-com db com" type="number" placeholder="输入手机号码">
+        <input id="js_com_phone_code" class="ph-num cod-num dib com" type="number" placeholder="请输入验证码">
+        <button id="get_phone_code" class="cd-sub com js-get-phone-code">获取验证码</button>
+        <button id="accept_gift" class="ph-sub ph-com com js-accept-gift">领取奖品</button>
+    </div>
+</section>
+
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/util/phone_login.js"}
+{js file="js/ad/god/my_prise.js"}
+{/block}

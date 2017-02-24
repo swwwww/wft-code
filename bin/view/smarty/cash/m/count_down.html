@@ -1,0 +1,59 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"玩翻天-周年庆倒计时"}{/block}
+
+{block name="css" append}
+    {css file="css/cash/m/count_down.css"}
+{/block}
+
+{block name="inner"}
+    <div class="contain pr">
+        {if $platform.wft}
+            <i class="icon-share-btn icon-pic db pa share-btn-width"></i>
+        {/if}
+        <section class="title pr">
+            <div class="find-pos">
+                <i class="find db pa"></i>
+                <i class="pos-location db pa"></i>
+            </div>
+            <i class="every_one_get db"></i>
+            <span class="rob-time db">11月28日开抢</span>
+            <i class="icon-needle db pa"></i>
+        </section>
+
+        <div class="clock db tc">
+            <i class="icon-line db pr"></i>
+            <span class="distance-day pr dib">距开抢还剩</span>
+        </div>
+        <div class="end-time">
+            <p class="time-left pr">
+                <span class="time_d time-style"></span>
+                <mark class="time-tag">天</mark>
+                <span class="time_h time-style"></span>
+                <mark class="time-tag">时</mark>
+                <span class="time_m time-style"></span>
+                <mark class="time-tag">分</mark>
+                <span class="time_s time-style"></span>
+                <mark class="time-tag">秒</mark>
+            </p>
+        </div>
+
+        <a class="bottom js-share-btn db" href="javascript:;">
+            <span class="db font-btn">这等好事，不发给好友就亏了</span>
+            <span class="db font-click">赶紧戳右上角</span>
+        </a>
+    </div>
+<input type="hidden" id="data" value='{$res}'>
+
+<div class="matte" style="display: none"></div>
+{include file="widget/common/ele_share_guide.html"}
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/member/count_down.js"}
+{js file="js/share/share.js"}
+{/block}
+
+
+
+

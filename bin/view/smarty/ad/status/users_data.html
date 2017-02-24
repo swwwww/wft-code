@@ -1,0 +1,48 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+
+
+
+
+
+
+{block name="inner"}
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        <p>所有用户:{$user_data.all_login}</p>
+        <p>app登陆用户:{$user_data.app_login}</p>
+        <p>wechat登陆用户:{$user_data.wechat_login}</p>
+
+        <p>未绑定手机:{$user_data.without_phone}</p>
+
+        <p>一个微信多个用户:{$user_data.one_wechat_many_user}</p>
+        <p>一个用户多个微信:{$user_data.one_user_many_wechat}</p>
+
+        <p>一个手机多个微信:{$user_data.one_phone_many_wechat}</p>
+        <p>一个微信多个手机:{$user_data.one_wechat_many_phone}</p>
+        <p>一个手机一个微信:{$user_data.one_wechat_one_phone}</p>
+
+        <p>重复的手机号:{$user_data.repeat_phone}</p>
+    </div>
+
+    <div class="row">
+
+    </div>
+</div>
+
+{/block}
+
+{block name="js" append}
+{literal}
+
+{/literal}
+{/block}

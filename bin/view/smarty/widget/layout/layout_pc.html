@@ -1,0 +1,71 @@
+{extends file="widget/layout/base_pc.html"}
+
+
+
+{block name="in_title"}{$title|default:""}{/block}
+
+{block name="meta_viewport"}
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+{/block}
+
+{block name="css" append}
+{/block}
+
+{block name="body"}
+{resource resource="User" var="business_user_resource" method="businessNowUser"}
+<!-- 主页面容器 -->
+<section class="com-slide-panel" id="mobh5">
+    {*    {$business_user_resource.user|json_encode}*}
+    <!-- 主页面标题 -->
+    {block name="header"}
+
+    {/block}
+
+    {block name="inner"}
+    <!-- 主界面具体展示内容 -->
+
+    {/block}
+
+    {block name="footer"}
+    <!-- 主界面尾部 -->
+    <!--<section class="fullscreen">
+        <footer class="footer c-footer">
+            <section class="footer-t dfr">
+                <p class="ft-user-info">
+                    {if true}
+                    <a href="http://">首页</a>
+                    <span class="split">|</span>
+                    <a href="/auth/login">登录</a>
+                    <span class="split">|</span>
+                    <a href="/auth/regist">注册</a>
+                    {else}
+                    <a href="http://.com">首页</a>
+                    <span class="split">|</span>
+                    <span class="f12">你好,</span>
+                    <a href="{$user_resource.user_vo.user_name|domainFix}">{$user_resource.user_vo.cn_name|default:$user_resource.user_vo.user_name}</a>
+                    <span class="split">|</span>
+                    <a href="/auth/logout">退出</a>
+                    {/if}
+                </p>
+                <p class="ft-gototop">
+                    <a class="ft-gototop-a" href="javascript: scroll(0, 0);">top<b></b> </a>
+                </p>
+            </section>
+            <h3 class="copyright">© </h3>
+            <h4 class="f12 mt5">
+                <a class="support-action" href="">触屏版</a>
+                <span class="split">-</span>
+                <a class="support-action" href="">电脑版</a>
+            </h4>
+            <h4 class="support"><a href="">技术支持</a></h4>
+        </footer>
+    </section>-->
+    {/block}
+
+</section>
+{/block}
+
+{block name="js" append}
+
+{/block}
+

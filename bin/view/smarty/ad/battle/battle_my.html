@@ -1,0 +1,74 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"太空抓金鸡抽奖结果"}{/block}
+
+{block name="css" append}
+{css file="css/ad/battle/index.css"}
+{css file="css/ad/battle/battle_index.css"}
+
+{/block}
+
+{block name="inner"}
+<!--游戏页面背景-->
+<div class="result-bg">
+    <i class="db gradient-head head-box my-top-bg"></i>
+    <i class="db icon-myprise"></i>
+
+   <div class="cash-box">
+       {if $award_vo.award_list|@count}
+            {foreach $award_vo.award_list as $val}
+               <section class="cash-item">
+                   <div class="cash-item-list dib">
+                       <p class="list-info">{$val.cash_name}</p>
+                   </div>
+                   {if $val.type == 5}
+                   <a style="font-size: 30px; font-weight: normal;" class="dib fr {if !$val.status}get-prise my-get js-get-cash{/if} prise-has-got" data-name="{$val.cash_name}" data-page="2" data-id="{$val.id}" data-record-id="{$val.id}">{if !$val.status}人工发放{else}人工已发放{/if}</a>
+                   {else}
+                   <a class="dib fr {if !$val.status}get-prise my-get js-get-cash{/if} prise-has-got" data-name="{$val.cash_name}" data-page="2" data-id="{$val.id}" data-record-id="{$val.id}">{if !$val.status}领取{else}已领取{/if}</a>
+                   {/if}
+               </section>
+            {/foreach}
+       {/if}
+
+   </div>
+
+<span class="cash-notice db">
+    抽中中山公园游玩卡的用户，兑换码将在5个工作日内以短信形式发送到您的玩翻天账户绑定的手机号上，注意查收
+</span>
+
+    <a data-type="2" data-id="" class="result-to-use db my-wft {if $platform.version == '4.2.0'}js-action-redirect{/if}" href="{if !($platform.version == '4.2.0')}{$BASE_URL_MODULE}{/if}">去玩翻天使用</a>
+</div>
+
+<!--新用户领取输入手机号领取-->
+<section class="phone ph-get-prise" style="display: none">
+    <p class="db phone-title">
+        将<span class="cash-name">5元现金券</span><br/>
+        放入您的玩翻天账户
+    </p>
+
+    <div class="input-box">
+        <input  id="js_com_phone" class="phone-text db" type="tel" placeholder="请输入手机号" autofocus required>
+        <button id="js_get_phone_code" class="send-ph send-active">发送验证码</button>
+        <input id="js_com_phone_code" class="phone-text db bottom-phone" type="number" placeholder="请输入手机验证码">
+    </div>
+
+    <a class="phone-get-prise db js-accept-gift" href="javascript:;">立即领取</a>
+</section>
+
+<div class="matte"></div>
+
+<input type="hidden" id="get_type" value="0">
+<input type="hidden" id="hide_user_phone" value='{$user_resource.user.phone}'/>
+<input type="hidden" id="hide_reward_vo" value='{$award_vo|json_encode}'/>
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/ad/battle/base_loading.js"}
+{js file="js/util/phone_login.js"}
+{js file="js/ad/battle/get_prise.js"}
+{js file="js/ad/battle/battle.js"}
+{js file="js/ad/battle/lottery_sudoku.js"}
+{js file="js/util/app_bridge.js"}
+{/block}
+

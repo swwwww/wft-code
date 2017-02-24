@@ -1,0 +1,168 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="title"}{$title|default:"买票列表"}{/block}
+{block name="css" append}
+{css file="css/ticket/m/buy_ticket.css"}
+{/block}
+
+{block name="meta_keyword"}
+<meta name="keywords" content="{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子游览年票，{$wft_global_set.custom_city_cn}亲子游年票，{$wft_global_set.custom_city_cn}温泉酒店门票，{$wft_global_set.custom_city_cn}极地海洋世界门票，{$wft_global_set.custom_city_cn}亲子游门票，{$wft_global_set.custom_city_cn}周边游，{$wft_global_set.custom_city_cn}欢乐谷门票，{$wft_global_set.custom_city_cn}幻贝家门票，{$wft_global_set.custom_city_cn}游乐场门票，{$wft_global_set.custom_city_cn}少儿户外活动" />
+{/block}
+
+{block name="meta_desc"}
+<meta name="description" content="{$wft_global_set.custom_city_cn}亲子游览年票，年票包含温泉嬉水、儿童职业体验、主题乐园、DIY拓展、人文风景、休闲娱乐等众多场馆和景区，共计60多家场馆及景区，专门针对亲子家庭使用。官方微信公众号:玩翻天亲子">
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main">
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="item">
+                <a class="item-cate" href="javascript:;">
+                    <mark>所有分类</mark>
+                    <i></i>
+                </a>
+            </li>
+            <li class="item">
+                <a class="item-area" href="javascript:;">
+                    <mark>全部区域</mark>
+                    <i></i>
+                </a>
+            </li>
+            <li class="item">
+                <a class="item-new" href="javascript:;">
+                    <mark>最新上架</mark>
+                    <i></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="menu" id="menu">
+        <section class="menu-cate adv" id="cate">
+            <div class="inner">
+                <span class="cate-list">
+                    {foreach $res.tag_list as $key => $val}
+                    <a class="cate-list-item" href="/ticket/buyticket?id={$val.id}&id_name={$val.name}" data-id="{$val.id}">{$val.name}</a>
+                    {/foreach}
+                </span>
+                <div class="mask"></div>
+            </div>
+        </section>
+
+        <section class="menu-area adv">
+            <div class="inner">
+                <div class="area-list">
+                    {foreach $res.area_list as $key => $val}
+                    {if $val.flag_child == 1}
+                    <span class="area-list-left" id="left_{$val.rid}">{$val.name}</span>
+                    <ul class="area-list-right">
+                        {foreach $val.child as $child_val}
+                        <li class="tag-list">
+                            <a href="/ticket/buyticket?aid={$child_val.rid}&aid_name={$child_val.name}">{$child_val.name}</a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    {else}
+                    <a class="area-list-left" style="background-color: #fff" href="/ticket/buyticket?rid={$val.rid}&rid_name={$val.name}">{$val.name}</a>
+                    {/if}
+                    {/foreach}
+                </div>
+                <div class="mask"></div>
+            </div>
+        </section>
+
+        <section class="menu-new adv">
+            <div class="inner">
+                <div class="new-list">
+                    <a class="new-list-item" href="/ticket/buyticket?status=new&status_name=最新上架">最新上架</a>
+                    <a class="new-list-item" href="/ticket/buyticket?status=hot&status_name=最热门">最热门</a>
+                    <a class="new-list-item" href="/ticket/buyticket?status=price_up&status_name=价格最高">价格最高</a>
+                    <a class="new-list-item" href="/ticket/buyticket?status=price_down&status_name=价格最低">价格最低</a>
+                </div>
+            </div>
+            <div class="mask"></div>
+        </section>
+    </div>
+    <section class="ticket ticket-item" id="data_list"></section>
+</section>
+{/block}
+{block name="js" append}
+{js file="js/ticket/ticket_list.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    <div class="ticket-list">
+        {{if res[0]}}
+        {{each res}}
+        <a class="ticket-list-item" href="/ticket/commodityDetail?id={{$value.coupon_id}}">
+            <img src="{{$value.cover}}" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.name}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <mark>￥{{$value.low_money}}</mark>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_num == 0}}
+                        <span>有票</span>
+                        {{else}}
+                        <span>已售{{$value.buy_num}}份</span>
+                        {{/if}}
+                        <i>{{$value.circle}}</i>
+                    </span>
+            </div>
+            {{if $value.labels =='NEW'}}
+            <span class="tips-show">最新</span>
+            {{else if $value.labels =='HOT'}}
+            <span class="tips-show">热门</span>
+            {{else}}
+            {{/if}}
+        </a>
+        {{/each}}
+        {{else}}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {{/if}}
+    </div>
+</script>
+
+<script id="more" type="text/html">
+    <div class="ticket-list">
+        {{each res}}
+        <a class="ticket-list-item" href="/ticket/commodityDetail?id={{$value.coupon_id}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.name}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <mark>￥{{$value.low_money}}</mark>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_num == 0}}
+                        <span>有票</span>
+                        {{else}}
+                        <span>已售{{$value.buy_num}}份</span>
+                        {{/if}}
+                        <i>{{$value.circle}}</i>
+                    </span>
+            </div>
+            {{if $value.labels =='NEW'}}
+            <span class="tips-show">最新</span>
+            {{else if $value.labels =='HOT'}}
+            <span class="tips-show">热门</span>
+            {{else}}
+            {{/if}}
+        </a>
+        {{/each}}
+    </div>
+</script>
+{/literal}
+{/block}

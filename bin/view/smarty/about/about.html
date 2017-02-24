@@ -1,0 +1,46 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+
+{/block}
+
+{block name="head_back"}
+<button class="back">
+    <a class="action left" href="javascript:;">返回</a>
+</button>
+{/block}
+{block name="head_forward"}
+<button class="menu js-slide-menu">
+</button>
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner fullscreen-v2">
+
+    <section class="com-inner-head pr">
+        <div class="com-slide-media js-com-slide-media"></div>
+    </section>
+
+    <section class="com-inner-content">
+
+        <div class="ci-content-wrap">
+            <div class="ci-content-head clearfix">
+                <h3>about</h3>
+            </div>
+
+            <div class="ci-content-body">
+                about us
+            </div>
+        </div>
+
+    </section>
+    <section class="com-inner-foot"></section>
+</section>
+{/block}
+
+{block name="js" append}
+{literal}
+<script>
+
+</script>
+{/literal}
+{/block}

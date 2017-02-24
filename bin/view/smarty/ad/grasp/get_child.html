@@ -1,0 +1,95 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"几古家活动-游戏页"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/grasp.css"}
+
+<style type="text/css">
+    html{
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+</style>
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="game-body">
+    <div class="head-title clearfix">
+        <p class="fl dib show-time">
+            <i class="time-num db">30</i>
+        </p>
+        <p class="fr dib show-score">
+            <i class="score-num db">0</i>
+        </p>
+    </div>
+    <!--滑动绳子-->
+    <div class="toprope"></div>
+    <!--滚动元素-->
+    <div class="game-content"></div>
+    <!--抓取的绳子-->
+    <div class="rope"></div>
+
+    <!--底座-->
+    <div class="bottom-substrate">
+        <i class="btn-save db"></i>
+    </div>
+</section>
+
+<!--弹窗-->
+<!--游戏规则再次说明-->
+<i class="matte dib"  style="display: none"></i> <!-- style="display: none"-->
+
+<!--游戏玩法说明-->
+<section class="start-rule game_rule" id="gametip" style="display: none"> <!-- style="display: none"-->
+    <p class="pop-title dib tc">点击娃娃机夹子【几古的家】，尽可能多的救出【几古】，避开【陨石】。在游戏时间30秒内，游戏积分越高越好哦！</p>
+    <div class="item-img dib">
+        <i class="green-child pa"></i>
+        <span class="add_score">+10分</span>
+        <i class="arrow pa add_arrow"></i>
+    </div>
+
+    <div class="item-img dib">
+        <i class="ball pa"></i>
+        <span class="cut_score">-5分</span>
+        <i class="arrow pa cut_arrow"></i>
+    </div>
+
+    <a class="start-btn tc db js_go" href="javascript:;"></a>
+</section>
+
+<!--游戏总得分及相关的引导-->
+<section class="result-show start-rule" style="display: none">
+    <div class="title-score">游戏得分：<span class="total-score">550</span> </div>
+    <a class="to-get-prise db" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$lottery_vo.lottery_id}/luck/1"></a>
+    <a id="try-again" class="try-again db" data-chance="{$lottery_vo.op_total}" href="javascript:;"></a>
+    <a class="focous-us db" href="javascript:;"></a>
+</section>
+
+<!--引导关注二维码-->
+<section id="js_focous" class="q_code start-rule" style="display: none"><!-- -->
+    <i class="js_btn_close btn-colse close_focous dib pa"></i>
+    <!--<i class="q_code_img db"></i>-->
+    <img class="q_code_img db" src="/static/img/ad/grasp/4-qcode.png">
+    <span class="code-title db q_color">马上关注 更多福利享不停</span>
+</section>
+
+<!--引导分享-->
+<div class="share-to" style="display: none"></div>
+
+<input type="hidden" class="change" value="">
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/ad/grasp/TweenMax.min.js"}
+{js file="js/ad/grasp/md5.js"}
+{js file="js/ad/grasp/game.js"}
+{js file="js/ad/grasp/grasp.js"}
+{/block}
+
+
+

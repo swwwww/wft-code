@@ -1,0 +1,161 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"{$res.way}"}{/block}
+{block name="css" append}
+{css file="css/ticket/m/commodity_select.css"}
+{/block}
+{block name="css" append}
+{css file="css/ticket/m/calendar.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    {if $res.select_date == 1}
+    <div class="title">
+        <p>{$res.way}</p>
+    </div>
+    {else}
+    <div class="title">
+        <p>{$res.game_order[0].way}</p>
+    </div>
+    {/if}
+    <div class="tips">
+        <a class="introduce special">
+            <p>
+                <mark>特别说明：</mark>
+                <span>{$res.special_info}</span>
+                <i></i>
+            </p>
+        </a>
+        <a class="introduce exchange">
+            <p>
+                <mark>兑换说明：</mark>
+                <span>{$res.get_way}</span>
+                <i></i>
+            </p>
+        </a>
+        {if $res.select_date ==1}
+        {else}
+        <a class="introduce unsubscribe">
+            <p>
+                <mark>退订说明：</mark>
+                <span>{$res.game_order[0].back_money}</span>
+                <i></i>
+            </p>
+        </a>
+        {/if}
+    </div>
+
+    <div class="package-sel" id="time_list">
+        <p class="package-sel-title">选择时间</p>
+        <i></i>
+        {if $res.select_date ==1}
+        <input type="text" id="calendar" name="calendar" readonly="readonly" placeholder="请选择出行日期" data-value="" value=""/>
+        <span class="select-btn"></span>
+        {else}
+        {foreach $res.game_order_time as $val}
+        <div class="times-wrap">
+            <input type="radio" id="select_time_{$val@index}" name="my-time" data-place="{foreach $val as $key=>$place}{$place.shop_name}+{$place.address}{if $place@last}{else}|{/if}{/foreach}" data-time="{$val[0].s_time}+{$val[0].e_time}" data-id="{foreach $val as $place}{$place.order_id}{if $place@last}{else}|{/if}{/foreach}" data-num="{foreach $val as $num}{$num.total_num - $num.buy}{if $num@last}{else}|{/if}{/foreach}"  value=""/>
+        <label class="times" for="select_time_{$val@index}">
+            <span class="times-date">{$val[0].s_time|date_format:'%Y-%m-%d %H:%M'}~{$val[0].e_time|date_format:'%Y-%m-%d %H:%M'}</span>
+            {if $smarty.now <= $val[0].s_time}
+            <span class="times-surplus">还剩{(($val[0].s_time - $smarty.now)/86400)|string_format:"%d"}天</span>
+            {else}
+            <span class="times-surplus">还剩{(($val[0].e_time - $smarty.now)/86400)|string_format:"%d"}天</span>
+            {/if}
+        </label>
+        </div>
+        {/foreach}
+        {/if}
+    </div>
+    {if $res.select_date ==1}
+    {else}
+    <div class="package-sel" id="place_list">
+        <p class="package-sel-title">选择地点</p>
+        <i></i>
+        {foreach $res.game_order_place as $val}
+        <div class="places-wrap">
+        <input type="radio" id="select_place_{$val@index}" name="my-place" value="" data-place="{$val[0].shop_name}+{$val[0].address}" data-time="{foreach $val as $key=>$time}{$time.s_time}+{$time.e_time}{if $time@last}{else}|{/if}{/foreach}" data-id="{foreach $val as $time}{$time.order_id}{if $time@last}{else}|{/if}{/foreach}" data-min="{foreach $val as $min}{$min.min_buy}{if $min@last}{else}|{/if}{/foreach}" data-max="{foreach $val as $max}{$max.max_buy}{if $max@last}{else}|{/if}{/foreach}" data-buy="{foreach $val as $buy}{$buy.buy}{if $buy@last}{else}|{/if}{/foreach}" data-total="{foreach $val as $total}{$total.total_num}{if $total@last}{else}|{/if}{/foreach}" data-price="{foreach $val as $price}{$price.price}{if $price@last}{else}|{/if}{/foreach}" data-addr="{foreach $val as $addr}{$addr.has_addr}{if $addr@last}{else}|{/if}{/foreach}"/>
+        <label class="places" for="select_place_{$val@index}">
+            <span class="places-shop">{$val[0].shop_name}</span>
+            <span class="places-address">{$val[0].address}</span>
+        </label>
+        </div>
+        {/foreach}
+    </div>
+    {/if}
+    {if $res.select_date ==1}
+    <div class="ticket">
+        <span class="ticket-title">数量</span>
+        <span class="ticket-price">￥<mark>{$res.low_price}</mark>/份</span>
+        <span class="ticket-plus"></span>
+        <span class="ticket-num">1</span>
+        <span class="ticket-minus"></span>
+    </div>
+
+    <div id="ticket_intro" class="num_ticket" data-max="{$res.max_buy}">
+        <p>最少购买{$res.min_buy }张，最多购买{$res.max_buy}张<span></span></p>
+    </div>
+    {else}
+    <div class="ticket">
+        <span class="ticket-title">数量</span>
+        <span class="ticket-price">￥<mark>{$res.game_order[0].price}</mark>/份</span>
+        <span class="ticket-plus"></span>
+        <span class="ticket-num">{$res.game_order[0].min_buy}</span>
+        <span class="ticket-minus"></span>
+    </div>
+
+    <div id="ticket_intro" class="num_ticket">
+        <p>最少购买{$res.max_buy}张，最多购买{$res.max_buy}张，仅剩{$res.game_order[0].total_num - $res.game_order[0].buy}张</p>
+    </div>
+    {/if}
+
+    <a class="information" href="/user/addresslist">
+        <p class="information-id">
+            <span class="information-id-name">{$res.contacts.name}</span>
+            <span class="information-id-tel">{$res.contacts.phone}</span>
+        </p>
+        <input class="information-addr" type="text" value="{$res.contacts.province}{$res.contacts.city}{$res.contacts.region}{$res.contacts.address}" placeholder="点击完善收货地址"/>
+    </a>
+
+    {if $res.is_comments_value == 1}
+    <div class="remark">
+        <span class="remark-title">备注</span>
+        <input class="remark-content" type="text" placeholder="{$res.message}" value=""/>
+    </div>
+    {else}
+    {/if}
+
+
+    {if $res.is_vip_banner}
+    {include file="member/m/ele_member_banner.html" type="show_goods_apply_banner" position="bottom" url="orderWap/chargeMoney"}
+    {else}
+    {include file="member/m/ele_member_banner.html" type="none" position="" url="orderWap/chargeMoney"}
+    {/if}
+
+    <div class="total">
+        <span class="total-content">
+            <mark class="total-content-title">总价：</mark>
+            <mark class="total-content-price">￥{$res.game_order[0].price * $res.good_num}</mark>
+            {if $res.want_score > 0}
+            <mark class="total-content-point">-{$res.want_score}积分</mark>
+            {/if}
+        </span>
+        <a class="total-next">提交订单</a>
+    </div>
+    <input id="order_id" type="hidden" name="order_id" value="" />
+    <input id="score" type="hidden" name="score" value="{if $res.want_score}1{else}0{/if}" />
+    <input id="is_remark" type="hidden" name="is_remark" data-remark="{$res.is_comments_value}" value="" />
+    <input id="state" type="hidden" name="state" value="{$res.select_date}" />
+    <input id="order_time" type="hidden" data-start="{$res.order_start_time }" data-end="{$res.order_end_time }" value=""/>
+    <input id="contacts" type="hidden" data-name="{$res.contacts.name}" data-phone="{$res.contacts.phone}" data-city="{$res.contacts.city}" data-addr="{$res.contacts.province}{$res.contacts.city}{$res.contacts.region}{$res.contacts.address}" />
+    <input id="param" type="hidden" data-group="{$res.param.g_buy}" data-group-id="{$res.param.g_buy_id}" data-coupon="{$res.param.coupon_id}"/>
+</section>
+{capture append="widget_js"}
+{js file="js/ticket/commodity_select.js"}
+{/capture}
+{/block}
+{block name ="foot-btn"}
+{/block}
+{block name="js" append}
+{js file="js/ticket/calendar.js"}
+{/block}

@@ -1,0 +1,60 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"出行人补充"}{/block}
+
+{block name="css" append}
+{css file="css/play/m/play_select_applicants.css"}
+{css file="css/user/m/user_select_addr.css"}
+{css file="css/play/m/play_select_traveler.css"}
+{css file="css/play/m/play_edit_traveler.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+    <div class="traveller">
+        <div class="list"></div>
+    {if $res.travellers|@count}
+        {foreach $res.travellers as $val}
+        <form class="traveller-form pr">
+            <label class="form-label dib" for="person{$val.associates_id}">
+                <div class="form-info">
+                    <span class="form-name dib">{$val.name}</span>
+                    <span class="form-id">{$val.id_num}</span>
+                <span class="form-edit dib">
+                    <a id="js-edit-elem" href="javascript:;" data-pid="{$val.id_num}" data-name="{$val.name}" data-id="{$val.associates_id}" class="edit dib" >编辑</a>
+                    <input type="hidden" class="js_person_info" data-ass-id="{$val.associates_id}">
+                </span>
+                </div>
+            </label>
+            <input type="checkbox" id="person" name="radio" class="form-radio r_{$val.associates_id}" data-id="{$val.associates_id}" data-name="{$val.name}" value="0">
+        </form>
+        {/foreach}
+    {else}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+    {/if}
+        <div class="add-contact">
+        <span class="dib">
+            <a href="javascript:;" id="js_add_travel" data-type="新增" class="edit" data="2">+添加出行人</a>
+        </span>
+        </div>
+    </div>
+
+    <a href="JavaScript：;" class="traveller-button back db tc" id="js_choice_sub">返回</a>
+
+    <!--弹出窗-->
+    <div class="matte" style="display: none"></div>
+    <section class="make-sure"  style="display: none">
+        <i class="sure-icon db"></i>
+        <span class="sure-info db">确认出行人信息<br/>提交后不可修改</span>
+        <div class="make-btn">
+            <a class="cancel-btn"  href="javascript: ;">取消</a>
+            <a class="sure-btn" href="javascript: ;">提交</a>
+        </div>
+    </section>
+{/block}
+{block name="js" append}
+{js file="js/lib/scrollTop.js"}
+{js file="js/member/member_banner.js"}
+<!--{js file="js/play/select_applicants.js"}-->
+{/block}

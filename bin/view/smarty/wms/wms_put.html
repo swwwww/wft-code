@@ -1,0 +1,45 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+<section class="inner fullscreen-v2">
+    <section class="com-inner-head pr">
+        <h1>微信服务号消息推送外链内容修改</h1>
+        <div class="com-slide-media js-com-slide-media"></div>
+    </section>
+    <section class="com-inner-content">
+        <form action="{$BASE_URL_MODULE}wms/putOutChain" method="post">
+            <input type="hidden" name="type_id" value={$wechat_out_chain.type_id}>
+            <input type="hidden" name="YII_CSRF_TOKEN" value="{$token|csrfToken}"/>
+
+            <label for="type_info">外链类型</label>
+            <input type="text" class="form-control col-1" name="type_info" id="type_info" value={$wechat_out_chain.type_info}>
+            <label for="content">外链内容</label>
+            <input type="text" class="form-control col-1" name="content" id="content" value={$wechat_out_chain.content}>
+            <label for="out_chain">外链地址</label>
+            <input type="text" class="form-control col-1" name="out_chain" id="out_chain" value={$wechat_out_chain.out_chain}>
+
+            <div style="margin-top: 12px">
+                <button class="btn btn-danger" type="submit">Submit</button>
+
+                <a href="/wms/getoutchains">返回</a></div>
+
+        </form>
+    </section>
+    <section class="com-inner-foot"></section>
+</section>
+{/block}
+
+{block name="js" append}
+{literal}
+
+{/literal}
+{/block}

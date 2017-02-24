@@ -1,0 +1,91 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"玩翻天商家后台--商家账户交易流水"}{/block}
+
+{block name="css" append}
+{css file="css/admin/business/mer_other.css"}
+{/block}
+
+{block name="inner"}
+<!--头部-->
+{include file="admin/business/elem_mer_header.html"}
+
+<div class="nav dib">
+    {include file="admin/business/elem_mer_nav.html"}
+</div>
+
+<article class="goods-detail pr">
+    <header class="nav-map">
+        <a class="dib" href="{$BASE_URL_MODULE}business/index">首页</a> >
+        <a class="dib" href="javascript:;">账户交易流水</a>
+    </header><!--修改密码-->
+    <nav class="nav-list search pr">
+        <div class="check-account clearfix">
+            <p class="remian-money dib fl">
+                <span class="remain-title dib">账户余额</span>
+                <span class="money-value dib">￥{$res.account_money}</span>
+            </p>
+            <a class="manage-account dib fr" href="{$BASE_URL_MODULE}business/manageCard">银行卡账号管理</a>
+        </div>
+
+        <div class="account-search clearfix">
+            <div class="search-time dib">
+                <label class="title-name dib">交易时间</label>
+                <input type="date" class="dib start-time" id="js-start-time" value="{$res.post_data.time_start}">
+                &nbsp;至&nbsp;
+                <input type="date" class="dib end-time" id="js-end-time" value="{$res.post_data.time_end}">
+            </div>
+
+            <div class="search-type dib">
+                <label class="title-name dib">交易类型</label>
+                <select class="sel-form" name="sel" id="js-sel-option">
+                    {foreach $res.object_type as $key => $val}
+                    <option value='{$key}' {if $key == $res.post_data.object_type}selected{/if}>{$val}</option>
+                    {/foreach}
+                </select>
+            </div>
+
+            <a class="dib search-btn fr" id="js-search-btn" href="javascript:;">搜索</a>
+        </div>
+    </nav>
+
+    <!--商品价格套系-->
+    <table class="goods-info db price-system">
+
+        <thead class="thead-info table-padding">
+            <tr class="tr-title">
+                <th class="trade-time"><mark class="item-style">交易时间</mark></th>
+                <th class="trade-type"><mark class="item-style">交易类型</mark></th>
+                <th class="trade-num"><mark class="item-style">订单号</mark></th>
+                <th class="trade-money"><mark class="item-style">交易金额</mark></th>
+                <th class="trade-remain"><mark class="item-style">账户余额</mark></th>
+                <th class="trade-account"><mark class="item-style">开户人/银行卡号</mark></th>
+            </tr>
+        </thead>
+
+        <tbody class="goods-msg trade-tbody">
+        {foreach $res.list as $key => $val}
+            <tr class="tr-title tr-font">
+                <th class="trade-time"><mark class="tbody-item tc">{$val.trade_time|date_format:"%Y-%m-%d %H:%M:%S"}</mark></th>
+                <th class="trade-type"><mark class="tbody-item tc">{$val.trade_type}</mark></th>
+                <th class="trade-num"><mark class="tbody-item tc">{$val.trade_sn}</mark></th>
+                <th class="trade-money"><mark class="tbody-item tc">￥{$val.flow_money}</mark></th>
+                <th class="trade-remain"><mark class="tbody-item tc">￥{$val.surplus_money}</mark></th>
+                <th class="trade-account"><mark class="tbody-item tc">{$val.account_bank}</mark></th>
+            </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <ul class="pagination"></ul>
+    </div>
+
+    <input type="hidden" id="js-page-info" value='{$res.page_info}'>
+</article>
+
+{/block}
+
+{block name="js" append}
+    {js file="js/admin/business/page.js"}
+    {js file="js/admin/business/trade_flow.js"}
+{/block}

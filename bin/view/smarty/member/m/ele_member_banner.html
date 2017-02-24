@@ -1,0 +1,26 @@
+{block name="css" append}
+{css file="css/member/m/member_banner.css"}
+{/block}
+
+{if $position == "top"}
+<a id="go-charge" class="db top" href="{$BASE_URL_MODULE}{$url}" title="" style="display: none">
+    <span class="leader-msg dib fl">一次性充值 <mark id="once_charge"></mark> 元，免费升级会员还送 <mark id="send_money"></mark> 元！</span>
+    <span class="get-charge dib fr">充值获取</span>
+</a>
+{else if $position == "bottom"}
+<a id="go-charge" class="vip-tags" href="{$BASE_URL_MODULE}{$url}" style="display: none"><!--vip展示-->
+    <i class="icon-vip dib pa"></i>
+        <span class="tags-msg">
+            充值<mark id="once_charge"></mark>元再消费，多得<mark id="send_money"></mark>元
+        </span>
+</a>
+{else if $position == "bottom1"}
+<a id="go-charge" class="db bottom" href="{$BASE_URL_MODULE}{$url}" title=""  style="display: none">
+    <span class="leader-msg dib fl">一次性充值 <mark id="once_charge"></mark> 元，免费升级会员还送 <mark id="send_money"></mark> 元！</span>
+    <span class="get-charge dib fr">充值获取</span>
+</a>
+{/if}
+<input type="hidden" id="banner_type" value="{$type}">
+{capture append="widget_js"}
+{js file="js/member/member_banner.js"}
+{/capture}

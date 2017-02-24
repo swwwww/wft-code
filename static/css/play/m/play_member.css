@@ -1,0 +1,23 @@
+.member {
+  width: 672px;
+  margin: 30px auto;
+  font-size: 0;
+}
+.member li {
+  display: inline-block;
+  font-size: 30px;
+  width: 96px;
+  height: 96px;
+  margin: 0 48px 40px 0;
+}
+.member li img {
+  width: 96px;
+  height: 96px;
+  -moz-border-radius: 48px;
+  -webkit-border-radius: 48px;
+  border-radius: 48px;
+  background-clip: padding-box;
+}
+.member li:nth-child(5n) {
+  margin-right: 0;
+}

@@ -1,0 +1,22 @@
+<div class="address">
+    <div class="address-list">
+        {foreach $res_addr as $val}
+        <div class="address-list-item">
+            <p class="item-id">
+                <span class="item-id-name">{$val.name}</span>
+                <span class="item-id-tel">{$val.phone}</span>
+            </p>
+            <p class="item-addr">{$val.province}{$val.city}{$val.region}{$val.address}</p>
+            <p class="item-btn">
+                <input class="radio-input" type="radio" name="radio" id="item_input_{$val.id}" value="{$val.id}" {if $val.is_default==1}checked='checked'{/if}/>
+                <label class="item-btn-default" for="item_input_{$val.id}">设为默认</label>
+                <!--<span class="item-btn-del" data-id="{$val.id}">删除</span>-->
+                <a class="item-btn-edit" href="{$BASE_URL_MODULE}user/editInfo?id={$val.id}&info_id={$res.info_id}&coupon_id={$res.coupon_id}">编辑</a>
+            </p>
+        </div>
+        {/foreach}
+    </div>
+</div>
+
+<!--<a class="add-list addr_edit db tc" href="javascript:;" data="2">+新建收货地址</a>-->
+<!--<button class="traveller-button db back" id="sub_addr">返回</button>-->

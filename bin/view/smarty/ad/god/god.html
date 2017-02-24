@@ -1,0 +1,79 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/lib/islider.css"}
+{css file="css/lib/swiper-3.3.1.min.css"}
+{css file="css/ad/god/god.css"}
+{/block}
+
+{block name="title"}{$title|default:"选男神，抢玩翻天遛娃红包！"}{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="main pr">
+    <section class="main-top pr">
+        <i class="top-title db"></i>
+        <i class="top-head db"></i>
+        <section class="stars-img pr">
+            <div class="com-slide-media js-com-slide-media"></div>
+            <i class="choice-in db pa"></i>
+        </section>
+        <button id="vote_choice" class="select-btn db js-vote-choice" data-login="{if $user_resource.user}yes{else}no{/if}">我要选他</button>
+
+       <div class="tc">
+           {if $lottery_vo.award_total > 0}
+            <a class="go-myprise mr20 dib tc" href="{$BASE_URL_MODULE}lottery/record/lottery_id/2">我的奖品</a>
+           {/if}
+           <a id="go-get-prise" class="go-myprise ml20 dib tc" data-vote-id="{$lottery_vo.newest_vote_id|default: 0}" href="javascript:;">我要刮奖</a>
+       </div>
+    </section>
+
+    <section class="main-bot">
+        <i class="bot-title db"></i>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            {foreach $lottery_vo.rank_list as $key => $res_img}
+                <div class="swiper-slide">
+                    <li class="list-img dib pr">
+                        <!--<a class="db img-a pr" href="{if $res_img.act_id == 0}{$BASE_URL_MODULE}lottery/godRank/lottery_id/2{else}http://wan.wanfantian.com/web/kidsplay/info?id={$res_img.act_id}{/if}">-->
+                        <a class="db img-a pr" href="{$BASE_URL_MODULE}lottery/godRank/lottery_id/2}">
+                            <i class="list-left pa">
+                                <span class="top-left pa">TOP {$key+1}</span>
+                            </i>
+                            <img src="{$res_img.image}" class="act-img">
+                            <span class="list-info">&nbsp;&nbsp;参加人数：{$res_img.total} &nbsp;&nbsp;&nbsp;&nbsp;好评率：{$res_img.rate}%</span>
+                        </a>
+                    </li>
+                </div>
+                {/foreach}
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div id="hidden-space" style="display:none">
+            <p style="font-size:3em;text-align: center;color:#04f512">A node in dom tree.</p>
+        </div>
+
+        <i class="js_right db bot-arrow pa"></i>
+    </section>
+
+    <i class="index-foot db pa"></i>
+    <i class="matte" style="display: none;"></i>
+    <i class="gif-img db pa" style="display: none;"></i>
+
+    <div class="error-tips" id="loginTip"> </div>
+    <input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+</div>
+
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/fx.js"}
+{js file="js/lib/islider.js"}
+{js file="js/lib/swiper-3.3.1.min.js"}
+{js file="js/ad/god/god.js"}
+{/block}

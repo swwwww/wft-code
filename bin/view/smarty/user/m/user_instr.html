@@ -1,0 +1,28 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"用户使用说明"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_instr.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="tp-header">
+    <h2 class="header-h2">账户余额来源</h2>
+    <p>1、退订余额：退订商品后，退款金额将自动退回至账户余额中</p>
+    <p>2、商品返利：购买返利商品，返利将自动放入账户余额</p>
+    <p>3、特殊福利：小编采纳的点评或攻略，给予用户的奖励将放入账户余额</p>
+    <p>4、会员充值：用户也可自己充值到我的账户余额</p>
+</div>
+<div class="tp-main">
+    <p>账户余额可用于购买任何商品，暂不支持余额与其他支付渠道合并付款</p>
+    <p>
+        提现规则：除商品返利、特殊福利和会员充值外，购买商品产生的退款退回至余额后，均可申请原路退回至支付账户
+    </p>
+</div>
+<div class="tp-footer">
+    <p>此解释权归武汉玩翻天科技有限公司所有</p>
+    <p>客服电话：4008007221 </p>
+</div>
+{/block}

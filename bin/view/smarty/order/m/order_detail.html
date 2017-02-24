@@ -1,0 +1,363 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"{$res.title}活动订单详情"}{/block}
+{block name="css" append}
+{css file="css/ticket/m/commodity_detail.css"}
+{css file="css/user/m/user_select_addr.css"}
+{css file="css/play/m/play_select_traveler.css"}
+{css file="css/play/m/play_edit_traveler.css"}
+{css file="css/order/m/order_detail.css"}
+
+{/block}
+
+{block name="inner"}
+ {*<!--主界面具体展示内容 -->
+<!--<header class="banner">
+    <img class="order-banner" src="/static/img/site/mobile/banner-34.png">
+</header>-->*}
+<input type="hidden" id="order_detail" data-sn="{$res.order_sn}" data-type="1" />
+<input type="hidden" id="order_pay" value='{$res.info[0].data}' />
+<section class="detail">
+    <div class="detail-title">
+        <p class="detail-sn">订单号：{$res.id}</p>
+        <p class="term">{$res.title}</p>
+        <p class="sell clearfix">
+            <span class="price-total fl">总价：</span>
+            <span class="info-price fl">￥{$res.price}</span>
+        </p>
+    </div>
+
+    {if $res.status == 1 && ($res.pay_status == 0 || $res.pay_status == 1)}
+    <div class="countdown">
+        <i class="dib count-icon"></i>
+        <p class="count-msg clearfix dib">
+            <span id="time_d" class="clock fl">-36</span>
+            <span class="clock fl">天</span>
+            <span id="time_h" class="clock fl">14</span>
+            <span class="clock fl">小时</span>
+            <span id="time_m" class="clock fl">34</span>
+            <span class="clock fl">分</span>
+            <span id="time_s" class="clock fl">45</span>
+            <span class="clock fl">秒</span>
+            <span class="countintro clock">停止报名</span>
+            <input class="end" type="hidden" value="{$res.end_dateline}">
+        </p>
+        <mark class="count-info  dib tc">未达到人数要求，可退款或参加同期非定制活动</mark>
+    </div>
+    {elseif $res.status == 1 && ( $res.pay_status == 2 || $res.pay_status == 5)}
+    <div class="success">
+        <p class="success-info">
+            <i class="congrats-icon"></i>
+            <span class="congrats fr">恭喜！活动报名成功</span>
+        </p>
+    </div>
+    {elseif $res.pay_status == 3 ||$res.pay_status == 4}
+    <div class="fail">
+        <i class="fail-icon dib"></i>
+        <p class="fail-info clearfix dib">
+            <span class="status fl">抱歉！活动报名失败</span>
+            <mark class="explain fl">未在指定时间达到人数，订单自动进入退款流程</mark>
+        </p>
+    </div>
+    {/if}
+
+    <a class="introduce age">
+        <p>
+            <mark>活动时间：</mark>
+            <span>{$res.user_datetime|date_format: '%Y'}年{$res.user_datetime|date_format: '%m'}月{$res.user_datetime|date_format: '%d'}日{$res.user_datetime|date_format: '%H:%M'}</span>
+        </p>
+    </a>
+    <a class="introduce phone" href="tel:{$res.phone}">
+        <p>
+            <mark>联系电话：</mark>
+            <span>{$res.service_phone}</span>
+            <i></i>
+        </p>
+    </a>
+
+    <a class="introduce attention pr" href="{$BASE_URL_MODULE}discover/playDetail?id={$res.place.id}">
+        <p>
+            <mark>游玩地：</mark>
+            <div class="traveller-font pa dib">
+                <span class="db text-ellis">{$res.place.name}</span>
+                <span class="db text-ellis">{$res.place.address}</span>
+            </div>
+        </p>
+        <i></i>
+    </a>
+
+
+    <a class="detail-info db diff02 pr js-add-traveller" data-lock-num="{$res.lack_associates}" data-join-num="{$res.join_len}" href="javascript:;" >
+        <p class="person-info">请补充出行人的真实姓名和信息</p>
+        <span class="edit-link db">
+            <p class="no-info"> {if $res.lack_associates}您有{$res.lack_associates}个出行人信息未添加{else}出行人填写完成{/if}</p>
+        </span>
+        <i class="arrow-right"></i>
+    </a>
+
+
+    <div class="detail-info">
+        <p><span class="info-name fl">联系人：</span><span class="info-content">{$res.user_name}</span></p>
+        <p><span class="info-name fl">手机号：</span><span class="info-content">{$res.user_phone}</span></p>
+    </div>
+    <div class="activity">
+        <div class="activity-title ">
+            <p class="bus-in">集合地点</p>
+        </div>
+        <a class="activity-sel pr db {if $res.meetings|@count>1}addr_sel{/if}">
+           {* <!--<span>-->
+            <!--{if $res.meetings|@count == 1}-->
+            <!--{$res.meetings[0].meetings_place}-->
+            <!--{else}-->
+            <!--请选择集合地点-->
+            <!--{/if}-->
+            <!--</span>-->*}
+            <span>{$res.meeting_place}</span>
+            <i class="arrow-right"></i>
+        </a>
+    </div>
+
+    {*<!--<i class="refund-i fl tc">联系客服 </i>-->*}
+    <div class="order-list">
+        {foreach $res.member_order_list as $key => $order_list}
+        <div class="detail-info2 pr">
+            <p >
+                <span class="info-name dib fl">验证码:</span>
+                {if $order_list.status == 0}
+                <span class="info-content2 dib fl">{$order_list.sn}</span>
+                {else}
+                <del class="info-content2 dib fl">{$order_list.sn}</del>
+                {/if}<br>
+            </p>
+            <p>
+                <span class="info-name info-title fl">{$order_list.info}</span>
+            </p>
+            <div class="refund-btn diff-refund01 ">
+
+                {if $order_list.status == 0}
+                <i class="refund-i fl tc">未使用</i>
+                {if $order_list.refund_dateline > $res.time}
+                <a class="refund-a fl tc single_refund" data-title="{$order_list.info}" data-code={$order_list.sn} href="javascript:;">申请退款</a>
+                {/if}
+                {elseif $order_list.status == 1}
+                <a class="refund-i fl tc" href="javascript:;">已使用</a>
+                {elseif $order_list.status == 2}
+                <a class="refund-s fl tc" href="javascript:;">已退款</a>
+                {elseif $order_list.status == 3}
+                <a class="refund-d fl tc" href="javascript:;">退款中</a>
+                {/if}
+            </div>
+            {if $order_list.vip_free == 1}
+            <span class="vip-free"></span>
+            {/if}
+        </div>
+        {/foreach}
+        {*<!--<i class="refund-i fl tc">联系客服</i>-->*}
+    </div>
+
+    <div class="order-list">
+        {foreach $res.other_order_list as $key => $order_list}
+        <div class="detail-info2 pr">
+            <p >
+                <span class="info-name dib fl">附加码：</span>
+                {if $order_list.status == 0}
+                <span class="info-content2 dib fl">{$order_list.sn}</span>
+                {else}
+                <del class="info-content2 dib fl">{$order_list.sn}</del>
+                {/if}<br>
+            </p>
+            <p>
+                <span class="info-name info-title fl">{$order_list.info}</span>
+            </p>
+            <div class="refund-btn diff-refund01 ">
+                <!--<i class="refund-i fl tc">联系客服 </i>-->
+                {if $order_list.status == 0}
+                <a class="refund-i fl tc" href="javascript:;">未使用</a>
+                    {if $order_list.refund_dateline > $res.time}
+                        <a class="refund-a fl tc single_refund" data-title="{$order_list.info}" data-code={$order_list.sn} href="javascript:;">申请退款</a>
+                    {/if}
+                {elseif $order_list.status == 1}
+                <a class="refund-i fl tc" href="javascript:;">已使用</a>
+                {elseif $order_list.status == 2}
+                <a class="refund-s fl tc" href="javascript:;">已退款</a>
+                {elseif $order_list.status == 3}
+                <a class="refund-d fl tc" href="javascript:;">退款中</a>
+                {/if}
+            </div>
+        </div>
+        {/foreach}
+    </div>
+
+    {*<!--<button id="full_refund" class="all-refund db tc" type="submit">申请全部退款</button>-->*}
+
+    {if $res.customer_service_group_id}
+        <input type="hidden" id="product_type" value="4">
+        {include file="service/elem_service.html" type="order"}
+    {/if}
+
+    {if $res.pay_status ==0}
+        {include file="widget/common/ele_order_detail.html" state = "0"}
+    {else}
+        {include file="widget/common/ele_order_detail.html" state = "1"}
+    {/if}
+
+</section>
+
+<article id="js_select_traveller"  style="display: none">
+    {include file="play/m/elem_select_traveller.html"}
+</article>
+<input type="hidden" class="js-checked-traveller" value="{$res.associates}">
+
+<article id="js_add_traveller" style="display: none"> <!--style="display: none"-->
+    {include file="play/m/elem_add_traveller.html"}
+</article>
+
+<!--弹出窗部分-->
+<div class="matte1" style="display: none;"></div>
+<div class="popup">
+    <div class="matte" style="display: none"></div> <!--display: none-->
+    <!--选择上车地点弹窗-->
+    <div id="js_meeting" class="popup-address address-frame" style="display: none">
+        <div class="address-title">
+            <p class="go-bus tc">选择集合地点</p>
+        </div>
+        <section class="lists">
+            {foreach $res.meetings as $key => $meet_addr}
+            <div class="address-item pr">
+                <span class="detail-addr fl dib">{$meet_addr.meeting_place}</span>
+                <span class="detail-time dib">{$meet_addr.meeting_time|date_format: '%m-%d %H:%M'}</span>
+                <input class="dn addr-id" type="radio" name="radio" id="address{$key+1}" data-id="{$meet_addr.id}">
+                <label class="label fr pa" for="address{$key+1}"></label>
+            </div>
+            {/foreach}
+        </section>
+        <div class="footer-btn">
+            <a class="cancel-btn">否</a>
+            <a id="js_meeting_sure" class="confirm-btn">是</a>
+        </div>
+        <input type="hidden" name="car_addr" id="car_addr" value="{if $res.meetings|@count == 1} {$res.meeting[0].id} {else} 0 {/if}">
+        <input type="hidden" id="js_meeting_num" value="{$res.meetings|@count}">
+    </div>
+
+    <div id="tips-dia"></div> <!--提示框-->
+    <div class="travel-detail" id="js-select-traveller" style="display: none;" >
+        <i class="travel-icon db"></i>
+        <p class="travel-info tc">您还有{$res.lack_associates}个出行人的信息未填写，这些信息将被用于购买保险</p>
+        <a class="go-travel db tc js-add-traveller" data-lock-num="{$res.lack_associates}" data-join-num="{$res.join_len}" href="javascript:;">填写出行人信息</a>
+    </div>
+
+    <!--出行人退款页面弹窗-->
+    <div class="popup-traveller" style="display: none;">
+        <i class="travel-icon db"></i>
+        <p class="refund-msg">
+            <span class="msg-span db tc">确认退款</span>
+            <mark class="msg-mark db tc">为此
+                <i class="msg-i">出行人</i>退款
+            </mark>
+        </p>
+        <div class="footer-btn">
+            <a class="confirm-btn" href="javascript: ;">是</a>
+            <a class="cancel-btn"  href="javascript: ;">否</a>
+        </div>
+    </div>
+
+    <!--    全部退款-->
+    <div class="popup-traveller" style="display: none">
+        <i class="travel-icon db"></i>
+        <p class="back-all">
+            <span class="all-span">确认为
+                <mark class="all-mark">
+                    {$res.title}
+                </mark>整单退款?
+            </span>
+        </p>
+        <div class="footer-btn">
+            <a class="confirm-btn" href="javascript: ;">是</a>
+            <a class="cancel-btn"  href="javascript: ;">否</a>
+        </div>
+    </div>
+
+    <!--划船票推款-->
+    <div id="js-refund-confirm" class="popup-traveller" style="display: none;">
+        <i class="travel-icon db"></i>
+        <p class="ship-refund">
+            <span class="ship-span db tc">确认退款</span>
+            <mark class="ship-mark db tc">为
+                <i id="js-refund-title" class="ship-i fsn">划船票</i>票退款
+            </mark>
+        </p>
+
+        <div class="footer-btn">
+            <a id="js-sure-refund" class="confirm-btn" href="javascript: ;">是</a>
+            <a class="cancel-btn"  href="javascript: ;">否</a>
+        </div>
+    </div>
+
+    <!-- 确认取消活动订单-->
+    <div class="cancel-order" style="display: none">
+        <div class="cancel-content">
+            <p class="order-title tc">确认取消订单？</p>
+            <span class="order-notice db">财务审核后，退款将于3-5个工作日 内退回至支付账户</span>
+        </div>
+        <div class="footer-btn ">
+            <a class="confirm-btn" href="javascript: ;">不退了</a>
+            <a class="cancel-btn"  href="javascript: ;">确定</a>
+        </div>
+    </div>
+
+    <div class="popup-address" style="display: none">
+        <div class="popup-address-title">
+            <p class="who-refund tc">你想为谁退款</p>
+        </div>
+        <section class="order-list-num"> </section>
+        <div class="footer-btn ">
+            <a class="confirm-btn" href="javascript: ;">不退了</a>
+            <a class="cancel-btn"  href="javascript: ;">确定</a>
+        </div>
+    </div>
+</div>
+
+
+
+{if $wechat_flag}
+<!--蒙层-->
+<div class="matte"></div>
+<!--支付成功的弹窗-->
+<section class="succ-pop js-succ-pop">
+    <div class="head-top clearfix">
+        <i class="close-btn dib fl"></i>
+        <i class="share-btn js-share-btn dib fr"></i>
+    </div>
+
+    <div class="share-info gradient pr">
+        <h2 class="info-title pa">支付成功</h2>
+        <i class="share-succ db"></i>
+        <span class="get-msg pa">
+            分享给好友获得<mark class="lottery-chance">{$res.share.lottery_number}次</mark>抽奖机会
+        </span>
+
+        <img class="share-logo" src="{$res.share.image_pay_success}">
+
+        <div class="bottom-btn pr">
+            <p class="share-to js-share-btn dib">分享抢现金</p>
+            <i class="icon-hand js-share-btn dib pa"></i>
+            {*<!--<a class="dib order-detail dib pa close-btn" href="javascript:;">查看订单详情</a>-->*}
+        </div>
+    </div>
+</section>
+{/if}
+
+
+<input type="hidden" value={$res.id} id="data">
+<input type="hidden" value={$res.lack_associates} id="un_select_people">
+<input type="hidden" value={$res.join_len} id="join_len">
+<input type="hidden" value='{$wechat_flag}' id="vip-area"> {*<!--如果没有分享按钮弹出了，就弹出未填满出行人的提示-->*}
+{include file="widget/common/ele_wechat_share.html"}
+{include file="widget/common/ele_share_guide.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/order/order_detail.js"}
+{js file="js/order/order_base.js"}
+{js file="js/share/share.js"}
+{js file="js/order/select_traveller.js"}
+{/block}

@@ -1,0 +1,147 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"账户余额"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/vip_remain_account.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="ac-list">
+    <section class="account-head">
+        <div class="head-info pr">
+            <i class="icon-purse dib"></i>
+            <div class="remain-money dib pa">
+                <span class="db remain-title">当前可用余额</span>
+                <span class="db money-value">￥{$res.money}</span>
+            </div>
+            <a class="dib charge-btn pa" href="{$BASE_URL_MODULE}orderWap/chargeMoney">充值</a>
+            <a class="dib recharge-btn pa" href="{$BASE_URL_MODULE}user/rechargeCard">储值卡</a>
+        </div>
+
+        <div class="head-href clearfix">
+            <a class="dib fl user_instr" href="{$BASE_URL_MODULE}user/userinstr">账户使用说明</a>
+            <a class="dib fr user_pay"  href="{$BASE_URL_MODULE}user/passwordTransition">支付设置</a>
+        </div>
+        {if $res.show_my_wallet_vip && !$res.is_vip}
+        <a class="db go-act-play pr" href="{$BASE_URL_MODULE}orderWap/chargeMoney">
+            开通会员服务,全年40000场亲子游免费玩！
+            <i class="dib arrow-icon pa"></i>
+        </a>
+        {/if}
+    </section>
+
+    <article class="expense-list"></article>
+</div>
+
+
+<!--蒙层-->
+{if $wechat_flag}
+<div class="matte" style="display: block"></div>
+{if $res.is_show_first_vip == 1}
+<!--支付成功的弹窗-->
+<section class="succ-pop js-succ-pop" > <!--VIP会员充值-->
+    <div class="head-top clearfix">
+        <i class="close-btn dib fl"></i>
+        <i class="share-btn js-share-btn dib fr"></i>
+    </div>
+
+    <div class="share-info gradient pr">
+        <h2 class="info-title pa">充值成功</h2>
+        <i class="share-succ db"></i>
+        <span class="get-msg pa">
+            <span class="msg-congrats db tc">恭喜您成为玩翻天会员</span>
+            <span class="msg-money db tc">{$res.package_info}已存入您的账户</span>
+        </span>
+
+        <img class="share-logo" src="{$res.share.image_member_recharge}">
+
+        <div class="bottom-btn pr">
+            <p class="share-to js-share-btn dib">立即再领取{$res.share.free_coupon_number}次亲子游</p>
+            <i class="icon-hand js-share-btn dib pa"></i>
+            <!--<a class="dib order-detail dib pa close-btn" href="javascript:;">查看账户余额</a>-->
+        </div>
+    </div>
+</section>
+{else}
+<!--普通充值-->
+<section class="succ-pop js-succ-pop"> <!--VIP会员充值-->
+    <div class="head-top clearfix">
+        <i class="close-btn dib fl"></i>
+        <i class="share-btn js-share-btn dib fr"></i>
+    </div>
+
+    <div class="share-info gradient pr">
+        <h2 class="info-title pa">充值成功</h2>
+        <i class="comm-charge db"></i>
+        <span class="get-msg get-chance pa">分享给好友获得<mark class="lottery-chance">{$res.share.lottery_number}次</mark>抽奖机会</span>
+
+        <img class="share-logo" src="{$res.share.image_normal_recharge}">
+
+        <div class="bottom-btn pr">
+            <p class="share-to dib js-share-btn">分享抢现金</p>
+            <i class="icon-hand js-share-btn dib pa"></i>
+            <!--<a class="dib order-detail dib pa close-btn" href="javascript:;">查看账户余额</a>-->
+        </div>
+    </div>
+</section>
+{/if}
+{/if}
+{include file="widget/common/ele_wechat_share.html"}
+{include file="widget/common/ele_share_guide.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/share/share.js"}
+{js file="js/user/remain_account.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    <section class="item-day">
+            {{if res[0]}}
+            {{each res}}
+        {{if $value.show_month == 1}}
+            <span class="date-time dib tc">{{$value.dateline | dateFormat: 'yyyy年MM月'}}</span>
+        {{/if}}
+        <a class="list-item db clearfix pr" href="javascript:;">
+                <i class="dib
+                {{if $value.flow_type == 0}}
+                    icon-charge
+                {{else if $value.flow_type == 1}}
+                    icon-expense
+                {{else if $value.flow_type == 2}}
+                    icon-buy
+                {{else if $value.flow_type == 3}}
+                    icon-reback
+                {{else if $value.flow_type == 4}}
+                    icon-refund
+                {{else if $value.flow_type == 5}}
+                    icon-deposit
+                {{else}}
+                    icon-deposit
+                {{/if}}
+                 icon pa"></i>
+                <div class="dib item-msg fl">
+                    <span class="msg-title db">{{$value.desc}}</span>
+                    <span class="msg-value db">余额：{{$value.surplus_money}}</span>
+                </div>
+
+                <div class="dib item-num fr">
+                    <span class="num-value db">{{$value.flow_money}}</span>
+                    <span class="num-date db">{{$value.dateline | dateFormat: 'yyyy-MM-dd'}}</span>
+                </div>
+            </a>
+            {{/each}}
+            {{else}}
+            {{if gif_flag==1}}
+            <div class="no-data">
+                <img src="/static/img/site/mobile/nodata.gif" />
+            </div>
+            {{/if}}
+            {{/if}}
+        </section>
+</script>
+{/literal}
+{/block}
+

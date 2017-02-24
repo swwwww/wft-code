@@ -1,0 +1,63 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/location/location.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner fullscreen-v2">
+    <section class="com-inner-head pr">
+        <div class="com-slide-media js-com-slide-media"></div>
+    </section>
+
+    <section class="com-inner-content">
+        <div class="location">
+            <h1>定位中...</h1>
+        </div>
+        <div class="sites">
+            {foreach from=$city_arr item=val}
+            <div class="site">
+                <a class="button" href="{$val.url|default: 'http://wan.wanfantian.com/web/wappay/nindex'}" role="button" id="{$val.id}">{$val.city}</a>
+            </div>
+            {/foreach}
+        </div>
+        <div class="index">
+            <a href="http://wan.wanfantian.com/web/wappay/nindex">卡住了?点我进首页</a>
+        </div>
+
+        <input type="hidden" id="city_arr" value='{$city_arr|json_encode}'>
+
+    </section>
+    <section class="com-inner-foot"></section>
+</section>
+{/block}
+
+{block name="js" append}
+{literal}
+<script src="http://api.map.baidu.com/api?ak=5b892d47400862f9df90affd72c00228&v=2.0&services=false"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    function redirect(result) {
+
+        var city_name = result.name;
+        var city_arr = JSON.parse($('#city_arr').val());
+
+        // 已经获取到城市名称
+        var i = city_arr.length;
+        var re_url = null;
+
+        while (i--) {
+            if (city_arr[i]['city'] == city_name) {
+                re_url = city_arr[i]['url'];
+                break;
+            }
+        }
+        if (re_url) {
+            window.location.href = re_url;
+        }
+    }
+    var myCity = new BMap.LocalCity();
+    myCity.get(redirect);
+</script>
+{/literal}
+{/block}

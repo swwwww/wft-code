@@ -1,0 +1,143 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"太空飞鸡战"}{/block}
+
+{block name="css" append}
+    {css file="css/ad/battle/index.css"}
+    {css file="css/ad/battle/battle_index.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div id="container">
+
+    <!--背景音乐-->
+    <div id="music" style="z-index: 10;">
+        <img class="music_disc music_play" src="/static/img/ad/battle/music_disc.png">
+        <img class="music_pointer" src="/static/img/ad/battle/music_pointer.png">
+    </div>
+
+    <audio autoplay="true" preload="auto" loop="loop" src="http://img.wanfantian.com/static/audio/ad/battle/happy_new_year.mp3" data-ke-src="" type="audio/mpeg">
+        <source src="http://img.wanfantian.com/static/audio/ad/battle/happy_new_year.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!--游戏开始-->
+    <div id="startGame">
+        <a class="my-prise db js-login-in" data-type="1" data-login="{if $user_resource.user}yes{else}no{/if}" href="javascript:;">我要新年礼物</a>
+        <a class="db game-rule" id="js_rule_show" href="javascript:;">游戏规则</a>
+        {if $lottery_vo.max_score}
+        <a class="max-score">最高分:<span class="pv-num">{$lottery_vo.max_score}</span></a>
+        {/if}
+        <i class="db gradient-head head-box"></i>
+        <i class="db icon-head head-box"></i>
+        <i class="db icon-food"></i>
+        <p class="user_pv">已有<span class="pv-num">{$lottery_vo.pv}</span>人飞向太空</p>
+        <i class="db start-ufo pr"></i>
+        <a class="db go-prise js-login-in" data-type="2" data-login="{if $user_resource.user}yes{else}no{/if}" href="javascript:;">我的礼物</a>
+    </div>
+    <a class="dib start-game js-start-game {if $platform.wft && !$lottery_vo.op_total}icon-share-btn{/if}  js-login-in" data-end="{$lottery_vo.is_end}" data-type="3" data-chance="{$lottery_vo.op_total}" data-login="{if $user_resource.user}yes{else}no{/if}" data-wft="{$platform.wft}" href="javascript:;">开始游戏</a>
+
+    <div class="result-bg"></div>
+</div>
+
+<!--分享-->
+<div id="resultPanel" class="js-share-to js-close-btn" style="display: none">
+    <!--share to-->
+    <i class="share-img db"></i>
+    <p class="share-info">
+        没 有 游 戏 机 会 啦！<br/>
+        点击分享给好友!<br/>
+        获 得 更 多 游 戏 机 会！
+    </p>
+    <i class="db lose-cry"></i>
+</div>
+
+<!--游戏规则-->
+<section id="rule" class="dn" style="height: 690px; bottom: 85%;">
+
+    <div class="rule-head pr">
+        <i class="icon-moon-right pa dib"></i>
+        <i class="icon-tir-up dib pa"></i>
+        <span class="rule-title dib pa">游戏规则</span>
+
+        <i class="icon-tir-down dib pa"></i>
+        <i class="icon-moon-left pa dib"></i>
+    </div>
+
+    <ol type="1" class="rule-item">
+        <li>打落飞鸡得1分，撞到猴子玩家死亡，本局游戏结束</li>
+        <li>每个玩家默认有3次游戏资格，每分享给1位好友点击，可额外再获得1次游戏机会。10次封顶</li>
+        <li>每局游戏分数可累积，总得分达到50分可抽奖获得新年礼物</li>
+        <li>获奖情况详见“我的礼物”页面</li>
+        <li>玩家中奖并领取后，奖品直接存入玩翻天手机账户，可前往玩翻天APP使用</li>
+        <li>抽中中山公园游玩卡的用户，兑换码将在5个工作日内以短信形式发送到您的玩翻天账户绑定的手机号上，注意查收</li>
+    </ol>
+</section>
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+<div class="matte js-close-btn"></div>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+    {js file="js/ad/battle/battle.js"}
+    {js file="js/ad/battle/base_loading.js"}
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    (function () {
+        window.onload = function() {
+            var music = document.getElementById("music");
+            var audio = document.getElementsByTagName("audio")[0];
+
+            audio.addEventListener('ended', function () {
+                music.childNodes[1].setAttribute("class","music_disc");
+            }, false);
+
+            if (audio.paused) {
+                audioPlay(audio, 1)
+            }
+
+            $('#music').on('click', function(){
+
+                if (audio.paused) {
+                    audioPlay(audio, 1)
+                    this.childNodes[1].setAttribute("class","music_disc music_play");
+                } else {
+                    audioPlay(audio,0)
+                    this.childNodes[1].setAttribute("class","music_disc");
+                };
+            });
+        };
+
+        function isWeiXin(){
+            var ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        function audioPlay(audio, flag) {
+            if(flag){
+                if(isWeiXin()){
+                    wx.ready(function() {
+                        audio.play();
+                    });
+                }else {
+                    audio.play();
+                }
+            }else {
+                if(isWeiXin()){
+                    wx.ready(function() {
+                        audio.pause();
+                    });
+                }else {
+                    audio.pause();
+                }
+            }
+        }
+    })()
+</script>
+
+{/block}
+

@@ -1,0 +1,10 @@
+bin/temp/
+bin/runtime/
+.htaccess
+doc/
+node_modules/
+.idea/
+.DS_Store
+.settings/
+README.md
+yii_wft.iml

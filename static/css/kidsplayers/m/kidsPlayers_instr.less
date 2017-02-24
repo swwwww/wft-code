@@ -1,0 +1,85 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.kidsplay, .report, .rank{
+  background-color: #ffffff;
+}
+
+.kidsplay-instr, .report-instr{
+  line-height: 40px;
+  font-size: 28px;
+  text-indent: 2em;
+  text-align: justify;
+}
+.kidsplay-instr{
+  padding: 45px 35px;
+  p{
+    margin: 15px 0;
+  }
+}
+.report-instr{
+  padding: 15px 35px;
+}
+.kidsplay{
+  margin-bottom: 20px;
+  .kidsplayer-img{
+    width: 750px;
+    height: 410px;
+  }
+}
+.kidsplayer-name{
+  color: #d85024;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.report{
+  margin: 20px auto;
+  padding-bottom: 45px;
+
+  .report-head{
+    height: 40px;
+    line-height: 40px;
+    font-size: 38px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #333;
+    padding-top: 20px;
+  }
+}
+
+.rank{
+  padding: 45px 0;
+  .rank-head{
+    background: url("/static/img/site/mobile/gold-kidsplayers.png") center no-repeat;
+    width: 174px;
+    height: 38px;
+    margin: 0px auto;
+    zoom: 1.5;
+  }
+  .rank-list{
+    //margin: 20px 0;
+    width: 750px;
+    font-size: 0;
+  }
+  .list-item{
+    display: inline-block;
+    width: 33.3%;
+    text-align: center;
+  }
+  .item-class{
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    -webkit-border-radius: 75px;
+    margin: 20px auto 0 auto;
+  }
+  .item-name{
+    display: block;
+    font-size: 26px;
+    height: 40px;
+    line-height: 40px;
+    color: #666;
+  }
+}

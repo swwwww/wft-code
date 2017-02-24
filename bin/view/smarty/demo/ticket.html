@@ -1,0 +1,75 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="css" append}
+
+{/block}
+
+{block name="head_back"}
+<button class="back">
+    <a class="action left" href="javascript:;">返回</a>
+</button>
+{/block}
+{block name="head_forward"}
+<button class="menu js-slide-menu">
+</button>
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="align" id="demo_value">
+</section>
+
+<!--<section class="inner fullscreen-v2">-->
+
+<!--<section class="com-inner-head pr">-->
+<!--<div class="com-slide-media js-com-slide-media"></div>-->
+<!--</section>-->
+
+<!--<section class="com-inner-content">-->
+
+<!--<div class="ci-content-wrap">-->
+<!--<div class="ci-content-head clearfix">-->
+<!--<h3>数据展示</h3>-->
+<!--</div>-->
+
+<!--<div class="ci-content-body">-->
+<!--about us-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</section>-->
+<!--<section class="com-inner-foot"></section>-->
+<!--</section>-->
+{/block}
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="demo_script" type="text/html">
+    <section class="wrapper">
+        <!--{{res[0]['date']}}-->
+        {{res[0]['image']}}
+    </section>
+</script>
+<script>
+    //    data:{'id':id,'addr_x':addr_x,'addr_y':addr_y,'order':order,'rid':rid,'aid':aid,'page':counter,'wap':1},
+    function initPlays() {
+        var dao = DAO.ticket;
+        var param = {
+            'id': 1,
+            'addr_x': 1,
+            'addr_y': 10,
+            'order': 10,
+            'rid': 10,
+            'aid': 10,
+            'page': 10,
+            'wap': 1
+        };
+        dao.getAllCoupons(param, function (res) {
+            var result = [];
+            result['res'] = res;
+            console.log(res);
+//            document.getElementById('demo_value').innerHTML = template('demo_script', result);
+        });
+    }
+    initPlays();
+</script>
+{/literal}
+{/block}

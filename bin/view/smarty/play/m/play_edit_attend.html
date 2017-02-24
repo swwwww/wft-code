@@ -1,0 +1,42 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"选择报名人数/编辑报名人数"}{/block}
+
+{block name="css" append}
+{css file="css/play/m/play_edit_attend.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+    <section class="eaddr">
+        <!--        data-url : 请求接口-->
+        <form class="eaddr-form" id="myform" data-url="...">
+            <label class="eaddr-form-label">
+                <span class="eaddr-form-span">姓名</span>
+                <input type="text" id="eaddr-name" name="name" class="eaddr-form-input eaddr-name" placeholder="请填写中文姓名" value="">
+            </label>
+
+            <label class="eaddr-form-label">
+                <span class="eaddr-form-span">联系方式</span>
+                <input type="TEL" name="tel" class="eaddr-form-input eaddr-phone" placeholder="请填写手机号" value="" id="phone">
+            </label>
+
+            <label class="eaddr-form-label" id="addr">
+                <span class="eaddr-form-span">所在地区</span>
+                <input class="eaddr-form-input area" type="text" id="txt_area" value="" data-value="" placeholder="请选择所在地区" readonly="readonly">
+                <input class="eaddr-form-input" type="hidden" id="hd_area" value="">
+
+                <div class="eaddr-form-arrow area"></div>
+            </label>
+
+            <label class="eaddr-form-label">
+                <span class="eaddr-form-span">详细地址</span>
+                <span class="eaddr-form-addr">
+                <input type="text" id="address" value="" class="eaddr-form-input" placeholder="请填写详细地址">
+            </span>
+            </label>
+            <button class="eaddr-button" id="btn">保存</button>
+        </form>
+        <button class="traveller-button backed" id="edit_back">返回</button>
+        <input type="hidden" id="sel_addr_id" name="sel_addr_id" value="2398">
+    </section>
+{/block}

@@ -1,0 +1,60 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"用户使用说明"}{/block}
+
+{block name="css" append}
+{css file="css/coupon/m/coupon_select.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="cash new">
+    <p class="cash-shape"></p>
+                <span class="cash-price">
+                    ￥<mark class="price-content">5</mark>.00
+                </span>
+                <span class="cash-info">
+                    <mark class="info-type">新人现金券</mark>
+                    <mark class="info-intro">·仅限新注册用户使用</mark>
+                    <mark class="info-intro">·2015-11-23至2015-12-23</mark>
+                </span>
+    <p class="cash-sign">
+        <span>新用户</span>
+    </p>
+    <input type="radio" name="radio" id="coupon01" />
+    <label for="coupon01"></label>
+</section>
+<section class="cash">
+    <p class="cash-shape"></p>
+                <span class="cash-price">
+                    ￥<mark class="price-content">20</mark>.00
+                </span>
+                <span class="cash-info">
+                    <mark class="info-type">商品现金券</mark>
+                    <mark class="info-intro">·所有玩翻天商品使用次使用次使用次使用</mark>
+                    <mark class="info-intro">·2015-11-23至2015-12-23</mark>
+                </span>
+    <input type="radio" name="radio" id="coupon02" />
+    <label for="coupon02"></label>
+</section>
+
+<section class="cash">
+    <p class="cash-shape"></p>
+                <span class="cash-price">
+                    ￥<mark class="price-content">20</mark>.00
+                </span>
+                <span class="cash-info">
+                    <mark class="info-type">遛娃学院活动现金券</mark>
+                    <mark class="info-intro">·仅限溜娃学院活动部分场次使用次使用次使用</mark>
+                    <mark class="info-intro">·截止时间  2015-11-23  06:57</mark>
+                </span>
+    <input type="radio" name="radio" id="coupon03" />
+    <label for="coupon03"></label>
+    <article class="cash-introduce">
+        <p class="intro-info">可用场次</p>
+        <span class="info-msg db">·仅限银杏湖主题乐园 2016/5/18  10:00~15:30</span>
+        <span class="info-msg db">·仅限银杏湖主题乐园 2016/5/18  10:00~15:30</span>
+    </article>
+
+</section>
+{/block}

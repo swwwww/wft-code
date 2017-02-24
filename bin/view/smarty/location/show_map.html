@@ -1,0 +1,61 @@
+{extends file="widget/layout/layout_fullscreen.html"} {block name="css" append} {css file="css/location/location.css"} {/block} {block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner fullscreen-v2"> <section class="com-inner-head pr">
+<div class="com-slide-media js-com-slide-media"></div>
+</section> <section class="com-inner-content">
+<div class="location"></div>
+</section> <section class="com-inner-foot"></section> </section>
+{/block} {block name="js" append} {js file="js/test/im-web-sdk.js"} {literal}
+<script type="text/javascript">
+    var url = 'ws://121.196.196.181:8099';
+    var so = false, n = false;
+
+    //创建socket，注意URL的格式：ws://ip:端口
+    so = new WebSocket(url);
+    //握手监听函数
+    so.onopen = function() {
+        //状态为1证明握手成功，然后把client自定义的名字发送过去
+        if (so.readyState == 1) {
+            so.send('type=add&ming=' + 'qintao');
+        }
+    }
+
+    //握手失败或者其他原因连接socket失败，则清除so对象并做相应提示操作
+    so.onclose = function() {
+        so = false;
+        alert(2);
+    }
+
+    /*
+     var config = {
+     server : 'ws://121.196.196.181:8000', // socket server IP
+     test : false, // 是否启动调试模式
+     heartrate : 6000, // 心跳包发送时间间隔
+     channelKey : 'L33ANHWS6O0WO0484WOG', // 在implus注册的key
+     isDebug : true, // 是否启动调试模式
+     onOpen : function() { // socket 链接建立后触发
+     console.log('connected');
+     },
+     onMessage : function(e) { // socket 接收到消息后触发返回最原始的没解码数据
+     console.log('message');
+     },
+     onClose : function(e) { // socket 链接关闭的时候触发
+     console.log('closed');
+     }
+     };
+     var im = new BD_IM_SDK(config);
+
+     im.connect({
+     error : function(data) {
+     alert(1);
+     },
+     success : function(data) {
+     alert(2);
+     },
+     complete : function(data) {
+     alert(3);
+     }
+     });
+     */
+</script>
+{/literal} {/block}

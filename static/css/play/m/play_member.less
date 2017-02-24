@@ -1,0 +1,25 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.member {
+  width: 672px;
+  margin: 30px auto;
+  font-size: 0;
+  li {
+    display: inline-block;
+    font-size: 30px;
+    width: 96px;
+    height: 96px;
+    margin: 0 48px 40px 0;
+    img {
+      width: 96px;
+      height: 96px;
+      .border-radius(48px);
+      background-clip: padding-box;
+    }
+  }
+  li:nth-child(5n) {
+    margin-right: 0;
+  }
+}
+

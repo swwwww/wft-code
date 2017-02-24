@@ -1,0 +1,61 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的消息"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_message.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="message-total">
+    <a class="consult replay db pr" href="javascript:;">
+        <i class="dib icon icon-consult pa"></i>
+        <span class="replay-title dib">咨询回复</span>
+        {if $res.consult_num != 0}
+            <span class="replay-num dib fr">{$res.consult_num}</span>
+        {/if}
+        <i class="dib icon-arrow pa"></i>
+    </a>
+
+    <a class="consult replay db pr" href="javascript:;">
+        <i class="dib icon icon-comment pa"></i>
+        <span class="replay-title dib">评论回复</span>
+        {if $res.post_num != 0}
+            <span class="replay-num dib fr">{$res.post_num}</span>
+        {/if}
+        <i class="dib icon-arrow pa"></i>
+    </a>
+
+    <input type="hidden" id="message-id" value="{$res.message_id}">
+    <div class="message">
+        <div class="message-list"></div>
+    </div>
+</section>
+{/block}
+
+
+{block name="js" append}
+{js file="js/lib/template.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/user/user_message.js"}
+{literal}
+<script id="message-list" type="text/html">
+    {{if res[0]}}
+    {{each res}}
+    <a class="consult db pr" href="javascript:;">
+        <i class="dib icon icon-coupon pa"></i>
+        <div class="coupon-msg dib">
+            <span class="db coupon-title">{{$value.title}}</span>
+            <span class="db coupon-info">{{$value.message}}</span>
+        </div>
+        <i class="dib coupon-time pa">{{$value.time | dateFormat:'yyyy-MM-dd'}}</i>
+    </a>
+    {{/each}}
+    {{else}}
+    <div class="no-data">
+        <img src="/static/img/site/mobile/nodata.gif" />
+    </div>
+    {{/if}}
+</script>
+{/literal}
+{/block}

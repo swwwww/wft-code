@@ -1,0 +1,63 @@
+{if $res.coupon_list }
+    {foreach $res.coupon_list as $coupons}
+    {if $coupons.isnew}
+    <section class="cash new coupon" data-id={$coupon.id}>
+        <p class="cash-shape"></p>
+                <span class="cash-price">
+                    ￥<mark class="price-content">{$coupons.price}</mark>
+                </span>
+                <span class="cash-info">
+                    <mark class="info-type">{$coupons.title}</mark>
+                    <mark class="info-intro">{$coupons.description}</mark>
+                    <mark class="info-intro">{$coupons.begin_time|date_format:"%Y-%m-%d"}至{$coupons.end_time|date_format:"%Y-%m-%d"}</mark>
+                </span>
+        <p class="cash-sign">
+            <span>新用户</span>
+        </p>
+        <input type="radio" name="radio" class="form-radio" id="coupon{$coupons.id}" data-id="{$coupons.id}" data-title="{$coupons.title}" data-price="{$coupons.price}"/>
+        <label for="coupon{$coupons.id}"></label>
+    </section>
+    {else}
+    {if $coupons.type == 1}
+    <!--商品-->
+    <section class="cash coupon" data-id={$coupon.id}>
+        <p class="cash-shape"></p>
+                    <span class="cash-price">
+                        ￥<mark class="price-content">{$coupons.price}</mark>
+                    </span>
+                    <span class="cash-info">
+                        <mark class="info-type">{$coupons.title}</mark>
+                        <mark class="info-intro">{$coupons.description}</mark>
+                        <mark class="info-intro">{$coupons.begin_time|date_format:"%Y-%m-%d"}至{$coupons.end_time|date_format:"%Y-%m-%d"}</mark>
+                    </span>
+        <input type="radio" name="radio" class="form-radio" id="coupon{$coupons.id}" data-id="{$coupons.id}" data-title="{$coupons.title}" data-price="{$coupons.price}"/>
+        <label for="coupon{$coupons.id}"></label>
+    </section>
+    {else}
+    <section class="cash coupon" data-id={$coupon.id}>
+        <p class="cash-shape"></p>
+                    <span class="cash-price">
+                        ￥<mark class="price-content">{$coupons.price}</mark>
+                    </span>
+                    <span class="cash-info">
+                        <mark class="info-type">{$coupons.title}</mark>
+                        <mark class="info-intro">{$coupons.description}</mark>
+                        <mark class="info-intro">截止时间  {$coupons.end_time|date_format:"%Y-%m-%d %H:%M"}</mark>
+                    </span>
+        <input type="radio" name="radio" class="form-radio" id="coupon{$coupons.id}" data-id="{$coupons.id}" data-title="{$coupons.title}" data-price="{$coupons.price}"/>
+        <label for="coupon{$coupons.id}"></label>
+        <article class="cash-introduce">
+            {if $coupons.eventinfo}
+            <p class="intro-info">可用场次</p>
+            {foreach $coupons.eventinfo as $k => $v}
+            <span class="info-msg db">{$v.name} {$v.start_time|date_format:"%Y/%m/%d"}  {$v.start_time|date_format:"%H:%M"}~{$v.end_time|date_format:"%H:%M"}</span>
+            {/foreach}
+            {/if}
+        </article>
+    </section>
+    {/if}
+    {/if}
+    {/foreach}
+
+<button class="traveller-button back db" id="sub_addr">返回</button>
+{/if}

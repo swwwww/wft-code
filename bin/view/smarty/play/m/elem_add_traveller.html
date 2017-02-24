@@ -1,0 +1,18 @@
+<div class="per">
+    <form class="per-form">
+        <span class="per-title">姓名</span>
+        <input class="per-form-input" id="pname" placeholder="请输入您的姓名" value="{$res.name}" id="name">
+    </form>
+
+    <form class="per-form">
+        <span class="per-title">身份证号</span>
+        <input class="per-form-input" id="pid" placeholder="请输入您的身份证号码" value="{$res.id_num}" id="id_num" type="text">
+    </form>
+    <button class="per-button" id="per-submit">确定</button>
+    <span class="per-notice">出行人信息将被用来购买保险，请如实填写。</span>
+</div>
+
+<!--<button class="traveller-button back db" id="js_person_info">返回</button>-->
+
+<input type="hidden" name="id" id="associates_id" value="{$res.associates_id}">
+<div id="tips-dia"></div> <!--提示框-->

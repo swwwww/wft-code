@@ -1,0 +1,42 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"编辑收货信息"}{/block}
+{block name="css" append}
+    {css file="css/user/m/edit_info.css"}
+    {css file="css/lib/LArea.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <form class="edit">
+        <div class="edit-info">
+            <span>姓名</span>
+            <input type="text" id="name_info" value="{$res.name}" placeholder="请填写中文姓名" />
+        </div>
+        <div class="edit-info">
+            <span>联系方式</span>
+            <input type="tel" id="tel_info" value="{$res.phone}" placeholder="请填写手机号"/>
+        </div>
+        <div class="edit-info">
+            <span>所在地区</span>
+            <input type="text" id="addr_info"  readonly="" value="{$res.province}{$res.city}{$res.region}" placeholder="请选择所在地区"/>
+            <i></i>
+        </div>
+        <div class="edit-info">
+            <span>详细地址</span>
+            <input type="text" id="detail_info" value="{$res.address}" placeholder="请填写详细地址" />
+        </div>
+    </form>
+    <a id="save" href="javaScript:;">保存</a>
+
+    <input type="hidden" id="sid" value="{$res.info_id}">
+    <input type="hidden" id="coupon_id" value="{$res.coupon_id}">
+    <input type="hidden" id="addr_id" value="{$res.id}">
+</section>
+{/block}
+{block name="js" append}
+    {js file="js/util/LArea/LArea.js"}
+    {js file="js/util/LArea/LAreaData1.js"}
+    {js file="js/util/LArea/LAreaData2.js"}
+    {js file="js/user/edit_info.js"}
+{/block}

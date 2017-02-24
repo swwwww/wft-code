@@ -1,0 +1,42 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{/block}
+
+{block name="inner"}
+<section class="inner fullscreen-v2">
+    <section class="com-inner-head pr">
+        <h1>微信服务号消息推送外链内容修改</h1>
+        <div class="com-slide-media js-com-slide-media"></div>
+    </section>
+    <section class="com-inner-content">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>id</td>
+                    <td>外链类型</td>
+                    <td>外链内容</td>
+                    <td>外链地址</td>
+                    <td>修改</td>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $out_chains as $val}
+                <tr>
+                    <td>{$val.type_id}</td>
+                    <td>{$val.type_info}</td>
+                    <td>{$val.content}</td>
+                    <td>{$val.out_chain}</td>
+                    <td><a href='/wms/putoutchain?type_id={$val.type_id}'>修改</a></td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+    </section>
+    <section class="com-inner-foot"></section>
+</section>
+{/block}
+
+{block name="js" append}
+{js file="js/lib/zepto.min.js"}
+{/block}

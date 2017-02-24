@@ -1,0 +1,109 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"用户使用说明"}{/block}
+
+{block name="css" append}
+{css file="css/coupon/m/coupon_detail.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="main">
+    <section class="cash pr">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl">
+                ￥<mark class="price-content">{$res.price}</mark>
+            </span>
+            <span class="cash-info fl">
+                <mark class="info-type db">{$res.title}</mark>
+                <mark class="info-intro db">{$res.description}</mark>
+                <mark class="info-intro db">{$res.begin_time|date_format: '%Y-%m-%d'}至{$res.end_time|date_format: '%Y-%m-%d'}</mark>
+            </span>
+    </section>
+    {if $res.list|@count}
+    <h3 class="buy-title pr tc">
+        <span class="title-info pr">接券{if $res.type == 1}商品{else if $res.type == 2}活动{/if}</span>
+    </h3>
+
+    <div class="item">
+        <p class="item-title">
+            以下{if $res.type == 1}商品{else if $res.type == 2}活动{/if}可使用直减
+            <mark>{$res.price}</mark>元现金券
+        </p>
+        <div class="item-list coupon-item" id="data_list">
+        </div>
+    </div>
+    {/if}
+</div>
+
+<input type="hidden" id="id" value='{$res.id}'>
+<input type="hidden" id="cid" value='{$res.cid}'>
+{/block}
+
+{block name="js" append}
+{js file="js/coupon/coupon_detail.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    {{if res[0]}}
+    {{each res}}
+    <a class="list-shop" href="{{if $value.type == 1}} ../{{$BASE_URL_MODULE}}ticket/commodityDetail?id={{$value.id}}
+    {{else if $value.type == 2}} ../{{$BASE_URL_MODULE}}play/playactivity?id={{$value.id}} {{/if}}">
+        <img class="list-shop-img" src="{{$value.cover}}" />
+        <!--<span class="list-tag">最新</span>-->
+        <span class="shop-info">
+            <span class="shop-info-name">{{$value.title}}</span>
+            <span class="shop-info-price">
+                <mark class="dib">￥{{$value.price}}</mark>
+                <div class="fr dib">
+                    <span class="date">
+                        {{if $value.type == 1}}
+                            结束购买时间： {{$value.end_time | dateFormat:'yyyy年MM月dd'}}
+                        {{/if}}
+
+                        {{if $value.type == 2}}
+                        {{$value.start_time | dateFormat:'MM月dd'}}-{{$value.end_time | dateFormat:'MM月dd'}}
+                        {{/if}}
+
+                    </span>
+                    <span class="shows">
+                        {{if $value.type == 2}}
+                            {{$value.num}}场可选
+                        {{/if}}
+                    </span>
+                </div>
+            </span>
+            <span class="shop-info-time">
+                <span class="number">
+                    {{if $value.type == 1}}
+                        {{if $value.buynum == 0}}
+                            火热售卖中...
+                            {{else}}
+                            已售{{$value.buynum}}份
+                        {{/if}}
+                    {{/if}}
+
+                    {{if $value.type == 2}}
+                        {{if $value.buynum == 0}}
+                            活动报名中...
+                            {{else}}
+                            已有{{$value.buynum}}人报名
+                        {{/if}}
+                    {{/if}}
+
+                </span>
+                <span class="address pa">
+                    {{if $value.circle}}
+                    <i class="addr-icon dib"></i>
+                    <mark class="dib">{{$value.circle}}</mark>
+                    {{/if}}
+                </span>
+            </span>
+        </span>
+    </a>
+    {{/each}}
+    {{/if}}
+</script>
+{/literal}
+{/block}

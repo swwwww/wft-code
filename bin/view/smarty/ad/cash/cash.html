@@ -1,0 +1,21 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/ad/cash/cash.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="scan db pr">
+    <div class="from-ct pa">
+        <input class="js-ph ph-num ph-com" type="tel" name="phone" placeholder="输入手机号，领券参加本周末遛娃活动" value="">
+        <div class="js-submit ph-sub ph-com tc">提交领取</div>
+    </div>
+</section>
+
+<div class="error-tips" id="loginTip"> </div>
+{/block}
+
+{block name="js" append}
+    {js file="js/ad/cash/cash.js"}
+{/block}

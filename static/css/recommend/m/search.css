@@ -1,0 +1,189 @@
+.head {
+  width: 100%;
+  padding: 20px 0;
+  margin: 0 auto 20px;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  -ms-box-flex: 1;
+  -ms-flex: 1;
+  border-bottom: 1px solid #c8c8c8;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+.head .back-btn {
+  float: left;
+  width: 85px;
+  height: 60px;
+  position: relative;
+}
+.head .back-btn i {
+  height: 22px;
+  width: 22px;
+  border: 2px solid #999;
+  transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+  position: absolute;
+  right: 28px;
+  bottom: 33%;
+}
+.head .info {
+  float: left;
+  width: 510px;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 70px;
+  border: none;
+  font-size: 24px;
+  font-family: "Microsoft YaHei";
+  box-sizing: border-box;
+  border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+  color: #999999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-align: center;
+  -ms-box-align: center;
+  box-align: center;
+  background: #ededed url("/static/img/site/mobile/commodity.png") no-repeat -127px -1818px;
+  box-shadow: none;
+}
+.head .reset {
+  display: none;
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #c3c3c3;
+  position: absolute;
+  right: 190px;
+  top: 35px;
+  border: none;
+}
+.hot {
+  overflow: hidden;
+  background: #fff;
+}
+.hot .hot-title {
+  line-height: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.hot .hot-title .border {
+  display: block;
+  content: '';
+  border-top: 1px solid #f26b3a;
+  width: 33.33%;
+  margin: 40px auto;
+}
+.hot .hot-title span {
+  float: left;
+  text-align: center;
+  width: 146px;
+  font-size: 28px;
+  position: absolute;
+  top: 23px;
+  left: 305px;
+  color: #f26b3a;
+  background: #fff;
+}
+.hot .hot-list {
+  padding: 15px 0 15px 20px;
+  overflow: hidden;
+}
+.hot .hot-list a {
+  float: left;
+  height: 52px;
+  margin: 0 25px 24px 0;
+  padding: 0 25px;
+  background-color: #fff;
+  font-size: 28px;
+  line-height: 52px;
+  color: #f26b3a;
+  border-radius: 27px 27px 27px 27px;
+  -webkit-border-radius: 27px 27px 27px 27px;
+  border: 1px solid #f26b3a;
+}
+.search {
+  overflow: hidden;
+}
+.search .search-title {
+  line-height: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.search .search-title .border {
+  display: block;
+  content: '';
+  border-top: 1px solid #999;
+  width: 90%;
+  margin: 40px auto;
+}
+.search .search-title span {
+  float: left;
+  text-align: center;
+  width: 23%;
+  font-size: 26px;
+  position: absolute;
+  top: 23px;
+  left: 0;
+  color: #7d7d7d;
+}
+.search .search-list {
+  background: #fff;
+  font-size: 30px;
+}
+.search .search-list .item {
+  display: block;
+  width: 700px;
+  height: 80px;
+  padding-left: 45px;
+  margin: 0 auto;
+  line-height: 80px;
+  color: #7d7d7d;
+  border-bottom: 2px solid #f5f5f5;
+  box-sizing: border-box;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -75px -1889px;
+}
+.search .search-clear {
+  height: 80px;
+  font-size: 26px;
+  text-align: center;
+  background-color: #fff;
+  color: #7d7d7d;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.search .search-clear span {
+  display: block;
+  width: 158px;
+  height: 45px;
+  padding-left: 40px;
+  margin: 17.5px auto;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -96px -555px;
+}
+.search-btn {
+  float: right;
+  width: 84px;
+  height: 44px;
+  font-size: 28px;
+  text-align: center;
+  color: #333333;
+  line-height: 44px;
+  font-family: "Microsoft YaHei";
+  border: none;
+  margin: 8px 25px 0 0;
+  letter-spacing: 2px;
+}
+.search-btn.active {
+  color: #fff;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  background-color: #f26b3a;
+}

@@ -1,0 +1,255 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+    {css file="css/ad/turntable/turntable.css"}
+{/block}
+
+{block name="inner"}
+<section class="lott" id="lott">
+    {if $platform.wft}
+    <a href="#" class="btnShare" style="display: block;"></a>
+    {/if}
+    <div class="lott-content">
+        <i class="lott-logo"></i>
+        <p class="lott-head">
+            <span class="lott-head-msg">免费</span>门票、<span class="lott-head-msg">5万</span>红包等你抢！
+        </p>
+        <p class="lott-notice">您是第
+            <span class="lott-notice-num">{$lottery_vo.pv}</span>
+            个来玩的小玩家
+        </p>
+        <div class="lott-dial">
+            <i class="lott-dial-bg"></i>
+            <img src="/static/img/market/awards.png" id="outter" class="lott-dial-clir">
+            <img src="/static/img/market/start_button.png" id="inner" class="lott-dial-button" data-login="{if $user_resource.user}yes{else}no{/if}">
+        </div>
+        <div class="lott-side">
+            <a href="{$BASE_URL_MODULE}lottery/record?lottery_id=1">
+                <span class="lott-side-myprise" id="my-prise">我的奖品</span>
+                <span id="js_award_total">{$lottery_vo.award_total}</span>
+            </a>
+            <span class="lott-side-today" id="today-prise">今日特奖</span>
+        </div>
+        <div class="lott-info">
+            <p class="lott-info-msg">
+                您还有<span class="lott-notice-num" id="js_left_total">{$lottery_vo.op_total}</span>次抽奖机会
+            </p>
+        </div>
+    </div>
+</section>
+
+<article id="good" class="good">
+    <nav class="good-nav" id="good-nav">
+        <ul class="good-nav-ul">
+            <li class="good-nav-li cur">
+                <a href="javascript:;" class="good-nav-action" data-href="0">看世界</a>
+            </li>
+            <li class="good-nav-li">
+                <a href="javascript:;" class="good-nav-action" data-href="1">学技能</a>
+            </li>
+            <li class="good-nav-li">
+                <a href="javascript:;" class="good-nav-action" data-href="2">涨知识</a>
+            </li>
+            <li class="good-nav-li">
+                <a href="javascript:;" class="good-nav-action" data-href="3">职业体验</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="good-see-world1" class="good-see">
+        {foreach $lottery_vo.goods as $key => $val}
+        <mark class="good-see-win" id="good_seq_{$val@index}">
+            <span class="good-see-title">{$key}</span>
+        </mark>
+            {foreach $val as $good_key => $good_val}
+            <div class="good-item">
+                <a href="
+                {if $good_val.product_type == 0}
+                    {if $platform.wft}javascript:;{else}
+                    http://wan.wanfantian.com/web/organizer/shops?id={$good_val.product_id}
+                    {/if}
+                {else}
+                    {if $platform.wft}javascript:;{else}
+                    http://wan.wanfantian.com/web/kidsplay/info?id={$good_val.product_id}
+                    {/if}
+                {/if}" style="display: block" class="js-action-redirect" data-id="{$good_val.product_id}" data-type="{$good_val.product_type}">
+                    <div class="good-contain">
+                        <p class="good-item-notice">
+                            <span class="good-item-font">
+                                可接券
+                            </span>
+                        </p>
+                        <img src="/static/img/market/product/{$good_val.product_image}" class="good-img">
+                        <p class="good-name">{$good_val.product_name}</p>
+                        <p class="good-price">
+                            <span class="good-price-now">￥{$good_val.new_price}</span>
+                            <del class="good-price-past">￥{$good_val.old_price}</del>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            {/foreach}
+        {/foreach}
+    </section>
+
+    <section id="good-more-good" class="good-see">
+        <span class="good-see-more">更多商品</span>
+        {foreach $lottery_vo.other_goods as $key => $val}
+        <div class="good-item">
+            <a href="
+                {if $val.product_type == 0}
+                    {if $platform.wft}javascript:;{else}
+                    http://wan.wanfantian.com/web/organizer/shops?id={$val.product_id}
+                    {/if}
+                {else}
+                    {if $platform.wft}javascript:;{else}
+                    http://wan.wanfantian.com/web/kidsplay/info?id={$val.product_id}
+                    {/if}
+                {/if}" style="display: block" class="js-action-redirect" data-id="{$val.product_id}" data-type="{$val.product_type}">
+                <div class="good-contain">
+                    <img src="/static/img/market/product/{$val.product_image}" class="good-img">
+                    <p class="good-name">{$val.product_name}</p>
+                    <p class="good-price">
+                        <span class="good-price-now">￥{$val.new_price}</span>
+                        <del class="good-price-past">￥{$val.old_price}</del>
+                    </p>
+                </div>
+            </a>
+        </div>
+        {/foreach}
+    </section>
+
+</article>
+
+<!--弹窗部分-->
+<!--今日大奖弹窗-->
+<section class="mark-pos big" id="big-gift" style="display: none">
+    <img src="/static/img/market/today_bgift.png" class="big-img">
+    <div class="big-info">
+        <p class="big-info-winer ma" style="width: 320px; margin-top: 10px;">{$lottery_vo.special_cash.cash_name}</p>
+    </div>
+    <i class="big-close" id="big-close"></i>
+</section>
+
+<!--中奖弹窗-->
+<section id="win" class="mark-pos win" style="display: none">
+    <div class="win-info">
+        <img src="/static/img/market/pop_purse.png" class="win-info-img">
+        <p class="win-info-kind" id="win-info-kind">玩翻天红包</p>
+        <p class="win-info-money" id="win-info-money">1元券</p>
+    </div>
+    <a href="javascript:;" id="win-get-im">
+        <img src="/static/img/market/get_im.png" class="win-get-im">
+    </a>
+    <a href="#" class="try-again">
+        <img src="/static/img/market/try_again.png" class="win-try">
+    </a>
+</section>
+
+<!--抽奖失败弹出层-->
+<section class="mark-pos lose" id="lose" style="display: none">
+    <img src="/static/img/market/lose.png" class="lose-img">
+    <a href="#" class="try-again">
+        <img src="/static/img/market/try_again.png" class="lose-try">
+    </a>
+</section>
+
+<!--分享引导弹窗-->
+<section class="share mark-pos" id="share" style="display: none">
+    <img src="/static/img/market/child_share.png" class="share-img">
+    <div class="share-box">
+        <p class="share-box-font">更多抽奖机会</p>
+    </div>
+</section>
+
+<!--新用户输入手机号领取-->
+<section class="give mark-pos" id="give" style="display: none">
+    <div class="give-purse">
+        <img src="/static/img/market/pruse_bg.png" class="give-purse">
+        <input class="give-purse-phone" type="tel" id="give-purse-phone" placeholder="输入您的手机号码">
+    </div>
+    <a href="#" class="submit">
+        <img src="/static/img/market/sure_btn.png" class="give-sure">
+    </a>
+</section>
+<!--领取成功的弹框-->
+<section class="succ mark-pos" id="succ" style="display: none">
+    <div class="succ-info">
+        <img src="/static/img/market/succ_get.png" class="succ-get">
+        <p class="succ-info-font">领取成功！<br>打开玩翻天最新版</p>
+    </div>
+    <a href="javascript:;">
+        <p class="succ-btn" data-target="record">立即使用</p>
+    </a>
+</section>
+
+<!--遮罩层-->
+<div class="mark" id="mark"  style="display: none"></div>
+<!--遮罩层-->
+<div class="mark" id="mark_share" style="display: none"></div>
+<!--错误提示-->
+<div class="error-tips" id="loginTip"></div>
+
+<input type="hidden" id="wechat_share_config_json" value='{$wechat_share}'>
+<input type="hidden" id="hide_wft_param" value='{$wft_param}'>
+<input type="hidden" id="hide_phone" value="{$user_resource.user.phone}"/>
+{/block}
+
+{block name="js" append}
+<script>
+    define = null;
+    require = null;
+    var wechat_share_json = document.getElementById("wechat_share_config_json").value;
+    var wechat_share = JSON.parse(wechat_share_json);
+</script>
+
+{if $wechat_flag}
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {js file="js/util/wechat_share.js"}
+
+    {literal}
+    <script>
+        $(function() {
+            wx.ready(function () {
+                wx.onMenuShareAppMessage({
+                    title: wechat_share.share_app_message.title,
+                    desc: wechat_share.share_app_message.message,
+                    link: wechat_share.share_app_message.link,
+                    imgUrl: wechat_share.share_app_message.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                        $('#share').hide();
+                        $('#mark_share').hide();
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+                wx.onMenuShareTimeline({
+                    title: wechat_share.share_time_line.title,
+                    link: wechat_share.share_time_line.link,
+                    imgUrl: wechat_share.share_time_line.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                        $('#share').hide();
+                        $('#mark_share').hide();
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+            });
+        });
+    </script>
+    {/literal}
+{/if}
+
+{js file="js/ad/turntable/rotateModule.js"}
+{js file="js/ad/turntable/turntable.js"}
+
+{/block}

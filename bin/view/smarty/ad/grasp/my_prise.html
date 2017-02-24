@@ -1,0 +1,127 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"几古家活动-我的奖品页面"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/grasp.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<!--有奖品的展示-->
+<section class="has-prise" onselectstart="return true">
+    <div class="head-title">
+        <i class="title-font db"></i>
+        <div class="wx-name dib tc">
+            <img class="user-img dib" src="{$user_resource.user.img|imageFix}" href="javascript:;">
+            <p class="user-info dib">
+                <span class="db user-name">{$user_resource.user.username}</span>
+                <span class="db my-score">可用积分：{$award_vo.game_score_total|default:0}分</span>
+            </p>
+        </div>
+    </div>
+
+    <!--body-->
+    <div class="prise-body">
+        {if !$award_vo.award_list|@count}
+        <div class="prise-bg"><!--没有奖品-->
+            <i class="no-tip db"></i>
+            <p class="tip db">
+                <span class="tc tip-info db">暂无奖品哦！</span>
+                <span class="tc tip-bottom db">快去玩游戏抽奖噢~</span>
+            </p>
+        </div>
+        {else}
+        <!--获取奖品-->
+        {foreach $award_vo.award_list as $key => $val}
+        <section class="has-item">
+            {if $val.type == 1}
+            <div class="prise-bg prise-box">
+                <div class="prise-item">
+                    <i class="prise-logo dib"></i>
+                    <div class="prise-msg dib">
+                        <span class="prise-value ml10">价值360元</span>
+                        <h2 class="prise-title tl">【几古的家】开业体验券</h2>
+                        <span class="prise-instr">凭本券可享全家（限2大1小）预约免费体验【几古的家】一次</span>
+                    </div>
+
+                    <div class="input-item">
+                        <div class="item-msg dib tl">
+                            <span class="msg-code dib">预约码：</span>
+                            <span class="code-no dib"  onselectstart="return true;" data-id="{$val.id}">{$val.code}</span>
+                        </div>
+                        <!--<span class="copy-btn dib pa">点此复制</span>-->
+                        <p class="time-limit copy-notice db">长按预约码进行复制</p> <!--长按上面预约码并选择进行复制-->
+                        <p class="time-limit db">预约需有效期：2016年11月20日-2016年12月20日</p>
+                    </div>
+                </div>
+                <div class="msg-item pb45">
+                    <p class="info-msg">1、复制中奖预约码</p>
+                    <p class="info-msg">2、长按关注【几古的家】官方微信号（微信号：jigudejia）</p>
+                    <div class="img-pos pr">
+                        <img class="qcode-img db pa" src="/static/img/ad/grasp/4-Qimg.png">
+                    </div>
+                    <p class="info-msg">3、点击公众号下方【预约体验】菜单，粘贴复制好的中奖预约码完成免费预约</p>
+                    <p class="info-msg">4、预约有效期：2016年11月20日-2016年12月20日（逾期作废）
+                        请按预约时间至【几古的家】旗舰店进行免费体验，未按时到店体验视同放弃</p>
+                    <p class="info-msg">5、每组家庭仅限1次免费体验机会，重复中奖无效</p>
+                </div>
+            </div>
+            {else if $val.type == 2}
+            <!--<i class="db backspace"></i>-->
+            <div class="prise-bg prise-box mt50">
+                <div class="prise-item pen-item">
+                    <i class="pen-logo dib"></i>
+                    <div class="prise-msg dib pen-prise">
+                        <h2 class="prise-title tl pen-title">【几古的家】</h2>
+                        <span class="prise-instr pen-msg">主题限量文具套装</span><!--限量主题文具套餐-->
+                    </div>
+                </div>
+
+                <div class="msg-item">
+                    <p class="info-msg">1、凭此页面和预留电话，至【几古的家】旗舰店核对信息后领取</p>
+                    <p class="info-msg">2、请于2016年11月20日-2016年12月20日到店领取，逾期作废</p>
+                    <p class="info-msg">3、本活动奖品仅限本人领取，不得代领</p>
+                    <p class="info-msg">4、每组家庭限领1份、重复获奖无效</p>
+                    <p class="info-msg">5、【几古的家】旗舰店地址：武汉市武昌区轨道交通4号线梅苑小区地铁站D出口</p>
+                </div>
+
+                <div class="input-code">
+                    {if $val.status == 1}
+                    <a class="submit dib bak" href="javascript: ;">
+                        已经领取
+                    </a>
+                    {else}
+                    <input class="input-in code-in" id="js-code-in" data-id="{$val.id}" type="text" placeholder="请工作人员输入验证码">
+                    <a id="js-get-code" class="submit dib" href="javascript: ;">
+                        确认领取
+                    </a>
+                    {/if}
+                </div>
+            </div>
+            {/if}
+        </section>
+        {/foreach}
+        {/if}
+    </div>
+
+    <div class="db prise-foot clearfix">
+        <a class="go-index dib fl" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$award_vo.lottery_id}"></a>
+        <i class="rule-handle dib"></i>
+        <a class="continue dib fr" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$award_vo.lottery_id}/luck/1"></a>
+    </div>
+</section>
+
+<!--弹出窗-->
+<i class="matte dib" style="display: none"></i> <!-- style="display: none"-->
+
+<input type="hidden" id="hide_reward_vo" value='{$award_vo|json_encode}'/>
+<input type="hidden" id="hide_lottery_vo" value='[]'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/ad/grasp/grasp.js"}
+{/block}
+
+
+

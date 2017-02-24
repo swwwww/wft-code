@@ -1,0 +1,14 @@
+{strip}
+{pagination var_name="pagination" total_page=$pagination.total_page current_page=$pagination.current_page show_page_count=$pagination.show_page_count}
+{if $pagination.total_page > 1}
+<ul class="ui-pager">
+    <li class="ui-pager-button"><a href="{if $pagination.current_page===$pagination.first_page}javascript:;{else}?page={$pagination.prev_page}{/if}">上一页</a></li>
+    {foreach $pagination.pages as $page}
+    {if $pagination.current_page===$page}
+    <li class="page-item{if $pagination.current_page===$page} ui-pager-active{/if}"><a href="?page={$page}">{$page}</a></li>
+    {/if}
+    {/foreach}
+    <li class="ui-pager-button"><a href="{if $pagination.current_page===$pagination.last_page}javascript:;{else}?page={$pagination.next_page}{/if}">下一页</a></li>
+</ul>
+{/if}
+{/strip}

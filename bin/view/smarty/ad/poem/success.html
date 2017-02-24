@@ -1,0 +1,52 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/ad/poem/layout.css"}
+{/block}
+
+{block name="inner"}
+<section class="gift">
+    <div class="gift-box">
+        <div class="gift-box-bag">
+
+
+            <img src="/static/img/poem/d-get-succ.png" class="gift-box-win">
+            <img src="/static/img/poem/get_ticket.png" class="gift-box-cash">
+            <span class="gift-box-money" id="js_money_total">100
+            </span>
+            <a href="http://wan.wanfantian.com/web/wappay/mycashcoupon" class="gift-box-get">
+                <button class="gift-box-btn">
+                    <img src="/static/img/poem/q-see-cash.png" class="gift-box-scash">
+                </button>
+            </a>
+            <a href="http://wan.wanfantian.com/web/kidsplay/index" class="gift-box-get">
+                <button class="gift-box-btn">
+                    <img src="/static/img/poem/q-hot-events.png" class="gift-box-see">
+                </button>
+            </a>
+
+        </div>
+    </div>
+    <img src="/static/img/poem/logo.png" class="gift-box-logo">
+</section>
+{/block}
+
+{block name="js" append}
+{js file="js/lib/zepto.min.js"}
+
+{literal}
+<script type="text/javascript">
+    /*
+     * uid: uid-->true 老用户；uid-->false 老用户
+     *发放券： 新用户发放 2张30元遛娃活动现金券 + 2张20元遛娃活动券
+     *         老用户发放 5张20元遛娃活动券
+     * */
+    function give_money(uid) {
+        var money_show = $('#js_money_total');
+        console.log(money_show);
+        money_show.text(100 + '元');
+    }
+    give_money();
+
+</script>
+{/literal}
+{/block}

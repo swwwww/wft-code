@@ -1,0 +1,84 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"玩翻天商家后台-银行卡号管理"}{/block}
+
+{block name="css" append}
+{css file="css/admin/business/mer_other.css"}
+{/block}
+
+
+{block name="inner"}
+<!--头部-->
+{include file="admin/business/elem_mer_header.html"}
+
+<div class="nav dib" xmlns="http://www.w3.org/1999/html">
+    {include file="admin/business/elem_mer_nav.html"}
+</div>
+
+<article class="card-info content-area">
+   <header class="nav-map">
+       <a class="dib" href="{$BASE_URL_MODULE}business/tradeFlow">财务管理</a> >
+       <a class="dib" href="javascript:;">银行卡帐号管理</a>
+   </header>
+
+    <!--修改密码-->
+   <section class="content-inner">
+       <p class="item-sapcing db">公司名称：<span class="inc-name">{$res.company_name}</span></p>
+       <div class="db item-sapcing">
+           <p class="dib account-width">开户人: <span class="">{$res.bank_user}</span> </p>
+           <p class="dib">汇款手机号码: <span class="">{$res.notification_phone}</span> </p>
+       </div>
+       <div class="item-sapcing db">
+           <p class="dib account-width">开户行: <span class="">{$res.bank_name}</span> </p>
+           <p class="dib">开户支行: <span class="">{$res.bank_address}</span> </p>
+       </div>
+       <p class="item-sapcing db">卡号：<span class="inc-name">{$res.bank_card}</span></p>
+
+       <a class="change-card" id="js-change-bank" href="javascript:;">修改银行卡信息</a>
+   </section>
+</article>
+
+<!--修改银行信息弹框部分-->
+<article class="pop-info" id="js-win-popUp" style="display: none">
+    <div class="pop-matte"></div>
+    <!--填写信息-->
+    <section class="inc-info" id="js-get-info" style="display: none">
+        <div class="inc-item">
+            <label class="name-title dib" for="icon_name">公司全称</label>
+            <input type="text" id="icon_name" class="item-input" value="{$res.company_name}" required autofocus>
+        </div>
+        <div class="inc-item">
+            <label class="name-title dib" for="icon_phone">汇款通知手机号码</label>
+            <input type="text" id="icon_phone" class="item-input" value="{$res.notification_phone}" required>
+        </div>
+        <div class="inc-item">
+            <label class="name-title dib" for="account_person">开户人</label>
+            <input type="text" id="account_person" class="item-input" value="{$res.bank_user}" required>
+        </div>
+        <div class="inc-item">
+            <label class="name-title dib" for="account_bank">开户行</label>
+            <input type="text" id="account_bank" class="item-input" value="{$res.bank_name}" required>
+        </div>
+        <div class="inc-item">
+            <label class="name-title dib" for="sub_bank">开户支行</label>
+            <input type="text" id="sub_bank" class="item-input" value="{$res.bank_address}" required>
+        </div>
+        <div class="inc-item">
+            <label class="name-title dib" for="card_num">卡号</label>
+            <input type="text" id="card_num" class="item-input" value="{$res.bank_card}" required>
+        </div>
+
+        <a class="sub-change-btn dib" id="js-submit-btn" href="javascript:;">提交修改申请</a>
+    </section>
+
+    <!--确认窗口-->
+    <section class="sure-win pr" id="js-sure-win"  style="display: none">
+        <p class="sure-notice" id="js-notice-text">银行账户信息修改申请已提交,相关人员会与您联系，请耐心等待！</p>
+        <a class="sub-sure-btn dib" id="js-sure-btn" href="javascript:;">确定</a>
+    </section>
+</article>
+{/block}
+
+{block name="js" append}
+    {js file="js/admin/business/manage_card.js"}
+
+{/block}

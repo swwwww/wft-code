@@ -1,0 +1,811 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+body{
+  background-color: #6cc1bd;
+  max-width: 750px;
+}
+//P1 选男神部分
+.main{
+  background: url('/static/img/ad/god/1_index-bg.png') no-repeat center ;
+  background-size: 100% 100%;
+  //background-color: #6cc1bd;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .top-title{
+    background: url('/static/img/ad/god/1_go_play.png') no-repeat center ;
+    width: 100%;
+    height: 50px;
+    padding-top: 50px;
+    margin-top: 70px;
+  }
+  .top-head{
+    background: url('/static/img/ad/god/1_title.png') no-repeat center ;
+    width: 100%;
+    height: 50px;
+    padding-top: 65px;
+  }
+  .list-ul{
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+  .list-item{
+    //border: 3px solid #000;
+    position: absolute;
+    //list-style-type: none;
+    //overflow: hidden;
+    cursor: pointer;
+  }
+  .stars-img{
+    //margin-top: 15px;
+    width: 100%;
+    height: 490px; //??
+    float: left;
+    overflow: hidden;
+    position: relative;
+  }
+  #list{
+    width: 700px;
+     //height: 446px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    display: inline;
+    margin-left: -502px;
+  }
+  .top-img{
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+  }
+  .b-tit{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+  }
+  .top-num{
+    font-size: 3.2em;
+    font-weight: 600;
+    position: absolute;
+    bottom: 120px;
+    margin-left: 125px;
+    letter-spacing: 5px;
+  }
+  .top-select{
+    position: relative;
+    font-size: 3em;
+    font-weight: 600;
+    color: #ffffff;
+    bottom: 50px;
+    letter-spacing: 15px;
+    -moz-transform:scale(2,2);
+    -webkit-transform:scale(2,2);
+    -o-transform:scale(2,2);
+    transform:scale(2,2);
+  }
+  .select-btn{
+    background-color: #ffeb3b;
+    color: #754c24;
+    font-size: 42px;
+    font-weight: bolder;
+    padding: 20px 90px;
+    border-radius: 15px;
+    margin: 0 auto;
+  }
+  .go-myprise{
+    color: #ffffff;
+    margin-top: 15px;
+    font-size: 34px;
+    font-weight: bold;
+    text-decoration: underline !important;
+  }
+}
+//P1排名部分
+.main-bot{
+  background-color: #6cc1bd;
+  margin-top: 20px;
+  width: 100%;
+  .bot-title{
+    background: url('/static/img/ad/god/1_top10.png') no-repeat center ;
+    width: 100%;
+    height: 50px;
+    padding-top: 80px;
+  }
+  .mid-cotain{
+    margin:0 45px;
+  }
+  //.bot-arrow{
+  //  width: 85px;
+  //  height: 100px;
+  //  top: 80px;
+  //}
+  //.js_left{
+  //  background: url('/static/img/god/1_l_right.png') no-repeat center ;
+  //  left: -15px;
+  //}
+  //.js_right{
+  //  background: url('/static/img/god/1_r_arrow.png') no-repeat center ;
+  //  right: -15px;
+  //}
+  .list{
+    width: 490px;
+    margin: 0 85px;
+  }
+  .list-img{
+    width: 490px;
+    height: 260px;
+  }
+  .list-left{
+    background: url('/static/img/ad/god/top_l.png') no-repeat left;
+    width: 100%;
+    height: 125px;
+    //padding-top: 65px;
+  }
+  .top-left{
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 600;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 23px;
+    left: 0px;
+  }
+  .act-img{
+    width: 100%;
+    height: 240px;
+  }
+  .list-info{
+    background-color: rgba(0,0,0,0.6);
+    color: #ffffff;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    font-size: 28px;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+  }
+}
+.choice-in{
+  background: url(/static/img/ad/god/1_check.png) no-repeat center;
+  width: 100%;
+  height: 60px;
+  top: 55px;
+  left: 120px;
+}
+//P2 男神结果页
+.result{
+  max-width: 100%;
+  height: 100%;
+}
+.share-head{
+  background: url('/static/img/ad/god/4_header.png') no-repeat center !important;
+  height: 490px !important;
+}
+.res-head{
+  background: url('/static/img/ad/god/2_header.png') no-repeat center;
+  width: 750px;
+  height: 270px;
+  .res-share{
+    background: url(/static/img/ad/god/2_share_msg.png) no-repeat 170px 60px;
+    height: 165px;
+    width: 635px;
+  }
+  .res-arrow{
+    background: url(/static/img/ad/god/2_share_to.png) no-repeat 12px 0px;
+    height: 125px;
+    width: 106px;
+  }
+  .share-btn{
+    font-size: 28px;
+    font-weight: bold;
+    color: #98752a;
+    background-color: #ffeb3b;
+    padding: 8px 15px;
+    border-radius: 10px;
+    right: 15px;
+    top: 15px;
+  }
+  .user-name{
+    font-size: 45px;
+    color: #ffffff;
+    right: 210px;
+    bottom: 15px;
+  }
+  .user-img{
+    width: 175px;
+    height: 175px;
+    right: 20px;
+    bottom: -85px;
+  }
+}
+
+.res-part{
+  background-color: #ffffff;
+  padding: 55px 0 20px 0;
+  .star-img{
+    margin-left: 20px;
+    width: 100px;
+    height: 100px;
+  }
+  .star-info{
+    padding-left: 135px;
+    margin-right: 20px;
+  }
+  .star-name, .res-msg{
+    font-size: 34px;
+    line-height: 45px;
+  }
+  .font-color{
+    color: #5f729a; /*#8797b2;*/
+  }
+  .express-img{
+    width: 40px;
+    height: 40px;
+  }
+  .res-face{
+    background: url('/static/img/ad/god/2_handclap.png') no-repeat 0 14px;
+    height: 45px;
+    width: 100px;
+  }
+  .act-a{
+    margin-top: 20px;
+  }
+  .act-img{
+    width: 450px;
+    height: 240px;
+  }
+  .act-comm{
+    margin-top: 10px;
+    color: #7e7e7e;
+    font-size: 28px;
+  }
+  .comm-icon{
+    background: url('/static/img/ad/god/say.png') no-repeat 0 14px;
+    height: 45px;
+    width: 45px;
+  }
+
+  .act-share{
+    margin: 20px 0;
+    background-color: #f3f3f5;
+    font-size: 30px;
+    padding: 15px 18px;
+  }
+  .tri-icon{
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 20px solid #f3f3f5;
+    top: -15px;
+    left: 30px;
+  }
+  .heart-icon{
+    background: url('/static/img/ad/god/heart.png') no-repeat 3px 12px;
+    height: 55px;
+    width: 35px;
+  }
+  .stars-name{
+    width: 100%;
+    padding-left: 15px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 32px;
+  }
+}
+//精彩活动部分
+.act-part{
+  background-color: #6cc1bd;
+  .act-head{
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .title-flag{
+    background: url('/static/img/ad/god/flag.png') no-repeat 0px 0px;
+    height: 75px;
+    width: 100px;
+  }
+  .act-title{
+    background: url('/static/img/ad/god/2_activity_title.png') no-repeat 15px 20px;
+    height: 75px;
+    width: 340px;
+  }
+  .go-my{
+    margin-top: 22px;
+    background: url('/static/img/ad/god/gift_btn.png') no-repeat -1px -5px;
+    height: 60px;
+    width: 150px;
+    right: 25px;
+  }
+  .act-list{
+    margin: 20px 35px;
+  }
+  .act-item:nth-of-type(2n+1){
+    margin-right: 20px;
+  }
+  .act-item:nth-of-type(2n+2){
+    margin-left: 20px;
+  }
+  .act-item{
+    //width: 270px;
+  }
+  .item-com{
+    height: 130px;
+    width: 130px;
+  }
+  .can_buy{
+    background: url('/static/img/ad/god/yellow_flag.png') no-repeat -3px -2px;
+    color: #754c24;
+  }
+  .sell_out{
+    background: url('/static/img/ad/god/sell_out.png') no-repeat -3px -2px;
+    color: #ffffff;
+  }
+  .book_hotel{
+    background: url('/static/img/ad/god/book_hotel.png') no-repeat -3px -2px;
+    color: #ffffff;
+  }
+  .item-log{
+    font-size: 28px;
+    font-weight: 600;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 17px;
+    left: -1px;
+  }
+  .item-img{
+    width: 316px;
+    height: 270px;
+  }
+  .item-name{
+    width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 25px;
+    color: #ffffff;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-left: -18px;
+  }
+  .item-price{
+    color: #fcee21;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+}
+.act-foot{
+  background: url('/static/img/ad/god/trees.png') no-repeat 0px 0px;
+  width: 100%;
+  height: 125px;
+}
+
+
+//我的奖品页
+.p3_head{
+  padding: 44px 35px 10px 54px;
+
+  .head-title{
+    margin-bottom: 20px;
+  }
+  .user-img{
+    width: 110px;
+    height: 110px;
+    margin-right: 35px;
+  }
+  .my_prise{
+    background: url('/static/img/ad/god/3_my_gift.png') no-repeat 0px 23px;
+    width: 250px;
+    height: 110px;
+  }
+  .go-result{
+    background-color: #ffeb3b;
+    font-size: 24px;
+    color: #754c24;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-top: 25px;
+  }
+  .go-index{
+    background: url(/static/img/ad/god/3_go_index.png) no-repeat 32px 10px;
+    width: 95px;
+    height: 110px;
+  }
+}
+//现金券列表
+.prise-list{
+  margin-bottom: 25px;
+  .prise-value{
+    font-size: 37px;
+    font-weight: 600;
+    color: #ffffff;
+    height: 85px;
+    line-height: 85px;
+  }
+  .get-status{
+    width: 186px;
+    height: 75px;
+  }
+  .to-got{
+    background: url(/static/img/ad/god/3_get_in.png) no-repeat left;
+  }
+  .has-got{
+    background: url(/static/img/ad/god/3_has_got.png) no-repeat left;
+  }
+}
+.mid-cloud{
+  background: url('/static/img/ad/god/3_cloud.png') no-repeat left;
+  height: 120px;
+  width: 110px;
+}
+.list-title{
+  background: url('/static/img/ad/god/3_act_title.png') no-repeat center;
+  height: 90px;
+  width: 80%;
+  margin-bottom: 20px;
+}
+.lot-rules{
+  padding: 0 40px;
+  font-size: 28px;
+  color: #ffffff;
+
+  .code-img{
+    margin: 20px auto;
+    background-color: #ffffff;
+    //width: 100%;
+  }
+  .rules-title {
+    background: url('/static/img/ad/god/3_rules.png') no-repeat center;
+    height: 90px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  p{
+    text-align: justify;
+    line-height: 46px;
+  }
+}
+
+//P5 活动排名
+.rank{
+  width: 750px;
+  background-color:#6cc1bd;
+  color: #ffffff;
+  .rank-title{
+    background: url('/static/img/ad/god/5_header.png') no-repeat center;
+    height: 190px;
+    width: 100%;
+  }
+  .rank-item{
+    margin-bottom: 25px;
+  }
+  .rank-list{
+    margin: 50px 75px;
+  }
+  .item-act{
+    width: 100%;
+  }
+  .activity-img{
+    width: 500px;
+    height: 270px;
+    margin: 0 auto;
+  }
+  .pep-say{
+    width: 500px;
+    font-size: 16px;
+    top: 5px;
+    left: 51px;
+  }
+  .say-what{
+    background-color: rgba(0,0,0, 0.75);
+    padding: 8px 10px;
+    //margin-bottom: 10px;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  .say-p{
+    //margin-bottom: 15px;
+  }
+  .m-r-25{
+    margin-right: 25px;
+  }
+  .m-r-35{
+    margin-right: 35px;
+  }
+  .rank-top{
+    background: url(/static/img/ad/god/5_top_pirse.png) no-repeat center;
+    height: 120px;
+    width: 90px;
+    bottom: 54px;
+    left: 20px;
+  }
+  .num-top{
+    width: 100%;
+    font-size: 53px;
+    font-weight: bold;
+    color: #754c24;
+    bottom: 42px;
+    left: 0;
+    text-align: center;
+  }
+  .rank-name{
+    width: 100%;
+    font-size: 36px;
+    font-weight: bolder;
+    margin-top: 25px;
+  }
+  .addr-name{
+    font-size: 24px;
+    height: 35px;
+    line-height: 35px;
+  }
+  .ten{
+    left: 15px;
+  }
+
+  .act-ball{
+    background: url(/static/img/ad/god/5_ball.png) no-repeat right;
+    width: 105px;
+  }
+}
+.select-man{
+  background: url(/static/img/ad/god/child.png) no-repeat right;
+  width: 255px;
+  top: 470px;
+}
+.select-font{
+  font-size: 33px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: #fff;
+  top: 70%;
+  left: 52px;
+}
+.float-pos{
+  position: fixed;
+  height: 230px;
+  left: 63.5%;
+  right: 0;
+  top: 38%;
+  bottom: 0;
+}
+.float-pos-ball{
+  position: fixed;
+  height: 510px;
+  left: 83%;
+  right: 0;
+  top: 16%;
+  bottom: 0;
+}
+
+.index-foot{
+  background: url('/static/img/ad/god/1_foot-bg.png') no-repeat 0px 0px;
+  width: 100%;
+  height: 210px;
+}
+
+//弹窗
+.matte{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  width: 750px;
+  background: rgba(99,99,99,0.7);
+  z-index: 10;
+}
+.pop-win{
+  border: #ffeb3b solid 18px;
+  border-radius: 45px;
+  width: 620px;
+  height: 505px;
+  position: fixed;
+  left: 8%;
+  top: 25%;
+  background-color: #ffffff;
+  z-index: 10;
+  .close-btn{
+    background: url(/static/img/ad/god/pop_close.png) no-repeat right;
+    width: 65px;
+    height: 65px;
+    top: -30px;
+    left: -30px;
+  }
+  .card-chance{
+    font-size: 35px;
+    font-weight: bold;
+    color: #754c24;
+    background-color: #ffeb3b;
+    width: 450px;
+    padding: 20px 40px;
+    border-radius: 15px;
+    margin: 40px 44px;
+  }
+  .chance-num{
+    //display: inline-block;
+  }
+  .get-btn, .see-btn, .get-prise{
+    font-size: 40px;
+    width: 95%;
+    text-align: center;
+    background-color: #ffeb3b;
+    color: #754c24;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  .card-value{
+    width: 100%;
+    margin-top: 90px;
+    color: #e55433;
+    font-size: 40px
+  }
+  .from-ct{
+    margin: 40px 45px;
+  }
+  .com{
+    font-size: 32px;
+    color: #754c24;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 15px;
+  }
+  .ph-num{
+    background-color: #e6e6e6;
+    padding-left: 35px;
+  }
+  .ph-com{
+    width: 490px;
+    margin-bottom: 40px;
+  }
+  .cod-num{
+    width: 250px;
+  }
+  .cd-sub{
+    background-color: #ffeb3b;
+    padding: 0 20px;
+    margin-left: 33px;
+  }
+  .ph-sub{
+    width: 525px;
+    margin-top: 40px;
+    background-color: #ff9800;
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+
+}
+
+//3D切换
+.stars-img{
+  width: 750px;
+}
+.com-slide-media li img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.com-slide-media{
+  width: 750px;
+  margin: 0 auto;
+  height: 490px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-button-prev, .swiper-container-rtl,.swiper-button-next{
+  width: 85px;
+  height: 100px;
+  top: 80px;
+}
+.swiper-button-prev, .swiper-container-rtl {
+  background: url('/static/img/ad/god/1_l_right.png') no-repeat center ;
+  left: 35px;
+}
+.swiper-button-next{
+  background: url('/static/img/ad/god/1_r_arrow.png') no-repeat center ;
+  right: 35px;
+
+}
+
+.gif-img{
+  background: url(/static/img/ad/god/loading.gif) no-repeat center;
+  width: 100%;
+  height: 700px;
+  z-index: 12;
+  top: 12%;
+  left: 0;
+}
+
+//刮奖
+#lottery-container {
+  width: 490px;
+  height: 240px;
+  top: 40%;
+  left: 10%;
+  z-index: 100;
+}
+#drawPercent {
+  color:#F60;
+}
+canvas{
+  border-radius: 25px;
+}
+.pop-info{
+  color: #e55433;
+  font-size: 34px;
+  top: 58%;
+  left: 31%;
+  z-index: 100;
+}
+.pop-btn{
+  width: 100%;
+  top: 108%;
+  //left: 38%;
+  font-size: 34px;
+  font-weight: bold;
+}
+.show-msg{
+  position: absolute;
+  top: 20%;
+  left: 12%;
+  font-size: 32px;
+  z-index: 9999;
+  background-color: #ffffff;
+}
+/*错误框提示层*/
+.error-tips {
+  display: none;
+  font-size: 26px;
+  padding: 3% 5%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.7);
+  border-radius: 8px;
+  z-index: 99999;
+}

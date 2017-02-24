@@ -1,0 +1,125 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"所有品类"}{/block}
+{block name="css" append}
+{css file="css/discover/m/play_list.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="item">
+                <a class="item-cate">
+                    <mark>所有分类</mark>
+                    <i></i>
+                </a>
+                <span></span>
+            </li>
+            <li class="item">
+                <a class="item-age">
+                    <mark>所有年龄</mark>
+                    <i></i>
+                </a>
+                <span></span>
+            </li>
+            <li class="item">
+                <a class="item-new">
+                    <mark>最热门</mark>
+                    <i></i>
+                </a>
+                <span></span>
+            </li>
+        </ul>
+    </nav>
+    <div class="menu" id="menu">
+        <section class="menu-cate adv" id="cate">
+            <div class="inner">
+                <span class="cate-list">
+                    {foreach $res.tag as $key => $val}
+                    <a class="cate-list-item" href="/discover/playlist?id={$val.id}" data-id="{$val.id}" id="id_{$val.id}">{$val.name}</a>
+                    {/foreach}
+                </span>
+                <div class="mask"></div>
+            </div>
+        </section>
+        <section class="menu-age adv">
+            <div class="inner">
+                <div class="age-list">
+                    <ul class="age-list-right">
+                        <li class="tag-list">
+                            <a href="/discover/playlist?age_min=0&age_max=1" data-min="0" data-max="1" id="age_min_0">0-1岁</a>
+                        </li>
+                        <li class="tag-list">
+                            <a href="/discover/playlist?age_min=1&age_max=3" data-min="1" data-max="3" id="age_min_1">1-3岁</a>
+                        </li>
+                        <li class="tag-list">
+                            <a href="/discover/playlist?age_min=3&age_max=6" data-min="3" data-max="6" id="age_min_3">3-6岁</a>
+                        </li>
+                        <li class="tag-list">
+                            <a href="/discover/playlist?age_min=6&age_max=12" data-min="6" data-max="12" id="age_min_6">6-12岁</a>
+                        </li>
+                        <li class="tag-list">
+                            <a href="/discover/playlist?age_min=12" data-min="12" id="age_min_12">12岁以上</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mask"></div>
+            </div>
+        </section>
+        <section class="menu-new adv">
+            <div class="inner">
+                <div class="new-list">
+                    <a class="new-list-item" href="/discover/playlist?order=hot" data-order="hot" id="hot">最热门</a>
+                    <a class="new-list-item" href="/discover/playlist?order=ticket" data-order="hot" id="ticket">有票优先</a>
+                    <a class="new-list-item" href="/discover/playlist?order=close" data-order="close" id="close">离我最近</a>
+                </div>
+            </div>
+            <div class="mask"></div>
+        </section>
+    </div>
+    <div class="play">
+        <div class="play-list"></div>
+    </div>
+</section>
+{/block}
+{block name="js" append}
+{js file="js/discover/play_list.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    {{if res[0]}}
+    {{each res}}
+    <a class="play-list-item" href="/discover/playDetail?id={{$value.id}}">
+        <img src="{{$value.cover}}" />
+        <div class="item-info">
+            <span class="item-info-shop">{{$value.title}}</span>
+            <span class="item-info-detail">{{$value.editor_word}}</span>
+        </div>
+    </a>
+    {{/each}}
+    {{else}}
+    <div class="no-data">
+        <img src="/static/img/site/mobile/nodata.gif" />
+    </div>
+    {{/if}}
+</script>
+<script id="more" type="text/html">
+    {{each res}}
+    <a class="play-list-item" href="/discover/playDetail?id={{$value.id}}">
+        <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+        <div class="item-info">
+            <span class="item-info-shop">{{$value.title}}</span>
+            <span class="item-info-detail">{{$value.editor_word}}</span>
+        </div>
+    </a>
+    {{/each}}
+</script>
+{/literal}
+{/block}

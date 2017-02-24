@@ -1,0 +1,24 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/recommend/m/log-in.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main">
+    <div class="head">
+        <div class="head-banner"></div>
+    </div>
+    <div class="enter">
+        <input class="tel" id="js_com_phone" type="text" placeholder="请输入手机号" />
+        <input class="validate" id="js_com_phone_code" type="text" placeholder="请输入短信验证码" />
+        <span class="get-code js-get-phone-code">获取验证码</span>
+    </div>
+    <a class="login-btn js-login">登录</a>
+    <input type="hidden" id="hide_callback_url" value='{$callback_url}'>
+    <input type="hidden" id="get_type" value='0'>
+</section>
+{/block}
+{block name="js" append}
+{js file="js/util/phone_login.js"}
+{js file="js/auth/auth.js"}
+{/block}

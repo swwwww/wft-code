@@ -1,0 +1,108 @@
+.sel {
+  overflow: hidden;
+}
+.sel .list {
+  margin-top: 20px;
+}
+.sel .list-item {
+  padding: 35px 70px 35px 40px;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+.sel .list-item .item-info {
+  width: 470px;
+  line-height: 42px;
+}
+.sel .list-item .start-time,
+.sel .list-item .attend-num {
+  font-size: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sel .list-item .attend-num {
+  display: block;
+  margin-top: 10px;
+}
+.sel .list-item .shop-name {
+  display: block;
+  white-space: nowrap;
+  width: 485px;
+  font-size: 28px;
+  color: #929292;
+}
+.sel .state {
+  margin-top: 22px;
+  font-size: 28px;
+  display: block;
+  position: relative;
+}
+.sel .state .state-status {
+  display: block;
+  line-height: 43px;
+  float: right;
+  margin-top: 17px;
+}
+.sel .state .vip-play-icon {
+  top: 75px;
+  right: 145px;
+  width: 125px;
+  height: 35px;
+  padding: 3px 3px;
+  border-radius: 5px;
+  background: #ffcd54 url(/static/img/site/mobile/vips/vip_five.png) no-repeat center;
+}
+.sel .state .price-width {
+  height: 43px;
+  width: 160px;
+  text-align: right;
+}
+.other-state {
+  background: #f5f5f5;
+  color: #929292;
+}
+.link-state {
+  background-color: #fff;
+}
+.apply {
+  color: #fb5f39;
+}
+.no-link {
+  background-color: #f5f5f5;
+}
+.arrow-right {
+  border: 2px solid #999;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  right: 35px;
+  bottom: 35%;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+.want-go {
+  position: fixed;
+  bottom: 0;
+  width: 750px;
+  height: 88px;
+  line-height: 88px;
+  background-color: #ffd25b;
+  font-size: 28px;
+}
+.want-go .want-tips {
+  margin-left: 30px;
+  color: #7f7353;
+}
+.want-go .want-left {
+  margin-right: 65px;
+}
+.want-go .want-color {
+  color: #b57426;
+}

@@ -1,0 +1,122 @@
+/**
+ * 标签样式
+ */
+@import "../common/normalize.less";
+@import "../common/common.less";
+
+/**
+ * 变量
+ */
+@tab-item-background-color: #ccc;
+@tab-item-font-color: #333;
+@tab-item-width: 80px;
+@tab-item-height: 30px;
+@tab-item-border-color: #e7e7e7;
+
+.@{prefix}-tab {
+
+    .@{prefix}-tab-ul {
+        .clearfix();
+        .reset-list();
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+    .@{prefix}-tab-item {
+        float: left;
+        width: @tab-item-width;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border: none;
+        border-left: 1px solid #ccc;
+        text-align: center;
+        font-family: Microsoft yahei;
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .@{prefix}-tab-item-first {
+        border-left: none;
+    }
+
+    .@{prefix}-tab-item-last {
+        border-right: 1px solid #ccc;
+    }
+
+    .ui-tab-item-active {
+        position: relative;
+        top: 0;
+        border-top: 2px solid #f90;
+        border-bottom: none;
+        padding-top: 8px;
+        background-color: #fff;
+        font-weight: bold;
+    }
+
+    .@{prefix}-tab-block {
+        min-height: 210px;
+        background-color: #fff;
+    }
+}
+
+.@{prefix}-tab.@{prefix}-small {
+
+	.@{prefix}-tab-ul {
+        border-bottom: 1px solid @tab-item-border-color;
+    }
+
+    .@{prefix}-tab-item {
+        padding: 8px 5px;
+        width: 34px;
+        border-bottom: none;
+        border-top: none;
+        font-size: 14px;
+        color: #333;
+        line-height: 1.5;
+
+        a{
+        	padding: 10px;
+        }
+    }
+
+    .ui-tab-item-active {
+        border-top: 2px solid #f90;
+        padding-top: 6px;
+        width: 53px;
+    }
+
+    .@{prefix}-tab-block {
+        min-height: 90px;
+        _height: 90px;
+        background-color: #fff;
+    }
+}
+
+.@{prefix}-tab.@{prefix}-middle {
+
+	.@{prefix}-tab-ul {
+        border-bottom: 1px solid @tab-item-border-color;
+    }
+
+    .@{prefix}-tab-item {
+        padding: 8px 5px;
+        width: 286px;
+        border-bottom: none;
+        border-top: none;
+        font-size: 14px;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .ui-tab-item-active {
+        border-top: 2px solid #f90;
+        padding-top: 6px;
+        width: 287px;
+    }
+
+    .@{prefix}-tab-block {
+        min-height: 36px;
+        _height: 36px;
+        background-color: #fff;
+    }
+}

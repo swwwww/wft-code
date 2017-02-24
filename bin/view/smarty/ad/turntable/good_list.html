@@ -1,0 +1,162 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+    {css file="css/ad/turntable/turntable.css"}
+{/block}
+
+{block name="head_back"}
+<button class="back">
+    <a class="action left" href="javascript:;">返回</a>
+</button>
+{/block}
+{block name="head_forward"}
+<button class="menu js-slide-menu">
+</button>
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="lott" id="lott">
+    <div class="lott-content glist-head">
+        <i class="lott-logo"></i>
+        <p class="lott-head">
+            <span class="lott-head-msg">免费</span>门票、<span class="lott-head-msg">5万</span>红包等你抢！
+        </p>
+        <div class="glist-my-win">
+            <span class="glist-see-title">我的奖品</span>
+        </div>
+    </div>
+</section>
+
+<article id="glist" class="glist">
+
+    <section id="good-see-world glist-my" class="good-see glist-my">
+        <div class="glist-my-own">
+            <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg" class="glist-my-pic">
+            <div class="glist-my-info">
+                <p class="glist-my-name">用户名用户名</p>
+                <p class="glist-my-chance">剩余抽奖机会:
+                    <span class="glist-my-num">200</span>
+                </p>
+            </div>
+            <a href="#" class="glist-my-btn">继续抽奖</a>
+        </div>
+    </section>
+
+    <section class="glist-good">
+            <div class="glist-good-list">
+                <a href="javascript: ;" style="display: block;">
+                    <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg" class="glist-good-img">
+                    <span class="glist-good-name">品名称商品名称商品名称</span>
+                    <p class="glist-good-end">
+                        <span class="glist-good-title">截止时间：</span>
+                        <time class="glist-good-time">2016-9-9</time>
+                    </p>
+                </a>
+                <a href="javascript: ;" class="glist-good-btn to-get">领取</a>
+                <a href="javascript: ;" class="glist-good-btn to-use" style="display: none">立即使用</a>
+            </div>
+
+        <div class="glist-good-list">
+            <a href="javascript: ;" style="display: block;">
+                <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg" class="glist-good-img">
+                <span class="glist-good-name">品名称商品名称商品名称</span>
+                <p class="glist-good-end">
+                    <span class="glist-good-title">截止时间：</span>
+                    <time class="glist-good-time">2016-9-9</time>
+                </p>
+            </a>
+            <a href="javascript: ;" class="glist-good-btn to-get">领取</a>
+            <a href="javascript: ;" class="glist-good-btn to-use" style="display: none">立即使用</a>
+        </div>
+
+        <div class="glist-good-list">
+            <a href="javascript: ;" style="display: block;">
+                <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg" class="glist-good-img">
+                <span class="glist-good-name">品名称商品名称商品名称</span>
+                <p class="glist-good-end">
+                    <span class="glist-good-title">截止时间：</span>
+                    <time class="glist-good-time">2016-9-9</time>
+                </p>
+            </a>
+            <a href="javascript: ;" class="glist-good-btn to-get">领取</a>
+            <a href="javascript: ;" class="glist-good-btn to-use" style="display: none">立即使用</a>
+        </div>
+
+        <div class="glist-good-list">
+            <a href="javascript: ;" style="display: block;">
+                <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg" class="glist-good-img">
+                <span class="glist-good-name">品名称商品名称商品名称</span>
+                <p class="glist-good-end">
+                    <span class="glist-good-title">截止时间：</span>
+                    <time class="glist-good-time">2016-9-9</time>
+                </p>
+            </a>
+            <a href="javascript: ;" class="glist-good-btn to-get">领取</a>
+            <a href="javascript: ;" class="glist-good-btn to-use" style="display: none">立即使用</a>
+        </div>
+
+        <div class="glist-good-list">
+            <a href="javascript: ;" style="display: block;">
+                <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg" class="glist-good-img">
+                <span class="glist-good-name">品名称商品名称商品名称</span>
+                <p class="glist-good-end">
+                    <span class="glist-good-title">截止时间：</span>
+                    <time class="glist-good-time">2016-9-9</time>
+                </p>
+            </a>
+            <a href="javascript: ;" class="glist-good-btn to-get" style="display: none">领取</a>
+            <a href="javascript: ;" class="glist-good-btn to-use" >立即使用</a>
+        </div>
+    </section>
+
+    <section class="glist-rule">
+        <div class="glist-my-win glist-rule">
+            <span class="glist-see-title">活动规则</span>
+        </div>
+        <div class="glist-rule-info">
+            <p>1.每人每日有2次抽奖机会。抽奖机会不使用则当日清零。
+                如何增加抽奖机会及其他活动问题，请咨询玩翻天小七（微信号：wanfantian1）
+            </p>
+            <img src="/static/img/market/Qcode.jpg" class="glist-rule-img">
+            <p> 2.奖品可用于在玩翻天上购买对应的商品直接抵现。抽到奖品请及时领取。
+                微信用户查看奖品及订单，可在微信服务号【玩翻天亲子（微信号：wftapp）】
+                中查看。app用户在玩翻天app中直接查看。（*使用在玩翻天填写的手机号即可登陆查看）
+            </p>
+            <p>3.每日特等奖，在当天10:00开始公布与发放。</p>
+            <p>4. 活动开始时间:2016年7月11日10:00，活动结束时间:2016年7月18日16:00.</p>
+            <p>5.活动中若发现作弊行为，玩翻天有权取消用户所获得的奖励，让更多小玩家可以享受到福利。</p>
+            <p>*本次活动在法律范围内 最终解释权归玩翻天所有</p>
+        </div>
+    </section>
+</article>
+
+<!--新用户输入手机号领取-->
+<section class="give mark-pos" id="give" style="display: none">
+    <div class="give-purse">
+        <img src="/static/img/market/pruse_bg.png" class="give-purse">
+        <input class="give-purse-phone" type="tel" id="give-purse-phone" placeholder="输入您的手机号码">
+    </div>
+    <a href="#" class="submit">
+        <img src="/static/img/market/sure_btn.png" class="give-sure">
+    </a>
+</section>
+<!--领取成功的弹框-->
+<section class="succ mark-pos" id="succ" style="display: none">
+    <div class="succ-info">
+        <img src="/static/img/market/succ_get.png" class="succ-get">
+        <p class="succ-info-font">领取成功！<br>打开玩翻天最新版</p>
+    </div>
+    <a href="#" class="succ-btn">
+        <img src="/static/img/market/imm_get.png" class="succ-btn-img">
+    </a>
+</section>
+<!--遮罩层-->
+<div class="mark" id="mark" style="display: none"></div>
+<div class="error-tips" id="loginTip"> </div>
+
+{/block}
+
+{block name="js" append}
+{js file="js/lib/zepto.min.js"}
+{js file="js/ad/turntable/turntable.js"}
+{js file="js/ad/turntable/rotateModule.js"}
+{/block}

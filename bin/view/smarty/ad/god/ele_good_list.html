@@ -1,0 +1,28 @@
+<section class="act-list">
+    {foreach $lottery_vo.other_goods as $key => $goods}
+    <a href="
+            {if $goods.product_type == 0}
+                {if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id={$goods.product_id}{/if}
+            {else}
+                {if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/kidsplay/info?id={$goods.product_id}{/if}
+            {/if}" class="act-item dib pr js-action-redirect" data-lottery-id="{$goods.lottery-id}" data-id="{$goods.product_id}" data-type="{$goods.product_type}">
+
+            {if $goods.sell_status==0}
+            <i class="item-com can_buy dib pa"><span class="item-log pa">可接券</span>
+            {else if $goods.sell_status==1}
+                <i class="item-com sell_out dib pa"><span class="item-log pa">已售完</span>
+            {elseif $goods.sell_status==2}
+                    <i class="item-com book_hotel dib pa"><span class="item-log pa">订酒店</span>
+            {/if}
+
+         </i>
+        <img src="{$goods.product_image}" class="item-img">
+        <span class="item-name db tc">{$goods.product_name}</span>
+        <span class="item-price tc db tc">￥{$goods.new_price}</span>
+    </a>
+    {/foreach}
+</section>
+
+{capture append="widget_js"}
+{js file="js/util/app_bridge.js"}
+{/capture}

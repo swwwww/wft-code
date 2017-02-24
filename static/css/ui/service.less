@@ -1,0 +1,241 @@
+/*#YSF-BTN-HOLDER,*/
+/*#online-service {*/
+/*position: fixed;*/
+/*max-width: 30px;*/
+/*max-height: 120px;*/
+/*right: 30px;*/
+/*bottom: 0px;*/
+/*cursor: pointer;*/
+/*overflow: visible;*/
+/*filter: alpha(opacity=100);*/
+/*opacity: 1;*/
+/*z-index: 9990;*/
+/*}*/
+/*#online-service {*/
+/*font-size: 45px;*/
+/*}*/
+/*#YSF-CUSTOM-ENTRY-1 img {*/
+/*width: 55px;*/
+/*height: auto;*/
+/*}*/
+/*#YSF-CUSTOM-ENTRY-1 {*/
+/*position: fixed;*/
+/*bottom: 290px;*/
+/*width: 62px;*/
+/*right: 50%;*/
+/*transform: translate3D(335px, 0, 0);*/
+/*-webkit-transform: translate3D(335px, 0, 0);*/
+/*background-color: #F96868;*/
+/*border-radius: 14px;*/
+/*box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.25);*/
+/*}*/
+/*#YSF-BTN-HOLDER,*/
+/*#YSF-BTN-HOLDER {*/
+/*top: 65% !important;*/
+/*}*/
+/*#YSF-BTN-CIRCLE {*/
+/*display: none;*/
+/*position: absolute;*/
+/*right: -5px;*/
+/*top: -5px;*/
+/*width: auto;*/
+/*min-width: 12px;*/
+/*height: 20px;*/
+/*padding: 0 4px;*/
+/*background-color: #f00;*/
+/*font-size: 12px;*/
+/*line-height: 20px;*/
+/*color: #fff;*/
+/*text-align: center;*/
+/*white-space: nowrap;*/
+/*font-family: sans-serif;*/
+/*border-radius: 10px;*/
+/*z-index: 1;*/
+/*}*/
+/*#YSF-BTN-HOLDER.layer-1 #YSF-BTN-BUBBLE {*/
+/*bottom: 9px;*/
+/*}*/
+/*#YSF-BTN-BUBBLE {*/
+/*display: none;*/
+/*position: absolute;*/
+/*left: -274px;*/
+/*bottom: 0px;*/
+/*width: 278px;*/
+/*height: 80px;*/
+/*box-sizing: border-box;*/
+/*padding: 14px 22px;*/
+/*filter: alpha(opacity=100);*/
+/*opacity: 1;*/
+/*background: url(https://qiyukf.com/sdk//res/img/sdk/bg_floatMsg2x.png) no-repeat;*/
+/*background-size: 278px 80px;*/
+/*z-index: 1;*/
+/*}*/
+
+/**
+     * 修改图片位置
+     *
+     * @attribute {Number} right            - 设置图片距离浏览器右边距(可变)
+     * @attribute {Number} bottom            - 设置图片距离浏览器下边距(可变)
+     * @attribute {Number} max-width        - 设置图片最大宽度,建议设置为none
+     * @attribute {Number} max-height        - 设置图片最大高度,建议设置为none
+     */
+
+body #YSF-BTN-HOLDER {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  left: 12px;
+  bottom: 13px;
+  max-width: none;
+  max-height: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/**
+ * 清除阴影
+ *
+ * @attribute {Number} right            - 设置图片距离容器右边距,建议设置为0
+ * @attribute {Number} bottom            - 设置图片距离容器下边距,建议设置为0
+ * @attribute {Number} box-shadow        - 阴影属性,建议设置为none
+ */
+
+#YSF-BTN-HOLDER #YSF-CUSTOM-ENTRY-0{
+  width: 100px;
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  box-shadow: none;
+}
+
+/**
+ * 修改图片大小
+ *
+ * @attribute {Number} width             - 设置图片宽度(可变)
+ * @attribute {Number} height            - 设置图片高度(可变)
+ * @attribute {Number} max-width        - 设置图片最大宽度,建议设置为none
+ * @attribute {Number} max-width        - 设置图片最大高度,建议设置为none
+ */
+
+#YSF-BTN-HOLDER #YSF-CUSTOM-ENTRY-0
+img{
+  margin: 30px auto;
+  width:40px;
+  height:40px;
+  max-width: none;
+  max-height: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#YSF-BTN-HOLDER #YSF-CUSTOM-ENTRY-0
+img:active{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.items{
+  width: 750px;
+  height: 105px;
+  border-top: 1px solid #cccccc;
+  font-size: 30px;
+  line-height: 60px;
+  background: #fff;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+
+  .items-service{
+    float: left;
+    width: 138px;
+    height: 60px;
+    margin: 18px 0 0 25px;
+    padding-left: 65px;
+    border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border: 2px solid #505050;
+    background: #fff url("/static/img/site/mobile/icons2.png") no-repeat 0 -5594px;
+  }
+
+  .items-order{
+    float: left;
+    width: 156px;
+    height: 60px;
+    margin: 18px 0 0 104px;
+    font-size: 28px;
+    color: #505050;
+    text-align: center;
+    border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border: 2px solid #505050;
+  }
+
+  .items-pay{
+    float: right;
+    width: 196px;
+    height: 60px;
+    font-size: 28px;
+    color: #fa6e51;
+    text-align: center;
+    margin: 18px 25px 0 0;
+    border-radius: 12px 12px 12px 12px;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border: 2px solid #fa6e51;
+  }
+}
+
+.otherCity{
+  .items-order{
+    margin: 18px 0 0 25px;
+  }
+}
+
+.mark-pos {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.cancel{
+  z-index: 2;
+  width: 540px;
+  height: 258px;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 26px;
+  -moz-border-radius: 26px;
+  border-radius: 26px;
+  .cancel-head{
+    font-size: 36px;
+    color: #000;
+    text-align: center;
+    padding-bottom: 64px;
+    margin-top: 69px;
+    border-bottom: 2px solid #CED2D6;
+  }
+  .cancel-foot{
+    font-size: 34px;
+    line-height: 75px;
+    width: 100%;
+  }
+  .cancel-foot-cancel{
+    border-right:  2px solid #CED2D6;;
+  }
+  .cancel-foot-cancel,.cancel-foot-sure{
+    color: #027BFF;
+    display: inline-block;
+    line-height: 68px;
+    width: 48.85%;
+    text-align: center;
+  }
+}
+
+.mark {
+  width: 750px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}

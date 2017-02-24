@@ -1,0 +1,278 @@
+.account-head {
+  width: 750px;
+  background: -ms-linear-gradient(top, #fee567, #fed459);
+  background: -moz-linear-gradient(top, #fee567, #fed459);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fee567), to(#fed459));
+  background: -webkit-linear-gradient(top, #fee567, #fed459);
+  background: -o-linear-gradient(top, #fee567, #fed459);
+}
+.account-head .head-info {
+  color: #ffffff;
+  padding: 45px 45px 0px 35px;
+}
+.account-head .head-info .icon-purse {
+  width: 165px;
+  height: 122px;
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px 5px;
+}
+.account-head .head-info .remain-money {
+  top: 48px;
+  left: 190px;
+}
+.account-head .head-info .remain-title {
+  font-size: 30px;
+}
+.account-head .head-info .money-value {
+  font-size: 54px;
+}
+.account-head .head-info .charge-btn {
+  font-size: 30px;
+  height: 48px;
+  line-height: 48px;
+  width: 152px;
+  text-align: center;
+  border: 2px solid #ffffff;
+  border-radius: 26px;
+  top: 43px;
+  right: 40px;
+  background: #ffd45b;
+  box-shadow: 2px 6px 2px #ffc953;
+}
+.account-head .head-info .recharge-btn {
+  font-size: 30px;
+  height: 48px;
+  line-height: 48px;
+  width: 152px;
+  text-align: center;
+  border: 2px solid #ffffff;
+  border-radius: 26px;
+  top: 122px;
+  right: 40px;
+  background: #ffd45b;
+  box-shadow: 2px 6px 2px #ffc953;
+}
+.account-head .head-href {
+  padding: 35px 45px 25px 45px ;
+}
+.account-head .user_instr,
+.account-head .user_pay {
+  color: #9a5213;
+  text-decoration: underline;
+}
+.account-head .user_instr {
+  font-size: 22px;
+}
+.account-head .user_pay {
+  font-size: 26px;
+}
+.account-head .go-act-play {
+  height: 70px;
+  line-height: 70px;
+  color: #9a5213;
+  font-size: 30px;
+  padding: 0 35px 0 45px;
+  border-top: 2px solid #e4bb4e;
+  border-bottom: 2px solid #eeb84b;
+}
+.account-head .arrow-icon {
+  right: 37px;
+  bottom: 25px;
+  height: 22px;
+  width: 22px;
+  border: 2px solid #9a5213;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+.expense-list {
+  /*消费*/
+}
+.expense-list .date-time {
+  width: 750px;
+  font-size: 28px;
+  color: #929292;
+  height: 75px;
+  line-height: 75px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.expense-list .list-item {
+  padding: 0 35px;
+  border-bottom: 2px solid #e0e0e0;
+  background-color: #ffffff;
+}
+.expense-list .item-msg,
+.expense-list .item-num {
+  margin: 48px 0;
+}
+.expense-list .item-num {
+  width: 140px;
+  text-align: right;
+}
+.expense-list .item-msg {
+  width: 420px;
+  padding-left: 110px;
+}
+.expense-list .msg-title {
+  font-size: 28px;
+  color: #666666;
+  width: 420px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+}
+.expense-list .msg-value {
+  font-size: 24px;
+  color: #929292;
+}
+.expense-list .num-value {
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+}
+.expense-list .num-date {
+  font-size: 24px;
+  color: #929292;
+}
+.expense-list .icon {
+  top: 42px;
+  left: 35px;
+  width: 82px;
+  height: 82px;
+}
+.expense-list .icon-charge {
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px -911px;
+}
+.expense-list .icon-expense {
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px -771px;
+}
+.expense-list .icon-reback {
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px -627px;
+}
+.expense-list .icon-refund {
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px -186px;
+}
+.expense-list .icon-deposit {
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px -325px;
+}
+.expense-list .icon-buy {
+  background: url(/static/img/site/mobile/icon-remain.png) no-repeat 5px -480px;
+}
+/*弹窗*/
+.succ-pop {
+  width: 660px;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 3;
+}
+.succ-pop .head-top {
+  margin-bottom: 25px;
+}
+.succ-pop .head-top .close-btn,
+.succ-pop .head-top .share-btn {
+  width: 70px;
+  height: 70px;
+}
+.succ-pop .head-top .close-btn {
+  background: url("/static/img/site/mobile/my.png") no-repeat 0 -2417px;
+}
+.succ-pop .head-top .share-btn {
+  background: url("/static/img/site/mobile/my.png") no-repeat 0 -2519px;
+}
+.succ-pop .gradient {
+  background: -moz-linear-gradient(top, #f8924a 0%, #e35728 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8924a), color-stop(100%, #e35728));
+  background: -webkit-linear-gradient(top, #f8924a 0%, #e35728 100%);
+  background: -o-linear-gradient(top, #f8924a 0%, #e35728 100%);
+  background: -ms-linear-gradient(top, #f8924a 0%, #e35728 100%);
+  background: linear-gradient(to bottom, #f8924a 0%, #e35728 100%);
+}
+.succ-pop .share-info {
+  width: 100%;
+  height: auto;
+  color: #ffffff;
+  border-radius: 15px;
+  background: #ffc11b;
+  text-align: center;
+}
+.succ-pop .share-info .info-title {
+  font-size: 40px;
+  /* font-weight: 600; */
+  top: 30px;
+  left: 256px;
+}
+.succ-pop .share-info .share-succ,
+.succ-pop .share-info .comm-charge {
+  width: 593px;
+  height: 400px;
+  margin: 0 auto;
+}
+.succ-pop .share-info .share-succ {
+  background: url("/static/img/site/mobile/vips/vip-purse.png") no-repeat center;
+}
+.succ-pop .share-info .comm-charge {
+  background: url("/static/img/site/mobile/vips/purse.png") no-repeat center;
+}
+.succ-pop .share-info .get-msg {
+  font-size: 36px;
+  top: 285px;
+  left: 0;
+  letter-spacing: 2px;
+  width: 100%;
+}
+.succ-pop .share-info .get-msg .lottery-chance {
+  font-size: 36px;
+  color: #a87443;
+  margin: 0 5px;
+}
+.succ-pop .share-info .get-msg .share-logo {
+  width: 660px;
+  height: 330px;
+}
+.succ-pop .share-info .get-msg .msg-money {
+  font-size: 30px;
+}
+.succ-pop .share-info .get-chance {
+  top: 310px;
+}
+.succ-pop .share-info .bottom-btn {
+  width: 100%;
+  height: 160px;
+  background-color: #ffcb4b;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.succ-pop .share-info .share-to {
+  font-size: 36px;
+  margin-top: 30px;
+  left: 35px;
+  width: 390px;
+  height: 75px;
+  line-height: 75px;
+  color: #ffffff;
+  background-color: #ffb72b;
+  border-radius: 10px;
+  border: 2px solid #ffffff;
+}
+.succ-pop .share-info .icon-hand {
+  width: 70px;
+  height: 70px;
+  background: url(/static/img/site/mobile/my.png) no-repeat 0 -2614px;
+  zoom: 2;
+  top: 7px;
+  left: 68px;
+}
+.succ-pop .share-info .order-detail {
+  font-size: 24px;
+  bottom: 35px;
+  right: 30px;
+  text-decoration: underline;
+}

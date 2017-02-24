@@ -1,0 +1,237 @@
+// 浮动
+.fl (@type: left) {
+    float: @type;
+}
+
+// 清除浮动
+.clearfix () {
+    display: block;
+    &:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    *zoom: 1;
+}
+
+// 重设列表的样式
+.reset-list () {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+// 文字居中
+.middle-text(@height) {
+    height: @height;
+    line-height: @height;
+}
+
+// 不透明度
+.opacity (@opacity) {
+    opacity: @opacity / 100;
+    filter: ~"alpha(opacity=@{opacity})";
+}
+
+// 提供inline-block的兼容显示效果
+.inline-block () {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+// 内容截断显示...
+.ellipse-overflow () {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+// 隐藏元素内文字
+.indent-text () {
+    text-indent: -500%;
+    // IE6,7 下使用text-indent会导致内容消失，因此做下hack
+    *text-indent: 0;
+    *font-size: 0;
+    *line-height: 0;
+}
+
+// 是否允许文字选择，默认不允许
+.user-select (@type:none) {
+    // 火狐
+    -moz-user-select: @type;
+    // webkit浏览器
+    -webkit-user-select: @type;
+    // IE10
+    -ms-user-select: @type;
+    // 早期浏览器
+    -khtml-user-select: @type;
+    user-select: @type;
+}
+
+// 鼠标可交互
+.interactive-cursor () {
+    cursor: pointer;
+}
+
+// CSS3 相关
+
+// 圆角
+.border-radius (...) {
+    -moz-border-radius: @arguments;
+    -webkit-border-radius: @arguments;
+    border-radius: @arguments;
+}
+
+// 阴影
+// @x 横轴偏移
+// @y 纵轴偏移
+// @blur 阴影偏移
+// @color 阴影颜色
+.box-shadow (...) {
+    -moz-box-shadow: @arguments;
+    -webkit-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+
+// 盒模型计算模式
+// @type border-box | content-box
+.box-sizing (@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing: @type;
+    -ms-box-sizing: @type;
+    box-sizing: @type;
+}
+
+// 水平标题
+.horizontal-title() {
+    text-align: center;
+    padding: 10px 60px;
+    background-color: #eee;
+    color: #f30;
+    font-weight: bold;
+    font-family: "Microsoft YAHEI";
+    font-size: 14px;
+    letter-spacing: 3px;
+    vertical-align: middle;
+}
+
+.dfr (@dir:row) {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: @dir;
+    flex-flow: @dir;
+}
+
+.dfc (@dir:column){
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column;
+    flex-flow: column;
+    -webkit-flex-flow: @dir;
+    flex-flow: @dir;
+}
+
+.tap-light(){
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.box-sizing(@type:border-box){
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+//CSS3边框属性//
+//圆角边框//
+.border_radius(@t:0; @r:0; @b:0; @l:0){
+    -webkit-border-radius: @t @r @b @l;
+    -moz-border-radius: @t @r @b @l;
+    border-radius: @t @r @b @l;
+}
+
+//CSS3 动画*/
+.transform_rotate(@deg:45deg){
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+    transform: rotate(@deg);
+}
+
+.transform_trans(@x; @y;){
+    -webkit-transform: translate(@x, @y);
+    -moz-transform: translate(@x, @y);
+    -ms-transform: translate(@x, @y);
+    -o-transform: translate(@x, @y);
+    transform: translate(@x, @y);
+}
+
+
+
+//上下左右边边框
+.border(all; @width:1px; @type:solid; @color:#ccc){
+    border: @width @type @color;
+}
+.border(top; @width:1px; @type:solid; @color:#ccc){
+    border-top: @width @type @color;
+}
+.border(right; @width:1px; @type:solid; @color:#ccc){
+    border-right: @width @type @color;
+}
+.border(bottom; @width:1px; @type:solid; @color:#ccc){
+    border-bottom: @width @type @color;
+}
+.border(left; @width:1px; @type:solid; @color:#ccc){
+    border-left: @width @type @color;
+}
+
+//背景图片
+//.bg(@color:#f7f7f8; @url:url; @repeat:no-repeat; @x:0; @y:0;){
+//    background: @color @url @repeat @x @y;
+//};
+
+
+//定位相关的
+.pos(@pos:absolute; @t:auto; @r:auto; @b:auto; @l:auto){
+    position: @pos;
+    top: @t;
+    right: @r;
+    bottom: @b;
+    left: @l;
+}
+
+//固定到屏幕底部
+.fix_b(){
+    max-width: 750px;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+//弹窗的遮罩层
+.mask_layer(@z-index:0){
+    max-width: 750px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(99,99,99,0.7);
+    z-index: @z-index;
+    margin: 0 auto;
+}
+//行分等比
+.eq_divide(@n){
+    display: block;
+    float: left;
+    width: 100%/@n;
+    .clearfix();
+}

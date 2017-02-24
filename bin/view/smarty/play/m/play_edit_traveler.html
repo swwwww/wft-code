@@ -1,0 +1,30 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"添加出行人"}{/block}
+
+{block name="css" append}
+    {css file="css/play/m/play_edit_traveler.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+    <div class="per">
+        <form class="per-form">
+            <span class="per-title">姓名</span>
+            <input class="per-form-input" placeholder="请输入您的姓名" value="{$res.name}" id="name">
+        </form>
+
+        <form class="per-form">
+            <span class="per-title">身份证号</span>
+            <input class="per-form-input" placeholder="请输入您的身份证号码" value="{$res.id_num}" id="id_num" type="text">
+        </form>
+        <button class="per-button" id="submit">确定</button>
+        <span class="per-notice">出行人信息将被用来购买保险，请如实填写。</span>
+    </div>
+
+    <input type="hidden" name="id" id="associates_id" value="{$res.associates_id}">
+<div id="tips-dia"></div> <!--提示框-->
+{/block}
+
+{block name="js" append}
+{js file="js/play/edit_traveller.js"}
+{/block}

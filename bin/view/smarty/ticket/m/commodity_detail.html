@@ -1,0 +1,641 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"{$res.title}"}{/block}
+{block name="css" append}
+{css file="css/ticket/m/commodity_detail.css"}
+{css file="css/lib/photoswipe.css"}
+<!--<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.css" rel="stylesheet">-->
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <div class="wrapper">
+        <div class="wrapper-head">
+
+            {include file="member/m/ele_member_banner.html" type="show_goods_banner" position="top" url="member/guide"}
+
+            <div class="wrapper-head-cover"> <!--非会员pdt65需要去掉-->
+                <img src="{$res.cover}"/>
+                <em></em>
+                {if $res.is_collect == 0}
+                <span class="collect-btn" id="collect"></span>
+                {else}
+                <span class="collect-btn active" id="collect"></span>
+                {/if}
+            </div>
+        </div>
+        <div class="wrapper-info">
+            <p class="wrapper-info-title">{$res.title}</p>
+            <div id="edit_talk">
+                <pre class="talk_msg">{$res.editor_talk}</pre>
+            </div>
+
+            <div class="wrapper-info-content">
+                {if $res.low_price > 0}
+                <span class="low-price">￥<mark>{$res.low_price}</mark>起</span>
+                {else}
+                <span class="low-price">暂无价格信息</span>
+                {/if}
+                <span class="share-gift">分享有礼</span>
+                <span class="share-gift">点评有礼</span>
+                <span class="apply-num">累计报名{$res.buy}人</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tips">
+        <a class="introduce age">
+            <p>
+                <mark>适合年龄：</mark>
+                <span>{$res.age_for}</span>
+            </p>
+        </a>
+        <a class="introduce phone" href="tel:{$res.phone}">
+            <p>
+                <mark>联系电话：</mark>
+                <span>{$res.phone}</span>
+                <i></i>
+            </p>
+        </a>
+
+        <a class="introduce attention">
+            <p>
+                <mark>注意事项：</mark>
+                <span>{$res.matters}</span>
+                <i></i>
+            </p>
+        </a>
+    </div>
+    <div class="package">
+        <h2 class="package-title">精选套系</h2>
+        {if !$res.group_id}
+        {if $res.g_buy !=1}
+        <div class="package-list">
+            {foreach $res.game_order as $key => $val}
+            {if $res.buy_way == 1 || $res.buy_way == 3}
+            {if $val.down_time > $smarty.now && $val.surplus_num >0}
+            <div class="package-list-item" data-way="{$val.item_info.get_way}" data-back="{$val.item_info.back_money}" data-info="{$val.item_info.special_info}" data-price="{$val.price}" data-title="{$val.price_name}" data-num="{$val.surplus_num}" data-group="{$val.is_group}">
+                <p class="item-title">{$val.price_name}</p>
+                {if $res.select_date == 1}
+                <p class="item-info">
+                    <span class="item-info-price">￥{$val.price}起</span>
+                    {if $val.tag}
+                    {foreach $val.tag as $tag_child}
+                    <span class="item-info-refund">{$tag_child}</span>
+                    {/foreach}
+                    {/if}
+                    {if $val.want_score > 0}
+                    <span class="item-info-score">-{$val.want_score}积分</span>
+                    {/if}
+                </p>
+                {else}
+                <p class="item-info">
+                    <span class="item-info-price">￥{$val.price}</span>
+                    {if $val.tag}
+                    {foreach $val.tag as $tag_child}
+                    <span class="item-info-refund">{$tag_child}</span>
+                    {/foreach}
+                    {/if}
+                    {if $val.want_score > 0}
+                    <span class="item-info-score">-{$val.want_score}积分</span>
+                    {/if}
+                    <span class="item-info-ticket">剩余{$val.surplus_num}张</span>
+                </p>
+                {/if}
+                <p class="item-intro">
+                    <span>套系说明</span>
+                    <i></i>
+                    <span class="js-timeout" data-time="{$val.up_time}"></span>
+                </p>
+                {if $val.down_time > $smarty.now && $val.surplus_num >0 && $val.buy_qualify == 1}
+                {if $val.up_time > $smarty.now}
+                <a class="item-btn active">即将开始</a>
+                {elseif $val.new_user_buy == 2}
+                <a class="item-btn active">新用户专享</a>
+                {elseif $res.user_score < $val.want_score}
+                <a class="item-btn" href="/user/scores?id={$res.id}">赚取积分</a>
+                {else}
+                <a class="item-btn" href='/ticket/commodityselect?coupon_id={$res.id}&order_id={$val.order_id}&g_buy={$val.is_group}'>购买</a>
+                {/if}
+                {else}
+                <a class="item-btn" href="/user/seckill?id={$res.id}">我要资格</a>
+                {/if}
+            </div>
+            {/if}
+            {else}
+            {if $val.down_time > $smarty.now && $val.surplus_num >0}
+            <div class="package-list-item">
+                <p class="item-title">{$val.price_name}</p>
+                {if $res.select_date == 1}
+                <p class="item-info">
+                    <span class="item-info-price">￥{$val.price}起</span>
+                    {if $val.tag}
+                    {foreach $val.tag as $tag_child}
+                    <span class="item-info-refund">{$tag_child}</span>
+                    {/foreach}
+                    {/if}
+                    {if $val.want_score > 0}
+                    <span class="item-info-score">-{$val.want_score}积分</span>
+                    {/if}
+                </p>
+                {else}
+                <p class="item-info">
+                    <span class="item-info-price">￥{$val.price}</span>
+                    {if $val.tag}
+                    {foreach $val.tag as $tag_child}
+                    <span class="item-info-refund">{$tag_child}</span>
+                    {/foreach}
+                    {/if}
+                    {if $val.want_score > 0}
+                    <span class="item-info-score">-{$val.want_score}积分</span>
+                    {/if}
+                    <span class="item-info-ticket">剩余{$val.surplus_num}张</span>
+                </p>
+                {/if}
+                <p class="item-intro">
+                    <span>套系说明</span>
+                    <i></i>
+                    <span class="js-timeout" data-time="{$val.up_time}"></span>
+                </p>
+                {if $val.down_time > $smarty.now && $val.surplus_num >0 && $val.buy_qualify == 1}
+                {if $val.up_time > $smarty.now}
+                <a class="item-btn active">即将开始</a>
+                {elseif $val.new_user_buy == 2}
+                <a class="item-btn active">新用户专享</a>
+                {elseif $res.user_score < $val.want_score}
+                <a class="item-btn active">赚取积分</a>
+                {else}
+                <a class="item-btn active">购买</a>
+                {/if}
+                {else}
+                <a class="item-btn active">我要资格</a>
+                {/if}
+            </div>
+            {/if}
+            {/if}
+            {/foreach}
+        </div>
+        {else}
+        <div class="package-list">
+            {foreach $res.game_order as $key => $val}
+            {if $val.down_time > $smarty.now && $val.surplus_num >0}
+            <div class="package-list-item" data-way="{$val.item_info.get_way}" data-back="{$val.item_info.back_money}" data-info="{$val.item_info.special_info}" data-price="{$val.price}" data-title="{$val.price_name}" data-num="{$val.surplus_num}" data-group="{$val.is_group}">
+                <p class="item-title">{$val.price_name}</p>
+                <p class="item-info">
+                    {if $val.is_group == 1}
+                    {if $res.user_group_info[0].status ==0 && floor($res.surplus_num/$res.g_limit)>1}
+                    <span class="item-info-price">{$val.price}</span>
+                    <span class="item-info-group">{$res.g_limit}人成团，还可开团{floor($res.surplus_num/$res.g_limit)>1}个团</span>
+                    {if $val.tag}
+                    {foreach $val.tag as $tag_child}
+                    <span class="item-info-refund">{$tag_child}</span>
+                    {/foreach}
+                    {/if}
+                    {elseif $res.user_group_info[0].status ==1 && $res.user_group_info[0].end_time > $smarty.now}
+                    <span class="item-info-price">{$val.price}</span>
+                    <span class="item-info-group">已参团</span>
+                    {elseif $res.user_group_info[0].status==2}
+                    <span class="item-info-price">{$val.price}</span>
+                    <span class="item-info-ticket">剩余{$val.surplus_num}张</span>
+                    {else}
+                    <span class="item-info-price">{$val.price}</span>
+                    <span class="item-info-ticket">剩余{$val.surplus_num}张</span>
+                    {/if}
+                    {else}
+                    <span class="item-info-price">{$val.price}</span>
+                    <span class="item-info-ticket">剩余{$val.surplus_num}张</span>
+                    {/if}
+                </p>
+                <p class="item-intro">
+                    <span>套系说明</span>
+                    <i></i>
+                    <span class="js-timeout" data-time="{$val.up_time}"></span>
+                </p>
+                {if $res.end_sale_time > $smarty.now && $res.buy_qualify == 1 && $res.surplus_num > 0 && $res.start_sale_time < $smarty.now}
+                {if $val.is_group == 1}
+                {if $res.user_group_info[0].status ==1 && $res.surplus_num/$res.g_limit>1}
+                {if $res.user_group_info[0].end_time > $smarty.now}
+                <a class="item-btn" href="#">邀请好友</a>
+                {else}
+                <a class="item-btn" href="#">开团</a>
+                {/if}
+                {elseif $res.user_group_info[0].status ==2}
+                <a class="item-btn" href="#">拼团成功</a>
+                {else}
+                {if (floor($res.surplus_num / $res.g_limit))<1}
+                <a class="item-btn" href="javascript:;">已结束</a>
+                {else}
+                <a class="item-btn" href="#">开团</a>
+                {/if}
+                {/if}
+                {else}
+                <a class="item-btn" href="#">购买</a>
+                {/if}
+                {/if}
+                {if $res.start_sale_time > $smarty.now}
+                <a class="item-btn active" href="#">等待开抢</a>
+                {else}
+                {if $res.buy_qualify ==0 && $res.end_sale_time > $smarty.now && $res.surplus_num >0}
+                <a class="item-btn" href="/user/seckill?id={$res.id}">我要资格</a>
+                {elseif $res.surplus_num ==0 && $res.end_sale_time > $smarty.now}
+                <a class="item-btn active" href="javascript:;">已售罄</a>
+                {elseif $res.end_sale_time < $smarty.now}
+                <a class="item-btn active" href="javascript:;">已结束</a>
+                {/if}
+                {/if}
+                {if $val.is_group == 1}
+                            <span class="item-tip">
+                                <mark>可拼团</mark>
+                            </span>
+                {/if}
+            </div>
+            {/if}
+            {/foreach}
+        </div>
+        {/if}
+        {/if}
+    </div>
+    <div class="place">
+        <h1 class="place-title">游玩地</h1>
+        <div class="place-list">
+            {foreach $res.shop as $val}
+            <a class="place-list-item" id="{$val.shop_id}" href="/discover/playDetail?id={$val.shop_id}">
+                <p>{$val.shop_name}</p>
+                <span>{$val.address}</span>
+                <i></i>
+            </a>
+            {/foreach}
+        </div>
+    </div>
+
+    <section class="nav">
+        <ul>
+            <li>
+                <a class="active" id="nav_info">
+                    <span>游玩内容</span>
+                    <mark></mark>
+                </a>
+            </li>
+            <li>
+                <a class="" id="nav_rated">
+                    <span>点评({$res.post_number})</span>
+                    <mark></mark>
+                </a>
+            </li>
+            <li>
+                <a class="" id="nav_consult">
+                    <span>咨询({$res.consult|@count})</span>
+                    <mark></mark>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!--游玩地内容显示-->
+    <section class="adv" id="module_info">
+        <div class="edit-content">{$res.information}</div>
+        <div class="coupon">
+            <h3>猜你喜欢</h3>
+            <ul class="coupon-list">
+                {foreach $res.game_list as $val}
+                <li>
+                    <a href="/ticket/commodityDetail?id={$val.id}">
+                        <img src="{$val.cover}" />
+                        <span>¥{$val.price}起</span>
+                        <p>{$val.name}</p>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+    </section>
+
+    <!--评价内容显示-->
+    <section class="adv" id="module_rated">
+        {if ! $res.post_list}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {else}
+        <div class="rated">
+            <div class="rated-title">
+                <span class="rated-total">整体评分</span>
+                <span class="rated-star">
+                    <mark style="width:{$res.whole_score/5*100}%"></mark>
+                </span>
+                <span class="rated-score">{$res.whole_score}</span>
+                <span class="more-consult">用户咨询</span>
+            </div>
+
+            <div class="rated-list">
+                {foreach $res.post_list as $val}
+                <div class="rated-list-item" data-id="{$val.id}">
+                    <div class="rated-user">
+                        <span class="rated-id">{$val.author}</span>
+                        <span class="rated-star user-rated">
+                            <mark style="width:{$val.score/5*100}%"></mark>
+                        </span>
+                        {if $val.accept == 1}
+                        <span class="rated-hot">小编采纳</span>
+                        {else}
+                        {/if}
+                    </div>
+                    <p class="rated-time">{$val.dateline|date_format:'%Y-%m-%d'}</p>
+                    {foreach $val.message as $text}
+                    {if $text.t == 1}
+                    <p class="rated-text">{$text.val}</p>
+                    {/if}
+                    {/foreach}
+                    <ul class="img-list gallery" id="Gallery">
+                        {foreach $val.message as $pic}
+                        {if $pic.t == 2}
+                        <li>
+                            <a class="gallery-link" href="{$pic.val}">
+                                <img class="gallery-img" src="{$pic.val}"/>
+                            </a>
+                        </li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                    <p class="rated-detail">
+                        <span class="name">{$val.link_name}</span>
+                        <span class="comment" data-id="{$val.id}">{$val.reply_number}</span>
+                        {if $val.is_like == 1}
+                        <span class="like active" data-mid="{$val.id}">{$val.like_number}</span>
+                        {else}
+                        <span class="like" data-mid="{$val.id}">{$val.like_number}</span>
+                        {/if}
+                    </p>
+                    <img class="prof-id" src="{$val.author_img}"/>
+                </div>
+                {/foreach}
+            </div>
+        </div>
+        {/if}
+    </section>
+
+    <!--咨询内容显示-->
+    <section class="adv" id="module_consult">
+        <div class="consult-main">
+            <form class="consult-question">
+                <textarea id="textarea" placeholder="请输入您想要咨询的问题，玩翻天客服会尽快回复您哦！~"></textarea>
+                <div class="put-question" data-id="{$res.id}" id="consult_btn">我要提问</div>
+            </form>
+            {if ! $res.consult}
+            <div class="no-data">
+                <img src="/static/img/site/mobile/nodata.gif" />
+            </div>
+            {else}
+            {foreach $res.consult as $val}
+            <div class="consult-dialogue" data-id="{$val.uid}">
+                <p class="consult-info">
+                    <span class="consult-name">{$val.username}</span>
+                    <span class="consult-time">{$val.dateline|date_format:'%Y-%m-%d'}</span>
+                </p>
+                <p class="consult-question">{$val.msg}</p>
+                {if $val.reply}
+                {foreach $val.reply as $reply}
+                <div class="consult-answer">
+                    <p class="answer-info">
+                        <span class="answer-name">{$reply.username}</span>
+                        <span class="answer-time">{$reply.dateline|date_format:'%Y-%m-%d'}</span>
+                    </p>
+                    <p class="answer-content">{$reply.msg}</p>
+                    <div class="triangle-up"></div>
+                    <img class="consult-portrait portrait-margin" src="{$reply.img}" />
+                </div>
+                <img class="consult-portrait" src="{$val.img}" />
+                {/foreach}
+                {/if}
+            </div>
+            {/foreach}
+            {/if}
+        </div>
+    </section>
+    {if !$res.group_id}
+    {if $res.buy_way ==1 || $res.buy_way ==3}
+    <div class="footer-b">
+        {if $res.customer_service_group_id}
+        <a class="ask consult" href="javaScript:;">客服</a>
+        {else}
+        <a class="ask consult" href="javaScript:;">咨询
+            {if $res.consult_num > 0}
+            <i>{$res.consult_num}</i>
+            {/if}
+        </a>
+        {/if}
+        <a class="ask comments" href="/comment/commentListAll?type=2&coupon_id={$res.id}&buy_log={$res.buy_log}">点评
+            {if $res.post_number > 0}
+            <i>{$res.post_number}</i>
+            {else}
+            {/if}
+        </a>
+        <a class="share" href="javaScript:;">分享</a>
+        {if $res.cooperation == 1}
+        {if $res.start_sale_time > $smarty.now}
+        <a class="method active" href="">即将开始</a>
+        {elseif $res.end_sale_time < $smarty.now || $res.surplus_num == 0}
+        <a class="method active" href="">报名截止</a>
+        {else}
+        <a class="method" href="">电话咨询</a>
+        {/if}
+        {else}
+        {if $res.sell_status > 0}
+        <a class="method" onclick="highLight();">立刻购买</a>
+        {else}
+        {if $res.qualify_status > 0}
+        <a class="method" href="/user/seckill?id={$res.id}">我要资格</a>
+        {else}
+        {if $res.start_status > 0}
+        <a class="method active" href="">即将开始</a>
+        {elseif $res.new_status > 0}
+        <a class="method active" href="">新用户专享</a>
+        {elseif $res.end_sale_time < $smarty.now || $res.surplus_num <=0}
+        {if $res.group_data}
+        <a class="method" onclick="highLight();">还可参团</a>
+        {else}
+        <a class="method active">报名截止</a>
+        {/if}
+        {/if}
+        {/if}
+        {/if}
+        {/if}
+    </div>
+    {else}
+    <div class="footer-b">
+        {if $res.customer_service_group_id}
+        <a class="ask consult" href="javaScript:;">客服</a>
+        {else}
+        <a class="ask consult" href="javaScript:;">咨询
+            {if $res.consult_num > 0}
+            <i>{$res.consult_num}</i>
+            {/if}
+        </a>
+        {/if}
+        <a class="ask comments" href="/comment/commentListAll?type=2&coupon_id={$res.id}&buy_log={$res.buy_log}">点评
+            {if $res.post_number > 0}
+            <i>{$res.post_number}</i>
+            {else}
+            {/if}
+        </a>
+        <a class="share" href="javaScript:;">分享</a>
+        <a class="method active" href="javaScript:;">仅APP购买</a>
+    </div>
+    {/if}
+    {else}
+    <div class="footer-b">
+        {if $res.customer_service_group_id}
+            <a class="ask consult" href="javaScript:;">客服</a>
+        {else}
+            <a class="ask consult" href="javaScript:;">咨询
+                {if $res.consult_num > 0}
+                <i>{$res.consult_num}</i>
+                {/if}
+            </a>
+        {/if}
+        <a class="ask comments" href="/comment/commentListAll?type=2&coupon_id={$res.id}&buy_log={$res.buy_log}">点评
+            <i>{$res.post_number}</i>
+        </a>
+        <a class="share" href="javaScript:;">分享</a>
+        {if $res.user_group_buy_status == 1}
+        {if $res.group_status == 1}
+        <a class="method" href="">邀请好友</a>
+        {elseif $res.group_status == 2}
+        <a class="method" href="">拼团成功</a>
+        {/if}
+        {else}
+        {if $res.group_end_time >= $smarty.now}
+        <a class="method" href="">立刻参团</a>
+        {else}
+        <a class="method" href="">自己开团</a>
+        {/if}
+        {/if}
+    </div>
+    {/if}
+    {if $res.surplus_num == 0}
+    <p class="sell-out">
+        <span class="sell-font">售罄</span>
+    </p>
+    {/if}
+    <input type="hidden" id="commodity_id" value="{$res.id}" />
+    <div class="cover"></div>
+    <div class="share-popup">
+        <div class="picture"></div>
+        <div class="s-matte"></div>
+    </div>
+    <div class="package-popup" style="display: none;">
+        <p class="package-popup-name">
+            <mark>
+                套餐说明
+            </mark>
+        <span class="crossBtn">
+            <i class="cross"></i>
+        </span>
+        </p>
+        <div class="package-popup-title">
+            <P></P>
+            <span></span>
+        </div>
+        <div class="package-popup-info">
+            <mark>【兑换方式】</mark>
+            <pre class="exchangeIntro pre-format"></pre>
+            <mark>【特别说明】</mark>
+            <pre class="specialIntro pre-format"></pre>
+            <mark>【退订说明】</mark>
+            <pre class="refundIntro pre-format"></pre>
+        </div>
+        <div class="package-popup-btn">
+            <a class="total" href="javascript:;">
+                <mark></mark>
+                <span></span>
+            </a>
+            <a class="goBuy"></a>
+        </div>
+    </div>
+    <div class="popup-matte"></div>
+    <input type="hidden" id="verify_code" value='{$res.verify_code}' />
+    <input type="hidden" id="seller_id" value='{$res.seller_id}' />
+</section>
+{/block}
+{block name ="foot-btn"}
+<div class="foot-btn green-top special">
+    <div class="foot-item">
+        <a class="item-icon" href="/recommend/index"></a>
+        {if $user_resource.user}
+        <a class="item-enter" href="/user/center">您好,{$user_resource.user.username}</a>
+        <a class="item-register" href="/auth/logout">注销</a>
+        {else}
+        <a class="item-enter" href="/auth/login">登录</a>
+        <a class="item-register" href="/auth/login">注册</a>
+        {/if}
+        <!--<a class="item-return" href="javascript: window.scrollTo(0,0);">回到顶部</a>-->
+    </div>
+
+    <div class="copyright">Copyright ©2016 玩翻天</div>
+
+    {if $res.customer_service_group_id}
+    <input type="hidden" id="product_type" value="1">
+    {include file="service/elem_service.html" type="good"}
+    {/if}
+
+</div>
+
+{/block}
+
+
+
+{block name="js" append}
+    {js file="js/lib/dropload.js"}
+    {js file="js/lib/template.js"}
+    {js file="js/ticket/commodity_detail.js"}
+    {js file="js/lib/klass.min.js"}
+    {js file="js/lib/code.photoswipe-3.0.5.min.js"}
+    {js file="js/lib/photoSwipe.js"}
+    {js file="js/lib/scrollTop.js"}
+    {literal}
+
+    <script id="more" type="text/html">
+        {{each res}}
+        <div class="rated-list-item" data-id="{{$value.id}}">
+            <div class="rated-user">
+                <span class="rated-id">{{$value.author}}</span>
+                        <span class="rated-star user-rated">
+                            <mark style="width:{{$value.score/5*100}}%"></mark>
+                        </span>
+                {{if $value.accept == 1}}
+                <span class="rated-hot">小编采纳</span>
+                {{else}}
+                {{/if}}
+            </div>
+            <p class="rated-time">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</p>
+            {{each $value.message}}
+            {{if $value.t == 1}}
+            <p class="rated-text">{{$value.val}}</p>
+            {{/if}}
+            {{/each}}
+            <ul class="img-list gallery" id="Gallery">
+                {{each $value.message}}
+                {{if $value.t == 2}}
+                <li>
+                    <a class="gallery-link" href="javascript:;">
+                        <img class="gallery-img" src="{{$value.val}}"/>
+                    </a>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+            <p class="rated-detail">
+                <span class="name">{{$value.link_name}}</span>
+                <a class="comment" data-id="{{$value.id}}" href="/comment/recomment?type={{$value.type}}&pid={$value.id}">{{$value.reply_number}}</a>
+                {{if $value.is_like == 1}}
+                <span class="like active" data-mid="{{$value.id}}">{{$value.like_number}}</span>
+                {{else}}
+                <span class="like" data-mid="{{$value.id}}">{{$value.like_number}}</span>
+                {{/if}}
+            </p>
+            <img class="prof-id" src="{{$value.author_img}}"/>
+        </div>
+        {{/each}}
+    </script>
+    {/literal}
+    {/block}

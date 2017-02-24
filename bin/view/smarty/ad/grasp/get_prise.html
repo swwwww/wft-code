@@ -1,0 +1,144 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"几古家活动-我要抽奖"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/grasp.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="get-prise">
+    <div class="head-title">
+        <i class="title-font db"></i>
+        <div class="wx-name dib tc">
+            <img class="user-img dib" src="{$user_resource.user.img|imageFix}">
+            <p class="user-info dib">
+                <span class="db user-name">{$user_resource.user.username}</span>
+                <span class="db my-score">可用积分：<i id="js_my_score">{$lottery_vo.game_score_total|default:0}</i> 分</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="prise-item">
+        <div class="row-item clearfix">
+            <i class="fl left-incon">
+                <a class="prise-box"></a>
+                <span class="exchange-value dib pa mt20">1积分一次</span>
+            </i>
+            <i class="fr right-incon">
+                <a class="prise-box"></a>
+                <span class="exchange-value dib pa mt20">1积分一次</span>
+            </i>
+        </div>
+
+        <div class="row-item clearfix">
+            <i class="fl left-incon">
+                <a class="prise-box"></a>
+                <span class="exchange-value dib pa">1积分一次</span>
+            </i>
+            <i class="fr right-incon">
+                <a class="prise-box"></a>
+                <span class="exchange-value dib pa">1积分一次</span>
+            </i>
+        </div>
+
+        <div class="row-item clearfix">
+            <i class="fl left-incon">
+                <a class="prise-box"></a>
+                <span class="exchange-value dib pa">1积分一次</span>
+            </i>
+            <i class="fr right-incon">
+                <a class="prise-box"></a>
+                <span class="exchange-value dib pa">1积分一次</span>
+            </i>
+        </div>
+    </div>
+
+    <div class="db prise-foot clearfix">
+        <a class="go-index dib fl" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$lottery_vo.lottery_id}"></a>
+        <i class="rule-handle dib"></i>
+        <a class="prise-btn dib fr" href="{$BASE_URL_MODULE}lottery/record/lottery_id/{$lottery_vo.lottery_id}/luck/1"></a>
+    </div>
+</section>
+
+<!--弹窗部分-->
+<i class="matte dib" style="display: none"></i> <!-- style="display: none"-->
+<!--手机号输入框-->
+<section class="start-rule" id="js-phone-in" style="display: none">
+    <i class="close-ph js_btn_close db pa"></i>
+    <p class="ph-notice">地球人，为方便发奖<br/>请输入自己的手机号哦</p>
+    <input id="js_com_phone" class="ph-input db" placeholder="请输入您的手机号码">
+    <a id="js-ph-login" class="ph-submit db" href="javascript:;"></a>
+</section>
+
+<!--中奖弹窗 验证码弹窗-->
+<section class="good-luck start-rule" id="js-code" style="display: none">
+    <i class="js_btn_close luck-close db pa"></i>
+    <i class="luck-child db pa"></i>
+    <div class="give-friend">
+        <p class="friends-font db tc">哇 恭喜获得：</p>
+        <p class="friends-font db tc">【几古的家】开业体验券</p><!--【几古的家】开业体验券-->
+        <p class="friends-font db tc">点击右上角，向朋友炫耀一下吧</p>
+    </div>
+
+    <!--<h3 class="code-title">几古家体验券预约码</h3>-->
+    <div class="input-item mt10">
+        <div class="item-msg dib tl luck-color">
+            <span class="msg-code dib">体验券预约码：</span>
+            <span id="js_code_1" class="code-no dib" onselectstart="return true;">11212121fsf</span>
+        </div>
+        <!--<span id="js_copy" class="copy-btn dib pa">点此复制</span>-->
+    </div>
+    <p class="time-limit copy-notice db">长按预约码进行复制</p>
+    <p class="time-limit db">预约码有效期：2016年11月20日—2016年12月20日</p>
+    <div class="img-pos pr">
+        <img class="qcode-img db pa get-in" src="/static/img/ad/grasp/4-Qimg.png">
+    </div>
+    <p class="tell-msg dib tc">长按二维码，点菜单【预约体验】进行预约</p>
+</section>
+
+<!--实物弹窗-->
+<section class="good-luck start-rule tool-contain" id="js-tool" style="display: none">
+    <i class="js_btn_close luck-close db pa"></i>
+    <i class="luck-child db pa"></i>
+    <div class="give-friend tool-b">
+        <p class="friends-font db tc">哇 恭喜获得：</p>
+        <p class="friends-font db tc">【几古的家】主题限量文具套装</p>
+        <p class="friends-font db tc">在“我的奖品”可查看领取规则</p>
+        <p class="friends-font db tc">点击右上角，向朋友炫耀一下吧</p>
+    </div>
+</section>
+
+<!--积分不够啦-->
+<section id="js_score_not" class="start-rule socre-not"  style="display: none">
+    <i class="not-enought db pa"></i>
+    <div class="score-font">
+        <span class="not-font db">积分不够啦~</span>
+        <span class="not-font db">快去玩游戏赚积分</span>
+    </div>
+    <a class="go-start-game db" href="{$BASE_URL_MODULE}lottery/game/lottery_id/{$lottery_vo.lottery_id}"></a>
+</section>
+
+<!--再抽一次-->
+<section id="js_try_once" class="start-rule socre-not" style="display: none">
+    <i class="try-again-logo db"></i>
+    <i class="js_btn_close socre-colse db pa"></i>
+    <div class="again-font">
+        <span class="not-font db">oh!还差一点!</span>
+        <span class="not-font db">再抽一次也许就中啦</span>
+    </div>
+</section>
+
+<input type="hidden" id="prise_in" value="">
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+<input type="hidden" id="hide_phone" value="{$lottery_vo.phone}">
+<input type="hidden" id="hide_reward_vo" value='{$award_vo|json_encode}'/>
+
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/util/phone_login.js"}
+{js file="js/ad/grasp/grasp.js"}
+{/block}
+

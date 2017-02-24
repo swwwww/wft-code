@@ -1,0 +1,132 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+.bg(@color:#fff; @url: url(/static/img/site/mobile/icons.png); @repeat:no-repeat; @x:0; @y:0;){
+  background: @color @url @repeat @x @y;
+};
+
+#comment-list {
+  margin-bottom: 170px;
+}
+.comment {
+  background: #fff;
+  margin-top: 20px;
+  .comment-content {
+    padding: 30px 33px 0 120px;
+
+    & img {
+      width: 80px;
+      height: 80px;
+      .border-radius(40px);
+      background-clip: padding-box;
+      .pos(@t:30px; @l:20px);
+    }
+    & .head-info{
+      color: #929292;
+      overflow: hidden;
+      margin-bottom: 15px;
+      & .content-id{
+        font-size: 28px;
+      }
+      & .content-time {
+        font-size: 24px;
+      }
+    }
+    &  .content-msg{
+      font-size: 28px;
+      padding-bottom: 25px;
+      .border(bottom; @color: #e5e5e5);
+    }
+  }
+
+  .comment-pic {
+    padding: 0 51px 50px 120px;
+  }
+  .pic-ul {
+    width: 582px;
+    height: 193px;
+    font-size: 0;
+    & .pic-li{
+      font-size: 30px;
+      & img {
+        width: 193px;
+        height: 193px;
+      }
+    }
+  }
+  .comment-btn {
+    height: 70px;
+    overflow: hidden;
+    .border(top);
+    .border(bottom);
+    font-size: 26px;
+    color: #929292;
+  }
+  .comment-btn-like, .comment-btn-write{
+    height: 31px;
+    width: 120px;
+    padding: 0 91px 0 163px;
+    margin-top: 19px;
+    a{
+      display: block;
+      width: 120px;
+      overflow: hidden;
+      height: 31px;
+      mark{
+        margin-left: 45px;
+      }
+    }
+  }
+  .comment-btn-like {
+    .border(right; @color: #dbdbdb);
+    a {
+      .bg(@x: -15px; @y: -2149px);
+      & mark {
+        line-height: 36px;
+      }
+    }
+  }
+  .comment-btn-write {
+    a {
+      .bg(@x: -14px; @y: -2187px);
+      mark {
+        line-height: 32px;
+      }
+    }
+  }
+
+}
+
+
+.remark-fixed {
+  height: 98px;
+  width: 750px;
+  position: fixed;
+  bottom: 0;
+  background: #f7f7f7;
+  .border(top; @color: #a9a9a9);
+  overflow: hidden;
+  .remark-span{
+    width: 518px;
+    height: 68px;
+    line-height: 68px;
+    font-size: 30px;
+    .border-radius(10px);
+    background-clip: padding-box;
+    background: #fff;
+    margin: 15px 0 0 18px;
+    padding-left: 30px;
+    .border(all; @color: #dbdbdb);
+    color: #d5d5d5;
+  }
+  .remark-mark{
+    width: 152px;
+    line-height: 70px;
+    height: 70px;
+    font-size: 36px;
+    background: #fa6f52;
+    .border-radius(8px);
+    background-clip: padding-box;
+    color: #fff;
+    margin: 15px 0 0 18px;
+  }
+}

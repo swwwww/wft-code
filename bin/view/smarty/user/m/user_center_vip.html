@@ -1,0 +1,243 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="in_title"}{$title|default:"个人中心"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_center_vip.css"}
+{/block}
+
+{block name="inner"}
+<div class="pr main">
+    <section class="person w">
+        <div class="person-info pr">
+            <img src="{if $user_resource.user}{$res.img}{else}{$BASE_URL_MODULE}static/img/site/mobile/ico_user_default.png{/if}" class="person-info-img person-info-photo dib">
+            <div class="person-info-sort tc dib pr">
+                <div class="person-info-name w tc">
+                    {if $user_resource.user}
+                    <span class="dib username">{$res.username}</span>
+                    <a href="/user/editMyInfo"><div class="dib person-info-edit icons fr"></div></a> <!--编辑icon-->
+                    {else}
+                    <a href="{$BASE_URL_MODULE}auth/login" class="dib username">Hi 您还未登录</a>
+                    {/if}
+                </div>
+                <div class="w person-sex">
+                    {if $user_resource.user}
+                    {if $res.sex == 2}
+                    <span class="dib"> {$res.sex_name}<mark class="person-info-icon-woman">{$res.sex_logo}</mark></span>
+                    {else}
+                    <span class="dib"> {$res.sex_name}<mark class="person-info-icon-man">{$res.sex_logo}</mark></span>
+                    {/if}
+                    <span class="person-info-uid dib">| UID:{$res.uid}</span>
+                    {else}
+                    <a href="{$BASE_URL_MODULE}auth/login" class="login-in">点击登录</a>
+                    {/if}
+                </div>
+            </div>
+
+            {if $res.show_my_center_vip}
+                <a class="vip-tag pa" href="/member/specialArea">
+                    {if $res.is_vip == 1}
+                    <i class="vip-icon dib"></i>
+                    <span class="vip-title pr"> VIP会员</span>
+                    {else}
+                    <i class="no-vip-icon dib"></i>
+                    <span class="vip-title pr no-vip"> VIP会员</span>
+                    {/if}
+                </a>
+            {/if}
+        </div>
+    </section>
+    <!--我的订单-->
+    <section class="order">
+        <div  class="order-info pr">
+            <div  class="order-info-order">
+                <a class="db" href="{$BASE_URL_MODULE}user/order">
+                    <i class="icon-line mb10 dib"></i>
+                    <span class="order-info-title dib">我的订单</span>
+                    <span class="order-info-all dib">查看全部订单 </span>
+                </a>
+                <i class="arrow-right"></i>
+            </div>
+
+            <ul class="order-item" id="order-item">
+                <li class="item-li fl tc">
+                    <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=1">
+                        <span class="order-icons db order-pay"></span>
+                        {if $res.need_pay >0}
+                        <span class="order-item-num dib">{$res.need_pay}</span>
+                        {/if}
+                        <p class="order-item-sub">待付款</p>
+                    </a>
+                </li>
+                <li class="item-li fl tc">
+                    <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=2">
+                        <span class="order-icons db order-use"></span>
+                        {if $res.unuse_coupon >0}
+                        <span class="order-item-num dib">{$res.unuse_coupon}</span>
+                        {/if}
+                        <p class="order-item-sub">待使用</p>
+                    </a>
+                </li>
+                <li class="item-li fl tc">
+                    <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=3">
+                        <span class="order-icons db order-eval"></span>
+                        {if $res.need_comment>0}
+                        <span class="order-item-num dib">{$res.need_comment}</span>
+                        {/if}
+                        <p class="order-item-sub">待评价</p>
+                    </a>
+                </li>
+                <li class="item-li fl tc">
+                    <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=4">
+                        <span class="order-icons db order-refund"></span>
+                        {if $res.order_refund>0}
+                        <span class="order-item-num dib">{$res.order_refund}</span>
+                        {/if}
+                        <p class="order-item-sub">退款/返利</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!--列项-->
+    <article class="project-list">
+        {if $res.show_my_center_vip}
+        <div  class="order-info-order pr">
+            <a class="db" href="{$BASE_URL_MODULE}member/specialArea">
+                <i class="icon-line dib"></i>
+                <i class="icon-title dib"></i>
+                <span class="order-info-all dib">全年40000场亲子免费游玩</span>
+            </a>
+            <i class="arrow-right"></i>
+        </div>
+        {/if}
+
+        <div class="item">
+            <a class="item-list pr db" href="{$BASE_URL_MODULE}user/remainAccount">
+                <i class="purse-icon icon pa"></i>
+                <p class="item-info pa dib">
+                    <span class="item-title db">钱包</span>
+                    <span class="item-value db">￥{if $user_resource.user}{$res.money}{else}0{/if}</span>
+                </p>
+            </a>
+            {if $res.show_my_center_vip}
+            <a class="item-list pr db" href="{$BASE_URL_MODULE}member/kidsTravel">
+                <i class="child-traveller-icon icon pa"></i>
+                <p class="item-info pa dib">
+                    <span class="item-title db">免费亲子游</span>
+                    <span class="item-value db">{if $user_resource.user}{$res.free_number}{else}0{/if}次</span>
+                </p>
+                <i class="label-icon db pa"></i>
+                <div class="label-info pa info-pos">免费送</div>
+            </a>
+            {/if}
+
+            <a class="item-list pr db" href="{$BASE_URL_MODULE}coupon/userCoupon">
+                <i class="coupon-icon icon pa"></i>
+                <p class="item-info pa dib">
+                    <span class="item-title db">现金券</span>
+                    <span class="item-value db">{if $user_resource.user}{$res.cashcoupon}{else}0{/if}张</span>
+                </p>
+            </a>
+
+            <a class="item-list pr db" href="{$BASE_URL_MODULE}user/scores">
+                <i class="score-icon icon pa"></i>
+                <p class="item-info pa dib">
+                    <span class="item-title db">积分</span>
+                    <span class="item-value db">{$res.score}</span>
+                </p>
+            </a>
+
+            <a class="item-list pr db" href="{$BASE_URL_MODULE}play/playSelectTraveller">
+                <i class="traveller-icon icon pa"></i>
+                <p class="item-info pa dib">
+                    <span class="item-title db">出行人</span>
+                    <span class="item-value db">{$res.associate_number}</span>
+                </p>
+            </a>
+
+            <a class="item-list pr db" href="{$BASE_URL_MODULE}user/userCollect">
+                <i class="collect-icon icon pa"></i>
+                <p class="item-info pa dib">
+                    <span class="item-title db">收藏</span>
+                    <span class="item-value db">{$res.like_number}</span>
+                </p>
+            </a>
+            <!--</section>-->
+        </div>
+    </article>
+
+    <article class="project-list">
+        <a class="item-list pr db" href="{$BASE_URL_MODULE}user/addressList">
+            <i class="contact-icon icon pa"></i>
+            <p class="item-info pa dib">
+                <span class="item-title db">联系人</span>
+                <span class="item-value db"></span>
+            </p>
+        </a>
+
+        <a class="item-list pr db" href="{$BASE_URL_MODULE}user/babyList">
+            <i class="baby-icon icon pa"></i>
+            <div class="item-info baby-info pa dib">
+                <span class="item-title db">我家baby</span>
+                <div class="user-img">
+                    {if $res.baby|@count}
+                    {foreach $res.baby as $key => $val}
+                    <img class="img-item" src={$val.img}>
+                    {/foreach}
+                    {/if}
+                </div>
+            </div>
+        </a>
+
+        <a class="item-list pr db" href="{$BASE_URL_MODULE}user/wantGo">
+            <i class="go-icon icon pa"></i>
+            <div class="item-info baby-info pa dib">
+                <span class="item-title db">我想去</span>
+            </div>
+        </a>
+
+        {if $res.is_seller == 1}
+        <a class="item-list pr db" href="{$BASE_URL_MODULE}seller/seller">
+            <i class="seller-icon icon pa"></i>
+            <p class="item-info pa dib">
+                <span class="item-title db">销售员</span>
+                <span class="item-value db"></span>
+            </p>
+        </a>
+        {/if}
+        <!--<a class="item-list pr db" href="JavaScript:;">-->
+        <!--<i class="play-icon icon pa"></i>-->
+        <!--<p class="item-info pa dib">-->
+        <!--<span class="item-title db">玩伴圈</span>-->
+        <!--<span class="item-value db">没有页面</span>-->
+        <!--</p>-->
+        <!--</a>-->
+        <!--</section>-->
+
+        <!--<section class="frist-item">-->
+        <!--<a class="item-list pr db" href="javascript:;">-->
+        <!--<i class="player-icon icon pa"></i>-->
+        <!--<p class="item-info pa dib">-->
+        <!--<span class="item-title db">玩伴</span>-->
+        <!--<span class="item-value db">没有页面</span>-->
+        <!--</p>-->
+        <!--</a>-->
+        <!--</section>-->
+    </article>
+
+    <a class="download-app" href="http://wan.wanfantian.com/app/index.php">点我下载玩翻天最新版App</a>
+
+    {if $res.left_total > 0} <!-- && $res.show_my_center_vip-->
+    <a class="lottery-to db pa" href="{$BASE_URL_MODULE}member/guide/share_user_id/{$res.uid}">
+        <i class="lottery-icon db"></i>
+        <span class="lootery-chance pa">
+            <mark class="lottery-num">{$res.left_total}</mark>次
+        </span>
+    </a>
+    {/if}
+</div>
+{/block}
+
+

@@ -1,0 +1,110 @@
+.cons {
+  margin-bottom: 130px;
+  overflow: hidden;
+}
+.cons .cons-ques {
+  border-top: 1px solid #dededf;
+}
+.cons .cons-ques textarea {
+  width: 680px;
+  height: 315px;
+  padding: 40px 25px 0 45px;
+  font-size: 30px;
+  line-height: 40px;
+  border: none;
+  background: #f5f5f5;
+  border-bottom: 1px solid #dcdcdc;
+}
+.cons .cons-ques .cons-ques-put {
+  width: 157px;
+  line-height: 63px;
+  font-size: 30px;
+  text-align: center;
+  background: #fa6e51;
+  color: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: auto;
+  right: 22px;
+  bottom: 22px;
+  left: auto;
+}
+.cons-dial {
+  padding: 42px 30px 42px 125px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.cons-dial .cons-dial-info {
+  color: #333333;
+  overflow: hidden;
+}
+.cons-dial .cons-dial-ques {
+  margin: 30px 0;
+}
+.cons-dial .cons-dial-ans {
+  padding: 35px 20px;
+  background: #fff5dd;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.cons-dial .answer-info {
+  color: #333333;
+  overflow: hidden;
+  line-height: 50px;
+  margin: 0 0 30px 40px;
+}
+.cons-dial .cons-name,
+.cons-dial .answer-name {
+  font-size: 28px;
+}
+.cons-dial .answer-name {
+  margin-left: 46px;
+}
+.cons-dial .answer-time,
+.cons-dial .cons-time {
+  font-size: 24px;
+  margin-right: 60px;
+}
+.cons-dial .triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid #fff5dd;
+  position: absolute;
+  top: 72px;
+  right: auto;
+  bottom: auto;
+  left: 78px;
+  z-index: 999;
+}
+.cons-dial .cons-portrait,
+.cons-dial .portrait-margin {
+  display: block;
+  width: 70px;
+  height: 70px;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+  border-radius: 35px;
+}
+.cons-dial .cons-portrait {
+  position: absolute;
+  top: 30px;
+  right: auto;
+  bottom: auto;
+  left: 25px;
+}
+.cons-dial .portrait-margin {
+  position: absolute;
+  top: 25px;
+  right: auto;
+  bottom: auto;
+  left: 20px;
+}
+.answer-content,
+.cons-dial-ques {
+  font-size: 28px;
+}

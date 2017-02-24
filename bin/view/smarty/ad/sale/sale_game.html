@@ -1,0 +1,133 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"玩翻天双十一，全场1元起！"}{/block}
+
+{block name="css" append}
+    {css file="css/ad/sale/sale.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<header class="game-head">
+    <div class="top-menus clearfix pr">
+        <a class="go-main dib" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$lottery_vo.lottery_id}"></a>
+        <span class="discount dib">全场1折起</span>
+        {if $platform.wft}
+            <i class="icon-share share-btn dib fr"></i>
+        {/if}
+    </div>
+    <i class="db pa red-line"></i>
+</header>
+
+<section class="card db pr">
+    <div class="user-info clearfix">
+        <p class="user-msg fl">
+            <img class="user-img" src="{$user_resource.user.img|imageFix}">
+            <span class="wx-name wx-width">{$user_resource.user.username}</span>
+            <!--<span class="wx-name user-notice">刮下面，领取红包</span>-->
+        </p>
+
+        <p class="game-change fr">
+            刮奖机会：
+            <span id="js_scrape_chance" class="change-num">{$lottery_vo.op_total}</span>
+        </p>
+    </div>
+    <!--//刮奖区-->
+    <div id="lottery-container" class="game-area pr"></div>
+    <!--<span class="game-tips pa js-game-img"></span>-->
+    <!--<span class="font-tips dib js-game-tips pa">刮这里 领红包</span>-->
+
+
+
+    <div class="btn-area clearfix">
+        <a id="js_more_chance" class="btn-left js-more-chance dib fl" href="javascript:;" data-chance-num="{$lottery_vo.login_record.guess_total|default:0} ">更多刮奖机会</a>
+        <a class="btn-right see-prise dib fr" href="{$BASE_URL_MODULE}lottery/record/lottery_id/{$lottery_vo.lottery_id}">查看奖品</a>
+    </div>
+    <i class="card-bottom db pa"></i>
+</section>
+
+<section class="guess">
+    <i class="guess-title db"></i>
+
+    <div class="guess-area">
+        <i class="child-logo pa dib"></i>
+        <h2 class="area-question dib">Hi,遛娃达人~这是哪家游玩地？</h2>
+        <h4 class="area-notice dib">*今天剩余<span class="rule-tips js-anwser-chance"> {$lottery_vo.login_record.guess_total|default:0} </span>次答题机会</h4>
+        <img class="area-img lazyload" data-src="/static/img/{$lottery_vo.subject.right.url}" src="/static/img/site/mobile/index_big.png">
+        <input type="hidden" value={$lottery_vo.subject.right.title} id="area-img-title">
+        <div class="area-right dib">
+            <i id="js_clock" class="dib gray-clock"><!--red-clock-->
+                <span class="time-end">30</span>秒
+            </i>
+
+            <div class="rule-list">
+                <p class="answer-rule">
+                    *每天<span class="rule-tips">5次</span>答题机会
+                </p>
+                <p class="answer-rule">
+                    *答对<span class="rule-tips">1次,+2次</span>刮奖机会
+                </p>
+            </div>
+            <a class="answer-btn dib {if !$lottery_vo.login_record.guess_total}disabled{/if}">我要答题</a>
+        </div>
+
+        <div class="topic-list">
+            {foreach $lottery_vo.subject.choice as $key => $v}
+            <p class="topic-title db"><!--no-ask 没答题   choose选中-->
+                {$key_plus = $key + 1}
+                <label class="topic-label" for="object{$key_plus}" data-title="{$v.title}">
+                    <input class="topic-choose no-ask dib" name="radio" type="radio" id="object{$key_plus}" disabled="disabled">
+                    {$v.title}
+                </label>
+            </p>
+            {/foreach}
+        </div>
+        <i class="card-bottom db pa"></i>
+    </div>
+</section>
+
+<!--蒙层-->
+<div class="matte" style="display: none"></div>
+
+<!--中奖、答对题等-->
+<section class="pop-smile" style="display:none">
+    <p class="smile-content tc pa">恭喜您中奖啦！</p> <!--bingo！回答正确<br>获得2次刮奖机会-->
+    <p class="smile-prise-name tc pa">10元遛娃券</p>
+
+    <a class="get-prise-btn see-prise pa" href="javaScript:;">领取奖品</a>
+    <a class="lottery-again-btn pa" href="javaScript:;">再刮一次</a> <!--再答一次-->
+</section>
+
+
+<section class="pop-weep" style="display: none">
+    <div class="not-get-prise" style="display: none">
+        <p class="weep-content weep-loose tc pa">与奖品擦肩而过<br>不要气馁哦~~</p>
+        <a class="lottery-again-btn loose-btn pa" href="javaScript: ;">再刮一次</a> <!--再答一次-->
+    </div>
+
+    <div class="answer-wrong" style="display: none">
+        <p class="weep-content tc pa">oh no!答错了<br> 宝宝要加油哦！</p>
+
+        <a class="get-prise-btn see-prise pa" href="javaScript: ;">领取奖品</a>
+        <a class="lottery-again-btn pa" href="javaScript: ;">再答一次</a> <!--再答一次-->
+    </div>
+
+    <div id="no-time" class="end-time pa" style="display: none">
+        <i class="white-clock db"></i>
+        <span class="end-msg pa db">时间到啦~<br> 宝宝要加油哦！</span>
+    </div>
+</section>
+
+<!--分享引导-->
+<i class="share-icon db"  style="display:none"></i>
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+
+{block name="js" append}
+{js file="js/lib/scrollTop.js"}
+{js file="js/lib/lottery_card.js"}
+{js file="js/ad/sale/sale_game.js"}
+{/block}
+

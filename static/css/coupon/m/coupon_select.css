@@ -1,0 +1,101 @@
+.cash {
+  width: 680px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  background-clip: padding-box;
+  border: 1px solid #ddd;
+  margin: 25px auto 0;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 10px;
+}
+.cash .cash-shape {
+  border: none;
+  width: 680px;
+  height: 10px;
+  background: #fff url(/static/img/site/mobile/coupon.png) no-repeat 0 0;
+  border-radius: 15px 15px 0 0;
+}
+.cash .cash-price {
+  float: left;
+  width: 220px;
+  height: 175px;
+  margin-top: 16.5px;
+  text-align: center;
+  line-height: 175px;
+  font-size: 48px;
+  color: #fa6e51;
+  border-right: 2px dashed #e7e7e7;
+}
+.cash .cash-price .price-content {
+  font-size: 65px;
+}
+.cash .cash-info {
+  float: left;
+  width: 370px;
+  margin-left: 18px;
+}
+.cash .cash-info mark {
+  display: block;
+}
+.cash .info-type {
+  font-size: 36px;
+  line-height: 36px;
+  margin: 28px 0 25px 0;
+}
+.cash .info-intro {
+  font-size: 26px;
+  line-height: 36px;
+  color: #888888;
+}
+.cash label {
+  width: 38px;
+  height: 38px;
+  float: right;
+  margin: 75px 25px 0 0;
+  background: url(/static/img/site/mobile/coupon.png) no-repeat -812px 0;
+}
+.cash input {
+  display: none;
+}
+.cash input:checked + label {
+  background: url(/static/img/site/mobile/coupon.png) no-repeat -812px -38px;
+}
+.cash.new .cash-shape {
+  background: #fff url(/static/img/site/mobile/coupon.png) no-repeat 0 -24px;
+}
+.cash-sign {
+  width: 80px;
+  height: 84px;
+  background: url(/static/img/site/mobile/coupon.png) no-repeat -731px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cash-sign span {
+  display: block;
+  font-size: 17px;
+  color: #fff;
+  line-height: 36px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.cash-introduce {
+  float: left;
+  width: 600px;
+  margin: 0 auto;
+  padding-left: 17px;
+  background: #fff;
+  padding-bottom: 25px;
+}
+.cash-introduce .intro-info {
+  font-size: 28px;
+  line-height: 60px;
+  color: #666666;
+}
+.cash-introduce .info-msg {
+  font-size: 24px;
+  line-height: 35px;
+  color: #888888;
+}

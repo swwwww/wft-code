@@ -1,0 +1,46 @@
+{block name="css" append}
+{css file="css/recommend/m/search.css"}
+{/block}
+<section class="main">
+    <header class="head">
+        <div id="form">
+            <a class="back-btn" href="javascript:;">
+                <i></i>
+            </a>
+            <input class="info" type="text" placeholder="搜索商品活动或游玩地" value="" />
+            <span class="reset">×</span>
+            <span id="search" class="search-btn">取消</span>
+        </div>
+    </header>
+    <div class="search">
+        <div class="search-list">
+            {foreach $res.history as $val}
+            {if !$val}
+            {else}
+            <a class="item" href="/recommend/searchdetail?word={$val}">{$val}</a>
+            {/if}
+            {/foreach}
+        </div>
+        <div class="search-clear">
+            <span>清除历史记录</span>
+        </div>
+    </div>
+    <main class="align">
+        <div class="hot">
+            <p class="hot-title">
+                <i class="border"></i>
+                <span>热门搜索</span>
+            </p>
+            <div class="hot-list">
+                {foreach $res.hot as $val}
+                <a class="search-info" href="/recommend/searchdetail?word={$val}">{$val}</a>
+                {/foreach}
+            </div>
+        </div>
+    </main>
+</section>
+{block name="footer"}
+{/block}
+{capture append="widget_js"}
+{js file="js/recommend/search.js"}
+{/capture}

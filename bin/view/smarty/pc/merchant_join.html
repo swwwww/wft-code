@@ -1,0 +1,120 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"遛娃学院：让孩子们在快乐中成长"}{/block}
+
+{block name="css" append}
+{css file="css/pc/bootstrap.min.css"}
+{css file="css/pc/wft.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+{include file="pc/elem_header.html"}
+<!--crumbs-->
+<section id="crumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="crumbs">当前位置：
+                    <span><a href="../admin/business/business.html">商家版</a></span>&nbsp;&gt;&nbsp;
+                    <a href="hotlist.html" >商家入驻</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--crumbs end-->
+
+<!--enter form-->
+<section id="enter">
+    <div class="container enter">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="col-sm-12 col-xs-12">
+                <h2 class="enter-title">商家入驻</h2>
+                <form action="#" method="post">
+                    <div class="row label-list">
+                        <div class="col-sm-4 col-xs-4">
+                            <label for="name">商家名称</label>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="text" name="name" id="name" />
+                        </div>
+                    </div>
+                    <div class="row label-list">
+                        <div class="col-sm-4 col-xs-4">
+                            <label for="addr">商家地址</label>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="text" name="addr" id="addr">
+                        </div>
+                    </div>
+                    <div class="row label-list">
+                        <div class="col-sm-4 col-xs-4">
+                            <label for="manage">经营内容</label>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <textarea name="manage" id="manage" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="row label-list">
+                        <div class="col-sm-4 col-xs-4">
+                            <label for="contName">联系人姓名</label>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="text" name="contName" id="contName">
+                        </div>
+                    </div>
+                    <div class="row label-list">
+                        <div class="col-sm-4 col-xs-4">
+                            <label for="phoneN">联系人电话</label>
+                        </div>
+                        <div class="col-sm-8 col-xs-8">
+                            <input type="tel" name="phoneN" id="phoneN">
+                        </div>
+                    </div>
+                    <div class="row label-list">
+                        <div class="col-sm-3 col-xs-3"></div>
+                        <div class="col-sm-9 col-xs-9">
+                            <span class="enter-notice">提出申请的商家，玩翻天会在3个工作日内与联系人联系，请保持联系人电话畅通</span>
+                        </div>
+                    </div>
+                    <div class="row label-list">
+                        <div class="col-sm-3 col-xs-3"></div>
+                        <div class="col-sm-9 col-xs-9">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</section>
+<!--enter form end-->
+
+<!--提交表单后的弹窗-->
+<section id="popUp" style="display:none">
+    <div class="container pop">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="col-md-4 col-sm-4 col-xs-1"></div>
+            <div class="col-md-4 col-sm-4 col-xs-10">
+                <div class="pop-msg col-sm-12 col-xs-12 pop-info">
+                    提交成功！<br>
+                    请保持联系人电话畅通
+                    <a href="#">确定</a>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-1"></div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</section>
+<!--提交表单后的弹窗结束-->
+{include file="widget/common/elem_site_contact.html"}
+{/block}
+
+{block name="js" append}
+
+{/block}

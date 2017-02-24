@@ -1,0 +1,419 @@
+.inner {
+  padding-bottom: 186px;
+}
+.title {
+  height: 100px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f9f9f9;
+}
+.title p {
+  font-size: 36px;
+  line-height: 100px;
+  font-weight: normal;
+  margin-left: 30px;
+}
+.introduce {
+  display: block;
+  height: 80px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+}
+.introduce p {
+  font-size: 28px;
+  overflow: hidden;
+}
+.introduce p mark {
+  float: left;
+  width: 180px;
+  line-height: 80px;
+  text-align: center;
+  color: #929292;
+  margin-left: 25px;
+}
+.introduce p span {
+  float: left;
+  width: 480px;
+  line-height: 80px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.introduce p i {
+  height: 22px;
+  width: 22px;
+  border: 2px solid #999;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+  position: absolute;
+  right: 37px;
+  bottom: 38%;
+}
+.package-sel {
+  position: relative;
+  margin-top: 20px;
+  padding: 23px 20px 0 25px;
+  background: #fff;
+  overflow: hidden;
+}
+.package-sel p {
+  font-size: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c8c8c8;
+}
+.package-sel i {
+  width: 6px;
+  height: 40px;
+  background: #fb5f39;
+  position: absolute;
+  top: 22px;
+  left: 0;
+}
+.package-sel input {
+  display: none;
+}
+.package-sel label {
+  float: left;
+  height: 70px;
+  width: 703px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  background-clip: padding-box;
+  margin: 20px 0 15px 0;
+  font-size: 26px;
+  line-height: 70px;
+  border: 1px solid #d2d2d2;
+  overflow: hidden;
+}
+.package-sel label span {
+  float: left;
+}
+.package-sel label .times-date {
+  margin-left: 20px;
+}
+.package-sel label .times-surplus {
+  float: right;
+  margin-right: 35px;
+}
+.package-sel label .places-shop {
+  margin-left: 20px;
+}
+.package-sel label .places-address {
+  float: right;
+  margin-right: 35px;
+}
+.package-sel .active {
+  background: #eee;
+}
+.package-sel input:checked + label {
+  background: #fb5f39;
+  color: #ffffff;
+  border: 1px solid #fb5f39;
+}
+.places.active span {
+  color: #000 !important;
+}
+.ticket {
+  height: 85px;
+  padding-left: 30px;
+  margin-top: 20px;
+  background: #fff;
+  line-height: 85px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.ticket span {
+  float: left;
+  font-size: 30px;
+}
+.ticket .ticket-title {
+  color: #929292;
+}
+.ticket .ticket-price {
+  margin-left: 50px;
+  font-size: 24px;
+  color: #333333;
+}
+.ticket .ticket-price mark {
+  font-size: 30px;
+  color: #fa6e51;
+}
+.ticket .ticket-plus {
+  float: right;
+  width: 38px;
+  height: 38px;
+  margin: 25px 30px 0 0;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat -164px 0;
+}
+.ticket .ticket-num {
+  float: right;
+  font-size: 26px;
+  line-height: 85px;
+  margin-right: 30px;
+}
+.ticket .ticket-minus {
+  float: right;
+  width: 38px;
+  height: 38px;
+  margin: 25px 30px 0 0;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat -212px 0;
+}
+.traveller {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 94px;
+  font-size: 30px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  background: #fff;
+  color: #000;
+  overflow: hidden;
+}
+.traveller .traveller-title {
+  float: left;
+  margin-left: 30px;
+  line-height: 96px;
+  color: #929292;
+}
+.traveller .traveller-info {
+  float: right;
+  width: 440px;
+  line-height: 96px;
+  margin-right: 65px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.traveller i {
+  height: 22px;
+  width: 22px;
+  border: 2px solid #999;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+  position: absolute;
+  right: 37px;
+  bottom: 38%;
+}
+#ticket_intro {
+  font-size: 28px;
+  height: 80px;
+  width: 100%;
+  line-height: 80px;
+  background: #eeeeee;
+  overflow: hidden;
+}
+#ticket_intro p {
+  height: 80px;
+  color: #929292;
+  text-align: right;
+  margin-right: 30px;
+}
+.policy {
+  height: 92px;
+  width: 100%;
+  background: #eeeeee;
+}
+.policy span {
+  float: left;
+}
+.policy input {
+  display: none;
+}
+.policy label {
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin: 26px 0 0 20px;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -100px -42px;
+}
+.policy input:checked + label {
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -160px -42px;
+}
+.policy .policy-info {
+  font-size: 26px;
+  line-height: 92px;
+  margin-left: 15px;
+}
+.policy .policy-link {
+  float: right;
+  margin-right: 45px;
+  font-size: 26px;
+  line-height: 92px;
+  color: #fa6e51;
+  text-decoration: underline;
+}
+.information {
+  display: block;
+  padding: 15px 30px;
+  width: 690px;
+  overflow: hidden;
+  background: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.information .information-id {
+  overflow: hidden;
+  font-size: 32px;
+}
+.information .information-id span {
+  float: left;
+}
+.information .information-id .information-id-tel {
+  margin-left: 60px;
+}
+.information .information-addr {
+  display: block;
+  width: 690px;
+  padding-left: 40px;
+  margin-top: 20px;
+  font-size: 28px;
+  line-height: 35px;
+  color: #929292;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -100px -316px;
+}
+.remark {
+  width: 100%;
+  height: 65px;
+  padding: 40px 0;
+  overflow: hidden;
+}
+.remark .remark-title {
+  float: left;
+  margin-left: 30px;
+  font-size: 30px;
+  line-height: 65px;
+  color: #929292;
+}
+.remark .remark-content {
+  float: right;
+  height: 63px;
+  width: 595px;
+  margin-right: 30px;
+  font-size: 26px;
+  border: 1px solid #bfbfbf;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  background: #fff;
+}
+.vip-tags {
+  width: 750px;
+  font-size: 24px;
+  height: 65px;
+  line-height: 65px;
+  background-color: #fef2c2;
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  border-bottom: 1px solid #cdcdcd;
+}
+.vip-tags .money-value {
+  color: #fa6e51;
+}
+.vip-tags .icon-vip {
+  width: 45px;
+  height: 24px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  top: 18px;
+  left: 12px;
+  background: #ffcd54 url(/static/img/site/mobile/vips/vip_two.png) no-repeat center;
+}
+.vip-tags .tags-msg {
+  padding-left: 90px;
+}
+.total {
+  display: block;
+  width: 100%;
+  height: 100px;
+  max-width: 750px;
+  margin: 0 auto;
+  border-top: 1px solid #dcdcdc;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+.total .total-content {
+  float: left;
+  width: 450px;
+  height: 100px;
+  line-height: 100px;
+  background: #fff;
+  overflow: hidden;
+}
+.total .total-content mark {
+  float: left;
+}
+.total .total-content .total-content-title {
+  font-size: 32px;
+  color: #000;
+  margin-left: 35px;
+}
+.total .total-content .total-content-price {
+  font-size: 40px;
+  color: #fa6e51;
+  margin-left: 10px;
+}
+.total .total-content .total-content-point {
+  font-size: 24px;
+  color: #ccc;
+  margin-left: 15px;
+}
+.total .total-next {
+  float: right;
+  width: 300px;
+  height: 100px;
+  font-size: 36px;
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+  background: #fa6e51;
+}
+#calendar {
+  display: block;
+  height: 86px;
+  line-height: 86px;
+  width: 100%;
+  font-size: 30px;
+  color: #000 !important;
+}
+#calendar::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #000;
+}
+#calendar:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #000;
+}
+#calendar:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #000;
+}
+.select-btn {
+  height: 22px;
+  width: 22px;
+  border: 2px solid #999;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+  position: absolute;
+  right: 37px;
+  bottom: 20%;
+}

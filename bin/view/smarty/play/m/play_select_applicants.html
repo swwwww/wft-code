@@ -1,0 +1,242 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"选择报名人数"}{/block}
+{block name="css" append}
+{css file="css/play/m/play_select_applicants.css"}
+{css file="css/user/m/user_select_addr.css"}
+{css file="css/play/m/play_select_traveler.css"}
+{css file="css/play/m/play_edit_traveler.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<article id="applic" class="contain-in">
+    <div class="activity">
+        <p class="activity-name">{$res.title}</p>
+        <div class="activity-info">
+            <p class="info-p">
+                <span class="fl">出行时间：</span>
+                <mark class="info-mark fl">
+                    {$res.start_time|date_format:"%Y-%m-%d %H:%M"}
+                    ~
+                    {$res.end_time|date_format:"%Y-%m-%d %H:%M"}
+                </mark>
+            </p>
+            <p class="info-p">
+                <span class="fl">游玩地点：</span>
+                <mark class="info-mark fl">{$res.play_address}</mark>
+            </p>
+        </div>
+
+        <div class="activity-num">
+            <div class="activity-title">
+                <p class="title-name">出行人数</p>
+            </div>
+            <div id="js_ask_choice">
+                {foreach $res.members as $key => $val}
+                <div class="js-item-list">
+                    <div class="activity-item price_item" data="{$key}" data-id="{$val.id}"
+                         data-num="{$val.people_number}" data-type="0"
+                         data-free-num="{if $val.show_free_bar == 1 && $val.min_buy > 0}{$val.need_free_coupon_number}{else}0{/if}"><!--此处data-num表示1张票数对应的出行人数-->
+
+                    <span class="ticket-type fl">
+                        <span class="type-info">
+                            <mark class="type-mark">{$val.title}</mark>
+                            {if $val.info != null}
+                            <i class="type-i">（{$val.info}）</i>
+                            {/if}
+                        </span>
+                        <!--<span class="type-num fl">当前报名{$val.joined_num}人，离成团还差{$val.residue_num}人</span>-->
+                    </span>
+                    <span class="ticket-num fl">
+                        <a class="minus-btn disable"></a>
+                        <mark class="item-mark num-total fl">{$val.min_buy}</mark>
+                        <a class="plus-btn"></a>
+                        <input type="hidden" id="max_num" style="width: 0; height: 0;" value="{$val.max_buy}">
+                        <input type="hidden" id="min_num" style="width: 0; height: 0;" value="{$val.min_buy}">
+                    </span>
+                        <span class="ticket-price fl">&yen;<mark>{$val.price}</mark></span>
+
+                    </div>
+                    {if $val.show_free_bar == 1}
+                    <div class="vip-area pr {if $val.min_buy>0}choice-in{/if}" data-free-num="{$val.need_free_coupon_number}" data-free-price='{$val.price}'>
+                        <label class="vip-exchange" for="charge{$val.id}">{$val.need_free_coupon_number}次免费玩资格兑换</label>
+                        <input class="radio-vip-choice pa" type="radio" name="radio" id="charge{$val.id}" checked="{if $val.min_buy>0}true{else}false{/if}">
+                    </div>
+                    {/if}
+                </div>
+                {/foreach}
+            </div>
+
+            {if $res.save_money > 0}
+            <div class="activity-intro">
+                <span class="benefit fl tc">惠</span>
+                <span class="intro-mark fl">每满<mark id="js_full_price">{$res.save_number}</mark>元</span>
+                <span class="intro-mark discount fl">-￥<mark id="js_less_price">{$res.save_money}</mark> </span>
+            </div>
+            {/if}
+        </div>
+
+        <div class="activity-num other">
+            {if count($res.other) > 0}
+            <div class="activity-title mt20">
+                <p class="title-name">其他费用</p>
+            </div>
+            {/if}
+            {foreach $res.other as $key => $else}
+            <div class="activity-item other-item" data="{$key}" data-type="1" data-num="1" data-id="{$else.id}"> <!--此处data-num表示对应的票数-->
+                <span class="ticket-type fl">
+                    <input type="checkbox" class="ticket-input" name="cost" id="cost{$key}">
+                    <!--<input  class="dn" type="checkbox" name="cost{$else.id}" id="cost{$else.id}">-->
+                    <!--<label class="ticket-la fl" for="cost{$else.id}"></label>-->
+                    <mark class="other-cost fl">{$else.title}</mark>
+                </span>
+                <span class="ticket-num fl">
+                    <a class="minus-btn disable"  data-type="other"></a>
+                    <mark class="item-mark num-total fl">{$else.min_num}</mark>
+                    <a class="plus-btn"  data-type="other"></a>
+                </span>
+                <span class="ticket-price fl">￥<mark>{$else.price}</mark></span>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+
+    <a class="people-number db pr" href="javascript: ;">
+        <p id="js_choice_people" class="people-p">
+            <span class="travel-num fl">出行人数</span>
+            <span class="people-name dib ellipsis">请选择出行人数</span><!--扒了个啾、心路Yao、梦碎忆冷、扒了个啾、心路Yao、梦碎忆冷-->
+        </p>
+        <mark class="travel-notice fl">
+            活动出行前会为出行人购买保险，请务必认真选择出行人信息！
+        </mark>
+        <!--<mark class="travel-notice fl">活动出行前会为出行人购买保险，请务必认真选择出行人信息！</mark>-->
+        <i class="arrow-right"></i>
+    </a>
+
+    <div class="pick-addr activity-num">
+        <span class="title-name pick-name">收货地址</span>
+        <a id="js_edit_addr" class="ticket-info db pr {if $res_addr|@count>1}take-good{/if}" href="
+        {if $res_addr|@count==1}
+            {$BASE_URL_MODULE}user/editInfo?info_id={$res.info_id}&coupon_id={$res.coupon_id}&id={$res.address[0].id}
+        {else if}
+            javascript:;
+        {/if}
+        ">
+            {if $res.address|@count == 1}
+            <p class="ticket-p">
+                <span class="address-name fl">{$res.address[0].name}</span>
+                <span class="address-ph fl">{$res.address[0].phone}</span>
+            </p>
+            <p class="address-line ticket-p">
+                {if $res.address[0].address} <!--不确定次字段-->
+                 <span class="address-position fl">
+                    {$res.address[0].province}{$res.address[0].city}{$res.address[0].region}{$res.address[0].address}
+                </span>
+                {/if}
+            </p>
+            {else}
+            请选择收货地址
+            {/if}
+            <i class="arrow-right"></i>
+        </a>
+
+        <input type="hidden" value="{$res.address|json_encode}">
+        <input type="hidden" name="car_addr" id="take-good" value="{if $res.address|@count == 1} {$res.address[0].id} {else} 0 {/if}">
+    </div>
+
+    <div class="pick-addr activity-num">
+        <span class="title-name pick-name">集合地点</span>
+        <div class="pr">
+            <button class="choose-addr db {if $res.meeting|@count>1}addr_sel{/if}">
+                {if $res.meeting|@count == 1}
+                {$res.meeting[0].meeting_place}
+                {else}
+                请选择集合地点
+                {/if}
+            </button>
+            <i class="arrow-right addr_arrow"></i>
+        </div>
+        <input type="hidden" name="car_addr" id="car_addr" value="{if $res.meeting|@count == 1} {$res.meeting[0].id} {else} 0 {/if}">
+    </div>
+
+    <p class="declare">
+        同意参加活动，表示您已经同意相关 活动
+        <a class="declare-mark" href="{$BASE_URL_MODULE}comment/disclaimer">免责声明</a> <!--{$res.disclaimer}-->
+    </p>
+
+    {if $res.is_vip_banner}
+        {include file="member/m/ele_member_banner.html" type="show_play_banner" position="bottom" url="orderWap/chargeMoney"}
+    {else}
+        {include file="member/m/ele_member_banner.html" type="none" position="" url="orderWap/chargeMoney"}
+    {/if}
+    <div class="detail-fixed">
+        <div class="total-price fl">
+        <span class="footer-b">总价：
+            <mark class="footer-mark">￥</mark >
+            <mark class="footer-mark" id="js_total">00.00</mark>
+        </span>
+        </div>
+        <a class="next-btn db fr tc" id="js_submit_btn" href="javascript: ;">提交订单</a>
+    </div>
+    <div class="matte" style="display: none;"></div>
+    <!--请选择上车地点弹窗-->
+    <div class="popup-address" style="display: none;"> <!-- style="display: none"-->
+        <div class="popup-title">
+            <p class="popup-notice tc">选择上车地点</p>
+        </div>
+        <section class="popup-lists">
+            {foreach $res.meeting as $key => $meet_addr}
+            <div class="popup-item">
+                <span class="item-span dib">{$meet_addr.meeting_place}</span>
+            <span class="item-time dib">
+                {$meet_addr.meeting_time|date_format: '%m-%d %H:%M'}
+            </span>
+                <input class="popup-input" type="radio" name="radio" id="address{$meet_addr.id}" data-id="{$meet_addr.id}">
+                <label class="popup-label" for="address{$meet_addr.id}"></label>
+            </div>
+            {/foreach}
+        </section>
+        <div class="popup-btn clearfix">
+            <a class="cancel-btn">否</a>
+            <a class="confirm-btn">是</a>
+        </div>
+        <input type="hidden" id="js_meeting_num" value="{$res.meeting|@count}">
+    </div>
+
+    <input type="hidden" id="js_join_num" value="{$res.join_number}">
+    <input type="hidden" id="js_perf_num" value="{$res.perfect_number}">
+    <input type="hidden" id="associates_ids" name="associates_ids" value="">
+    <input type="hidden" id="sid" value="{$res.info_id}">
+    <input type="hidden" id="coupon_id" value="{$res.coupon_id}">
+    <input type="hidden" id="data" name="data" value="{}">
+
+    <!--<input type="hidden" name="res" value="{$res|json_encode}">-->
+
+</article>
+
+<div id="tips-dia" style="display: none;"></div> <!--提示框-->
+<article id="js_select_addr" style="display: none">
+    {include file="play/m/elem_select_recaddr.html"}
+</article>
+
+<article id="js_select_traveller" style="display: none">
+    {include file="play/m/elem_select_traveller.html"}
+</article>
+
+<article id="js_add_traveller" style="display: none"> <!--style="display: none"-->
+    {include file="play/m/elem_add_traveller.html"}
+</article>
+
+{capture append="widget_js"}
+{js file="js/play/select_applicants.js"}
+{/capture}
+{block name="js" append}
+{js file="js/lib/scrollTop.js"}
+{/block}
+{/block}
+{block name ="foot-btn"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/scrollTop.js"}
+{/block}

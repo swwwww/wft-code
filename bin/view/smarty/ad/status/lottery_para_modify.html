@@ -1,0 +1,126 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+input[type=text]{
+    border-bottom: 1px solid #eee;
+    color: #f90;
+    text-align: center;
+}
+</style>
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        {include file="ad/status/ele_status_nav.html"}
+    </div>
+    <div class="row">
+        <h3>中奖概率修改</h3>
+        <form action="{$BASE_URL_MODULE}stats/updateLottery?lottery_id={$lottery_id}" method="post">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>名称</td>
+                    <td>描述</td>
+                    <td>每日次数</td>
+                    <td>每日上限</td>
+                    <td>中奖率</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{$lottery_vo.id}</td>
+                    <td><input type="text" name='name' value="{$lottery_vo.name}"></td>
+                    <td><input type="text" name='detail' value="{$lottery_vo.detail}"></td>
+                    <td><input type="text" name='total' value="{$lottery_vo.total}"></td>
+                    <td><input type="text" name='total_limit' value="{$lottery_vo.total_limit}"></td>
+                    <td><input type="text" name='chance' value="{$lottery_vo.chance}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="hidden" name="YII_CSRF_TOKEN" value="{$token|csrfToken}" />
+            <button class="btn btn-danger" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <hr/>
+    <div class="row">
+        <h3>奖品数量修改</h3>
+        <form action="{$BASE_URL_MODULE}stats/updateLottery?lottery_id={$lottery_id}" method="post">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>奖品类别</td>
+                    <td>城市</td>
+                    <td>代金券id</td>
+                    <td>代金券名称</td>
+                    <td>代金券别名</td>
+                    <td>已发数量</td>
+                    <td>剩余数量</td>
+                    <td>修改总量</td>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $lottery.lottery_cash as $val}
+                <tr>
+                    <td>{$val.id}</td>
+                    <td>
+                        <input type="text" name='type_{$val.id}' value="{$val.type}" placeholder="类型">
+                    </td>
+                    <td>
+                        <input type="text" name='city_{$val.id}' value="{$val.city}" placeholder="城市">
+                    </td>
+                    <td>
+                        <input type="text" name='cash_id_{$val.id}' value="{$val.cash_id}" placeholder="现金券id">
+                    </td>
+                    <td>
+                        <input type="text" name='cash_name_{$val.id}' value="{$val.cash_name}" placeholder="代金券名">
+                    </td>
+                    <td>
+                        <input type="text" name='cash_alias_{$val.id}' value="{$val.cash_alias}" placeholder="代金券别名">
+                    </td>
+                    <td>{$val.send_total}</td>
+                    <td>{$val.total - $val.send_total}</td>
+                    <td>
+                        <input type="text" name='total_{$val.id}' value="{$val.total}" placeholder="总量">
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            <input type="hidden" name="YII_CSRF_TOKEN" value="{$token|csrfToken}" />
+            <input type="hidden" name="city" value="{$city}" />
+            <button class="btn btn-danger" type="submit">Submit</button>
+            <button class="btn btn-danger" id="add_attr">增加礼品</button>
+        </form>
+    </div>
+    <input type="hidden" id="hide_lottery_id" value="{$lottery_id}">
+</div>
+
+{/block}
+
+{block name="js" append}
+{literal}
+<script>
+$(document).on('click', '#add_attr', function(){
+    var dao = DAO.stats;
+    var param = {
+        lottery_id: $('#hide_lottery_id').val(),
+        type: 'cash'
+    };
+    dao.addLotteryAttr(param, function(res){
+        window.location.href = window.location;
+    });
+});
+</script>
+{/literal}
+{/block}

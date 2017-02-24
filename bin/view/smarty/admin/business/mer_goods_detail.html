@@ -1,0 +1,108 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"玩翻天商家后台--产品详情"}{/block}
+
+{block name="css" append}
+{css file="css/admin/business/mer_other.css"}
+{/block}
+
+
+{block name="inner"}
+<!--头部-->
+{include file="admin/business/elem_mer_header.html"}
+
+<div class="nav dib">
+    {include file="admin/business/elem_mer_nav.html"}
+</div>
+
+<article class="goods-detail">
+    <header class="nav-map">
+        <a class="dib" href="{$BASE_URL_MODULE}business/index">首页</a> >
+        <a class="dib" href="javascript:;">产品详情</a>
+    </header>
+
+
+    <nav class="nav-list nav-width pr" id="js-nav-switch">
+        <a class="dib nav-item {if $res.type == ''}active-item{/if} pr" href="{$BASE_URL_MODULE}business/goodsDetail?coupon_id={$res.coupon_id}">商品介绍</a>
+        <a class="dib nav-item intr-left pr {if $res.type == 1}active-item{/if}" href="{$BASE_URL_MODULE}business/goodsDetail?type=1&coupon_id={$res.coupon_id}">商品价格套系</a>
+    </nav>
+
+    <!--商品介绍-->
+    {if $res.type == ''}
+    <section class="goods-info instr-win" id="js-good-info">
+        <p class="db info-item">
+            <span class="item-title dib">商品名称：</span>
+            <span class="item-name dib">{$res.coupon_name}</span>
+        </p>
+        <p class="db info-item">
+            <span class="item-title dib">咨询电话：</span>
+            <span class="item-name dib">{$res.coupon_link_phone}</span>
+        </p>
+        <p class="db info-item">
+            <span class="item-title dib">合适年龄：</span>
+            <span class="item-name dib">{$res.coupon_fit_age_min}至{$res.coupon_fit_age_max}</span>
+        </p>
+
+        <div class="db info-item">
+            <span class="item-title db">小玩说：</span>
+            <pre class="item-name db">{$res.coupon_player_talk}</pre>
+        </div>
+
+        <div class="db info-item">
+            <span class="item-title db">注意事项：</span>
+            <pre class="item-name db">{$res.coupon_notice}</pre>
+        </div>
+
+        <div class="db info-item">
+            <span class="item-title db">图文详情：</span>
+            <pre class="item-name db">
+               {$res.coupon_information}
+            </pre>
+        </div>
+    </section>
+    {/if}
+    <!--商品价格套系-->
+    {if $res.type == 1}
+    <table class="goods-info db price-system" id="js-good-series">
+        <thead class="thead-info table-padding">
+            <tr class="tr-title">
+                <th class="series-name"><mark class="item-style">套系名称</mark></th>
+                <th class="series-price"><mark class="item-style">售价</mark></th>
+                <th class="check-price"><mark class="item-style">结算价</mark></th>
+                <th class="sell-time"><mark class="item-style">开始结束售卖时间</mark></th>
+                <th class="check-way"><mark class="item-style">兑换方式</mark></th>
+                <th class="special-way"><mark class="item-style">特别说明</mark></th>
+                <th class="bk-instr"><mark class="item-style">退订说明</mark></th>
+            </tr>
+        </thead>
+
+        <tbody class="goods-msg">
+        {foreach $res.list as $key=>$val}
+            <tr class="tr-title tr-font">
+                <th class="series-name"><mark class="tbody-item good-detail-item">{$val.set_name}</mark></th>
+                <th class="series-price"><mark class="tbody-item good-detail-item">￥{$val.set_money}</mark></th>
+                <th class="check-price"><mark class="tbody-item good-detail-item">￥{$val.set_account_money}</mark></th>
+                <th class="sell-time"><mark class="tbody-item good-detail-item">{$val.set_start_time|date_format:'%Y-%m-%d'}至{$val.set_end_time|date_format:'%Y-%m-%d'}</mark></th>
+                <th class="check-way"><mark class="tbody-item good-detail-item">{$val.set_have_way}</mark></th>
+                <th class="special-way"><mark class="tbody-item good-detail-item">{$val.set_special_talk}</mark></th>
+                <th class="bk-instr"><mark class="tbody-item good-detail-item">{$val.set_back_info}</mark></th>
+            </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <ul class="pagination"></ul>
+    </div>
+    {/if}
+
+
+</article>
+
+<input type="hidden" id="js-page-info" value='{$res.page_info}'>
+{/block}
+
+{block name="js" append}
+    {js file="js/admin/business/page.js"}
+    {js file="js/admin/business/goods_detial.js"}
+
+{/block}

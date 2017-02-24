@@ -1,0 +1,193 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"销售员中心"}{/block}
+{block name="css" append}
+{css file="css/user/m/user_seller.css"}
+{/block}
+{block name="inner"}
+<section class="inner">
+    <div class="header-main">
+        <div class="header-info">
+            <p class="header-info-title">收益账户余额</p>
+            <span class="balance" data-item ='{$res.account_money}'>￥{$res.data.seller.account_money}</span>
+        </div>
+        <div class="header-btn">
+            <a class="header-btn-link" href="/user/distribution">收益提现说明</a>
+            <span class="header-btn-cash">提现</span>
+        </div>
+    </div>
+    <div class="profit">
+        <div class="profit-detail">
+            <p class="profit-detail-title">累计收益</p>
+            <span class="profit-detail-money">￥{$res.data.seller.add_up_income}</span>
+            <mark class="profit-detail-other">含未到账收益￥{$res.data.seller.not_arrived_income}</mark>
+        </div>
+        <div class="profit-cash">
+            <p class="profit-cash-title">已提现金额</p>
+            <span class="profit-cash-info">￥{$res.data.seller.withdraw_cash}</span>
+        </div>
+    </div>
+    <section class="main">
+        <div class="main-list">
+
+                {foreach $res.data.income_statement as $value}
+                {if $value.object_type == 3}
+                <div class="item deposit">
+                    <div class="item-title">提现到微信账户</div>
+                    <div class="item-info">
+                        <p class="item-info-cash">-{$value.flow_money}</p>
+                        <span class="item-info-time" data-time="{$value.dateline|date_format:'%H:%M'}">{$value.dateline|date_format:'%Y-%m-%d'}</span>
+                    </div>
+                </div>
+                {/if}
+
+                {if $value.object_type == 4}
+                <div class="item deduction">
+                    <div class="item-title">{$value.describe}</div>
+                    <div class="item-info">
+                        <p class="item-info-cash">-{$value.flow_money}</p>
+                        <span class="item-info-time" data-time="{$value.dateline|date_format:'%H:%M'}">{$value.dateline|date_format:'%Y-%m-%d'}</span>
+                    </div>
+                </div>
+                {/if}
+
+                {if $value.object_type == 2 && $value.sell_status == 2}
+                <div class="item income">
+                    <div class="item-title">{$value.describe}</div>
+                    <div class="item-info">
+                        <p class="item-info-cash">+{$value.flow_money}</p>
+                        <span class="item-info-time" data-time="{$value.dateline|date_format:'%H:%M'}">{$value.dateline|date_format:'%Y-%m-%d'}</span>
+                    </div>
+                </div>
+                {/if}
+
+                {if $value.object_type == 2 && $value.sell_status == 3}
+                <div class="item remind">
+                    <div class="item-title">
+                        <p>您有一笔推广收益提醒-{$value.flow_money}元</p>
+                        <span>{$value.describe}</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-info-cash"></p>
+                        <span class="item-info-time" data-time="{$value.dateline|date_format:'%H:%M'}">{$value.dateline|date_format:'%Y-%m-%d'}</span>
+                    </div>
+                </div>
+                {/if}
+                {if $value.object_type == 1}
+                <div class="item remind">
+                    <div class="item-title">
+                        <p>您有一笔推广收益提醒{$value.flow_money}元（未到账）</p>
+                        <span>{$value.describe}</span>
+                    </div>
+                    <div class="item-info">
+                        <p class="item-info-cash"></p>
+                        <span class="item-info-time" data-time="{$value.dateline|date_format:'%H:%M'}">{$value.dateline|date_format:'%Y-%m-%d'}</span>
+                    </div>
+                </div>
+                {/if}
+                {/foreach}
+        </div>
+    </section>
+    <div class="footer-main">
+        <a class="spread-btn" href="/seller/sellGoods?seller_id={$res.data.seller.uid}">我要推广赚钱</a>
+        <a class="spread-intro" href="/user/distribution">推广赚钱说明</a>
+    </div>
+    <div class="popup">
+        <div class="popup-spread">
+            <p class="popup-spread-title" data-low="{$res.can_out}">最小提现金额为{$res.can_out}元，你的余额不足提现~再接再厉~</p>
+            <a class="popup-spread-btn" href="javascript:;">去推广</a>
+        </div>
+
+        <div class="popup-withdraw">
+            <p class="popup-withdraw-title">本次提现金额为30元，确定提现30元？</p>
+            <div class="popup-withdraw-btn">
+                <a class="cancel">取消</a>
+                <a class="confirm">确认</a>
+            </div>
+        </div>
+
+        <div class="popup-tip">
+            <p class="popup-tip-title">提现申请成功，3~7个工作日将到账你的微信 账户，请注意查收~</p>
+            <a class="popup-tip-btn" href="javascript:;">知道了</a>
+        </div>
+
+        <div class="popup-warn">
+            <p class="popup-warn-title">提现申请中，不要重复提交哦~3~7个工作日将到账你的微信账户，请注意查收~
+            </p>
+            <a class="popup-warn-btn" href="javascript:;">去推广</a>
+        </div>
+        <div class="matte"></div>
+    </div>
+    <input type="hidden" id="state" value="{$res.withdraw_now}"/>
+
+</section>
+{/block}
+{block name="js" append}
+{js file="js/user/seller.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="income_more" type="text/html">
+    {{each income.income_statement}}
+    {{if $value.object_type == 3}}
+    <div class="item deposit">
+        <div class="item-title">提现到微信账户</div>
+        <div class="item-info">
+            <p class="item-info-cash">-{{$value.flow_money}}</p>
+            <span class="item-info-time" data-time="{{$value.dateline | dateFormat:'hh:mm'}}">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</span>
+        </div>
+    </div>
+    {{/if}}
+
+    {{if $value.object_type == 4}}
+    <div class="item deduction">
+        <div class="item-title">{{$value.describe}}</div>
+        <div class="item-info">
+            <p class="item-info-cash">-{{$value.flow_money}}</p>
+            <span class="item-info-time" data-time="{{$value.dateline | dateFormat:'hh:mm'}}">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</span>
+        </div>
+    </div>
+    {{/if}}
+
+    {{if $value.object_type == 2 && $value.sell_status == 2}}
+
+    <div class="item income">
+        <div class="item-title">{{$value.describe}}</div>
+        <div class="item-info">
+            <p class="item-info-cash">+{{$value.flow_money}}</p>
+            <span class="item-info-time" data-time="{{$value.dateline | dateFormat:'hh:mm'}}">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</span>
+        </div>
+    </div>
+    {{/if}}
+
+    {{if $value.object_type == 2 && $value.sell_status == 3}}
+    <div class="item remind">
+        <div class="item-title">
+            <p>您有一笔推广收益提醒-{{$value.flow_money}}元</p>
+            <span>{{$value.describe}}</span>
+        </div>
+        <div class="item-info">
+            <p class="item-info-cash"></p>
+            <span class="item-info-time" data-time="{{$value.dateline | dateFormat:'hh:mm'}}">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</span>
+        </div>
+    </div>
+    {{/if}}
+    {{if $value.object_type == 1}}
+    <div class="item remind">
+        <div class="item-title">
+            <p>您有一笔推广收益提醒{{$value.flow_money}}元（未到账）</p>
+            <span>{{$value.describe}}</span>
+        </div>
+        <div class="item-info">
+            <p class="item-info-cash"></p>
+            <span class="item-info-time" data-time="{{$value.dateline | dateFormat:'hh:mm'}}">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</span>
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+</script>
+{/literal}
+{/block}

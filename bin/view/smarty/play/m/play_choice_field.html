@@ -1,0 +1,101 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"选择场次"}{/block}
+
+{block name="css" append}
+    {css file="css/play/m/play_choice_field.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="sel">
+    <div class="sel list">
+        {foreach $res as $key => $val}
+        {if $val.flag == 1}
+            <a class="list-item db link-state" href="{$BASE_URL_MODULE}play/playSeleApplic?sid={$val.info_id}&id={$val.coupon_id}">
+                <p class="item-info fl">
+                    <span class="start-time">{$val.datetime}</span>
+                    <mark class="shop-name">{$val.name}</mark>
+                    <span class="attend-num">
+                        {if $val.man_num && $val.kids_num}
+                            已有{$val.kids_num}个小孩和{$val.man_num}个父母参加
+                        {else if !$val.man_num && $val.kids_num}
+                            已有{$val.kids_num}个小孩参加
+                        {else if $val.man_num && !$val.kids_num}
+                            已有{$val.man_num}个父母参加
+                        {else}
+                            已有0个小孩和0个父母参加
+                        {/if}
+                    </span>
+                </p>
+                <span class="state pr">
+                    <mark class="state-status apply">{$val.status}</mark>
+                    {if $val.vip_free}
+                    <mark class="vip-play-icon dib pa"></mark>
+                    {/if}
+                    <mark class="state-status price-width pr">￥{$val.low_price}起</mark>
+                </span>
+                <i class="arrow-right"></i>
+            </a>
+        {elseif $val.flag == 2||$val.flag == 3}
+            <a class="list-item db other-state" href="javascript:;">
+            <p class="item-info fl">
+                <span class="start-time">{$val.datetime}</span>
+                <mark class="shop-name">{$val.name}</mark>
+                <span class="attend-num">
+                        {if $val.man_num && $val.kids_num}
+                            已有{$val.kids_num}个小孩和{$val.man_num}个父母参加
+                        {else if !$val.man_num && $val.kids_num}
+                            已有{$val.kids_num}个小孩参加
+                        {else if $val.man_num && !$val.kids_num}
+                            已有{$val.man_num}个父母参加
+                        {else}
+                            已有0个小孩和0个父母参加
+                        {/if}
+                </span>
+            </p>
+                <span class="state pr">
+                    <mark class="state-status">{$val.status}</mark>
+                     {if $val.vip_free}
+                    <mark class="vip-play-icon dib pa"></mark>
+                    {/if}
+                    <mark class="state-status price-width">￥{$val.low_price}起</mark>
+                </span>
+            <i class="arrow-right"></i>
+        </a>
+        {elseif $val.flag == 0}
+            <a class="list-item db other-state" href="javascript: ;">
+            <p class="item-info fl">
+                <span class="start-time">{$val.datetime}</span>
+                <mark class="shop-name">{$val.name}</mark>
+                <span class="attend-num">
+                        {if $val.man_num && $val.kids_num}
+                            已有{$val.kids_num}个小孩和{$val.man_num}个父母参加
+                        {else if !$val.man_num && $val.kids_num}
+                            已有{$val.kids_num}个小孩参加
+                        {else if $val.man_num && !$val.kids_num}
+                            已有{$val.man_num}个父母参加
+                        {else}
+                            已有0个小孩和0个父母参加
+                        {/if}
+                </span>
+            </p>
+                <span class="state pr">
+                    <mark class="state-status">{$val.status}</mark>
+                     {if $val.vip_free}
+                    <mark class="vip-play-icon dib pa"></mark>
+                    {/if}
+                    <mark class="state-status price-width">￥{$val.low_price}起</mark>
+                </span>
+            <i class="arrow-right"></i>
+        </a>
+        {/if}
+        {/foreach}
+    </div>
+</div>
+
+<a class="db want-go clearfix" href="{$BASE_URL_MODULE}play/gatherDate?id={$res[0].coupon_id}">
+    <span class="want-tips dib fl">没有想去的时间？告诉我们</span>
+    <span class="want-left want-color dib fr">我想去</span>
+    <i class="dib arrow-right want-color"></i>
+</a>
+{/block}

@@ -1,0 +1,36 @@
+.banner {
+  overflow: hidden;
+  background: #fff;
+}
+.banner .banner-store {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  right: 30px;
+  top: 25px;
+}
+.banner .not-store {
+  background: rgba(0, 0, 0, 0.5) url(/static/img/site/mobile/icons.png) no-repeat 6px -6051px;
+}
+.banner .has-store {
+  background: rgba(0, 0, 0, 0.5) url(/static/img/site/mobile/icons.png) no-repeat 6px -6176px;
+}
+.banner .banner-img {
+  height: 375px;
+  margin-bottom: 65px;
+}
+.banner .banner-shape {
+  height: 185px;
+  background: url("/static/img/site/mobile/whiteshape.png") no-repeat;
+  bottom: 0;
+}
+.banner .banner-shape .prof-name {
+  width: 590px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26px;
+  color: #929292;
+  border-bottom: 1px solid #eceaea;
+  line-height: 48px;
+}

@@ -1,0 +1,175 @@
+body {
+  background-color: #ffffff;
+}
+.free-travel {
+  height: auto;
+  padding: 30px 25px 40px 25px;
+  background-color: #f8f3e0;
+}
+.free-travel .window {
+  background-color: #fee49a;
+  padding: 15px;
+}
+.free-travel .vip-win {
+  height: 380px;
+}
+.free-travel .travel-chance {
+  height: 260px;
+  color: #000;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+.free-travel .mb20 {
+  margin-bottom: 20px;
+}
+.free-travel .title-info {
+  height: 260px;
+  width: 60%;
+  vertical-align: top;
+}
+.free-travel .title-info .info-msg,
+.free-travel .title-info .info-chance {
+  margin-left: 60px;
+}
+.free-travel .title-info .info-msg {
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 70px;
+}
+.free-travel .title-info .info-chance {
+  font-size: 30px;
+  color: #505050;
+  margin-top: 10px;
+}
+.free-travel .title-info .dot-top,
+.free-travel .title-info .dot-bottom {
+  width: 20px;
+  height: 24px;
+  border-radius: 23px;
+  background-color: #fee49a;
+}
+.free-travel .title-info .dot-top {
+  top: -15px;
+  right: -4%;
+  z-index: 1;
+}
+.free-travel .title-info .dot-bottom {
+  bottom: -15px;
+  right: -4%;
+  z-index: 1;
+}
+.free-travel .chance-info {
+  height: 260px;
+  line-height: 260px;
+  border-left: 2px dashed #CCCCCC;
+}
+.free-travel .chance-num {
+  font-size: 32px;
+}
+.free-travel .chance-pos {
+  right: -70px;
+  bottom: 115px;
+}
+.free-travel .num-msg {
+  font-size: 54px;
+  font-weight: 600;
+  color: #fa6e51;
+  margin-left: 75px;
+  margin-right: 10px;
+}
+.free-travel .can-get {
+  height: 95px;
+  line-height: 95px;
+  font-size: 26px;
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+.free-travel .can-get .get-title {
+  margin-left: 60px;
+}
+.free-travel .can-get .get-msg {
+  margin-right: 45px;
+}
+.free-travel .can-get .msg-info {
+  margin-right: 65px;
+}
+.free-travel .can-get .can-pos {
+  right: 0px;
+  bottom: 35px;
+}
+.free-travel .state {
+  margin-top: 30px;
+  font-size: 26px;
+}
+.free-travel .state .state-num {
+  color: #fa6e51;
+  margin: 0 5px;
+  font-weight: 600;
+}
+.free-travel .share-friend,
+.free-travel .again-charge {
+  color: #ffffff;
+  font-size: 36px;
+  height: 85px;
+  line-height: 85px;
+  width: 590px;
+  margin: 25px auto;
+  border-radius: 15px;
+}
+.free-travel .share-friend {
+  background-color: #fa6e51;
+}
+.free-travel .again-charge {
+  background-color: #ffcd54;
+}
+.arrow-right {
+  height: 24px;
+  width: 24px;
+  border: 2px solid #999;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+.rule-msg {
+  background-color: #ffffff;
+}
+.rule-msg .rules-title {
+  height: 95px;
+  line-height: 95px;
+  font-size: 30px;
+  font-weight: 600;
+  border-bottom: 2px solid #cccccc;
+  padding-left: 45px;
+}
+.rule-msg .icon-line {
+  width: 9px;
+  height: 50px;
+  top: 24px;
+  left: 0;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fa6e51;
+}
+.rule-msg .rule-item {
+  margin: 30px 0 0 25px;
+  padding-bottom: 110px;
+}
+.rule-msg .rule-info {
+  font-size: 26px;
+  height: 45px;
+  line-height: 45px;
+  color: #505050;
+}
+.mobile-width,
+.com-panel {
+  width: 750px;
+  height: 100%;
+  background-color: #ffffff;
+  margin: 0 auto;
+}

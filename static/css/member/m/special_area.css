@@ -1,0 +1,255 @@
+.wrapper {
+  width: 750px;
+  height: auto;
+  overflow: hidden;
+  padding: 0;
+}
+.wrapper .swipe {
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+.wrapper .banner-img {
+  width: 750px;
+  height: 375px;
+}
+.wrapper .swipe-wrap {
+  position: relative;
+  font-size: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+.wrapper .pic {
+  display: inline-block;
+  width: 750px;
+  position: relative;
+  margin: 0;
+  font-size: 28px;
+}
+.wrapper .dots {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  overflow: hidden;
+  list-style: none;
+}
+.wrapper .dots .item {
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  margin-left: 10px;
+  text-indent: 999px;
+  background: #fff;
+}
+.wrapper .dots .item.active {
+  background: #ff5722;
+}
+.wrapper .vip-title {
+  width: 100%;
+  height: 90px;
+  line-height: 90px;
+  font-weight: 600;
+  background-color: #ffffff;
+}
+.wrapper .red-icon {
+  background-color: #fa6e51;
+  width: 5px;
+  height: 45px;
+  top: 25px;
+}
+.wrapper .title-msg {
+  font-size: 32px;
+  color: #fa6e51;
+  padding-left: 25px;
+  letter-spacing: 2px;
+}
+.activity-item {
+  padding-bottom: 30px;
+}
+.list-bottom {
+  padding: 0 0 65px;
+}
+.n_tags {
+  z-index: 2;
+}
+.activity-logo,
+.crazy-logo {
+  text-align: left;
+  z-index: 1;
+}
+.activity-logo {
+  width: 64px;
+  height: 63px;
+  margin-left: 630px;
+}
+.crazy-logo {
+  margin-left: 45px;
+  margin-top: 20px;
+}
+.adv-list-info {
+  background: #fff;
+  overflow: hidden;
+  margin: 20px 22px 0;
+  border-bottom: 1px solid #ccc;
+}
+.adv-list-info .adv-img {
+  width: 710px;
+  display: block;
+  height: 355px;
+  overflow: hidden;
+}
+.adv-list-info .tag-list {
+  width: 680px;
+  position: absolute;
+  bottom: 32px;
+  left: 20px;
+}
+.adv-list-info .adv-tag {
+  font-size: 24px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border: 1px solid #fa6e51;
+  color: #fa6e51;
+}
+.adv-list-info .adv-font {
+  width: 675px;
+  margin: 20px 12px 0 20px;
+  text-align: justify;
+  font-size: 32px;
+  font-weight: 600;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 50px;
+}
+.adv-list-info .adv-font .time,
+.adv-list-info .adv-font .num,
+.adv-list-info .adv-font .addr {
+  display: inline-block;
+  font-size: 24px;
+  color: #666;
+  overflow: hidden;
+  font-weight: normal;
+}
+.adv-list-info .adv-font .num {
+  margin-left: 30px;
+}
+.adv-list-info .adv-font .addr-icon {
+  position: absolute;
+  margin-left: -49px;
+  width: 45px;
+  height: 37px;
+  background: #fff url(/static/img/site/mobile/icons3.png) no-repeat 17px -220px;
+}
+.adv-list-info .adv-font .addr {
+  padding-left: 35px;
+  right: 20px;
+}
+.adv-list-info .adv-font .addr-circle {
+  bottom: 26px;
+}
+.adv-list-info .new,
+.adv-list-info .least-price {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 0px;
+  color: #FFFFFF;
+}
+.adv-list-info .new {
+  font-size: 22px;
+  right: 0;
+  top: 282px;
+  -moz-border-radius: 25px 0 0 25px;
+  -webkit-border-radius: 25px 0 0 25px;
+  border-radius: 25px 0 0 25px;
+}
+.adv-list-info .join-in {
+  padding: 8px 20px;
+}
+.adv-list-info .least-price {
+  width: 196px;
+  top: 242px;
+  left: 0;
+  font-size: 24px;
+  text-align: center;
+}
+.adv-list-info .least-price mark {
+  font-size: 34px;
+}
+.adv-list-info .vip-tag {
+  background-color: #ffcd54;
+  width: 196px;
+  top: 301px;
+  left: 0;
+}
+.adv-list-info .vip-logo {
+  height: 25px;
+  width: 125px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+.foot-in {
+  position: fixed;
+  bottom: 0;
+  width: 750px;
+  background-color: #ffffff;
+  z-index: 10;
+}
+.vip-account {
+  font-size: 34px;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+}
+.swipe {
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+.swipe .swipe-wrap {
+  position: relative;
+  font-size: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+.swipe .swipe-wrap .pic {
+  display: inline-block;
+  width: 750px;
+  position: relative;
+  margin: 0;
+  font-size: 28px;
+}
+.swipe .swipe-wrap .pic a {
+  overflow: hidden;
+}
+.swipe .swipe-wrap .pic a img {
+  width: 100%;
+  height: auto;
+}
+.swipe .dots {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  overflow: hidden;
+  list-style: none;
+}
+.swipe .dots .item {
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  margin-left: 10px;
+  text-indent: 999px;
+  background: #fff;
+}
+.swipe .dots .item.active {
+  background: #ff5722;
+}

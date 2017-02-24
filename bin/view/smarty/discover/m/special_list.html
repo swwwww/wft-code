@@ -1,0 +1,41 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"专题"}{/block}
+{block name="css" append}
+{css file="css/discover/m/special_list.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <div class="special">
+        <div class="special-list">
+            {foreach $res as $value}
+            <a class="special-list-item" href="/discover/specialinfo?id={$value.id}">
+                <img src="{$value.cover}" />
+            </a>
+            {/foreach}
+        </div>
+    </div>
+</section>
+{/block}
+{block name="js" append}
+{js file="js/discover/special_list.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    <div class="special-list">
+        {{each res}}
+        <a class="special-list-item" href="/discover/specialinfo?id={{$value.id}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/index_big.png" />
+        </a>
+        {{/each}}
+    </div>
+</script>
+{/literal}
+{/block}

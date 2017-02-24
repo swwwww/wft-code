@@ -1,0 +1,179 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.contain{
+  width: 750px;
+  //height: 1200px;
+//  padding-bottom: 2px;
+  background-color: #ffc814;
+  .title{
+    margin: 0 40px;
+    height: 710px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #fffdf1;
+
+    -moz-box-shadow: 20px 20px #e3a410;
+    -webkit-box-shadow: 20px 20px #e3a410;
+    box-shadow: 20px 20px #e3a410;
+  }
+  .find-pos{
+    height: 280px;
+    .find{
+      width: 327px;
+      height: 311px;
+      top: 10px;
+      left: -40px;
+      background: url(/static/img/cash/count_down/find_all.png) no-repeat center;
+    }
+    .pos-location{
+      width: 313px;
+      height: 207px;
+      top: 25px;
+      right: 20px;
+      background: url(/static/img/cash/count_down/logo_all.png) no-repeat center;
+    }
+  }
+  .every_one_get{
+    width: 622px;
+    height: 225px;
+    margin: 20px auto;
+    background: url(/static/img/cash/count_down/travel_title.png) no-repeat center;
+  }
+  .rob-time{
+    width: 500px;
+    height: 90px;
+    line-height: 95px;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: 600;
+    margin: 50px auto;
+    background-color: #253647;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .icon-needle{
+    width: 80px;
+    height: 110px;
+    bottom: 25px;
+    right: -37px;
+    background: url(/static/img/cash/count_down/needle_in.png);
+  }
+
+  .icon-line{
+    background-color: #e3a410;
+    height: 8px;
+    width: 690px;
+    border-radius: 3px;
+    margin: 0 auto;
+    top: 60px;
+  }
+  .distance-day{
+    font-size: 40px;
+    font-weight: bolder;
+    color: #000;
+    text-align: center;
+    top: 25px;
+    width: 270px;
+    background-color: #ffc814;
+  }
+
+  .end-time{
+    width: 690px;
+    background-color: #e3a410;
+    border-radius: 15px;
+    margin: 45px auto 30px auto;
+    -moz-box-shadow: inset 5px 5px 5px #d1880d;
+    -webkit-box-shadow: inset 5px 5px 5px #d1880d;
+    box-shadow: inset 5px 5px 5px #d1880d;
+  }
+  .time-left{
+    font-size: 30px;
+    font-weight: 600;
+    height: 170px;
+    line-height: 170px;
+    text-align: center;
+  }
+  .time-style{
+    display: inline-block;
+    background-color: #ffffff;
+    width: 106px;
+    height: 106px;
+    line-height: 106px;
+    border-radius: 15px;
+    font-size: 60px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .time-tag{
+    position: relative;
+    bottom: -32px;
+    margin: 0 2px;
+  }
+  .bottom{
+    width: 750px;
+    position: static;
+    //bottom: 0;
+    background-color: #253647;
+    color: #ffffff;
+    padding: 11px 0;
+  }
+  .font-btn, .font-click{
+    text-align: center;
+    font-weight: 600;
+  }
+  .font-btn{
+    font-size: 45px;
+  }
+  .font-click{
+    font-size: 82px;
+  }
+}
+
+//适配 以适应各种型号的机型（需调整） //可以写一段js代码控制
+@media only screen and (min-width: 751px) and (min-height: 675px){
+  .bottom{
+    position: static !important;
+  }
+}
+
+/*mz*/
+@media only screen and (min-width: 393px) and (min-height: 581px){
+  //.contain {
+  //  .find-pos {
+  //    height: 256px;
+  //  }
+  //  .rob-time{
+  //    margin: 30px auto;
+  //  }
+  //  .title{
+  //    height: 655px;
+  //  }
+  //  .icon-line{
+  //    top: 50px;
+  //  }
+  //  .distance-day {
+  //    top: 16px;
+  //  }
+  //  .end-time{
+  //    margin: 30px auto 55px auto;
+  //  }
+  //  .font-btn{
+  //    font-size: 42px;
+  //  }
+  //  .font-click{
+  //    font-size: 65px;
+  //  }
+  //}
+
+}
+
+/*iphone5*/
+@media only screen and (min-width: 320px) and (min-height: 504px){
+
+}
+/*HM note*/
+@media only screen and (min-width: 360px) and (min-height: 567px){
+
+}
+

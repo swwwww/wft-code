@@ -1,0 +1,83 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/ad/poem/layout.css"}
+{/block}
+
+{block name="inner"}
+<section class="gift">
+    <div class="gift-box">
+        <div class="gift-box-bag">
+            <img src="/static/img/poem/100_ticket.png" class="gift-box-title">
+            <input type="tel" name="phone" id="phone" placeholder="输入您的手机号" class="gift-box-tel">
+            <button class="gift-box-obtain" id="q_submit">获取验证码</button>
+            <input type="text" name="code" id="code" placeholder="输入验证码" class="gift-box-qcode">
+            <a href="#" class="gift-box-get" id="submit">
+                <button class="gift-box-btn">
+                    <img src="/static/img/poem/d-btn-get.png" class="gift-box-click">
+                </button>
+            </a>
+        </div>
+    </div>
+    <img src="/static/img/poem/logo.png" class="gift-box-logo">
+</section>
+<div class="test"></div>
+{/block}
+
+{block name="js" append}
+{js file="js/lib/zepto.min.js"}
+
+{literal}
+<script type="text/javascript">
+    (function () {
+        var oTel = $('#phone');
+        var oQcode = $('#code');
+        /*获取验证码*/
+
+        $("#q_submit").on('click', function () {
+            if (!(oTel.val() && /^1\d{10}$/.test(oTel.val()))) {
+                alert("请输入正确的手机号以获取验证码！");
+                return;
+            }
+
+            var url = base_url_module + 'sms/getCode';
+
+            var post_data = {
+                'YII_CSRF_TOKEN': yii_csrf_token,
+                'phone': oTel.val()
+            };
+            $.post(url, post_data, function (res) {
+                var data = JSON.parse(res);
+                alert(data['msg']);
+            });
+        });
+
+        /*提交*/
+        $("#submit").on('click', function () {
+            if (!(oTel.val() && /^1\d{10}$/.test(oTel.val()))) {
+                alert("请输入正确的手机号并获取验证码！");
+                return;
+            }
+            if (!oQcode.val()) {
+                alert("请输入验证码！");
+                return;
+            }
+
+            var post_data_code = {
+                'YII_CSRF_TOKEN': yii_csrf_token,
+                'phone': oTel.val(),
+                'code': oQcode.val()
+            };
+            var url_code = base_url_module + 'act/getCash?act_id=2';
+            $.post(url_code, post_data_code, function (res) {
+                var data = JSON.parse(res);
+                if ( data['status']){
+                    window.location = 'http://play.wanfantian.com/' + 'act/poem/success';
+                }else{
+                    alert(data['msg']);
+                }
+            });
+        })
+    })();
+</script>
+{/literal}
+{/block}

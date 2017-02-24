@@ -1,0 +1,109 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"账户余额"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_remain_account.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<main class="align">
+    <nav class="ac-title">
+    <h2 class="ac-title clearfix">
+        <span class="title-now fl dib">当前余额</span>
+        <a class="title-notice fr dib" href="{$BASE_URL_MODULE}user/userinstr">账户使用说明</a>
+    </h2>
+    <div class="remain clearfix">
+        <i class="remain-money fl">¥{$res.money}</i>
+        <a class="to-charge db fr" href="{$BASE_URL_MODULE}user/passwordTransition">设置密码</a>
+<!--         <a class="charge-money db fr" href="{$BASE_URL_MODULE}orderWap/chargeMoney">充值</a> -->
+    </div>
+</nav>
+    <section class="wrapper">
+        <h3 class="ac-detail">收支明细</h3>
+        <ul class="ac-list"></ul>
+    </section>
+</main>
+
+<!--蒙层-->
+<div class="matte"></div>
+{if $res.share_type == 1}
+<!--支付成功的弹窗-->
+<section class="succ-pop" > <!--VIP会员充值-->
+    <div class="head-top clearfix">
+        <i class="close-btn dib fl"></i>
+        <i class="share-btn dib fr"></i>
+    </div>
+
+    <div class="share-info gradient pr">
+        <h2 class="info-title pa">充值成功</h2>
+        <i class="share-succ db"></i>
+        <span class="get-msg pa">
+            <span class="msg-congrats db tc">恭喜您成为玩翻天会员</span>
+            <span class="msg-money db tc">688元现金<mark class="lottery-chance">+4次</mark>亲子游已存入您的账户</span>
+        </span>
+
+        <img class="share-logo" src="{$res.share.image}">
+
+        <div class="bottom-btn pr">
+            <p class="share-to dib pa">立即再领取3次亲子游</p>
+            <i class="icon-hand dib pa"></i>
+            <!--<a class="dib order-detail dib pa" href="javascript:;">查看订单详情</a>-->
+        </div>
+    </div>
+</section>
+{else}
+<!--普通充值-->
+<section class="succ-pop" style="display: none"> <!--VIP会员充值-->
+    <div class="head-top clearfix">
+        <i class="close-btn dib fl"></i>
+        <i class="share-btn dib fr"></i>
+    </div>
+
+    <div class="share-info gradient pr">
+        <h2 class="info-title pa">充值成功</h2>
+        <i class="comm-charge db"></i>
+        <span class="get-msg get-chance pa">
+            分享给好友获得<mark class="lottery-chance">{$res.share.lottery_number}次</mark>抽奖机会
+        </span>
+
+        <img class="share-logo" src="{$res.share.image}">
+
+        <div class="bottom-btn pr">
+            <p class="share-to dib pa">分享抢现金</p>
+            <i class="icon-hand dib pa"></i>
+            <!--<a class="dib order-detail dib pa" href="javascript:;">查看订单详情</a>-->
+        </div>
+    </div>
+</section>
+{/if}
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+
+{block name="js" append}
+{js file="js/user/remain_account.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    {{if res[0]}}
+    {{each res}}
+        <li class="item">
+            <h4 class="item-title">{{$value.desc}}</h4>
+            <div class="item-footer">
+                <time class="item-time fl dib">{{$value.dateline | dateFormat: 'yyyy年MM月dd日 hh:mm:ss'}}</time>
+                <span class="price-num fr dib">￥{{$value.flow_money}}</span>
+            </div>
+        </li>
+    {{/each}}
+    {{else}}
+        {{if gif_flag==1}}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {{/if}}
+    {{/if}}
+</script>
+{/literal}
+{/block}

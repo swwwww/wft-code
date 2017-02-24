@@ -1,0 +1,83 @@
+<input type="hidden" id="wechat_share_config_json" value='{$wechat_share|default: "[]"}'>
+
+{capture append="widget_js"}
+<script>
+    define = null;
+    require = null;
+    var wechat_share_json = document.getElementById('wechat_share_config_json').value;
+    var wechat_share = JSON.parse(wechat_share_json);
+
+</script>
+{if $platform.wechat}
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {js file="js/util/wechat_share.js"}
+
+    {literal}
+    <script>
+        $(function() {
+            wx.ready(function () {
+                wx.onMenuShareAppMessage({
+                    title: wechat_share.share_app_message.title,
+                    desc: wechat_share.share_app_message.message,
+                    link: wechat_share.share_app_message.link,
+                    imgUrl: wechat_share.share_app_message.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                        $('#share').hide();
+                        $('#mark_share').hide();
+                        if(wechat_share.is_lottery == 1){
+                            window.location.href = wechat_share.lottery_url;
+                        }
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+                wx.onMenuShareQQ({
+                    title: wechat_share.share_app_message.title,
+                    desc: wechat_share.share_app_message.message,
+                    link: wechat_share.share_app_message.link,
+                    imgUrl: wechat_share.share_app_message.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                        $('#share').hide();
+                        $('#mark_share').hide();
+                        if(wechat_share.is_lottery == 1){
+                            window.location.href = wechat_share.lottery_url;
+                        }
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+                wx.onMenuShareTimeline({
+                    title: wechat_share.share_time_line.title,
+                    link: wechat_share.share_time_line.link,
+                    imgUrl: wechat_share.share_time_line.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                        $('#share').hide();
+                        $('#mark_share').hide();
+                        if(wechat_share.is_lottery == 1){
+                            window.location.href = wechat_share.lottery_url;
+                        }
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+            });
+        });
+    </script>
+    {/literal}
+{/if}
+{/capture}

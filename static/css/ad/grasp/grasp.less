@@ -1,0 +1,1057 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+body{
+  background-color: #503c8c;
+}
+
+.start-game, .get-prise, .has-prise{
+  .prise-foot{
+    width: 750px;
+    height: auto;
+    position: fixed;
+    bottom: -8px;
+    // position: absolute;
+    //margin-top: 115%;
+  }
+  .rule-btn, .prise-btn, .go-index, .continue{
+    width: 247px;
+    height: 185px;
+    background-size: 247px 134px;
+  }
+  .rule-btn{
+    margin-left: 45px;
+    background: url(/static/img/ad/grasp/1_act_rule.png) no-repeat center;
+  }
+  .prise-btn{
+    margin-right: 45px;
+    background: url(/static/img/ad/grasp/1_my_prise.png) no-repeat center;
+  }
+  .rule-handle{
+    margin-left: 45px;
+    width: 81px;
+    height: 163px;
+    background: url(/static/img/ad/grasp/1_handle.png) no-repeat center;
+
+  }
+}
+
+.main-bg{
+  width: 100%;
+  height: 100%;
+}
+.sale-out{
+  width: 390px;
+  height: 123px;
+  //background-color: #000000;
+  bottom: 58px;
+  left: 23%;
+}
+
+//首页1
+.content{
+  background-color:  #3e2d74;
+  width: 750px;
+  //height: 100%;
+  .home{
+    background: url('/static/img/ad/grasp/1_index_bg.png') no-repeat center;
+    background-size: 100% 100%;
+    max-width: 750px;
+    width: 100%;
+    height: 1180px;
+
+  }
+  .head{
+    max-width: 750px;
+    margin: 300px auto;
+    .head-img{
+      width: 720px;
+    }
+    .head-notice{
+      width: 410px;
+      margin-top: -25px;
+    }
+  }
+  .start{
+    margin-top: 960px;
+    width: 750px;
+    .start-img{
+      width: 420px;
+      //margin-left: 95px;
+    }
+    .game-change{
+      color: #b06735;
+      background-color: #facf23;
+      width: 106px;
+      height: 106px;
+      font-size: 77px;
+      font-weight: bolder;
+      border-radius: 53px;
+      margin-top: -190px;
+      margin-left: 195px;
+    }
+    .tri-css{
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 35px solid #facf23;
+      transform: rotate(220deg);
+      -ms-transform: rotate(220deg);
+      -moz-transform: rotate(220deg);
+      -webkit-transform: rotate(220deg);
+      -o-transform: rotate(220deg);
+      top: 20px;
+      left: 569px;
+      overflow: hidden;
+    }
+    .game-pv{
+      font-size: 26px;
+      color: #ffffff;
+    }
+  }
+
+  .foot{
+    padding: 20px;
+    max-width: 750px;
+    //position: fixed;
+    //bottom: -50px;
+    //background-color:  #3e2d74;
+    height: 180px;
+    .rule-handle{
+      margin: 0 50px 85px 50px;
+    }
+  }
+}
+
+
+//首页2
+.start-game{
+  width: 750px;
+  height: 100%;
+  //color: #734620;
+  background: url(/static/img/ad/grasp/1-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  .index-title{
+    padding-top: 6%;
+    width: 750px;
+    height: 118px;
+    background: url(/static/img/ad/grasp/1-titile.png) no-repeat center;
+  }
+  .index-body, .body-title,.title-name, .start-btn{
+    width: 750px;
+    position: absolute;
+  }
+  .index-body{
+    height: 1052px;
+    margin-top: -138px;
+    background: url(/static/img/ad/grasp/ufo3.png) no-repeat 148% 46%;
+    zoom: 1;
+  }
+  .body-title{
+    height: 206px;
+    background-size: 725px 206px;
+    margin-top: 27%;
+    background: url(/static/img/ad/grasp/1-game-title1.png) no-repeat center;
+  }
+  .title-name{
+    height: 105px;
+    margin-top: 48%;
+    background-size: 430px 105px;
+    background: url(/static/img/ad/grasp/1_midd.png) no-repeat center;
+  }
+  .start-btn{
+    height: 126px;
+    top: 77%;
+    background-size: 421px 126px;
+    background: url(/static/img/ad/grasp/1_start_game.png) no-repeat center;
+    zoom: 0.9;
+    left: 35px;
+  }
+  .game-change{
+    color: #b06735;
+    text-align: center;
+    background-color: #facf23;
+    width: 106px;
+    height: 106px;
+    font-size: 77px;
+    font-weight: bolder;
+    border-radius: 53px;
+    top: -72px;
+    left: 560px;
+  }
+  .tri-css{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 35px solid #facf23;
+    transform: rotate(220deg);
+    -ms-transform: rotate(220deg);
+    -moz-transform: rotate(220deg);
+    -webkit-transform: rotate(220deg);
+    -o-transform: rotate(220deg);
+    top: 20px;
+    left: 569px;
+  }
+  .game-pv{
+    width: 100%;
+    font-size: 26px;
+    color: #ffffff;
+    position: absolute;
+    margin-top: 123%;
+  }
+}
+/*游戏页*/
+.game-body{
+  width: 750px;
+  height: 100%;
+  //color: #734620;
+  background: url(/static/img/ad/grasp/2-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  .head-title{
+    padding-top: 8%;
+    //margin: 0 25px;
+  }
+  .show-time, .show-score{
+    width: 320px;
+    height: 75px;
+    color: #ffffff;
+    font-size: 30px;
+  }
+  .time-num, .score-num{
+    width: 80px;
+    position: absolute;
+    margin: 22px 196px;
+    text-align: center;
+  }
+  .show-time{
+    background: url(/static/img/ad/grasp/2-times.png) no-repeat center;
+
+  }
+  .show-score{
+      background: url(/static/img/ad/grasp/2-scores.png) no-repeat center;
+  }
+  .bottom-substrate{
+    display: inline-block;
+    text-align: center;
+    width: 750px;
+    height: 218px;
+    background-size: 693px 218px;
+    background: url(/static/img/ad/grasp/2-substrate.png) no-repeat center;
+    position: fixed;
+    bottom: 0;
+    .btn-save{
+      margin: 20px auto;
+      width: 378px;
+      height: 177px;
+      background-size: 378px 177px;
+      background: url(/static/img/ad/grasp/2-save-earth.png) no-repeat center;
+    }
+  }
+}
+
+//抽奖页面和我的奖品页共用头部
+.head-title{
+  padding: 6%;
+  .title-font{
+    width: 100%;
+    height: 120px;
+    background-size: 401px 120px;
+    zoom: 0.9;
+  }
+  .user-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 38px;
+    vertical-align: bottom;
+    margin-right: 15px;
+  }
+  .wx-name{
+    width: 100%;
+    margin-top: 10px;
+  }
+  .user-info{
+    color: #ffffff;
+    vertical-align: top;
+  }
+  .user-name{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+  }
+  .my-score{
+    font-size: 22px;
+    background-color: #FA7319;
+    padding: 2px 20px;
+    border-radius: 10px;
+  }
+}
+
+
+//抽奖页面
+.get-prise{
+  .title-font{
+    background: url(/static/img/ad/grasp/3-title.png) no-repeat center;
+  }
+  width: 750px;
+  height: 100%;
+  background: url(/static/img/ad/grasp/3-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+
+  .prise-item{
+    width: 750px;
+    height: 849px;
+    position: absolute;
+    margin-top: -85px;
+    background-size: 401px 120px;
+    background: url(/static/img/ad/grasp/3-shelf1.png) no-repeat center;
+  }
+  .row-item{
+    width: 590px;
+    //height: 227px;
+    margin: 0 auto;
+    a{
+      display: block;
+      width: 296px;
+      height: 230px;
+      background-size: 161px 149px;
+    }
+    .prise-box{
+      background: url(/static/img/ad/grasp/3-prise-box.png) no-repeat center 85px;
+    }
+    .shake-box{
+      position: relative;
+      top: 38px;
+      background: url(/static/img/ad/grasp/3-shake-box.gif) no-repeat 64px 28px;
+    }
+  }
+  .left-incon,.right-incon{
+    width: 50%;
+  }
+
+  //.icon-purse{
+  //  display: inline-block;
+  //  margin-bottom: -9px;
+  //  //width: 40%;
+  //  width: 161px;
+  //  height: 235px;
+  //  background-size: 161px 149px;
+  //  background: url(/static/img/ad/grasp/3-prise-box.png) no-repeat center 90px;
+  //}
+  .exchange-value{
+    color: #ffffff;
+    font-size: 22px;
+    width: 294px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+  }
+  .mt20{
+    margin-top: 20px;
+  }
+  .purse-three{
+    margin-bottom: 20px;
+  }
+  .prise-foot{
+    bottom: 7px;
+  }
+}
+
+//我的奖品页
+.has-prise{
+  .title-font{
+    background-size: 100% 100%;
+    background: url(/static/img/ad/grasp/4-title.png) no-repeat center;
+    height: 80px;
+    zoom: 1.5;
+  }
+  .head-title{
+    //width: 750px;
+    height: 215px;
+    //color: #734620;
+    background: url(/static/img/ad/grasp/4-head.png) no-repeat center;
+    background-size: 100% 100%;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    .wx-name {
+      margin-top: 25px;
+    }
+  }
+
+  .prise-body{
+    background: url(/static/img/ad/grasp/4-bg1.png) repeat-y;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    padding-bottom: 18px;
+  }
+
+  .prise-bg{
+    width: 660px;
+    background-color: #36255e;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+  //没有奖品
+  .no-tip{
+    width: 504px;
+    height: 371px;
+    background: url(/static/img/ad/grasp/4-ufo.png) no-repeat center;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    margin: 0 auto;
+    padding-top: 110px;
+  }
+  .tip{
+    color: #ffffff;
+    padding-bottom: 70px;
+  }
+  .tip-info{
+    font-size: 55px;
+    font-weight: bold;
+  }
+  .tip-bottom{
+    font-size: 42px;
+  }
+
+  //有奖品
+  .prise-box{
+    padding-top: 30px;
+    .prise-item{
+      width: 610px;
+      height: 430px;
+      background-color: #6b50bd;
+      color: #ffffff;
+      margin: 0 auto;
+      padding-bottom: 25px;
+      border-radius: 25px;
+    }
+    .prise-logo{
+      width: 142px;
+      height: 182px;
+      background: url(/static/img/ad/grasp/4-logo.png) repeat-y;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-appearance: none;
+      margin-left: 40px;
+      margin-top: 15px;
+    }
+    .pen-logo{
+      width: 189px;
+      height: 135px;
+      background: url(/static/img/ad/grasp/4-pen.png) repeat-y;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-appearance: none;
+      margin-left: 40px;
+      margin-top: 15px;
+    }
+    .pen-prise{
+      width: 320px !important;
+      margin-left: 35px !important;
+    }
+    .pen-item{
+      height: 210px !important;
+    }
+    .pen-title{
+      margin-top: 80px;
+      font-weight: lighter !important;
+      margin-bottom: 10px !important;
+    }
+    .pen-msg{
+      font-size: 38px !important;
+      font-weight: bold !important;
+
+    }
+    .prise-msg{
+      margin-left: 20px;
+      width: 380px;
+      height: 182px;
+      vertical-align: text-bottom;
+    }
+    .prise-value{
+      height: 75px;
+      line-height: 75px;
+      font-size: 32px;
+    }
+    .prise-title{
+      font-size: 34px;
+      font-weight: bold;
+    }
+    .prise-instr{
+      height: 38px;
+      line-height: 38px;
+      font-size: 22px;
+    }
+    //
+    .msg-item{
+      margin: 20px 45px;
+      line-height: 45px;
+      text-align: justify;
+    }
+    .info-msg{
+      color: #ffffff;
+      font-size: 26px;
+    }
+  }
+
+  //输入框
+  .input-code{
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 45px;
+  }
+  .pb45{
+    padding-bottom: 45px;
+  }
+  .backspace{
+    width: 100%;
+    height: 35px;
+  }
+  .input-in{
+    font-size: 28px;
+    color: #ffffff;
+  }
+  .submit{
+    font-size: 38px !important;
+    margin-left: 20px !important;
+  }
+  .prise-foot{
+    //padding-top: 115%;
+    height: 185px;
+    position: static;
+  }
+
+}
+.input-item{
+  width: 100%;
+  margin-top: 35px;
+  //margin-left: 30px;
+  text-align: center;
+}
+.item-msg, .input-in{
+  height: 65px;
+  line-height: 65px;
+  padding: 0 20px;
+  background-color: #5e46a6;
+  border-radius: 25px;
+}
+.item-msg{
+  padding: 0 10px 0 20px;
+  width: 545px;
+}
+.code-in{
+  width: 320px;
+}
+.msg-code{
+  font-size: 30px;
+  font-weight: bold;
+}
+.code-no{
+  font-size: 30px;
+  z-index: 10;
+}
+.copy-btn, .submit{
+  color: #b06735;
+  background-color: #ffe600;
+  font-size: 34px;
+  font-weight: bold;
+  height: 65px;
+  line-height: 65px;
+  padding: 0 20px;
+  border-radius: 25px;
+  margin-left: -35px;
+}
+.copy-notice{
+  color: #ffffff;
+  //background-color: #ffe600;
+  font-size: 28px !important;
+  font-weight: bold;
+  height: 65px;
+  line-height: 65px;
+  text-decoration: underline;
+}
+
+/*弹窗部分*/
+//.matte{
+//  max-width: 750px;
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  background: rgba(99, 99, 99, 0.7);
+//  z-index: 1;
+//  margin: 0 auto;
+//}
+.pop-rule{
+  width: 750px;
+}
+.start-rule{
+  background-color: #8E73DE;
+  color: #ffffff;
+  font-size: 32px;
+  padding: 66px 35px 20px 35px;
+  width: 556px;
+  position: fixed;
+  margin: 0 auto;
+  top: 120px;
+  left: 55px;
+  right: 75px;
+  z-index: 2;
+  border-radius: 80px;
+  .rules-title{
+    width: 391px;
+    height: 100px;
+    background: url(/static/img/ad/grasp/1-rule-logo.png) no-repeat center;
+    margin: -140px 0 0 -60px;
+  }
+  .btn-colse{
+    width: 391px;
+    height: 136px;
+    background: url(/static/img/ad/grasp/1-colse.png) no-repeat center;
+    margin: -116px 0 0 372px;
+  }
+  .item-img{
+    height: 300px;
+    .arrow{
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      transform: rotate(220deg);
+      -ms-transform: rotate(220deg);
+      -moz-transform: rotate(220deg);
+      -webkit-transform: rotate(220deg);
+      -o-transform: rotate(220deg);
+      margin-top: 96px;
+    }
+  }
+  .green-child, .ball{
+    width: 165px;
+    height: 260px;
+  }
+  .add_score, .cut_score{
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    font-size: 38px;
+    padding: 10px 0;
+    width: 134px;
+    border-radius: 30px;
+    margin-top: 35px;
+  }
+  .add_score{
+    margin-left: 175px;
+    background-color: #FA7319;
+  }
+  .add_arrow{
+    margin-left: 175px;
+    border-bottom: 35px solid #FA7319;
+  }
+  .cut_score{
+    background-color: #2A1F4F;
+    margin-left: 435px;
+  }
+  .cut_arrow{
+    margin-left: 440px;
+    border-bottom: 35px solid #2A1F4F;
+  }
+  .green-child{
+    background: url(/static/img/ad/grasp/1-child.png) no-repeat center;
+    margin-top: 20px;
+  }
+  .ball{
+    background: url(/static/img/ad/grasp/2-ball.png) no-repeat center;
+    margin-left: 270px;
+    margin-top: 20px;
+  }
+  .item-font{
+    text-align: justify;
+  }
+  .bottom-msg{
+    margin: 20px 0;
+    background-color: #6B50BD;
+    padding: 20px 45px;
+    border-radius: 35px;
+    font-size: 28px;
+  }
+  .pop-title{
+    font-size: 30px;
+    height: 45px;
+    line-height: 45px;
+    padding-bottom: 80px;
+  }
+  .start-btn{
+    width: 320px;
+    height: 144px;
+    margin: 0 auto 20px auto;
+    padding-bottom: 25px;
+    background: url(/static/img/ad/grasp/2-start.png) no-repeat center;
+    //margin-left: 270px;
+    //margin-top: 20px;
+  }
+  .title-score{
+    width: 100%;
+    display: inline-block;
+    font-size: 68px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .to-get-prise , .try-again, .focous-us{
+    width: 320px;
+    height: 144px;
+    margin: 35px auto;
+  }
+  .to-get-prise{
+    background: url(/static/img/ad/grasp/2-imdd-start.png) no-repeat center;
+  }
+  .try-again{
+    background: url(/static/img/ad/grasp/2-try-again.png) no-repeat center;
+  }
+  .focous-us{
+    background: url(/static/img/ad/grasp/2-focus-us.png) no-repeat center;
+  }
+  .q_code_img{
+    width: 274px;
+    height: 274px;
+    margin: 0 auto 60px auto;
+    zoom: 1.5;
+    padding: 10px;
+    //background: url(/static/img/ad/grasp/4-qcode.png) no-repeat center;
+  }
+  .code-title{
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    //padding: 10px 20px;
+    border-radius: 15px;
+  }
+  .q_color{
+    background-color: #6B50BD;
+    margin-bottom: 60px;
+  }
+}
+.share-to{
+  width: 613px;
+  height: 1132px;
+  position: fixed;
+  top: 8px;
+  left: 75px;
+  right: 75px;
+  margin: 0 auto;
+  background-size: 100% 100%;
+  background: url(/static/img/ad/grasp/share-to.png) no-repeat center;
+  z-index: 2;
+}
+.tips-msg{
+  top: 350px;
+  padding-bottom: 90px;
+}
+.tips-font{
+  text-align: center;
+  margin: 0 auto;
+  font-size: 54px;
+  font-weight: bold;
+}
+
+/*p3 弹窗*/
+.socre-not{
+  height: 650px;
+}
+.not-enought, .try-again{
+  width: 408px;
+  height: 389px;
+  margin-left: 85px;
+}
+.not-enought{
+  background: url(/static/img/ad/grasp/3-not-enought.png) no-repeat center;
+  margin-top: -165px;
+}
+.try-again-logo{
+  width: 400px;
+  height: 441px;
+  background: url(/static/img/ad/grasp/3-chayidain.png) no-repeat center;
+  margin: 0 auto;
+}
+.close-ph, .socre-colse{
+  width: 117px;
+  height: 117px;
+}
+.close-ph{
+
+  background: url(/static/img/ad/grasp/1-colse.png) no-repeat center;
+  margin: -100px 0 0 502px;
+}
+.socre-colse{
+  background: url(/static/img/ad/grasp/1-colse.png) no-repeat center;
+  margin: -570px 0 0 502px;
+}
+.score-font{
+  margin-top: 48%;
+}
+.again-font{
+  margin-top: 3%;
+}
+.not-font{
+  text-align: center;
+  font-size: 54px;
+  font-weight: bolder;
+}
+.go-start-game{
+  width: 320px;
+  height: 144px;
+  margin: 40px auto;
+  background: url(/static/img/ad/grasp/3-btn-sure.png) no-repeat center;
+}
+
+.ph-notice{
+  text-align: center;
+  height: 90px;
+  line-height: 90px;
+  font-size: 52px;
+  font-weight: bolder;
+}
+.ph-input{
+  width: 500px;
+  height: 110px;
+  line-height: 110px;
+  background-color: #ffffff;
+  padding: 0 20px;
+  border-radius: 25px;
+  margin: 130px auto 40px auto;
+}
+.ph-submit{
+  width: 540px;
+  height: 140px;
+  margin: 40px auto;
+  background: url(/static/img/ad/grasp/ph-sure-btn.png) no-repeat center;
+}
+
+//我的奖品也弹出窗
+.good-luck{
+  background-color: #FA7319;
+  .luck-close{
+    width: 117px;
+    height: 117px;
+    background: url(/static/img/ad/grasp/3-colse.png) no-repeat center;
+    margin: -126px 0 0 502px;
+  }
+  .luck-child{
+    width: 346px;
+    height: 353px;
+    background: url(/static/img/ad/grasp/3-get-prise.png) no-repeat center;
+    margin: -190px 0 0 100px;
+  }
+  .give-friend{
+    margin-top: 30%;
+    font-size: 38px;
+  }
+  .luck-color{
+    background-color: #B06735;
+  }
+  .tell-msg{
+    width: 100%;
+    font-size: 24px;
+  }
+}
+.time-limit{
+  font-size: 22px;
+  //margin: 10px auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mt10{
+  margin-top: 10px;
+}
+.mt50{
+  margin-top: 50px;
+}
+.img-pos{
+  height: 310px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.qcode-img{
+  width: 274px;
+  padding: 30px;
+  bottom: -15px;
+  left: 120px;
+  //margin: 0 auto;
+  //z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.continue{
+  margin-right: 45px;
+  background: url(/static/img/ad/grasp/4-continue_to.png) no-repeat center;
+}
+.go-index{
+  margin-left: 45px;
+  background: url(/static/img/ad/grasp/3_return_index.png) no-repeat center;
+}
+/*相关的游戏元素*/
+.toprope{
+  position: absolute;
+  width: 750px;
+  top: 14%;
+  height: 41px;
+  background: url(/static/img/ad/grasp/2-rop.png) repeat-x center top;
+}
+.rope{
+  width: 25%;
+  padding-top: 66%;
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  background: url(/static/img/ad/grasp/2-arm.png) no-repeat;
+  background-size: 100%;
+}
+
+.game-content {
+  width: 23%;
+  padding-top: 37%;
+  position: absolute;
+  top: 16%;
+  left: 0
+}
+ .game-content .xybox, .game-content .ybbox{
+  position: absolute;
+  width: 100%;
+  top: 0
+}
+.game-content .xybox i, .game-content .ybbox i {
+  display: block;
+  width: 77px;
+  height: 182px;
+  background: url("/static/img/ad/grasp/2-sweep.png") no-repeat;
+  background-size: 100%;
+  padding-top: 90%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0)
+}
+ .game-content .xybox span, .game-content .ybbox span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0)
+}
+
+.game-content .xybox {
+  padding-top: 275%
+}
+.game-content .xybox .xy {
+  //height: 112px;
+  padding-top: 180%; /*116*/
+  background: url("/static/img/ad/grasp/2-ET.png") no-repeat;
+  background-size: 100%
+}
+.game-content .ybbox {
+  padding-top: 203.5%
+}
+.game-content .ybbox .yb {
+  padding-top:100%;
+  background:url("/static/img/ad/grasp/2-ball.png") no-repeat;
+  background-size:100%
+}
+
+//钱包震动效果
+@-webkit-keyframes shake {
+  0%, 100% {transform:  translateX(0)}
+  0%, 100% {-webkit-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform:  translateX(-10px)}
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+  20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+@-moz-keyframes shake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+  0%, 100% {-moz-transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
+}
+
+a.shake{
+  //-webkit-transition: ;
+  animation-name: shake;
+  animation-duration: 1s;
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 1s;
+  -moz-name: shake;
+  -moz-animation-duration: 1s;
+}
+
+//适配 以适应各种型号的机型（需调整） //可以写一段js代码控制
+@media only screen and (min-width: 751px) and (min-height: 675px){
+  .start-game {
+    height: 1225px;
+  }
+  .start-game .prise-foot, .get-prise .prise-foot , .has-prise .prise-foot{
+    padding-top: 115%;
+    height: 185px;
+    position: static;
+  }
+  .has-prise .prise-foot{
+    padding-top: 0;
+  }
+}
+
+
+.green-top{
+  display: none !important;
+}
+
+.bak{
+  width: 320px;
+  height: 75px;
+  line-height: 75px;
+  background-color: #6b50bd;
+  color: #ffffff;
+}
+
+#js_focous, .img-pos, .good-luck{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.code-no{
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -o-user-select: text !important;
+  user-select: text !important;
+}
+.get-in{
+  padding: 50px;
+  bottom: -31px;
+  left: 108px;
+}
+
+.tool-b{
+  padding-bottom: 120px;
+}
+.tool-contain{
+  top: 330px;
+}

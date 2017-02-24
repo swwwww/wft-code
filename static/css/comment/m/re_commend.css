@@ -1,0 +1,209 @@
+.rated-list-item {
+  padding: 40px 0 0 125px;
+  position: relative;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+}
+.rated-list-item .rated-user {
+  overflow: hidden;
+  line-height: 42px;
+}
+.rated-list-item .rated-user .rated-id {
+  float: left;
+  font-size: 30px;
+  color: #333333;
+}
+.rated-list-item .rated-user .rated-hot {
+  float: right;
+  width: 142px;
+  height: 42px;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 8px 0 0 8px;
+  color: #fa6e51;
+  border: 1px solid #fa6e51;
+  border-right: none;
+}
+.rated-list-item .rated-time {
+  font-size: 24px;
+  width: 600px;
+  margin-bottom: 15px;
+  color: #333333;
+  line-height: 42px;
+}
+.rated-list-item .rated-text {
+  width: 580px;
+  font-size: 28px;
+}
+.rated-list-item .rated-detail {
+  font-size: 24px;
+  color: #7c7c7c;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.rated-list-item .rated-detail span {
+  float: left;
+}
+.rated-list-item .rated-detail .name {
+  line-height: 40px;
+}
+.rated-list-item .rated-detail .like {
+  float: right;
+  height: 40px;
+  padding-left: 55px;
+  line-height: 40px;
+  margin-right: 20px;
+  text-align: right;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat 13px -720px;
+}
+.rated-list-item .rated-detail .like.active {
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat 13px -776px;
+}
+.rated-list-item .rated-detail .comment {
+  height: 40px;
+  padding-left: 55px;
+  line-height: 40px;
+  float: right;
+  margin-right: 30px;
+  text-align: right;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat 13px -660px;
+}
+.rated-list-item .prof-id {
+  display: block;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px 35px 35px 35px;
+  -webkit-border-radius: 35px 35px 35px 35px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.rated-list-item .img-list {
+  margin: 15px 0 20px 0;
+  list-style: none;
+}
+.rated-list-item .img-list li {
+  display: inline-block;
+  width: 141px;
+  height: 141px;
+  overflow: hidden;
+}
+.rated-list-item .img-list li img {
+  display: block;
+  width: 141px;
+  height: 141px;
+}
+.rated-star {
+  float: left;
+  width: 190px;
+  height: 40px;
+  margin-left: 15px;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat 2px -901px;
+}
+.rated-star mark {
+  float: left;
+  width: 100%;
+  height: 40px;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat 2px -841px;
+}
+.rated-star.user-rated {
+  margin-left: 40px;
+}
+.like-list {
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid #e5e5e5;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.like-list span {
+  float: left;
+  height: 80px;
+  width: 50px;
+  background: #fff url("/static/img/site/mobile/commodity.png") no-repeat 13px -697px;
+}
+.like-list img {
+  float: left;
+  width: 64px;
+  height: 64px;
+  border-radius: 32px 32px 32px 32px;
+  -webkit-border-radius: 32px 32px 32px 32px;
+  margin: 8.5px 0 8.5px 20px;
+}
+.reply-list {
+  margin-bottom: 80px;
+}
+.reply {
+  width: 685px;
+  padding: 30px 30px 30px 35px;
+  background: #fff;
+  font-size: 24px;
+  color: #7c7c7c;
+  border-bottom: 1px solid #e5e5e5;
+}
+.reply .reply-info {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 10px;
+  line-height: 64px;
+}
+.reply .reply-info img {
+  float: left;
+  width: 64px;
+  height: 64px;
+  border-radius: 32px 32px 32px 32px;
+  -webkit-border-radius: 32px 32px 32px 32px;
+}
+.reply .reply-info span {
+  float: left;
+  margin-left: 20px;
+}
+.reply .reply-info mark {
+  float: right;
+}
+.reply .reply-text {
+  font-size: 26px;
+  color: #000;
+  line-height: 40px;
+}
+#c_btn {
+  display: block;
+  height: 98px;
+  width: 750px;
+  max-width: 750px;
+  position: fixed;
+  bottom: 0;
+  background: #f7f7f7;
+  border-top: 1px solid #a9a9a9;
+  overflow: hidden;
+}
+#c_btn input {
+  float: left;
+  width: 518px;
+  height: 68px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  background-clip: padding-box;
+  background: #fff;
+  margin: 15px 0 0 18px;
+  padding-left: 30px;
+  font-size: 28px;
+  line-height: 68px;
+  border: 1px solid #dbdbdb;
+  color: #d5d5d5;
+}
+#c_btn mark {
+  float: left;
+  width: 152px;
+  height: 70px;
+  font-size: 36px;
+  background: #fa6f52;
+  border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  background-clip: padding-box;
+  color: #fff;
+  text-align: center;
+  line-height: 70px;
+  margin: 15px 0 0 18px;
+}

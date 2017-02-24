@@ -1,0 +1,26 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"什么是券资格"}{/block}
+
+{block name="css" append}
+    {css file="css/user/m/rules_qualifications.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<header class="ag-header">
+    <h2>什么是资格券？</h2>
+    <p>1、资格券是秒杀商品和指定特惠商品的购买资格，未获得资格券则无法参与购买秒杀商品和指定特惠商品</p>
+    <p>2、资格券仅限本会员手机号使用，不可转让</p>
+    <p>3、成功消费秒杀商品或指定特惠商品后，即成功使用一张资格券</p>
+    <p>4、未支付订单被取消时，未成功使用的资格券将自动退回</p>
+    <p>5、已支付订单申请退订的，已使用的资格券不予退回</p>
+</header>
+<section class="ag-main">
+    <h2>获取方式</h2>
+    <p>1、积分兑换：1积分可兑换一张资格券</p>
+    <p>2、特殊福利：参与特定活动可获得资格券</p>
+    <a class="join-btn db" href="{$BASE_URL_MODULE}user/seckill">立刻兑换资格&gt;&gt;</a>
+    <a class="join-btn db" href="javascript:;" style="display: none;">立刻参与&gt;&gt;</a>
+</section>
+{/block}
+

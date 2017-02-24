@@ -1,0 +1,37 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="title"}{$title|default:"发现"}{/block}
+{block name="css" append}
+{css file="css/discover/m/discover_detail.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <div class="special">
+        <p class="special-title">专题</p>
+        <div class="special-content">
+            {foreach $res.topic as $val}
+            <a href="/discover/specialinfo?id={$val.id}">
+                <img src="{$val.cover}" />
+            </a>
+            {/foreach}
+        </div>
+        <a class="special-more" href="/discover/speciallist">查看全部专题</a>
+    </div>
+
+    <div class="cate">
+        <p class="cate-title">品类</p>
+        <div class="cate-content">
+            {foreach $res.tag as $val}
+            <a class="item" href="/discover/playlist?id={$val.id}">
+                <div class="item-info">
+                    <span class="item-info-title">{$val.name}</span>
+                    <span class="item-info-detail">{$val.description}</span>
+                </div>
+                <img src="{$val.coin}" />
+            </a>
+            {/foreach}
+        </div>
+        <a class="cate-more" href="/discover/playlist">所有遛娃宝地</a>
+    </div>
+</section>
+{/block}

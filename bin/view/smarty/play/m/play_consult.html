@@ -1,0 +1,69 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"咨询"}{/block}
+{block name="css" append}
+{css file="css/play/m/play_consult.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="adv">
+    <div class="cons">
+        <form class="cons-ques pr">
+            <textarea id="js_submit_msg" placeholder="请输入您想要咨询的问题，玩翻天客服会尽快回复您哦！~"></textarea>
+            <submit id="js_submit" type="submit" class="cons-ques-put">我要提问</submit>
+        </form>
+
+        <section class="data-list" id="data_list"></section>
+    </div>
+</section>
+<div id="tips-dia"></div>
+<input id="js_play_id" type="hidden" value="{$res.play_id}">
+{/block}
+
+
+{block name="js" append}
+{js file="js/play/play_consult.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list-item" type="text/html">
+    {{if res[0]}}
+    {{each res as val i}}
+    <div class="cons-dial pr">
+        <p class="cons-dial-info">
+            <span class="cons-name fl">{{val.username}}</span>
+            <span class="cons-time fr">{{val.dateline | dateFormat:'yyyy-MM-dd hh:mm'}}</span>
+        </p>
+        <p class="cons-dial-ques">{{val.msg}}</p>
+        {{if val.reply[0]}}
+        {{each val.reply as val_reply}}
+        <div class="cons-dial-ans pr">
+            <p class="answer-info">
+                <span class="answer-name fl">{{val_reply.username}}</span>
+                <span class="answer-time fr">{{val_reply.dateline | dateFormat:'yyyy-MM-dd'}}</span>
+            </p>
+            <p class="answer-content">{{val_reply.msg}}</p>
+            <div class="triangle-up"></div>
+            <img class="portrait-margin" src="{{val_reply.img}}">
+        </div>
+        {{/each}}
+        {{/if}}
+        <img class="cons-portrait" src="{{val.img}}">
+    </div>
+    {{/each}}
+    {{else}}
+        {{if gif_flag==1}}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {{/if}}
+    {{/if}}
+
+    <input type="hidden" value="{{res|json_encode}}">
+</script>
+{/literal}
+{/block}
+
+
+

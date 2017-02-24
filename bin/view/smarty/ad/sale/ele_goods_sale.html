@@ -1,0 +1,40 @@
+{foreach $all_goods as $key => $goods}
+<div class="item-act {if $goods.during}act-rob{/if} clearfix">
+    <a class="item-img js-action-redirect pr" href="{if $goods.product_type == 0}
+               {if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id={$goods.product_id}{/if}
+            {else}
+                {if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/kidsplay/info?id={$goods.product_id}{/if}
+            {/if}"
+       data-lottery-id="{$goods.lottery-id}" data-id="{$goods.product_id}" data-type="{$goods.product_type}">
+        <img class="lazyload img-shop" data-src="{$goods.product_image}" src="/static/img/site/mobile/index_big.png">
+        <span class="sell-num pa">已售{$goods.product_buy}件</span>
+    </a>
+    <span class="act-title pa">{$goods.product_name}</span>
+
+    <div class="item-bottom">
+        <i class="icon-item item-price dib">双11价</i>
+        <span class="now-price dib">￥{$goods.new_price|default:0}</span>
+        <del class="old-price dib">{if $goods.old_price}￥{$goods.old_price|default:0}{/if}</del>
+        <i class="icon-item item-ticket dib">用券立减</i>
+        <a class="go-buy fr dib js-action-redirect {if !$goods.btn_status}disabled {/if}" aria-disabled="{if !$goods.btn_status} disabled {/if}"
+           href="{if !$goods.btn_status}javascript:;{else if $goods.product_type == 0 && $goods.btn_status}
+                    {if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id={$goods.product_id}{/if}
+                 {elseif $goods.product_type == 1 && $goods.btn_status}
+                    {if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/kidsplay/info?id={$goods.product_id}{/if}
+                 {/if}"
+           data-lottery-id="{$goods.lottery-id}" data-id="{$goods.product_id}" data-type="{$goods.product_type}">
+            {if $goods.btn_status == 0}
+            即将开始
+            {elseif $goods.btn_status == 1}
+            立即抢购
+            {else}
+            已抢完
+            {/if}
+        </a>
+    </div>
+</div>
+{/foreach}
+
+{capture append="widget_js"}
+{js file="js/util/app_bridge.js"}
+{/capture}

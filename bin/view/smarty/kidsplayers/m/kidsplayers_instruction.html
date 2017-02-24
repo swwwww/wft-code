@@ -1,0 +1,61 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"金牌遛娃师"}{/block}
+
+{block name="css" append}
+    {css file="css/kidsplayers/m/kidsplayers_instr.css"}
+{/block}
+
+{block name="meta_keyword"}
+<meta name="keywords" content="遛娃师，{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子户外活动，{$wft_global_set.custom_city_cn}亲子活动定制，{$wft_global_set.custom_city_cn}亲子游攻略，{$wft_global_set.custom_city_cn}孩子游玩的好地方，{$wft_global_set.custom_city_cn}农家乐活动，{$wft_global_set.custom_city_cn}少儿户外活动，亲子活动策划方案，亲子互动游戏" />
+{/block}
+
+{block name="meta_desc"}
+<meta name="description" content="遛娃师，是一个新兴职业，他们大多具有幼教或体育专业的教育背景，形象阳光，除了能和孩子们迅速打成一片，还能设计各种游戏桥段，同时还需要一定的医护知识。简单说，一名合格的遛娃师要懂娃、会遛娃、能护娃。陪着孩子玩，就能月入万元。官方微信公众号:玩翻天亲子">
+{/block}
+
+{block name="inner"}
+<article class="contain">
+    <header class="kidsplay">
+        <img class="kidsplayer-img db" src="/static/img/site/mobile/kidsplayers/kidsplayer_teacher.jpg" alt="金牌遛娃师">
+        <div class="kidsplay-instr">
+            一场好的活动离不开一个好的组织者，而在玩翻天有这样一群人，他们武能登山潜水闯户外，文能出口成章解答各种难题，软硬兼施制熊孩子的超强本领。他们，就是我们遍布武汉三镇的遛娃师！
+            <p>遛娃师是什么？</p>
+            <p>1.他们是主持人，主持整个幼儿园活动，轻松hold住熊孩子们，还能把控现场气氛。</p>
+            <p>2.他们是导游，带着亲子游山玩水，车上做互动游戏，一路欢歌笑语，绝不无聊。</p>
+            <p> 3.他们是老师，教导孩子们各种手工DIY、科学实验、探索自然等知识。</p>
+            <p> 4.他们是教练，各项运动技能UP满满，带领孩子们上山下水不含糊。</p>
+            <p> 5.他们是孩子王，跟孩子们打成一片，做孩子们信任的大哥哥大姐姐，一起玩一起闹。</p>
+            <p> 遛娃师有很多“身份”，但是他们都懂娃、会遛娃、能护娃。遛娃师好不好，由广大家长朋友来评价。</p>
+        </div>
+    </header>
+
+    <section class="rank">
+        <h2 class="rank-head db tc"></h2>
+
+        <ul class="rank-list">
+            {foreach $res.players as $val}
+                <li class="list-item">
+                    <img class="item-class" src="/static/img/site/mobile/kidsplayers/{$val.img}" alt="{$val.name}" title="{$val.name}">
+                    <span class="item-name">{$val.name}</span>
+                </li>
+            {/foreach}
+        </ul>
+    </section>
+
+    <section class="report">
+        <h2 class="report-head db tc">明星遛娃师详情介绍</h2>
+        <p class="report-instr">
+           <span class="kidsplayer-name"> 可乐：</span>玩翻天的第一位遛娃师，也是一名孩子的父亲。从大学毕业开始从事亲子教育行业，也有十余年，经验丰富。组织过各种大型亲子活动，拿下整个幼儿园的熊孩子完全不在话下。
+        </p>
+        <p class="report-instr">
+            <span class="kidsplayer-name"> 阳光：</span>活泼开朗的90后阳光大男孩儿，大学专业是学前教育，自身很喜欢和幼儿教育相关的职业，和孩子打交道特别有一手。
+        </p>
+        <p class="report-instr">
+            强大的遛娃师团队远不止这些，玩翻天全职加兼职遛娃师早已超过500人，受培训遛娃师超1000人。月亮、蚂蚁、明明、桃子、龙龙、麦子、崔崔、晶晶……数十位超人气明星遛娃师，他（她）们带队的活动，均受到家长们的一致好评！
+        </p>
+    </section>
+</article>
+
+
+{/block}
+

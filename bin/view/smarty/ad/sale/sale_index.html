@@ -1,0 +1,245 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"玩翻天双十一，全场1元起！"}{/block}
+
+{block name="css" append}
+{css file="css/ad/sale/sale.css"}
+{/block}
+
+{block name="inner"}
+<header class="header-top pr" id="header-section">
+    <div class="banner">
+        <i class="nav-logo dib pa"></i>
+        {if $wft_global_set.custom_city == 'wuhan'}
+        <ul class="nav-item dib">
+            <li class="item-list nav-one {if $lottery_vo.taobao_sale.show_period == 'one'}cur-one{/if}"></li>
+            <li class="item-list nav-two {if $lottery_vo.taobao_sale.show_period == 'two'}cur-two{/if}"></li>
+            <li class="item-list nav-three {if $lottery_vo.taobao_sale.show_period == 'three'}cur-three{/if}"></li>
+            <li class="item-list nav-four {if $lottery_vo.taobao_sale.show_period == 'four'}cur-four{/if}"></li>
+        </ul>
+        {else}
+        <ul class="nav-item dib">
+            <li class="item-list nav-one-nj {if $lottery_vo.taobao_sale.show_period == 'one'}cur-one-nj{/if}"></li>
+            <li class="item-list nav-two-nj {if $lottery_vo.taobao_sale.show_period == 'two'}cur-two-nj{/if}"></li>
+            <li class="item-list nav-three-nj {if $lottery_vo.taobao_sale.show_period == 'three'}cur-three-nj{/if}"></li>
+            <li class="item-list nav-four-nj {if $lottery_vo.taobao_sale.show_period == 'four'}cur-four-nj{/if}"></li>
+        </ul>
+        {/if}
+        {if $wft_global_set.custom_city == 'wuhan'}
+        <img class="banner-img" src="/static/img/ad/sale/banner-wh.png">
+        {else}
+        <img class="banner-img" src="/static/img/ad/sale/banner-nj.png">
+        {/if}
+        <select class="select-city pa dib">
+            <option class="city-value wuhan" data-value="wuhan">武汉</option>
+            <option class="city-value nanjing" data-value="nanjing">南京</option>
+        </select>
+        <i class="arrow dib pa"></i>
+    </div>
+    {if $platform.wft}
+        <i class="icon-share share-btn share-index dib fr pa"></i>
+    {/if}
+</header>
+
+<nav class="nav-list" id="sale-nav">
+    <div class="nav-contain">
+        <a class="a-item item-one dib cur-line" href="javascript:;" data-href="0">
+            {if $lottery_vo.taobao_sale.is_taobao_date}
+            整点秒杀
+            {else}
+            {if $wft_global_set.custom_city == 'wuhan'}
+            充500送420
+            {else}
+            充200送200
+            {/if}
+            {/if}
+        </a>  <!--整点秒杀-->
+        <a class="a-item item-two dib" href="javascript:;" data-href="1">
+            抢红包
+        </a>
+        <a class="a-item item-three dib" href="javascript:;" data-href="2">
+            {if $wft_global_set.custom_city == 'wuhan'}
+            武汉伢必玩
+            {else}
+            南京娃必玩
+            {/if}
+        </a>
+        <a class="a-item item-four dib" href="javascript:;" data-href="3">
+            {if $wft_global_set.custom_city == 'wuhan'}
+            超值抢鲜
+            {else}
+            超能体验队
+            {/if}
+        </a>
+    </div>
+</nav>
+
+<article class="contain-body">
+
+    <!--最后几天的整点秒杀-->
+    {if $lottery_vo.taobao_sale.is_taobao_date == true}
+        <section class="int-seckill" id="seckill">
+            <i class="int-icon db"></i>
+
+            <nav class="time-nav">
+                <a class="clock-item dib{if $lottery_vo.taobao_sale.taobao_during == 10} during-rob{/if}" href="javascript:;" click-data = "10">
+                    <span class="time-item db">10:00</span>
+                    <span class="progress-in db">
+                        {if $lottery_vo.taobao_sale.now_hour < 9}即将开始
+                        {elseif  $lottery_vo.taobao_sale.now_hour > 11}已结束
+                        {else}
+                            正在进行中...
+                        {/if}
+                    </span>
+                </a>
+                <a class="clock-item dib clock-center{if $lottery_vo.taobao_sale.taobao_during == 16} during-rob{/if}" href="javascript:;" click-data = "16">
+                    <span class="time-item db">16:00</span>
+                    <span class="progress-in db">
+                        {if $lottery_vo.taobao_sale.now_hour < 15}即将开始
+                        {elseif  $lottery_vo.taobao_sale.now_hour > 17}已结束
+                        {else}正在进行中...
+                        {/if}
+                    </span>
+                </a>
+                <a class="clock-item dib{if $lottery_vo.taobao_sale.taobao_during == 21} during-rob{/if}" href="javascript:;" click-data = "21">
+                    <span class="time-item db">21:00</span>
+                    <span class="progress-in db">
+                        {if $lottery_vo.taobao_sale.now_hour < 20}即将开始
+                        {elseif  $lottery_vo.taobao_sale.now_hour > 22}已结束
+                        {else}正在进行中...
+                        {/if}
+                    </span>
+                </a>
+            </nav>
+
+            <section class="seckill-item">
+                <div class="ten-clock" {if $lottery_vo.taobao_sale.now_hour < 11 && $lottery_vo.taobao_sale.now_hour >= 0}style="display: block"{/if}>
+                    {include file="ad/sale/ele_goods_sale.html" all_goods=$lottery_vo.goods.3.10}
+                </div>
+
+                <div class="four-clock" {if $lottery_vo.taobao_sale.now_hour < 17 && $lottery_vo.taobao_sale.now_hour >= 11}style="display: block"{/if}>
+                    {include file="ad/sale/ele_goods_sale.html" all_goods=$lottery_vo.goods.3.16}
+                </div>
+
+                <div class="twenty-clock" {if $lottery_vo.taobao_sale.now_hour <= 23 && $lottery_vo.taobao_sale.now_hour >= 17}style="display: block"{/if}>
+                    {include file="ad/sale/ele_goods_sale.html" all_goods=$lottery_vo.goods.3.21}
+                </div>
+            </section>
+        </section>
+    {else}
+        <!--充值-->
+        <section class="charge" id="charge">
+            <i class="limit-time db pa">限时</i>
+            <p class="item-title pa">
+                <i class="icon-foot dib pa"></i>
+                <span class="item-font dib">
+                    {if $wft_global_set.custom_city == 'wuhan'}
+                    充500送420
+                    {else}
+                    充200送200
+                    {/if}
+                </span>
+            </p>
+            <i class="title-line db"></i>
+
+            {if $wft_global_set.custom_city == 'wuhan'}
+            <a class="phone-charge js-action-redirect dib" data-id="2025" data-type="0" href="{if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id=2025{/if}">
+                <span class="charge-num dib">充500</span>
+                <i class="icon-give dib"></i>
+                <span class="give-num dib">420</span>
+                <span class="limit-date db">仅限：11月1日—11月9日</span>
+            </a>
+            <a class="icon-rob dib js-action-redirect pa" data-id="2025" data-type="0" href="{if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id=2025{/if}"></a>
+            {else}
+            <a class="phone-charge js-action-redirect dib" data-id="2040" data-type="0" href="{if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id=2040{/if}">
+                <span class="charge-num dib">充200</span>
+                <i class="icon-give dib"></i>
+                <span class="give-num dib">200</span>
+                <span class="limit-date db">仅限：11月1日—11月9日</span>
+            </a>
+            <a class="icon-rob js-action-redirect dib pa" data-id="2040" data-type="0" href="{if $platform.wft}javascript:;{else}http://wan.wanfantian.com/web/organizer/shops?id=2040{/if}"></a>
+            {/if}
+        </section>
+    {/if}
+
+    <!--抢红包-->
+    <section class="charge rob db" id="rob">
+        <p class="item-title pa">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">抢红包</span>
+        </p>
+        <i class="title-line db"></i>
+
+        <a class="purse-value dib" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$lottery_vo.lottery_id}/luck/1">
+            <p class="value-icon value-one dib">
+                <span class="value-num pa">
+                    30<i class="icon-yuan pa"></i>
+                </span>
+                <span class="value-info db">活动券</span>
+            </p>
+
+            <p class="value-icon value-two dib">
+                <span class="value-num pa">
+                    100 <i class="icon-yuan pa"></i>
+                </span>
+                <span class="value-info db">亲子酒店券</span>
+            </p>
+
+            <p class="value-icon value-three dib">
+                <span class="value-num pa">
+                    20<i class="icon-yuan pa"></i>
+                </span>
+                <span class="value-info db">商品券</span>
+            </p>
+        </a>
+        <a class="dib pa free" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$lottery_vo.lottery_id}/luck/1"></a>
+    </section>
+
+    <!--武汉伢必玩-->
+    <section class="wh-play" id="play">
+        <p class="item-title pa wh-title">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">
+                {if $wft_global_set.custom_city == 'wuhan'}
+                     武汉伢必玩
+                {else}
+                     南京娃必玩
+                {/if}
+            </span>
+        </p>
+        <i class="title-line db wh-line"></i>
+
+
+          <section class="play-item pr">
+              {include file="ad/sale/ele_goods_sale.html" all_goods=$lottery_vo.goods.1}
+          </section>
+    </section>
+
+    <!--超值抢鲜-->
+    <section class="wh-play" id="get_fresh">
+        <p class="item-title pa wh-title">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">
+                {if $wft_global_set.custom_city == 'wuhan'}
+                超值抢鲜
+                {else}
+                超能体验队
+                {/if}
+            </span>
+        </p>
+        <i class="title-line db wh-line"></i>
+
+        <section class="play-item pr">
+            {include file="ad/sale/ele_goods_sale.html" all_goods=$lottery_vo.goods.2}
+        </section>
+
+    </section>
+</article>
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/scrollTop.js"}
+{js file="js/ad/sale/sale.js"}
+{/block}

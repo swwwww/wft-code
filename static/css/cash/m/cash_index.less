@@ -1,0 +1,251 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.cash{
+  width: 750px;
+  background-color: #544068;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  .cash-top, .cash-bottom{
+    width: 750px;
+  }
+  .cash-top{
+    height: 926px;
+    background: url(/static/img/cash/cash_bg_t.png) no-repeat center;
+    background-size: 100% 100%;
+    .icon-title{
+      width: 750px;
+      height: 128px;
+      text-align: center;
+      padding-top: 35px;
+      background-size: 558px 128px;
+      background: url(/static/img/cash/cash_title.png) no-repeat center 25px;
+    }
+    .head-flag{
+      width: 750px;
+      height: 119px;
+      text-align: center;
+      background-size: 688px 119px;
+      background: url(/static/img/cash/chance_flag.png) no-repeat center;
+    }
+    .flag-msg, .pv-msg{
+      color: #ffffff;
+      text-align: center;
+    }
+    .flag-msg{
+      font-size: 34px;
+      margin: -97px 0 0 250px;
+    }
+    .pv-msg{
+      font-size: 30px;
+    }
+    .flag-num{
+      color: #fac672;
+    }
+
+    .lottery-area{
+      text-align: center;
+    }
+    .lottery-icon{
+      width: 750px;
+      height: 322px;
+      margin-top: 20px;
+      -webkit-background-size: 716px 322px;
+      background-size: 716px 322px;
+      background: url(/static/img/cash/lottery_win.png) no-repeat center;
+    }
+    .game-area{
+      width: 620px;
+      height: 220px;
+      line-height: 220px;
+      font-size: 54px;
+      background-color: #e2e2e2;
+      top: 42px;
+      left: 65px;
+    }
+    #lottery-container, .background-cover, .no-lottery-chance{
+      position: absolute;
+      width: 620px;
+      height: 220px;
+      line-height: 220px;
+      top: 42px;
+      left: 65px;
+    }
+    .mask-cover, .no-lottery-chance{
+      width: 620px;
+      height: 220px;
+      z-index: 2;
+    }
+    .background-cover{
+      background: url(/static/img/cash/lottery_bg.png) no-repeat center;
+    }
+    .no-lottery-chance{
+      background: url(/static/img/cash/use_out.png) no-repeat center;
+    }
+    .cash-notice{
+      width: 100%;
+      font-size: 36px;
+      text-align: center;
+      color: #ffffff;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .icon-line{
+      width: 729px;
+      height: 4px;
+      margin-top: 75px;
+      background: url(/static/img/cash/cash_line.png) no-repeat center;
+    }
+    .icon-hand{
+      width: 70px;
+      height: 70px;
+      background: url(/static/img/site/mobile/my.png) no-repeat 0 -2614px;
+      zoom: 2;
+      top: -5px;
+      left: 70px;
+    }
+    .link-to-guide{
+      color: #fac672;
+      font-size: 36px;
+      margin: 0 auto;
+      top: 100px;
+      left: 265px;
+      text-decoration: underline;
+    }
+  }
+
+  .lottery-rule{
+    padding-top: 15px;
+    text-align: center;
+    background-color: #544068;
+    height: 100%;
+    .rules-title{
+      width: 640px;
+      height: 90px;
+      line-height: 90px;
+      font-size: 44px;
+      color: #fbce79;
+      margin: 0 auto 25px auto;
+      background-color: #69547f;
+      border-radius: 10px;
+    }
+    .rule-msg{
+      color: #ffffff;
+      font-size: 24px;
+      height: 40px;
+      line-height: 40px;
+      z-index: 2;
+      position: relative;
+    }
+  }
+
+  .cash-bottom{
+    height: 264px;
+    position: fixed;
+    bottom: 0px;
+    background: url(/static/img/cash/cash_bg_b.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+}
+.share-btn , .try-again{
+  position: relative;
+  font-weight: 600;
+  font-size: 40px;
+  display: block;
+  //padding: 4px;
+  -webkit-border-radius: 43px;
+  -moz-border-radius: 43px;
+  border-radius: 43px;
+  margin: 25px 15px 0 10px;
+  height: 86px;
+  line-height: 86px;
+  width: 500px;
+  text-align: center;
+  -webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -ms-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
+  margin: 0 auto;
+}
+.share-btn{
+  -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+  -moz-box-shadow: 0px 9px 0px rgba(226,83,62,1), 0px 9px 25px rgba(0,0,0,.7);
+  box-shadow: 0px 9px 0px rgba(226,83,62,1), 0px 9px 25px rgba(0,0,0,.7);
+  color: rgba(255,255,255,1);
+  background-color: rgba(248,102,77,1);
+}
+.try-again{
+  bottom: 145px;
+  -webkit-box-shadow: 0px 9px 0px rgba(227,169,23,1), 0px 9px 25px rgba(0,0,0,.7);
+  -moz-box-shadow: 0px 9px 0px rgba(227,169,23,1), 0px 9px 25px rgba(0,0,0,.7);
+  box-shadow: 0px 9px 0px rgba(227,169,23,1), 0px 9px 25px rgba(0,0,0,.7);
+  color: rgba(255,255,255,1);
+  background-color: rgba(249,221,84,1); /*249,221,84,1*/
+}
+
+.share-btn:active{
+  top: 6px;
+  position: relative;
+  -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+  -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+  box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+}
+.try-again:active{
+  bottom: 163px;
+  position: relative;
+  -webkit-box-shadow: 0px 9px 0px rgba(249,221,84,1), 0px 9px 25px rgba(0,0,0,.9);
+  -moz-box-shadow: 0px 9px 0px rgba(249,221,84,1), 0px 9px 25px rgba(0,0,0,.9);
+  box-shadow: 0px 9px 0px rgba(249,221,84,1), 0px 9px 25px rgba(0,0,0,.9);
+}
+
+.lottery-value{
+  width: 285px;
+  top: 90px;
+  text-align: right;
+  left: 150px;
+  color: #fe7f3f;
+  font-size: 90px;
+  font-weight: bolder;
+}
+.pop-share{
+  position: fixed;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  z-index: 20;
+  overflow: hidden;
+  .share-bg{
+    width: 736px;
+    height: 1013px;
+    background: url(/static/img/cash/pop_shared.png) no-repeat center;
+  }
+  .pop-lottery-top{
+    top: 59%;
+  }
+}
+
+
+.icon-share{
+  position: fixed;
+  top: 35px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-size: 100% 100%;
+  width: 736px;
+  height: 775px;
+  z-index: 2;
+  background: url(/static/img/cash/share_to.png) no-repeat center;
+}
+.com-panel{
+  background-color: #544068;
+}
+
+@media only screen and (min-width: 751px) and (min-height: 675px){
+  .cash-bottom{
+    position: static !important;
+    margin-top: -160px;
+  }
+}

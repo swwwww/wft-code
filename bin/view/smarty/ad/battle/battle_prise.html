@@ -1,0 +1,152 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"太空飞鸡战"}{/block}
+
+{block name="css" append}
+{css file="css/ad/battle/index.css"}
+{css file="css/ad/battle/battle_index.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div id="container">
+    <a class="total-score" href="javascript:;">总积分:<span class="js-game-total">{$lottery_vo.game_score_total|default:0}</span> </a>
+    <div id="startGame" class="result-bg js-lottery lottery-card">
+        <i class="db gradient-head head-box"></i>
+
+        <div class="prise-head">
+            <i class="db good-luck"></i>
+            <span class="new-year db">这里有你的新年礼物!</span>
+            <span class="hurry-up db">摆好造型! 快来抽取</span>
+        </div>
+
+        <section class="prise-box">
+            <div class="lottery clearfix">
+                <div class="prize prise-chicken get-active" index="1"></div>
+                <div class="prize m-middle prise-monkey" index="2"></div>
+                <div class="prize  prise-chicken" index="3"></div>
+                <div class="prize lr-border prise-chicken" index="4"></div>
+                <div class="prize middle-border prise-chicken" index="5"></div>
+                <div class="prize lr-border prise-monkey" index="6"></div>
+                <div class="prize prise-chicken" index="7"></div>
+                <div class="prize m-middle prise-chicken" index="8"></div>
+                <div class="prize prise-monkey" index="9"></div>
+            </div>
+        </section>
+
+       <div class="prise-start">
+           <button class="cash-btn js-lottery-btn" data-end="{$lottery_vo.is_end}">开始抽奖</button>
+           <a class="catch-checken db" href="/lottery/game/lottery_id/6">去玩游戏</a>
+       </div>
+
+        <section class="broadcast">
+            <i class="icon-speak dib"></i>
+            <div class="speak-content db">
+                <span class="dib speack-info fl">用户</span>
+                <ul class="news_li js-news-one dib fl">
+                    {foreach $lottery_vo.horse_lamp as $key => $val}
+                    <li class="prise-user li-item-{$key}" style="display: none">{$val.user_name}</li>
+                    {/foreach}
+                </ul>
+                <span class="dib speack-info fl">抽中</span>
+                <ul class="news_li js-news-two dib fl">
+                    {foreach $lottery_vo.horse_lamp as $key => $val}
+                    <li class="prise-item li-item-{$key}" style="display: none">{$val.gift_name}</li>
+                    {/foreach}
+                </ul>
+                <ul class="swap"></ul>
+            </div>
+        </section>
+    </div>
+
+    <!--抽奖积分弹窗-->
+    <section class="score-prise"  style="display: none;">
+        <i class="icon-moon-right pa dib"></i>
+        <i class="icon-ship-left pa dib"></i>
+        <div class="fail-prise"  style="display: none;"> <!--积分不足-->
+            <i class="icon-score-not pa dib"></i>
+            <p class="score-info pa">
+                抽奖1次需要<span class="score-num">{$lottery_vo.spend_score}</span>积分<br/>
+                再去玩游戏赚取积分吧！
+            </p>
+
+            <!--没有抽奖机会且没有游戏机会-->
+            <a class="textc dib score-btn {if $platform.wft}icon-share-btn{else}js-share-btn{/if}" style="display: none" href="javascript:;">
+               <span class="btn1 share dib">
+                   分享给好友<br/>
+                   获得游戏机会
+               </span>
+            </a>
+
+            <!--有游戏机会但没有积分抽奖-->
+            <div class="score-game js-start-game" style="display: none">
+                <a class="db start-game" href="/lottery/game/lottery_id/{$lottery_vo.lottery_id}">开始游戏</a>
+                <span class="game-change db">还有<span class="score-num">{$lottery_vo.op_total}</span>次机会</span>
+            </div>
+        </div>
+
+        <div class="succ-prise"  style="display: none;"> <!--中奖-->
+            <i class="icon-score-yes pa dib"></i>
+            <span class="prise-info">您获得</span>
+            <div class="cash-prise">
+                <i class="circle-left db"></i>
+                <i class="circle-right db"></i>
+                <span class="cash-name db pr">5元现金券</span>
+                <span class="cash-desc db pr">玩翻天遛娃活动通用</span>
+            </div>
+            <a class="start-game get-color db js-get-cash" data-page="1" data-id="" data-type="" data-name="" data-record-id="" href="javascript:;">立即领取</a>
+        </div>
+    </section>
+
+    <!--新用户领取输入手机号领取-->
+    <section class="phone ph-get-prise" style="display: none">
+        <p class="db phone-title">
+            将<span class="cash-name">5元现金券</span><br/>
+            放入您的玩翻天账户
+        </p>
+        <div class="input-box">
+            <input  id="js_com_phone" class="phone-text db" type="tel" placeholder="请输入手机号" onfocus="color_change()" required>
+            <button id="js_get_phone_code" class="send-ph">发送验证码</button> <!-- send-active-->
+            <input id="js_com_phone_code" class="phone-text db bottom-phone" type="number" placeholder="请输入手机验证码">
+        </div>
+        <a class="phone-get-prise db js-accept-gift" href="javascript:;">立即领取</a>
+    </section>
+
+    <!--没中奖品-->
+    <section class="lose-prise" style="display: none">
+        <i class="lose-icon db"></i>
+        <a id="js-lottery-again" class="try-agin dib" href="javascript:;">再抽一次</a>
+    </section>
+
+    <!--分享share to-->
+    <div class="share-box js-share-to" style="display: none">
+        <i class="share-img db"></i>
+        <p class="share-info">
+            没 有 游 戏 机 会 啦！<br/>
+            点击分享给好友!<br/>
+            获 得 更 多 游 戏 机 会！
+        </p>
+        <i class="db lose-cry"></i>
+    </div>
+
+<div class="matte"></div>
+</div>
+<input type="hidden" id="get_type" value="0">
+<input type="hidden" id="hidden_horse_total" value="{$lottery_vo.horse_lamp|@count}">
+<input type="hidden" id="hide_user_phone" value='{$lottery_vo.phone}'/>
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/util/phone_login.js"}
+{js file="js/ad/battle/get_prise.js"}
+{js file="js/ad/battle/battle.js"}
+{js file="js/ad/battle/lottery_sudoku.js"}
+<script>
+    function color_change() {
+        $('#js_get_phone_code').addClass('send-active');
+    }
+</script>
+{/block}
+

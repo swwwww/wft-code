@@ -1,0 +1,115 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/ad/god/god.css"}
+{/block}
+
+{block name="title"}{$title|default:"选男神，抢玩翻天遛娃红包！"}{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="result pr">
+
+    <section class="res-head pr">
+        <i class="res-share dib"></i>
+        {if $platform.wft}
+        <a class="share-btn pa" href="javascript:;">我要分享</a>
+        {else}
+        <i class="res-arrow dib"></i>
+        {/if}
+        <span class="user-name pa">{$lottery_vo.vote_vo.username|default: '小玩朋友'}</span>
+        <img class="user-img pa" src="{$lottery_vo.vote_vo.img|imageFix}">
+    </section>
+
+    <section class="res-part">
+        <img class="star-img fl" src="{$lottery_vo.star_vo.avatar_small|imageFix}">
+        <div class="star-info">
+            <span class="star-name font-color db">{$lottery_vo.star_vo.name}</span>
+            <p class="res-msg dib">十一我要和
+                <span class="res-user font-color">@{$lottery_vo.vote_vo.username|default: '小玩朋友'}</span>
+                一起去这里遛娃啦
+                <i class="res-face dib"></i>
+            </p>
+            {if $lottery_vo.star_vo.name == "陈伟霆"||$lottery_vo.star_vo.name =="胡歌"||$lottery_vo.star_vo.name =="杨洋"}
+            <a class="act-a db" href="http://wan.wanfantian.com/web/kidsplay/info?id=167">
+                <img src="/static/img/ad/god/act/longwandujiacun.png" class="act-img">
+            </a>
+            {else if $lottery_vo.star_vo.name == "贝克汉姆"||$lottery_vo.star_vo.name =="黄小磊"||$lottery_vo.star_vo.name =="邓超"||$lottery_vo.star_vo.name =="我家老公"}
+            <a class="act-a db" href="http://wan.wanfantian.com/web/kidsplay/info?id=130">
+                <img src="/static/img/ad/god/act/xiyouji.png" class="act-img">
+            </a>
+            {/if}
+            <p class="act-comm pr clearfix">
+                <span class="comm-time">4分钟前</span>
+                <i class="comm-icon db fr"></i>
+            </p>
+
+            <a class="js-purse act-share db pr" data-login="{if $user_resource.user}yes{else}no{/if}" href="javascript: ;">
+                <i class="tri-icon db pa"></i>
+                <span class="stars-name dib font-color">
+                      <i class="heart-icon dib fl"></i>
+                    &nbsp;&nbsp;黄小磊，威廉陈，老胡，杨洋con
+                </span>
+                <p class="share-guid db" style="color: red;">
+                    <span class="font-color">{$lottery_vo.star_vo.name}:</span>
+                    <span class="dib" style="font-weight: bolder; font-size: 45px; line-height: 56px; padding: 10px 0 0;">点这里，抢红包！</span>
+                    <img class="express-img dib" src="/static/img/ad/god/left_hand.png">
+                    <img class="express-img dib" src="/static/img/ad/god/money.png">
+                    <img class="express-img dib" src="/static/img/ad/god/top_hand.png">
+                    <img class="express-img dib" src="/static/img/ad/god/happy.png">
+                    <img class="express-img dib" src="/static/img/ad/god/hh.png">
+                </p>
+            </a>
+        </div>
+    </section>
+
+    <section class="act-part">
+        <div class="act-head clearfix pr">
+            <i class="title-flag dib"></i>
+            <i class="act-title dib"></i>
+            <a class="go-my dib pa" href="{$BASE_URL_MODULE}lottery/record?lottery_id=2"></a>
+        </div>
+
+        {include file="ad/god/ele_good_list.html"}
+
+        <i class="act-foot db"></i>
+    </section>
+</div>
+
+<i class="matte" style="display: none"></i>
+<div class="error-tips" id="loginTip"> </div>
+
+<section class="pop-win pop-purse pr" style="display: none">
+    <i class="close-btn db pa"></i>
+    <div class="card-chance clearfix">
+        <p class="chance-num db tc">你有<span class="js-lottery-left-total ml5 mr5">{$lottery_vo.op_total}</span>次刮奖机会</p>
+    </div>
+    <p class="card-value db tc" style="display: none"></p>
+    <div id="lottery-container" class="lottery pa db"></div>
+    <span class="pop-info db pa">刮这里，领红包</span>
+
+    <div class="pop-btn pa">
+        <a class="get-btn dib fr" href="javascript:;" style="display: none;">再刮一次</a>
+        <a class="see-btn dib fr" href="javascript:;"{if $lottery_vo.award_total == 0} style="display: none; {/if}">
+        {if $lottery_vo.undoing_award_total > 0}领取奖品{else}查看奖品{/if}
+        </a>
+    </div>
+</section>
+
+{if $lottery_vo.is_my_friend_group == false}
+<a class="select-man float-pos dib pr" href="{$BASE_URL_MODULE}lottery/market/lottery_id/2">
+    <span class="select-font pa">抢十一红包</span>
+</a>
+{/if}
+
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+<input type="hidden" id="drawPercent" value=''/>
+<input type="hidden" id="hide_wft_param" value='{$wft_param}'>
+
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+    {js file="js/lib/lottery_card.js"}
+    {js file="js/ad/god/friend_list.js"}
+{/block}

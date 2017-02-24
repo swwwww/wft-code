@@ -1,0 +1,34 @@
+{
+  "name": "common-ms",
+  "version": "1.0.0",
+  "description": "direct sale",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.baidu.com/qintao02/common-ms.git"
+  },
+  "keywords": [
+    "direct",
+    "sale"
+  ],
+  "author": "zengxiaohui",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.17.2",
+    "graceful-fs": "^4.1.11",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^3.3.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-uglify": "^2.0.1",
+    "path": "^0.12.7"
+  },
+  "dependencies": {}
+}

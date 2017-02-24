@@ -1,0 +1,127 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"搜索"}{/block}
+{block name="css" append}
+{css file="css/recommend/m/search-detail.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main">
+    <header class="head">
+        <form  id="form">
+            <input class="info" type="text" name="word" placeholder="搜索商品活动或游玩地" value='{$res.word}'/>
+            <span class="reset">×</span>
+            <span id="search" class="search">取消</span>
+        </form>
+    </header>
+    <div class="nav">
+        <a class="nav-item" id="play" href="javascript:;">
+            <span class="nav-item-title">
+                <i class="default">活动</i>
+            </span>
+        </a>
+        <a class="nav-item" id="goods" href="javascript:;">
+            <span class="nav-item-title">
+                <i class="default">商品</i>
+            </span>
+        </a>
+        <a class="nav-item" id="place" href="javascript:;">
+            <span class="nav-item-title">
+                <i class="default">游玩地</i>
+            </span>
+        </a>
+    </div>
+    <section class="adv" id="adv_play" style="display: none">
+        <div class="adv-list"></div>
+    </section>
+    <section class="adv" id="adv_goods" style="display: none">
+        <div class="adv-list"></div>
+    </section>
+    <section class="adv" id="adv_place" style="display: none">
+        <div class="adv-list"></div>
+    </section>
+    <input type="hidden" id="get_word" value='{$res.word}'/>
+</section>
+
+{/block}
+{block name="js" append}
+{js file="js/lib/template.js"}
+{js file="js/recommend/search_detail.js"}
+
+{js file="js/lib/dropload.js"}
+{literal}
+<script id="play_list" type="text/html">
+    {{each play_list}}
+    <a class="adv-list-item play" href="/play/playActivity?id={{$value.id}}">
+        <img class="item-pic" src="{{$value.cover}}" />
+        <div class="item-info">
+            <p class="title">{{$value.title}}</p>
+            <p class="date">{{$value.begin_time}}-{{$value.end_time}} ｜ 共{{$value.session_number}}场</p>
+            {{if $value.status == 0}}
+                {{if $value.join_number > 0}}
+                <p class="status">累计有{{$value.join_number}}人参加</p>
+                {{else}}
+                <p class="status">活动报名中</p>
+                {{/if}}
+            {{else if $value.status == 1}}
+            <p class="status">即将开始</p>
+            {{else if $value.status == 2}}
+            <p class="status">停止报名</p>
+            {{/if}}
+            <p class="detail">
+                <span class="detail-price">￥{{$value.price}}</span>
+                <span class="detail-addr">{{$value.circle}}</span>
+            </p>
+        </div>
+    </a>
+    {{/each}}
+</script>
+<script id="goods_list" type="text/html">
+    {{each goods_list}}
+    <a class="adv-list-item goods" href="/ticket/commodityDetail?id={{$value.id}}">
+        <img class="item-pic" src="{{$value.cover}}" />
+        <div class="item-info">
+            <p class="title">{{$value.title}}</p>
+            {{if $value.status == 0}}
+                {{if $value.sell_number > 0}}
+                <p class="status">已售{{$value.sell_number}}份</p>
+                {{else}}
+                <p class="status">有票</p>
+                {{/if}}
+            {{else if $value.status == 1}}
+            <p class="status">即将开始</p>
+            {{else if $value.status == 2}}
+            <p class="status">已售罄</p>
+            {{/if}}
+            <p class="detail">
+                <span class="detail-price">￥{{$value.price}}</span>
+                <span class="detail-original">￥{{$value.original_price}}</span>
+                <span class="detail-addr">{{$value.circle}}</span>
+            </p>
+        </div>
+        {{if $value.label == 'NEW'}}
+        <i class="item-label">最新</i>
+        {{else if $value.label == 'HOT'}}
+        <i class="item-label">最热</i>
+        {{/if}}
+    </a>
+    {{/each}}
+</script>
+<script id="place_list" type="text/html">
+    {{each place_list}}
+    <a class="adv-list-item place" href="/discover/playDetail?id={{$value.id}}">
+        <img class="item-pic" src="{{$value.cover}}" />
+        <div class="item-info">
+            <p class="title">{{$value.title}}</p>
+            <p class="describe">{{$value.editor_word}}</p>
+            <p class="detail">
+                {{each $value.tags}}
+                <span class="detail-gift">{{$value}}</span>
+                {{/each}}
+                <span class="detail-addr">{{$value.circle}}</span>
+            </p>
+        </div>
+    </a>
+    {{/each}}
+</script>
+{/literal}
+{/block}

@@ -1,0 +1,90 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我想去的"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/want_go.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="main">
+    <div class="top-head">
+        <a class="dib want-field right-border {if $res.kind == null}field-left{/if}" href="{$BASE_URL_MODULE}user/WantGo">想去场次提醒</a>
+        <a class="dib want-field {if $res.kind == 1}field-left{/if}" href="{$BASE_URL_MODULE}user/WantGo?type=1">全部想去时间</a>
+    </div>
+
+    <section class="activity-item"> <!--我想去-->
+         {if $res.data|@count}
+               {if $res.kind}
+                   {foreach $res.data as $key => $val}
+                   <a class="db item-list" href="{$BASE_URL_MODULE}play/playActivity?id={$val.id}">
+                       <img class="item-img dib" src="{$val.image}">
+                       <div class="item-msg dib pr">
+                           <h3 class="item-title ellipsis">{$val.title}</h3>
+                           <p class="item-info db pa clearfix">
+                               <span class="fl">{$val.time|date_format: '%Y'}年{$val.time|date_format: '%m'}月{$val.time|date_format: '%d'}日 想去</span>
+                           </p>
+                       </div>
+                   </a>
+                   {/foreach}
+               {else}
+                   {foreach $res.data as $key => $val}
+                   <a class="db item-list" href="{$BASE_URL_MODULE}play/playActivity?id={$val.id}">
+                       <img class="item-img dib" src="{$val.image}">
+                       <div class="item-msg dib pr">
+                           <h3 class="item-title ellipsis">{$val.title}</h3>
+                           <p class="item-info db pa clearfix">
+                               <span class="fl">{$val.time|date_format: '%Y'}年{$val.time|date_format: '%m'}月{$val.time|date_format: '%d'}日</span>
+                               <span class="fr">新增{$val.new_number}场</span>
+                           </p>
+                       </div>
+                   </a>
+                   {/foreach}
+               {/if}
+           {else}
+               <div class="no-data">
+                   <img src="/static/img/site/mobile/nodata.gif" />
+               </div>
+           {/if}
+        <input type="hidden" id="kind" value="{$res.kind}">
+        <div class="list-item"></div>
+    </section>
+</div>
+{/block}
+
+{block name="js" append}
+    {js file="js/lib/dropload.js"}
+    {js file="js/lib/template.js"}
+    {js file="js/user/user_want_go.js"}
+{literal}
+<script id="list" type="text/html">
+    {{if res[0]}}
+        {{each res as val}}
+            {{if val.kind}}
+            <a class="db item-list" href="/play/playActivity?id={{val.id}}">
+                <img class="item-img dib" src="{{val.image}}">
+                <div class="item-msg dib pr">
+                    <h3 class="item-title ellipsis">{{val.title}}</h3>
+                    <p class="item-info db pa clearfix"><!--年%m月%d日-->
+                        <span class="fl">{{val.time | dateFormat: 'yyyy年MM月dd日'}}想去</span>
+                        <!--<span class="fr">新增1场</span>-->
+                    </p>
+                </div>
+            </a>
+            {{else}}
+                <a class="db item-list" href="/play/playActivity?id={{val.id}}">
+                    <img class="item-img dib" src="{{val.image}}">
+                    <div class="item-msg dib pr">
+                        <h3 class="item-title ellipsis">{{val.title}}</h3>
+                        <p class="item-info db pa clearfix"><!--年%m月%d日-->
+                            <span class="fl">{{val.time | dateFormat: 'yyyy年MM月dd日'}}</span>
+                            <span class="fr">新增{{val.new_number}}场</span>
+                        </p>
+                    </div>
+                </a>
+            {{/if}}
+        {{/each}}
+    {{/if}}
+</script>
+{/literal}
+{/block}

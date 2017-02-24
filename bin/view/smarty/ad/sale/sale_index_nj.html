@@ -1,0 +1,286 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"双十一活动主页-南京站"}{/block}
+
+{block name="css" append}
+{css file="css/ad/sale/sale.css"}
+{/block}
+
+{block name="inner"}
+<header class="header-top" id="header-section">
+    <i class="nav-logo dib pa"></i>
+    <ul class="nav-item dib">
+        <li class="item-list nav-one-nj cur-one"></li>
+        <li class="item-list nav-two-nj"></li>
+        <li class="item-list nav-three-nj"></li>
+        <li class="item-list nav-four-nj"></li>
+    </ul>
+
+    <div class="banner">
+        <img class="banner-img" src="/static/img/ad/sale/1-banner-01-nj.png">
+        <select class="select-city pa dib">
+            <option class="city-value wuhan" selected=" " data-value="wuhan">武汉</option>
+            <option class="city-value nanjing" selected=" " data-value="nanjing">南京</option>
+        </select>
+        <i class="arrow dib pa"></i>
+    </div>
+</header>
+
+<nav class="nav-list" id="sale-nav">
+    <div class="nav-contain">
+        <a class="a-item dib cur-line" href="javascript:;" data-href="0">充200送200</a>  <!--整点秒杀-->
+        <a class="a-item dib" href="javascript:;" data-href="1">抢红包</a>
+        <a class="a-item dib" href="javascript:;" data-href="2">南京娃必玩</a>
+        <a class="a-item dib" href="javascript:;" data-href="3">超能体验队</a>
+    </div>
+</nav>
+
+
+<article class="contain-body">
+
+    <!--最后几天的整点秒杀-->
+    <section class="int-seckill dn" id="seckill">
+        <i class="int-icon db"></i>
+
+        <nav class="time-nav">
+            <a class="clock-item dib" href="javascript:;" data-href="1">
+                <span class="time-item db">10:00</span>
+                <span class="progress-in db">已结束</span>
+            </a>
+            <a class="clock-item dib clock-center" href="javascript:;" data-href="2">
+                <span class="time-item db">14:00</span>
+                <span class="progress-in db">正在进行中...</span>
+            </a>
+            <a class="clock-item dib during-rob" href="javascript:;" data-href="3">
+                <span class="time-item db">21:00</span>
+                <span class="progress-in db">即将开始</span>
+            </a>
+        </nav>
+
+        <section class="seckill-item">
+            <div class="item-act clearfix act-rob">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <div class="item-bottom">
+                    <i class="icon-item item-price dib">双11价</i>
+                    <span class="now-price dib">￥2</span>
+                    <del class="old-price dib">￥11111</del>
+                    <i class="icon-item item-ticket dib">用券立减</i>
+                    <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+                </div>
+            </div>
+
+            <div class="item-act clearfix act-rob">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <div class="item-bottom">
+                    <i class="icon-item item-price dib">双11价</i>
+                    <span class="now-price dib">￥2</span>
+                    <del class="old-price dib">￥11111</del>
+                    <i class="icon-item item-ticket dib">用券立减</i>
+                    <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!--充值-->
+    <section class="charge db" id="charge">
+        <i class="limit-time db pa">限时</i>
+        <p class="item-title pa">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">充200送200</span>
+        </p>
+        <i class="title-line db"></i>
+        <p class="phone-charge dib">
+            <span class="charge-num dib">充200</span>
+            <i class="icon-give dib"></i>
+            <span class="give-num dib">200</span>
+            <span class="limit-date db">仅限：11月1日—11月9日</span>
+        </p>
+        <a class="icon-rob dib pa" href="javascript:;"></a>
+    </section>
+
+    <!--抢红包-->
+    <section class="charge rob db" id="rob">
+        <p class="item-title pa">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">抢红包</span>
+        </p>
+        <i class="title-line db"></i>
+
+        <div class="purse-value dib">
+            <p class="value-icon value-one dib">
+                <span class="value-num pa">
+                    30<i class="icon-yuan pa"></i>
+                </span>
+                <span class="value-info db">活动券</span>
+            </p>
+
+            <p class="value-icon value-two dib">
+                <span class="value-num pa">
+                    100 <i class="icon-yuan pa"></i>
+                </span>
+                <span class="value-info db">亲子酒店券</span>
+            </p>
+
+            <p class="value-icon value-three dib">
+                <span class="value-num pa">
+                    20<i class="icon-yuan pa"></i>
+                </span>
+                <span class="value-info db">商品券</span>
+            </p>
+        </div>
+        <a class="dib pa free" href="javascript:;"></a>
+    </section>
+
+    <!--南京娃必玩-->
+    <section class="wh-play" id="play">
+        <p class="item-title pa wh-title">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">南京娃必玩</span>
+        </p>
+        <i class="title-line db wh-line"></i>
+
+        <section class="play-item pr">
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <div class="item-bottom">
+                    <i class="icon-item item-price dib">双11价</i>
+                    <span class="now-price dib">￥2</span>
+                    <del class="old-price dib">￥11111</del>
+                    <i class="icon-item item-ticket dib">用券立减</i>
+                    <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+                </div>
+            </div>
+
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <div class="item-bottom">
+                    <i class="icon-item item-price dib">双11价</i>
+                    <span class="now-price dib">￥2</span>
+                    <del class="old-price dib">￥11111</del>
+                    <i class="icon-item item-ticket dib">用券立减</i>
+                    <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+                </div>
+            </div>
+
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <div class="item-bottom">
+                    <i class="icon-item item-price dib">双11价</i>
+                    <span class="now-price dib">￥2</span>
+                    <del class="old-price dib">￥11111</del>
+                    <i class="icon-item item-ticket dib">用券立减</i>
+                    <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+                </div>
+            </div>
+
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <div class="item-bottom">
+                    <i class="icon-item item-price dib">双11价</i>
+                    <span class="now-price dib">￥2</span>
+                    <del class="old-price dib">￥11111</del>
+                    <i class="icon-item item-ticket dib">用券立减</i>
+                    <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <!--超值抢鲜-->
+    <section class="wh-play" id="get_fresh">
+        <p class="item-title pa wh-title">
+            <i class="icon-foot dib pa"></i>
+            <span class="item-font dib">超能体验队</span>
+        </p>
+        <i class="title-line db wh-line"></i>
+
+        <section class="play-item pr">
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <i class="icon-item item-price dib">双11价</i>
+                <span class="now-price dib">￥2</span>
+                <del class="old-price dib">￥11111</del>
+                <i class="icon-item item-ticket dib">用券立减</i>
+                <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+            </div>
+
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <i class="icon-item item-price dib">双11价</i>
+                <span class="now-price dib">￥2</span>
+                <del class="old-price dib">￥11111</del>
+                <i class="icon-item item-ticket dib">用券立减</i>
+                <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+            </div>
+
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <i class="icon-item item-price dib">双11价</i>
+                <span class="now-price dib">￥2</span>
+                <del class="old-price dib">￥11111</del>
+                <i class="icon-item item-ticket dib">用券立减</i>
+                <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+            </div>
+
+            <div class="item-act clearfix">
+                <span class="item-img" style="background: url('http://wan.wanfantian.com/uploads/2016/10/19/89b25500f9117a8a8bf7ae7bc5582ab3.jpg') no-repeat center center;background-size: cover;">
+                    <span class="sell-num pa">已售 12件</span>
+                </span>
+                <span class="act-title pa">疯狂动物城，疯狂游园会</span>
+
+                <i class="icon-item item-price dib">双11价</i>
+                <span class="now-price dib">￥2</span>
+                <del class="old-price dib">￥11111</del>
+                <i class="icon-item item-ticket dib">用券立减</i>
+                <a class="go-buy fr dib" href="javascript:;">立即抢购</a>
+            </div>
+        </section>
+
+    </section>
+</article>
+
+
+
+{/block}
+
+{block name="js" append}
+{js file="js/lib/scrollTop.js"}
+{js file="js/ad/sale/sale.js"}
+{/block}

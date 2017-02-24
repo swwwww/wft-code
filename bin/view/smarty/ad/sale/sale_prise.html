@@ -1,0 +1,129 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"玩翻天双十一，全场1元起！"}{/block}
+
+{block name="css" append}
+{css file="css/ad/sale/sale.css"}
+{/block}
+
+{block name="css" append}
+    <style>
+        body{
+            background-color: #f64062;
+        }
+    </style>
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<header class="prise-head">
+    <div class="top-menus">
+        <a class="go-main dib" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$award_vo.lottery_id}"></a>
+        <span class="discount">全场1折起</span>
+    </div>
+</header>
+
+<section class="prise-ticket">
+    <div class="user-info clearfix">
+        <p class="user-msg fl">
+            <img class="user-img" src="{$user_resource.user.img|imageFix}">
+            <span class="wx-name">{$user_resource.user.username}</span>
+        </p>
+        <p class="game-change fr">
+            刮奖机会：
+            <span id="js_scrape_chance" class="change-num">{$award_vo.left_total}</span>
+        </p>
+    </div>
+
+    {foreach $award_vo.award_list as $key => $list}
+        <div class="ticket-item clearfix">
+            <span class="ticket-info fl dib">{$list.cash_alias}</span>
+            {if $list.status == 0}
+            <a class="get-btn fr dib" href="javascript:;" data-status="1" data-id="{$list.id}"  data-lottery-cash-id="{$list.lottery_cash_id}" data-cash-id="{$list.cash_id}">领取</a>
+            {else}
+            <a class="get-btn disabled fr dib" href="http://wan.wanfantian.com/web/wappay/mycashcoupon">已领取</a>
+            {/if}
+        </div>
+    {/foreach}
+</section>
+<i class="card-bottom ticket-bottom db pa"></i>
+
+<input type="hidden" id="hide_user_phone" value='{$user_resource.user.phone}'/>
+
+<section class="activity-rule">
+    <i class="rule-line db pa"></i>
+    <h2 class="rule-title tc pa">活动规则</h2>
+
+    {if $wft_global_set.custom_city == '武汉'}
+    <div class="rule-content"> <!--武汉-->
+        <p class="rule-item">1.抽奖攻略：每个用户每天有2次刮奖机会，可通过答题增加刮奖机会（每人每天5次答题机会，答对1题增加2次刮奖机会）。当天的刮奖机会，未使用完则次日清零。</p>
+        <p class="rule-item">2.奖品可用于在玩翻天上购买对应的商品/活动时直接抵现。抽到奖品请及时领取。</p>
+        <p class="rule-item">3.微信用户查看奖品及订单，可在微信服务号【玩翻天亲子（微信号：wftapp）】中查看。app用户在玩翻天app中直接查看。</p>
+        <p class="rule-item">4.玩翻天双11·遛娃达人狂欢节开始时间：2016年11月2日，截止于2016年11月11日。</p>
+        <p class="rule-item">5.关于活动购买、如何增加抽奖机会等问题，请咨询玩翻天瑶瑶~</p>
+        <img src="/static/img/ad/sale/wh_yy.png" class="rule-img nanjing" alt="qrcode">
+        <p class="rule-item">6.活动中若发现作弊行为，玩翻天有权取消用户所获得的奖励，让更多小玩家可以享受到福利。</p>
+        <p class="rule-item">*本次活动在法律范围内 最终解释权归玩翻天所有</p>
+    </div>
+    {else}
+    <div class="rule-content"> <!--南京-->
+        <p class="rule-item">1.抽奖攻略：每个用户每天有2次刮奖机会，可通过答题增加刮奖机会（每人每天5次答题机会，答对1题增加2次刮奖机会）。当天的刮奖机会，未使用完则次日清零。</p>
+        <p class="rule-item">2.奖品可用于在玩翻天上购买对应的商品/活动时直接抵现。抽到奖品请及时领取。</p>
+        <p class="rule-item">3.微信用户查看奖品及订单，可在微信服务号【玩翻天亲子（微信号：wftapp）】中查看。app用户在玩翻天app中直接查看。</p>
+        <p class="rule-item">4.玩翻天双11·遛娃达人狂欢节开始时间：2016年11月2日，截止于2016年11月11日。</p>
+        <p class="rule-item">5.关于活动购买、如何增加抽奖机会等问题，请咨询玩翻天福利君~</p>
+        <img src="/static/img/ad/sale/nj-xiaowan.jpg" class="rule-img nanjing" alt="qrcode">
+        <p class="rule-item">6.活动中若发现作弊行为，玩翻天有权取消用户所获得的奖励，让更多小玩家可以享受到福利。</p>
+        <p class="rule-item">*本次活动在法律范围内 最终解释权归玩翻天所有</p>
+    </div>
+    {/if}
+</section>
+<i class="ticket-foot db"></i>
+
+<section class="btn-bottom clearfix">
+    <a class="get-purse-btn" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$award_vo.lottery_id}/luck/1">抢红包</a>
+    <a class="get-discount-btn" href="{$BASE_URL_MODULE}lottery/market/lottery_id/{$award_vo.lottery_id}">抢双十一特价</a>
+</section>
+
+<!--弹窗部分-->
+<div class="matte" style="display: none"></div>  <!--style="display: none"-->
+<!--输入手机号，领取奖品-->
+<section class="ph-get-prise" style="display: none">
+    <div class="input-title">
+        <i class="wan-logo dib pa"></i>
+        <span class="title-info">登陆玩翻天，领取奖品~</span>
+    </div>
+
+    <input id="js_com_phone" type="tel" class="ph-num" placeholder="请输入手机号" onfocus="color_change()">
+    <div class="code-sn">
+        <input id="js_com_phone_code" class="qcode-num dib" placeholder="请输入验证码" onfocus="color_get()">
+        <a id="js_get_phone_code" class="gcode-btn" href="javascript:;">获取验证码</a>
+    </div>
+
+    <a class="get-my pa js-accept-gift">领取</a>
+</section>
+
+
+<input type="hidden" id="hide_reward_vo" value='{$award_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/util/phone_login.js"}
+{js file="js/ad/sale/sale_prise.js"}
+<script>
+   function color_change() {
+       $("#js_com_phone").css({
+           border: '1px solid #ef2a2c'
+       });
+
+       $('#js_get_phone_code').css({
+           backgroundColor: '#ffa250'
+       });
+   }
+    function color_get() {
+        $('.js-accept-gift').css({
+            backgroundColor: '#ef2a2c'
+        });
+    }
+</script>
+{/block}

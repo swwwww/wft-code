@@ -1,0 +1,126 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+body{
+  font-size: 28px;
+}
+
+.edit-intro {
+  .title {
+    padding: 20px 30px;
+  }
+  .item-pic {
+    padding: 10px 30px;
+    .tips-pic {
+      height: 90px;
+      line-height: 90px;
+    }
+    .arrow-pic{
+      top: 47px !important;
+      right: 30px;
+    }
+    .upload-pic {
+      position: absolute;
+      top: 20px;
+      right: 55px;
+      img{
+        width: 86px;
+        height: 86px;
+        border-radius: 43px;
+      }
+    }
+    input[type='file'] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 1;
+      opacity: .01;
+    }
+  }
+  .item {
+    overflow: hidden;
+    background-color: #fff;
+    display: block;
+    padding: 20px 30px;
+    border-top: 1px solid #eee;
+    box-sizing: border-box;
+    position: relative;
+    .gender,.font{
+      width: 525px;
+      height: 45px;
+      line-height: 45px;
+      resize: none;
+      -webkit-appearance: none;
+      outline: none;
+      border: 0;
+    }
+    .tips {
+      width: 150px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    i.arrowent {
+      top: 27px;
+      right: 30px;
+    }
+    .name {
+      display: block;
+      width: calc(100% - 250px);
+      position: relative;
+    }
+  }
+
+}
+
+.arrowent {
+  position: absolute;
+  right: 5px;
+  top: 20%;
+  height: 18px;
+  width: 18px;
+  border: 2px solid #999;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+
+.left {
+  float: left;
+}
+
+.edit-intro input[type='reset'] {
+  display: none;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px/9;
+  border-radius: 50%;
+  background-color: #c3c3c3;
+  position: absolute;
+  right: 20px;
+  top: 2px;
+  border: none;
+  color: #fff;
+}
+
+.edit-intro input[type='button'] {
+  display: block;
+  font-family: "Microsoft YaHei";
+  width: 94%;
+  margin: 50px auto 0;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  background-color: #fa6e51;
+  letter-spacing: 6px;
+  font-size: 30px;
+  border-radius: 5px;
+}
+.gearDate{
+  font-size: 15px !important;
+}

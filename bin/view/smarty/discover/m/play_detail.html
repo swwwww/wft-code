@@ -1,0 +1,280 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"{$res.title}"}{/block}
+{block name="css" append}
+{css file="css/discover/m/play_detail.css"}
+{css file="css/collect/collect.css"}
+{/block}
+{block name="meta_keyword"}
+<meta name="keywords" content="，{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子游玩地，{$wft_global_set.custom_city_cn}亲子户外活动，{$wft_global_set.custom_city_cn}亲子游攻略，{$wft_global_set.custom_city_cn}孩子游玩的好地方，{$wft_global_set.custom_city_cn}农家乐活动，{$wft_global_set.custom_city_cn}少儿户外活动，{$res.title}，亲子活动策划方案，亲子互动游戏" />
+{/block}
+
+{block name="meta_desc"}
+<meta name="description" content="{$wft_global_set.custom_city_cn}亲子游玩地，带孩子去的好玩处。{$res.title}是玩翻天为{$wft_global_set.custom_city_cn}和家长精选的遛娃好地方，我们的遛娃师将会不定期的在此处做专场亲子活动，{$res.title}值得您的选择与青睐。官方微信公众号:玩翻天亲子">
+{/block}
+
+{literal}
+<link rel="stylesheet" type="text/css" href="http://api.map.baidu.com/res/11/bmap.css" />
+{/literal}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <div class="head">
+        <div class="head-title">{$res.title}</div>
+        <div class="head-content">
+            <p class="head-content-date">
+                <mark class="time">营业时间</mark>
+                <span class="time-info">{$res.open_time}</span>
+            </p>
+            <p class="head-content-intro">
+                <mark class="age">适合年龄</mark>
+                <span>{$res.age_for}</span>
+                <mark class="price">参考价</mark>
+                <span>{$res.reference_price}元</span>
+            </p>
+            <p class="head-content-addr">
+                <mark class="addr">地址</mark>
+                <span class="addr-info">{$res.address}</span>
+            </p>
+        </div>
+    </div>
+
+    <section class="nav">
+        <ul>
+            <li>
+                <a class="active" id="nav_strategy">
+                    <span>看攻略</span>
+                    <mark></mark>
+                </a>
+            </li>
+            {if $res.good_list|@count > 0}
+            <li>
+                <a class="" id="nav_ticket">
+                    <span>去买票</span>
+                    <mark></mark>
+                </a>
+            </li>
+            {else}
+            <li>
+                <a class="" id="nav_like">
+                    <span>猜你喜欢</span>
+                    <mark></mark>
+                </a>
+            </li>
+            {/if}
+            <li>
+                <a class="" id="nav_rated">
+                    <span>点评</span>
+                    <mark></mark>
+                </a>
+            </li>
+            <li>
+                <a class="" id="nav_near">
+                    <span>查周边</span>
+                    <mark></mark>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <div class="main">
+        <!--看攻略内容-->
+        <section class="adv" id="strategy">
+            <div class="strategy-content">
+                {$res.information}
+            </div>
+        </section>
+
+        <!--去买票内容-->
+        <section class="adv" id="ticket">
+            <div class="ticket-list"></div>
+            <div class="like-list"></div>
+        </section>
+
+        <!--点评内容-->
+        <section class="adv" id="rated">
+            {if $res.post_number > 0}
+            <div class="rated-list"></div>
+            {else}
+            <div class="no-data">
+                <img src="/static/img/site/mobile/nodata.gif" />
+            </div>
+            {/if}
+        </section>
+
+        <!--查周边内容-->
+        <section class="adv" id="near">
+            <div class="map">
+                <div class="map-container" id="map_Content"></div>
+                <div class="map-nav">
+                    <a class="item park active" href="#"></a>
+                    <a class="item restaurant" href="#"></a>
+                    <a class="item playground" href="#"></a>
+                </div>
+                <div class="location-list" id="near_park">
+                    {if $res.near_park_list|@count > 0}
+                    {foreach $res.near_park_list as $val}
+                    <a class="location-list-item" data-x="{$val.addr_x}" data-y="{$val.addr_y}" data-addr="{$val.shop_address}" data-name="{$val.shop_name}">
+                        <p>{$val.shop_name}<mark>{$val.dis}m</mark></p>
+                        <span>{$val.shop_address}</span>
+                    </a>
+                    {/foreach}
+                    {else}
+                    <div class="no-data">
+                        <img src="/static/img/site/mobile/nodata.gif" />
+                    </div>
+                    {/if}
+                </div>
+                <div class="location-list" id="near_restaurant">
+                    {if $res.near_restaurant_list|@count > 0}
+                    {foreach $res.near_restaurant_list as $val}
+                    <a class="location-list-item" data-x="{$val.addr_x}" data-y="{$val.addr_y}" data-addr="{$val.shop_address}" data-name="{$val.shop_name}">
+                        <p>{$val.shop_name}<mark>{$val.dis}m</mark></p>
+                        <span>{$val.shop_address}</span>
+                    </a>
+                    {/foreach}
+                    {else}
+                    <div class="no-data">
+                        <img src="/static/img/site/mobile/nodata.gif" />
+                    </div>
+                    {/if}
+                </div>
+                <div class="location-list" id="near_place">
+                    {if $res.near_restaurant_list|@count > 0}
+                    {foreach $res.near_place_list as $val}
+                    <a class="location-list-item" data-x="{$val.addr_x}" data-y="{$val.addr_y}" data-addr="{$val.shop_address}" data-name="{$val.shop_name}">
+                        <p>{$val.shop_name}<mark>{$val.dis}m</mark></p>
+                        <span>{$val.shop_address}</span>
+                    </a>
+                    {/foreach}
+                    {else}
+                    <div class="no-data">
+                        <img src="/static/img/site/mobile/nodata.gif" />
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {if $res.flag_good}
+    <a class="enroll-fixed" href="javaScript:;">
+        <p>报名</p>
+        <span>{$res.buy_number}人参与</span>
+    </a>
+    {/if}
+
+    <div id="footer">
+        <div class="touch">
+            <input type="hidden" id="collect_data" value='{$res.collect_data}'>
+            {if $res.is_collect == 1}
+            <a class="banner-store has-store shoucon" title="" id="collect" >已收藏</a>
+            {else}
+            <a class="banner-store not-store shouc" title="" id="collect" >收藏</a>
+            {/if}
+
+            {if $res.post_number>0}
+            <a class="dianp" href="/comment/commentListAll?type=3&coupon_id={$res.id}" title="">点评<em>{$res.post_number}</em></a>
+            {else}
+            <a class="dianp" href="/comment/comment?type=3&coupon_id={$res.id}" title="">点评<em></em></a>
+            {/if}
+        </div>
+    </div>
+
+</section>
+<input type="hidden" id="location" data-x="{$res.addr_x}" data-y="{$res.addr_y}" data-addr="{$res.address}" data-title="{$res.title}"/>
+{literal}
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.1&ak=&services=true&t=20130716024058"></script>
+{/literal}
+{/block}
+{block name ="foot-btn"}
+{/block}
+{block name="js" append}
+{js file="js/discover/map.js"}
+{js file="js/lib/scrollTop.js"}
+{js file="js/lib/template.js"}
+{js file="js/collect/collect.js"}
+{js file="js/discover/play_detail.js"}
+{/block}
+{block name="js" append}
+{literal}
+<script id="good_list" type="text/html">
+    {{each good_list}}
+    <a class="ticket-list-item" href="{{if $value.type == 1}}/ticket/commodityDetail?id={{$value.id}}{{else}}/play/playActivity?id={{$value.id}}{{/if}}">
+        <img src="{{$value.cover}}" />
+        <div class="item-content">
+            <div class="item-content-detail">
+                <span class="shop">{{$value.name}}</span>
+                        <span class="right">
+                            <mark class="prices">￥{{$value.price}}</mark>
+                            <mark class="enroll-btn">立即报名</mark>
+                        </span>
+            </div>
+            <p class="item-content-intro">
+                <span class="num">剩余：{{$value.surplus_num}}</span>
+                <span class="time">结束购买 {{$value.end_time | dateFormat:'yyyy-MM-dd'}}</span>
+            </p>
+        </div>
+    </a>
+    {{/each}}
+</script>
+
+<script id="place_list" type="text/html">
+    {{each place_list}}
+    <a class="like-list-item" href="/discover/playDetail?id={{$value.id}}">
+        <img src="{{$value.cover}}" />
+        <div class="item-detail">
+            <p class="item-detail-name">{{$value.title}}</p>
+            <p class="item-detail-intro">{{$value.editor_word}}</p>
+            <p class="item-detail-addr">
+                {{each $value.prise}}
+                <span>{{$value}}</span>
+                {{/each}}
+                <mark>{{$value.prise}}</mark>
+            </p>
+        </div>
+        {{if $value.coupon_have == 1}}
+        <span class="tips-show">有票</span>
+        {{else}}
+        <span class="tips-show">无票</span>
+        {{/if}}
+    </a>
+    {{/each}}
+</script>
+
+<script id="post_list" type="text/html">
+    {{each post_list}}
+    <div class="rated-list-item">
+        <div class="rated-user">
+            <span class="rated-id">{{$value.author}}</span>
+                    <span class="rated-star user-rated">
+                        <mark style="width:{{$value.score/5*100}}%"></mark>
+                    </span>
+        </div>
+        <p class="rated-time">{{$value.dateline | dateFormat:'yyyy-MM-dd'}}</p>
+        {{each $value.message}}
+        {{if $value.t == 1}}
+        <p class="rated-text">{{$value.val}}</p>
+        {{/if}}
+        {{/each}}
+        <ul class="img-list gallery" id="Gallery">
+            {{each $value.message}}
+            {{if $value.t == 2}}
+            <li>
+                <a class="gallery-link" href="javascript:;">
+                    <img class="gallery-img" src="{{$value.val}}"/>
+                </a>
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+        <p class="rated-detail">
+            <span class="name">{{$value.link_name}}</span>
+            <span class="comment" data-id="{{$value.id}}">{{$value.reply_number}}</span>
+            <span class="like" data-id="{{$value.id}}">{{$value.like_number}}</span>
+        </p>
+        <img class="prof-id" src="{{$value.author_img}}"/>
+    </div>
+    {{/each}}
+</script>
+{/literal}
+{/block}

@@ -1,0 +1,420 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"{$res.title}"}{/block}
+
+{block name="css" append}
+{css file="css/play/m/play_activity.css"}
+{css file="css/play/m/play_info.css"}
+{css file="css/lib/photoswipe.css"}
+{css file="css/play/m/play_photoswipe.css"}
+{css file="css/play/m/play_default_skin.css"}
+{/block}
+{block name="meta_keyword"}
+<meta name="keywords" content="{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子户外活动，{$wft_global_set.custom_city_cn}亲子活动定制，{$wft_global_set.custom_city_cn}亲子游攻略，{$wft_global_set.custom_city_cn}孩子游玩的好地方，{$wft_global_set.custom_city_cn}农家乐活动，{$wft_global_set.custom_city_cn}少儿户外活动，亲子活动策划方案，亲子互动游戏" />
+{/block}
+
+{block name="meta_desc"}
+<meta name="description" content="{$wft_global_set.custom_city_cn}亲子活动，我们玩翻天每年提供超过40000场的优质亲子体验活动，每场活动都是由我们的专业遛娃师亲子带队，让孩子们在玩中学，寓教于乐，让家长在与孩子的沟通中走进孩子们的心灵世界。{$res.title}是玩翻天遛娃师为{$wft_global_set.custom_city_cn}孩子们奉献上的一场精彩活动，欢迎参加。官方微信公众号:玩翻天亲子">
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="contain-top">
+    {include file="member/m/ele_member_banner.html" type="show_play_banner" position="top" url="member/guide"}
+    <header class="wrapper-head-cover banner pr w">
+        <!--当没有收藏时==> .not-store; 当已经收藏时==> .has-store-->
+        <input type="hidden" value="{$res.is_collect}">
+        {if $res.is_collect == 0}
+        <a id="collect" class="banner-store not-store pa"></a>
+        {else}
+        <a id="collect" class="banner-store has-store pa"></a>
+        {/if}
+        <img class="banner-img w" src={$res.cover} />
+        <div class="banner-shape w pa">
+            <span style="display: block;height: 131px;background: url({$res.player_level_img}) no-repeat center center;margin-bottom: 0;"></span>
+            <p class="prof-name">
+                {$res.player_level}
+            </p>
+        </div>
+    </header>
+
+    <article class="intro">
+        <h1 class="place-name">
+            <span class="place-title">{$res.title}</span>
+        </h1>
+        <pre class="place-intr">{$res.desc}</pre>
+    <span class="header-bg db">
+        <mark class="act-price dib">
+            <span class="act-font">￥</span>{$res.price}
+            <span class="act-font">起</span>
+        </mark>
+        {if $res.vip_free}
+        <i class="icon-vip dib pa"></i>
+        {/if}
+    </span>
+    </article>
+
+    <div class="process w pr">
+        <p class="process-date">
+            <mark>{$res.date}</mark>&nbsp;
+            <mark>{$res.session}</mark>场
+        </p>
+        <span class="process-time db w">活动时间：{$res.time}</span>
+        <a class="child-logo dib pa" href="{$BASE_URL_MODULE}kidsPlayers/kidsPlayersInstr"></a>
+    </div>
+
+    <div class="link-list">
+        <a class="list-content db pr">
+            <!--<i class="icon age"></i>-->
+            <p class="list-p">
+                <span class="list-span fl">适合年龄：</span>
+                <mark class="list-mark fl">{$res.age_for}</mark>
+            </p>
+        </a>
+        <a class="list-content db pr" id="js_gather_way">
+            <!--<i class="icon gather"></i>-->
+            <p class="list-p">
+                <span class="list-span fl">集合方式：</span>
+                <mark class="list-mark fl">{$res.gather_method}</mark>
+            </p>
+            <i class="arrow-right"></i>
+        </a>
+        <a class="list-content db pr" id="js_notice_items">
+            <!--<i class="icon prize"></i>-->
+            <p  class="list-p">
+                <span class="list-span fl">注意事项：</span>
+                <mark class="list-mark fl">{$res.attention}</mark>
+            </p>
+            <i class="arrow-right"></i>
+        </a>
+        <a class="list-content db pr phone" href="tel:{$res.phone}">
+            <!--<i class="icon phone"></i>-->
+            <p class="list-p">
+                <span class="list-span fl">联系电话：</span>
+                <mark class="list-mark fl">{$res.phone}</mark>
+            </p>
+            <i class="arrow-right"></i>
+        </a>
+
+        {if $res.join_num || $res.recently_kids_num || $res.recently_man_num  }
+        <a class="join db pr" href="{if ($res.recently_kids_num || $res.recently_man_num)}{$BASE_URL_MODULE}play/playMember?id={$res.id}{/if}">
+            <p class="join-person-num db">
+                {if !$res.recently_kids_num && $res.recently_man_num}
+                最近场次已有{$res.recently_man_num}个父母报名
+                {else if $res.recently_kids_num && !$res.recently_man_num}
+                最近场次已有{$res.recently_kids_num}个小孩报名
+                {else if $res.recently_kids_num && $res.recently_man_num}
+                最近场次已有{$res.recently_kids_num}个小孩和{$res.recently_man_num}个父母报名
+                {/if}
+                {if $res.man_num + $res.kids_num}
+                ,累计有{$res.man_num + $res.kids_num}个人报名
+                {/if}
+            </p>
+
+            <ul class="join-portrait db ellipsis pr  {if $res.members|@count == 0}dn{/if}">
+                {foreach $res.members as $key => $val}
+                {if $key < 8}
+                <li class="join-person dib">
+                    <img class="person-img db" src="{$val.image}" onerror="javascript:this.src='/static/img/site/mobile/com_small.png'">
+                </li>
+                {/if}
+                {/foreach}
+                <i class="mask-total dib pa">
+                    <span class="join-num pa">{$res.man_num + $res.kids_num}</span>
+                </i>
+            </ul>
+            <i class="arrow-right {if $res.members|@count == 0}arrow-no{/if}"></i>
+        </a>
+        {/if}
+
+        {if $res.customer_service_group_id}
+        ba<a id="js-consult" class="join db pr" href="{$BASE_URL_MODULE}play/playConsult?id={$res.id}">
+            <p class="join-person-num db">我要问问({$res.consult_num})</p>
+            <span class="join-portrait font db pr">
+                <i class="ask-tag dib">问</i>
+                <i class="dib ask-tips ellipsis">{if $res.consult_num}{$res.latest_consult}{else}暂时没有人问问题哦~快来提问吧{/if}</i>
+            </span>
+            <i class="arrow-right"></i>
+        </a>
+        {/if}
+
+        {if $res.place_num|@count}
+        <p class="list-title">游玩地</p>
+        <div class="js-blog-list"></div><!--点击加载出的数据-->
+        {/if}
+        {if $res.place_num > 3}
+            <a id="js_address_more" class="address-more  js-load-more db tc" href="javascipt: ;">查看更多...</a>
+        {/if}
+
+        {if $res.custom}
+        <a id="join-active" class="join-active db pr" href="javascipt: ;">
+            <p class="join-title">我想为孩子或小伙伴定制这个活动</p>
+         <span class="join-span">
+             {$res.custom_value}
+         </span>
+            <i class="arrow-right"></i>
+        </a>
+        {/if}
+    </div>
+</section>
+
+
+<nav id="oNav" class="active-info">
+    <ul>
+        <li>
+            <a class="item cur db tc pr fl" href="javascript: ;">
+                <p class="item-p">活动亮点</p>
+                <span class="item-span fl pa"></span>
+            </a>
+        </li>
+        <li>
+            <a class="item db db tc pr fl" href="javascript: ;">
+                <p class="item-p">行程安排</p>
+                <span class="item-span fl pa"></span>
+            </a>
+        </li>
+        <li>
+            <a id="rated" class="item db db tc pr fl" href="javascript: ;">
+                <p class="item-p">往期点评</p>
+                <span class="item-span fl pa"></span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!--活动亮点-->
+<section class="adv light-spot">
+    <a href="javascript:;">
+        <div class="point">
+            <span class="point-title pr">
+                <i class="icon-line dib pa"></i>
+                <span class="point-msg dib">图文详情</span>
+            </span>
+            <span class="point-content">
+                {$res.information}
+            </span>
+        </div>
+    </a>
+</section>
+
+<!--行程安排-->
+<section class="adv" id="scheduling" style="display: none">
+    {foreach $res.schedule as $key => $day}
+    <div class="trip">
+        <div class="trip-title">
+            <span class="trip-date fl tc">{$key}DAY</span>
+            <mark class="trip-title-date">{$res.time}</mark>
+            <!--<mark class="trip-title-time">{$val.dateline|date_format: '%H:%M'}—{$val.end_dateline|date_format: '%H:%M'}</mark>-->
+        </div>
+        <i class="trip-line db"></i>
+        <div class="trip-content">
+            <div class="trip-node">
+
+                {if $day['am']}
+                <div class="trip-node-morning">
+                    <p class="time-slot node-morning dib">上午</p>
+                </div>
+                {foreach $day['am'] as $key => $am_val}
+                <div class="trip-node-style">
+                    <p class="time-slot node-style dib">{$am_val.date_line}</p>
+                    <span class="node-msg">{$am_val.content}</span>
+                </div>
+                {/foreach}
+                {/if}
+
+                {if $day['pm']}
+                <div class="trip-node-afternoon">
+                    <p class="time-slot node-afternoon">下午</p>
+                </div>
+                {foreach $day['pm'] as $key => $pm_val}
+                <div class="trip-node-style">
+                    <p class="time-slot node-style dib">{$pm_val.date_line}</p>
+                    <span class="node-msg">{$pm_val.content}</span>
+                </div>
+                {/foreach}
+                {/if}
+            </div>
+        </div>
+    </div>
+    {/foreach}
+</section>
+
+<!--往期点评-->
+<section class="adv" id="toReview"  style="display: none;"><!--style="display: none;"-->
+    <input type="hidden" id="res_history" value='{$res.history|json_encode}'/>
+    {if $res.history == null}
+    <div class="no-data tc">
+        <img src="/static/img/site/mobile/nodata.gif" />
+    </div>
+    {else}
+    {foreach $res.history as $key => $val}
+    <div class="review">
+        <div class="review-date">
+            <mark class="date-day">{$val.dateline|date_format: '%d'}</mark>
+            <span class="date-month">{$val.dateline|date_format: '%Y-%m'}</span>
+        </div>
+        <i class="line"></i>
+        <div class="review-content rated-list">
+            <p class="review-title">{$val.title}</p>
+            {if $val.images|@count }
+            <ul id="Gallery" class="gallery">
+                 {foreach $val.images as $key => $img_val}
+                  <li>
+                      <a class="gallery-link fl dib {if ($key > 5)}dn{/if}" href="{$img_val}">
+                        <img class="gallery-img" src="{$img_val}" alt="Image{$key+1}"/>
+                      </a>
+                  </li>
+                 {/foreach}
+                {if $val.images|@count>6}
+                <i class="marks-num pa dib">共{$key+1}张</i>
+                {/if}
+            </ul>
+            {/if}
+
+            <a class="review-address pr dib" href="{$BASE_URL_MODULE}discover/playDetail?id={$val.place.id}">
+                <i class="addr-icon addr-pos dib"></i>
+                <p class="review-addr dib">
+                    <span class="addr-name">{$val.place.name}</span><br/>
+                    <mark  class="addr-info">{$val.place.desc}</mark>
+                </p>
+                <i class="review-arrow-right"></i>
+            </a>
+
+            {foreach $val.post_list as $key => $post_val}
+            <div class="content-comment pr">
+                <a class="gallery-link" href="{$post_val.author_img}"> <!--{$post_val.author_img}-->
+                    <img class="user-img" src="{$post_val.author_img}" >
+                </a>
+                <span class="user-say">
+                    <mark class="content-comment-id">{$post_val.author}</mark>
+                    <mark class="content-comment-time">{$post_val.dateline|date_format: '%Y-%m-%d'}</mark>
+                </span>
+                <p class="user-say-info">{$post_val.message.val}</p>
+            </div>
+            {/foreach}
+
+            <div class="review-footer">
+                {if $val.dateline > $smarty.now}
+                <span class="footer-title fl">活动进行中</span>
+                {else}
+                <span class="footer-title fl">活动已结束</span>
+                {/if}
+                <a class="footer-link fr pr" href="{$BASE_URL_MODULE}comment/commentListAll?type=7&coupon_id={$res.id}&info_id={$val.history_eid}&buy_log={$val.buy_log}">
+                    <i class="say-pos addr-icon dib"></i>
+                    <mark class="footer-num">{$val.post_num}</mark>
+                </a>
+            </div>
+        </div>
+    </div>
+    {/foreach}
+    {/if}
+</section >
+
+
+<div class="item-action footer">
+    {if $res.customer_service_group_id}
+        <a class="action go-consult" href="javascript:;">
+            <span class="footer-span fl">客服</span>
+            {if $res.consult_num}
+                <i class="rated-mark"></i>
+            {/if}
+        </a>
+    {else}
+        <a class="action go-consult" href="{$BASE_URL_MODULE}play/playConsult?id={$res.id}">
+            <span id="js-cs-font" class="footer-span fl">咨询</span>
+            {if $res.consult_num}
+                <i class="rated-mark">{$res.consult_num}</i>
+            {/if}
+        </a>
+    {/if}
+
+    <!--判断用户是否购买，只有参加了活动才能到评价页面，如果没有则只能在评价列表页面-->
+    <a class="action go-rated" href="{$BASE_URL_MODULE}comment/commentListAll?type=7&coupon_id={$res.id}&buy_log={$res.buy_log}&info_id={$res.one_session|default: 0}">
+        <span class="footer-span fl">点评</span>
+        {if $res.post_num}
+        <mark class="rated-mark">{$res.post_num}</mark>
+        {/if}
+    </a>
+    <a class="action go-share">
+        <span class="footer-span fl">分享</span>
+    </a>
+
+    {if $res.btn_status == 1}
+    <a class="action go-join tc" href="
+    {if $res.one_session >0}
+        {$BASE_URL_MODULE}play/playSeleApplic?sid={$res.one_session}&id={$res.id}
+    {else}
+        {$BASE_URL_MODULE}play/playChoiceField?id={$res.id}
+    {/if}
+    ">
+        <span class="join-in">我要报名</span>
+    </a>
+    {else if $res.btn_status == 2}
+    <a class="action go-join disabled tc" href="{$BASE_URL_MODULE}play/gatherDate?id={$res.id}" title="">
+        <span class="join-status">即将开始</span>
+        <span class="want-go db">我想去</span>
+        <i class="arrow-right"></i>
+    </a>
+    {else}
+    <a class="action go-join disabled tc" href="{$BASE_URL_MODULE}play/gatherDate?id={$res.id}" title="">
+        <span class="join-status db">停止报名</span>
+        <span class="want-go db">我想去</span>
+        <i class="arrow-right"></i>
+    </a>
+    {/if}
+</div>
+
+<div class="matte" style="display: none"></div>
+<div id="tips-dia"></div>
+
+<!--集合/注意事项-->
+<div class="gather-popup" style="display: none">
+    <div class="policy-popup">
+        <div class="policy-content">
+            <h5><span class="popup-title"></span></h5>
+            <div class="policy-text">
+                <pre class="popup-content">{$res.gather_method}</pre>
+            </div>
+        </div>
+        <div class="close-btn">
+            <div class="cross"></div>
+        </div>
+    </div>
+</div>
+<!--点击分享-->
+<span class="share-pic db tc"  style="display: none"></span>
+
+
+<input type="hidden" id="gather_way" value="{$res.gather_method}"/>
+<input type="hidden" id="notice_items" value="{$res.attention}"/>
+
+<input type="hidden" id="act_id" value="{$res.id}">
+{/block}
+{block name ="foot-btn"}
+<div class="foot-btn green-top special">
+    <div class="foot-item">
+        <a class="item-icon" href="/recommend/index"></a>
+        {if $user_resource.user}
+        <a class="item-enter" href="/user/center">您好,{$user_resource.user.username}</a>
+        <a class="item-register" href="/auth/logout">注销</a>
+        {else}
+        <a class="item-enter" href="/auth/login">登录</a>
+        <a class="item-register" href="/auth/login">注册</a>
+        {/if}
+        <!--<a class="item-return" href="javascript: window.scrollTo(0,0);">回到顶部</a>-->
+    </div>
+
+    <div class="copyright">Copyright ©2016 玩翻天</div>
+
+    {if $res.customer_service_group_id}
+        {include file="service/elem_service.html" type="good"}
+    {/if}
+</div>
+{/block}
+{block name="js" append}
+{js file="js/lib/klass.min.js"}
+{js file="js/lib/code.photoswipe-3.0.5.js"}
+{js file="js/lib/scrollTop.js"}
+{js file="js/lib/dropload.min.js"}
+{js file="js/play/plays_activity.js"}
+{js file="js/lib/photoSwipe.js"}
+{/block}

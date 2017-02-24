@@ -1,0 +1,63 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"出行人列表"}{/block}
+
+{block name="css" append}
+{css file="css/play/m/play_select_traveler.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="traveller">
+    {foreach $res.travellers as $key => $list}
+    <form class="traveller-form pr">
+        <label class="form-label dib"> <!-- for="person{$list.associates_id}"-->
+            <div class="form-info">
+                <span class="form-name dib">{$list.name}</span>
+                <span class="form-id">{$list.id_num}</span>
+                <span class="form-edit dib">
+                    <a href="{$BASE_URL_MODULE}play/playEditTraveller?id={$list.associates_id}" data-type="编辑" class="edit dib">编辑</a>
+                    <a href="javascript:;" data-type="删除" class="edit dib del" >删除</a>
+                    <input type="hidden" class="js_person_info" data-ass-id="{$list.associates_id}">
+                </span>
+            </div>
+        </label>
+        <!--<input type="checkbox" id="person{$list.associates_id}" name="radio" class="form-radio" value="{$list|json_encode}">-->
+    </form>
+    {/foreach}
+
+    <div class="add-contact">
+        <a href="{$BASE_URL_MODULE}play/playEditTraveller" class="dib">
+            <span data-type="新增" class="edit" data="2">+添加出行人</span>
+        </a>
+    </div>
+</div>
+<!--<button class="traveller-button db tc" id="sub">确定</button> &lt;!&ndash;back &ndash;&gt;-->
+<!--弹出窗-->
+<div id="tips-dia"></div>
+<div class="matte" style="display: none"></div>
+<section class="make-sure"  style="display: none">
+    <i class="sure-icon db"></i>
+    <span class="sure-info db">确认出行人信息<br/>提交后不可修改</span>
+    <div class="make-btn">
+        <a class="cancel-btn"  href="javascript: ;">取消</a>
+        <a class="sure-btn" href="javascript: ;">提交</a>
+    </div>
+</section>
+
+<section class="make-sure" style="display: none">
+    <i class="sure-icon db"></i>
+    <span class="sure-info db">确认删除出行人信息<br/>提交后不可修改</span>
+    <div class="make-btn">
+        <a class="cancel-btn"  href="javascript: ;">取消</a>
+        <a class="sure-btn" href="javascript: ;">提交</a>
+    </div>
+</section>
+
+<input type="hidden" id="order_sn" value="{$res.order_sn}">
+
+{/block}
+
+{block name="js" append}
+{js file="js/play/select_traveller.js"}
+{/block}
+

@@ -1,0 +1,59 @@
+body {
+  width: 750px;
+  background: #f6f6f6;
+}
+.head {
+  width: 750px;
+  background: #f6f6f6;
+  overflow: hidden;
+}
+.head .head-banner {
+  width: 326px;
+  height: 178px;
+  margin: 50px auto 25px;
+  background: url("/static/img/site/mobile/recharge_card_icon.png") no-repeat;
+}
+.head .head-intro {
+  width: 725px;
+  height: 90px;
+  padding-left: 25px;
+  font-size: 28px;
+  line-height: 90px;
+  color: #666;
+}
+.main {
+  width: 750px;
+  height: 94px;
+  margin-bottom: 20px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 30px;
+  line-height: 94px;
+  background: #fff;
+}
+.main span {
+  float: left;
+  height: 94px;
+  width: 145px;
+  margin-left: 25px;
+  color: #000;
+}
+.main input {
+  float: left;
+  height: 94px;
+  width: 500px;
+  color: #929292;
+}
+.submit {
+  display: block;
+  width: 660px;
+  height: 80px;
+  margin: 62px auto 0;
+  border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  font-size: 36px;
+  line-height: 80px;
+  text-align: center;
+  color: #fff;
+  background: #fa6e51;
+}

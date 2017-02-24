@@ -1,0 +1,160 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"{$res.title}"}{/block}
+{block name="css" append}
+{css file="css/discover/m/special_info.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <div class="head">
+        <img class="head-banner" src="{$res.cover}" />
+        <div class="head-detail">{$res.introduce}</div>
+    </div>
+    <div class="nav">
+        {if $res.view_type == 1}
+        <div class="nav-list" style="width: 62%">
+            <a class="item" id="place" href="/discover/specialinfo?id={$res.id}&show=place" data-show="place">游玩地</a>
+            <a class="item" id="good" href="/discover/specialinfo?id={$res.id}&show=good" data-show="good">票券</a>
+        </div>
+        {else if $res.view_type == 2}
+        <div class="nav-list" style="width: 62%">
+            <a class="item" id="place" href="/discover/specialinfo?id={$res.id}&show=place" data-show="place">游玩地</a>
+            <a class="item" id="good" href="/discover/specialinfo?id={$res.id}&show=good" data-show="good">票券</a>
+        </div>
+        {else if $res.view_type == 3}
+        {else if $res.view_type == 4}
+        {else if $res.view_type == 5}
+        <div class="nav-list" style="width: 93.2%">
+            <a class="item" id="place" href="/discover/specialinfo?id={$res.id}&show=place" data-show="place">游玩地</a>
+            <a class="item" id="excercise" href="/discover/specialinfo?id={$res.id}&show=excercise" data-show="excercise">活动</a>
+            <a class="item" id="good" href="/discover/specialinfo?id={$res.id}&show=good" data-show="good">票券</a>
+        </div>
+        {else}
+        {/if}
+        <div class="nav-choose place">
+            <a class="item hot" href="/discover/specialinfo?id={$res.id}&show=place&order=hot" data-show="place" data-order="hot">
+                <span>最热门</span>
+                <i></i>
+            </a>
+            <a class="item good_num" href="/discover/specialinfo?id={$res.id}&show=place&order=good_num" data-show="place" data-order="good_num">
+                <span>最适合我</span>
+                <i></i>
+            </a>
+            <a class="item close" href="/discover/specialinfo?id={$res.id}&show=place&order=close" data-show="place" data-order="close">
+                <span>离我最近</span>
+                <i></i>
+            </a>
+        </div>
+        <div class="nav-choose excercise">
+            <a class="item hot" href="/discover/specialinfo?id={$res.id}&show=excercise&order=hot" data-show="excercise" data-order="hot">
+                <span>最热门</span>
+                <i></i>
+            </a>
+            <a class="item good_num" href="/discover/specialinfo?id={$res.id}&show=excercis&order=good_num" data-show="excercise" data-order="good_num">
+                <span>最适合我</span>
+                <i></i>
+            </a>
+        </div>
+        <div class="nav-choose good">
+            <a class="item hot" href="/discover/specialinfo?id={$res.id}&show=good&order=hot" data-show="good" data-order="hot">
+                <span>最热门</span>
+                <i></i>
+            </a>
+            <a class="item good_num" href="/discover/specialinfo?id={$res.id}&show=good&order=good_num" data-show="good" data-order="good_num">
+                <span>最适合我</span>
+                <i></i>
+            </a>
+        </div>
+    </div>
+    <div class="commodity">
+        <div class="place-list"></div>
+        <div class="good-list"></div>
+        <div class="excercise-list"></div>
+    </div>
+    <input type="hidden" id="view_type" value='{$res.view_type}'/>
+</section>
+{/block}
+{block name="js" append}
+{js file="js/discover/special_info.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list_place" type="text/html">
+    {{each place_list}}
+    <div class="item">
+        <a class="item-detail" href="/discover/playDetail?id={{$value.place_id}}">
+            <img src="{{$value.place_cover}}" />
+            <p>{{$value.place_name}}</p>
+        </a>
+        <aside class="item-aside">
+            <span class="addr">{{$value.circle}}</span>
+        </aside>
+        {{if $value.place_price > 0}}
+        <span class="tip-price">￥{{$value.place_price}}</span>
+        {{/if}}
+        {{if $value.place_have > 0}}
+        <span class="tip-num">有票</span>
+        {{/if}}
+    </div>
+    {{/each}}
+</script>
+<script id="list_excercise" type="text/html">
+    {{each excercise_list}}
+    <div class="item">
+        <i class="label-icon db pa">
+            <span class="label-info pa">遛娃</span>
+        </i>
+        <a class="item-detail" href="/play/playActivity?id={{$value.exc_id}}">
+            <img src="{{$value.cover}}" />
+            <p>{{$value.exc_name}}</p>
+        </a>
+        <aside class="item-aside">
+            <span class="event">{{$value.date}} {{$value.session_num}}场可选</span>
+            <span class="addr">{{$value.circle}}</span>
+        </aside>
+        {{if $value.low_price > 0}}
+        <span class="tip-price">￥{{$value.low_price}}</span>
+        {{/if}}
+        {{if $value.join_number > 0}}
+        <span class="tip-num">已有{{$value.join_number}}人报名</span>
+        {{else}}
+        <span class="tip-num">正在报名中</span>
+        {{/if}}
+        {{if $value.vip_free}}
+        <i class="vip-logo db pa"></i>
+        {{/if}}
+    </div>
+    {{/each}}
+</script>
+<script id="list_good" type="text/html">
+    {{each good_list}}
+    <div class="item">
+        <a class="item-detail" href="/ticket/commodityDetail?id={{$value.good_id}}">
+            <img src="{{$value.good_cover}}" />
+            <p>{{$value.good_name}}</p>
+        </a>
+        <aside class="item-aside">
+            {{each $value.prise}}
+            <span class="prise">{{$value}}</span>
+            {{/each}}
+            <span class="addr">{{$value.circle}}</span>
+        </aside>
+        {{if $value.good_price > 0}}
+        <span class="tip-price">￥{{$value.good_price}}</span>
+        {{/if}}
+        {{if $value.sold_number > 0}}
+        <span class="tip-num">已售{{$value.sold_number}}份</span>
+        {{else}}
+        <span class="tip-num">有票</span>
+        {{/if}}
+    </div>
+    {{/each}}
+</script>
+{/literal}
+{/block}

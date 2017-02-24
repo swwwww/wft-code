@@ -1,0 +1,47 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/ad/god/god.css"}
+{/block}
+
+{block name="title"}{$title|default:"选男神，抢玩翻天遛娃红包！"}{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<article class="rank pr">
+    <i class="rank-title db"></i>
+
+    <div class="rank-list">
+        <ul class="list-ul">
+            {foreach $rank_list.rank_list as $key => $res_act}
+            <li class="rank-item">
+                <a class="db item-act pr" href="{if $res_act.act_id == 0}{$BASE_URL_MODULE}lottery/record/lottery_id/2{else}http://wan.wanfantian.com/web/kidsplay/info?id={$res_act.act_id}{/if}">
+                    <div class="pep-say pa tc">
+                        {foreach $res_act.comment as $r_key => $com}
+                        <span class="say-what dib">{$com}</span>
+                        {/foreach}
+                    </div>
+                    <img src="{$res_act.image}" class="activity-img db">
+                    <i class="rank-top db pa">
+                        <span class="num-top pa">{$key+1}</span>
+                    </i>
+                    <span class="rank-name db tc">{$res_act.title}</span>
+                </a>
+                <p class="addr-name">活动地点：{$res_act.address}</p>
+                <p class="addr-name">
+                    适合年龄：{$res_act.age} &nbsp;&nbsp;
+                    参加人数：{$res_act.total}人 &nbsp;&nbsp;
+                    好评率：{$res_act.rate}%
+                </p>
+            </li>
+            {/foreach}
+
+        </ul>
+
+        <input type="hidden" id="lottery_vo_act" value='{$rank_list.rank_list|json_encode}'/>
+    </div>
+
+    <a class="act-ball float-pos-ball dib pa" href="{$BASE_URL_MODULE}lottery/record?lottery_id=2"></a>
+    <i class="act-foot db"></i>
+</article>
+{/block}
+

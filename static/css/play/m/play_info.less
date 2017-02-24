@@ -1,0 +1,293 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.bg(@color: #fff; @url: url(/static/img/site/mobile/icons.png);  @repeat:no-repeat; @x:x; @y:y ){
+  background: @color @url @repeat @x @y;
+};
+
+.arrow(){
+  position: absolute;
+  right: 37px;
+  bottom: 38%;
+  height: 22px;
+  width: 22px;
+  border: 2px solid #999;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+//固定在头
+.tripFixed{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+#oNav {
+  background: #fff;
+  overflow: hidden;
+  margin-top: 25px;
+  .border(bottom; @color: #5e5e5e);
+  color: #929292;
+  .item{
+    width: 249.5px;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+  }
+  .item-title{
+    font-size: 30px;
+    color: #000;
+    margin: 30px auto;
+    .border(right; @color: #d8d8d8);
+  }
+  .cur {
+     .item-b{
+      width: 200px;
+      height: 4px;
+      background: #ffbb4d;
+      .pos(@b: 0; @l: 23px);
+    }
+  }
+}
+
+#scheduling{
+  margin-top: 10px;
+  margin-bottom: 120px;
+}
+/*行程安排*/
+.trip{
+  padding: 57px 25px 0;
+  .trip-title{
+    font-size: 30px;
+    overflow: hidden;
+    line-height: 40px;
+    .trip-date{
+      color: #fff;
+      background: #fa6e51;
+      padding: 4px 18px;
+      margin-top: 0;
+      line-height: 32px;
+      .border-radius(20px);
+    }
+    .trip-title-date, .trip-title-time{
+      float: left;
+      margin-left: 35px;
+    }
+  }
+
+  .trip-line{
+    margin-left: 3px;
+    width: 45px;
+    height: 40px;
+    .border(right; @width: 2px; @color: #707070);
+  }
+
+  .trip-content{
+    background: #fff;
+    .border(all; @color: #d2d2d2);
+    padding-bottom: 55px;
+
+    .trip-node-morning{
+      height: 77px;
+      overflow: hidden;
+      .bg(@x: 10px; @y: -1326px);
+    }
+
+    .trip-node-afternoon {
+      height: 135px;
+      overflow: hidden;
+      .bg(@x: 10px; @y: -1720px);
+    }
+
+    .trip-node-style{
+      //height: 166px;
+      overflow: hidden;
+      .bg(@x: 10px; @y: -1402px);
+    }
+      .lastNode{
+        .bg(@x: 10px; @y: -1837px);
+      }
+
+    .time-slot{
+      font-size: 30px;
+      padding-left: 90px;
+    }
+    .node-morning{
+      margin-top: 43px;
+    }
+    .node-afternoon{
+      margin-top: 90px;
+    }
+    .node-style{
+      margin-top: 110px;
+      line-height: 35px;
+    }
+    .node-msg{
+      font-size: 28px;
+      display: inline-block;
+      padding-left: 90px;
+      margin-right: 20px;
+      text-align: justify;
+    }
+  }
+  .lastTrip{
+    padding-bottom: 75px;
+  }
+}
+
+/*往期回顾*/
+#toReview{
+  margin-top: 10px;
+  //margin-bottom: 120px;
+}
+.review{
+  margin-bottom: 50px;
+  .review-date{
+    width: 75px;
+    text-align: center;
+    margin: 30px 0 0 38px;
+    .date-day{
+      font-size: 40px;
+      line-height: 40px;
+      color: #fb5f39;
+    }
+    .date-month{
+      font-size: 16px;
+      color: #929292;
+    }
+  }
+  .line{
+    display: block;
+    width: 75px;
+    height: 40px;
+    .border(right; @width:2px; @color: #707070);
+  }
+  .review-content{
+    margin: 0 25px;
+    background: #fff;
+    .review-title{
+      //height: 80px;
+
+      padding: 20px 20px 20px 28px;
+      .border(left; @width: 6px; @color: #ffac66);
+      font-size: 32px;
+      //line-height: 80px;
+    }
+
+    .gallery{
+      width: 660px;
+      height: 440px;
+      margin: 0 auto;
+    }
+    .gallery-link{
+      font-size: 28px;
+    }
+    .gallery-img{
+      width: 220px;
+      height: 220px;
+    }
+
+    .review-addr {
+      padding: 0 0 0 15px;
+      width: 580px;
+      font-size: 24px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .review-arrow-right{
+      .arrow();
+    }
+
+     .review-address {
+      overflow: hidden;
+      .border(bottom; @color: #e5e5e5);
+       border-top: 1px solid #e5e5e5;
+    }
+    .addr-pos{
+      width: 98px;
+      height: 98px;
+      background-position: 32px -980px;
+    }
+    .content-comment{
+      padding: 30px 33px 0 120px;
+    }
+    .user-img{
+      width: 80px;
+      height: 80px;
+      .border-radius(40px);
+      .pos(@t: 30px; @l: 20px);
+    }
+    .user-say{
+      display: block;
+      color: #929292;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+    .content-comment-id{
+      float: left;
+      font-size: 28px;
+    }
+    .content-comment-time{
+      float: right;
+      font-size: 24px;
+    }
+    .user-say-info{
+      font-size: 28px;
+      padding-bottom: 25px;
+      .border(bottom; @color: #e5e5e5);
+    }
+  }
+
+  .review-footer{
+    height: 98px;
+    .footer-title{
+      font-size: 28px;
+      color: #929292;
+      margin-left: 22px;
+      line-height: 98px;
+    }
+  }
+  .footer-link{
+    margin: 10px 65px 0 0;
+    .say-pos{
+      width: 60px;
+      height: 98px;
+      background-position: -14px -2067px;
+    }
+    .footer-num{
+      font-size: 23px;
+      color: #fff;
+      background: #fa6e51;
+      padding: 0 9px;
+      text-align: center;
+      line-height: 30px;
+      .border-radius(15px);
+      .pos(@t: 7px; @l: 30px);
+    }
+  }
+}
+
+
+.addr-icon{
+  background: url('/static/img/site/mobile/icons_c.png') no-repeat;
+}
+.dn{
+  display: none;
+}
+.marks-num{
+  width: 220px;
+  height: 220px;
+  line-height: 220px;
+  background-color: rgba(0,0,0,0.5);
+  color: #ffffff;
+  font-size: 54px;
+  vertical-align: middle;
+  text-align: center;
+  margin: 220px 0 0 -220px;
+  
+}
+
+
+
+

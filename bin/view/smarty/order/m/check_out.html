@@ -1,0 +1,156 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"收银台"}{/block}
+
+{block name="css" append}
+{css file="css/order/m/check_out.css"}
+{css file="css/coupon/m/coupon_select.css"}
+
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="wrapper shop">
+    <form class=" " action="" method="post">
+        {if $res.param.type == 1}
+             <div class="shop-info">
+                {if $res.order_game_data.start_time|date_format:"%Y-%m-%d" == $res.order_game_data.end_time|date_format:"%Y-%m-%d"}
+                    <div class="time-item">
+                        <span class="travel-time">出行时间：</span>
+                        {$res.order_game_data.start_time|date_format:"%Y-%m-%d"}
+                    </div>
+                {else}
+                     <div class="time-item">
+                         <span class="travel-time">出行时间：</span>
+                         {$res.order_game_data.start_time|date_format:"%Y-%m-%d %H:%M"} ~ {$res.order_game_data.end_time|date_format:"%Y-%m-%d %H:%M"}
+                     </div>
+
+                {/if}
+                <div class="good-item ellipsis">
+                    <span class="good-name">商品名称：</span>
+                    {$res.coupon_data.title}
+                </div>
+            </div>
+        {else}
+            <div class="shop-info">
+                {if $res.order_game_data.start_time|date_format:"%Y-%m-%d %H:%M" == $res.order_game_data.end_time|date_format:"%Y-%m-%d %H:%M"}
+                <div class="time-item">
+                    <span class="travel-time">出行时间：</span>
+                    {$res.order_game_data.start_time|date_format:"%Y-%m-%d %H:%M"}
+                </div>
+                {else}
+                <div class="time-item">
+                    <span class="travel-time">出行时间：</span>
+                    {$res.order_game_data.start_time|date_format:"%Y-%m-%d %H:%M"} ~ {$res.order_game_data.end_time|date_format:"%Y-%m-%d %H:%M"}
+                </div>
+                {/if}
+                <div class="good-item ellipsis">
+                    <span class="good-name">活动名称：</span>
+                    {$res.coupon_data.title}
+                </div>
+            </div>
+        {/if}
+
+        <h2 class="shop-title">
+            <i class="icon-line dib vm"></i>
+            现金券/优惠券
+        </h2>
+
+        {if $res.coupon_list }
+            {$coupon = $res.coupon_list[0]}
+            <a class="shop-coupon pr db" href="javascript:;">
+                <span class="ticket-limit" data-cid="{$coupon.id}" data-price="{$coupon.price}">{$coupon.title}</span>
+                <i class="arrowent"></i>
+            </a>
+        {else}
+            <a class="shop-coupon pr db" href="/coupon/userCoupon?f=1&type={$res.param.type}&coupon_id={$res.param.coupon_id}&info_id={$res.param.info_id}&pay_price={$res.param.pay_price}">
+                <span class="ticket-limit">选择或兑换现金券</span>
+                <i class="arrowent"></i>
+            </a>
+        {/if}
+
+        {if $res.vip_params.show_free_bar}
+        <a class="shop-vip pr db vip-info clearfix" href="{if $res.vip_params.show_free_bar_jump}{$BASE_URL_MODULE}orderWap/chargeMoney{else}javascript:;{/if}">
+        <i class="icon-free dib fl"></i>
+            <span class="ticket-limit vip-title">会员免费玩资格</span>
+            <span class="vip-remind fr">{$res.vip_params.message}</span>
+            {if $res.vip_params.show_free_bar_jump}<i class="arrowent"></i>{/if}
+        </a>
+        {/if}
+
+        <h2 class="shop-title">
+            <i class="icon-line dib vm"></i>
+            支付方式
+        </h2>
+
+        <div class="pay lists">
+            <label class="pay-item" data="account" id="account">
+                <span class="pay fl">
+                    <i class="item-icon01 item-icon-size"></i>余额
+                </span>
+                <span class="choose fr">¥
+                    <mark class="account-money">{$res.surplus}</mark>
+                    <i class="icon"></i>
+                </span>
+                <input type="radio" class="option-input" name="surplus" value="" checked="">
+            </label>
+            <label class="pay-item" data="zhifubao" id="zhifubao">
+                 <span class="pay fl">
+                     <i class="item-icon02 item-icon-size"></i>支付宝
+                 </span>
+                 <span class="choose fr">
+                     <i class="icon"></i>
+                 </span>
+                <input type="radio" class="option-input" name="alipay" value="" checked="">
+            </label>
+            <label class="pay-item" data="weixin" id="weixin">
+                <span class="pay fl">
+                    <i class="item-icon04 item-icon-size"></i>微信支付
+                </span>
+                <span class="choose fr">
+                    <i class="icon"></i>
+                </span>
+                <input type="radio" class="option-input" name="wei" value="" checked="">
+            </label>
+        </div>
+        {include file="member/m/ele_member_banner.html" type="show_checkstand_banner" position="bottom1" url="orderWap/chargeMoney"}
+        <div class="fix shop-last">
+            <span class="amount fl">实付
+                <i class="money-sign">¥</i>
+                <mark class="mark real-pay"></mark>
+            </span>
+            <a class="submit fr tc" href="javascript:;" id="pay">去支付</a>
+        </div>
+    </form>
+    <form id="password" class="password-form">
+        <h4>请输入支付密码</h4>
+        <p class="title">{$res.coupon_data.title}</p>
+        <p class="amount">￥<span id="real-pay">{$res.total}</span></p>
+        <div class="password-way">余额支付</div>
+        <div class="password-input">
+            <mark></mark>
+            <input type="tel" id="password-gold" name="password-gold" maxlength="6" value=""/>
+            <label>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+        <div class="close-btn">
+            <div class="cross"></div>
+        </div>
+    </form>
+    <div class="matte"></div>
+    <input type="hidden" id="data" value='{$res.data}'>
+</section>
+
+<section id="js_add_coupon" style="display: none">
+    {include file="coupon/m/elem_use_coupon.html"}
+</section>
+<input type="hidden" id="is_password" value="{$res.info.pay_password}" />
+{/block}
+{block name="js" append}
+{js file="js/order/check_out.js"}
+{/block}

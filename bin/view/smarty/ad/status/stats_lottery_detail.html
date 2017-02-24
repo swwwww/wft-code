@@ -1,0 +1,178 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        {include file="ad/status/ele_status_nav.html"}
+    </div>
+    <div class="row">
+        <h3>抽奖活动详情（中奖概率，请及时联系我进行调整）</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>名称</td>
+                <td>中奖概率</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{$lottery_vo.id}</td>
+                <td>{$lottery_vo.name}</td>
+                <td>{$lottery_vo.chance}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="row">
+        <!-- 主界面具体展示内容 -->
+        <h1>抽奖活动详情</h1>
+
+        <div class="row">
+            <h3>奖品总量记录</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>总数量</td>
+                    <td>已发数量</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{$lottery.lottery_gift_total}</td>
+                    <td>{$lottery.lottery_gift_left_total}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>现金券记录</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>名称</td>
+                <td>奖品类别</td>
+                <td>总量</td>
+                <td>已发数量</td>
+<!--                 <td>奖品开始日期</td> -->
+<!--                 <td>结束时间</td> -->
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $lottery.lottery_cash as $key => $lottery_cash}
+            <tr>
+                <td>{$lottery_cash.id}</td>
+                <td>{$lottery_cash.cash_name}</td>
+                {if $lottery_cash.lottery_id eq '6'}
+                    {if $lottery_cash.type eq '1'}
+                    <td>商品券</td>
+                    {elseif $lottery_cash.type eq '2'}
+                    <td>活动券</td>
+                    {elseif $lottery_cash.type eq '3'}
+                    <td>现金红包</td>
+                    {elseif $lottery_cash.type eq '4'}
+                    <td>资格券</td>
+                    {else}
+                    <td>其他</td>
+                    {/if}
+                {else}
+                    {if $lottery_cash.type eq '1'}
+                    <td>A类</td>
+                    {elseif $lottery_cash.type eq '2'}
+                    <td>B类</td>
+                    {elseif $lottery_cash.type eq '4'}
+                    <td>特等奖</td>
+                    {/if}
+                {/if}
+                <td>{$lottery_cash.total}</td>
+                <td>{$lottery_cash.send_total}</td>
+<!--                 <td>{$lottery_cash.log_date}</td> -->
+<!--                 <td>{$lottery_cash.cash_end_time}</td> -->
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="row">
+        <h3>抽奖记录</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>总抽奖次数</td>
+                <td>中奖次数</td>
+                <td>真实中奖次数</td>
+                <td>领取次数</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{$lottery.lottery_user_record.lottery_num}</td>
+                <td>{$lottery.lottery_user_record.is_win_false}</td>
+                <td>{$lottery.lottery_user_record.is_win_true}</td>
+                <td>{$lottery.lottery_user_record.awarded}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <h3>分享点击记录</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>日期</td>
+                <td>分享点击次数</td>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $lottery.lottery_shared_click_record as $key => $val}
+            <tr>
+                <td>{$val.log_date}</td>
+                <td>{$val.num}</td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <h3>用户参与信息</h3>
+    <table class="table table-hover">
+
+        <tr>
+            <td>老用户参与人数</td>
+            <td>$lottery.about_user.old_user_total</td>
+        </tr>
+
+        <!--<tbody>-->
+        <!--{foreach $lottery.lottery_shared_click_record as $key => $val}-->
+        <!--<tr>-->
+            <!--<td>{$val.log_date}</td>-->
+            <!--<td>{$val.num}</td>-->
+        <!--</tr>-->
+        <!--{/foreach}-->
+        <!--</tbody>-->
+    </table>
+</div>
+</div>
+{/block}
+
+{block name="js" append}
+{literal}
+
+{/literal}
+{/block}

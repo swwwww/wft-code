@@ -1,0 +1,67 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"编辑个人资料"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_add_baby.css"}
+{css file="css/mobile/LCalendar.css"}
+{css file="css/user/m/user_add_baby.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+
+<form class="edit-intro" autocomplete="off">
+    <div class="item item-pic">
+        <span class="tips tips-pic">头像</span>
+        <i class="arrowent arrow-pic"></i>
+        <div class="upload-pic" id="upload-pic">
+            <img src="{$res.img}">
+        </div>
+        <input id="upload-image" type="file" accept="image/*;capture=camera" class="input-file">
+    </div>
+    <a class="item">
+        <span class="tips left">名字：</span>
+        <span class="name left">
+            <input type="text" name="name" placeholder="输入名字" value="{$res.username}" id="name">
+            <input type="reset" value="×">
+        </span>
+    </a>
+    <div class="title">个人信息</div>
+    <a class="item">
+        <span class="tips left">性别：</span>
+
+        <select class="gender left" name="sex" id="sex">
+            {if $res.sex == 1}
+                <option id="man" name="2">女</option>
+                <option id="woman" name="1" selected="selected">男</option>
+            {else}
+                <option id="man" name="2" selected="selected">女</option>
+                <option id="woman" name="1">男</option>
+            {/if}
+        </select>
+
+        <input type="hidden" id="gender" name="gender">
+        <i class="arrowent"></i>
+    </a>
+    <a class="item">
+        <span class="tips left">出生年日：</span>
+        <span class="time left">
+            <input class="font" id="old" type="date" placeholder="请选择出生年日" value="{$res.birth|date_format: '%Y-%m-%d' }">
+        </span>
+        <i class="arrowent"></i>
+    </a>
+
+    <input class="submit" type="button" value="完成" autocomplete="on" id="sub">
+</form>
+
+<input type="hidden" id="data" value="">
+{/block}
+
+
+{block name="js" append}
+{js file="js/util/upload/binaryajax.js"}
+{js file="js/util/upload/exif.js"}
+{js file="js/util/upload/localResizeIMG.js"}
+{js file="js/util/upload/mobileBUGFix.js"}
+{js file="js/user/edit_my_info.js"}
+{/block}

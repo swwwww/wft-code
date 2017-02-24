@@ -1,0 +1,85 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+    .mobile-width, .com-panel {
+        width: 75%;
+
+    }
+
+</style>
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        {include file="ad/status/ele_status_nav.html"}
+    </div>
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>中奖记录</td>
+                <td>中奖日期</td>
+                <td>活动ID</td>
+                <td>奖品ID</td>
+                <td>用户ID</td>
+                <td>用户名</td>
+                <td>用户手机号</td>
+                <td>领奖状态</td>
+                <!--                 <td>奖品开始日期</td> -->
+                <!--                 <td>结束时间</td> -->
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $record_vo as $key => $lottery_record}
+            <tr>
+                <td>{$lottery_record.id}</td>
+                <td>{$lottery_record.log_date}</td>
+                <td>{$lottery_record.lottery_id}</td>
+                <td>{$lottery_record.lottery_cash_id}</td>
+                <td>{$lottery_record.user_id}</td>
+                <td>{$lottery_record.username}</td>
+                <td>{$lottery_record.phone}</td>
+                <td>{$lottery_record.status}</td>
+                <td> <button type="button" class="btn btn-info js-btn-info" data-lottery-record-id="{$lottery_record.id}" >已联系</button></td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+{/block}
+
+{block name="js" append}
+{literal}
+<script>
+    $(document).on('click', '.js-btn-info', function(){
+        var dao = DAO.stats;
+        var lottery_record_id = $(this).attr('data-lottery-record-id');
+
+
+        var param = {
+            lottery_record_id:lottery_record_id
+
+        };
+
+        dao.changeStatus(param, function(res){
+
+
+            window.location.href = window.location;
+        });
+    });
+</script>
+{/literal}
+{/block}

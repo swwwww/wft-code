@@ -1,0 +1,256 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.bg(@color: #fff; @url: url(/static/img/site/mobile/icons3.png); @no-repeat:no-repeat; @x: 0; @y: 0){
+  background: @color @url @no-repeat @x @y;
+}
+
+.arrow-right{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  .border(top; @width: 2px; @color: #999);
+  .border(right; @width: 2px; @color: #999);
+  .transform-rotate(45deg);
+  .pos(@t: 32px; @r: 32px);
+}
+
+.person{
+  margin-top: 55px;
+  background: url(/static/img/site/mobile/header_bg.png) no-repeat 27px 45px;
+  .person-info{
+    margin: 55px auto 55px auto;
+    //.person-info-photo{
+    //  margin: 0 auto;
+    //  width: 185px;
+    //}
+    .person-info-img{
+      width: 120px;
+      height: 120px;
+      .border-radius(60px);
+      margin: 15px 0 0 40px;
+    }
+    .person-info-name{
+      height: 35px;
+      line-height: 35px;
+      font-size: 30px;
+      color: #000;
+      margin-top: 8px;
+
+      .username{
+        float: left;
+      }
+    }
+    .person-sex{
+      margin-top: 10px;
+      text-align: left;
+    }
+    .login-in{
+      font-size: 28px;
+      color: #FA6E51;
+      text-decoration: underline;
+    }
+    .person-info-sort{
+      font-size: 24px;
+      line-height: 26px;
+      position: absolute;
+      margin: 35px 0 0 38px;
+      color: #959595;
+    }
+    .person-info-icon-woman{
+      color: #ff6091;
+    }
+    .person-info-icon-man {
+      color: #03a9f4;
+    }
+    .person-info-uid{
+      font-size: 20px;
+    }
+    .person-info-edit{
+      float: left;
+      width: 36px;
+      height: 36px;
+      margin-left: 15px;
+      background: url(/static/img/site/mobile/icons_fx.png) no-repeat 0 5px;
+    }
+  }
+
+  .person-invite{
+    width: 170px;
+    height: 46px;
+    line-height: 46px;
+    .bg(@color: #fc8795; @x: 20px; @y: -68px);
+    font-size: 24px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding-left: 60px;
+    .border-radius(15px; 0; 0; 15px);
+    text-decoration: none;
+    .pos(@t: 60px; @r: 0);
+  }
+}
+
+.order{
+  background-color: #FFFFFF;
+  .order-icons{
+    //display: block;
+    margin-top: 27px;
+    .pos(@r: 65px);
+  }
+  .order-pay{
+    height: 47px;
+    width: 57px;
+    .bg(@x:0; @y: -155px);
+  }
+  .order-use{
+    height: 48px;
+    width: 51px;
+    .bg(@x: 0; @y: -275px);
+  }
+  .order-eval{
+    height: 47px;
+    width: 49px;
+    right: 68px;
+    .bg(@x: 0; @y: -410px);
+  }
+  .order-refund{
+    right: 68px;
+    height: 48px;
+    width: 48px;
+    .bg(@x: 0; @y: -538px);
+  }
+
+  .order-info-order{
+    height: 88px;
+    line-height: 88px;
+    .border(bottom);
+  }
+  .order-info-title{
+    font-size: 30px;
+    color: #000;
+    padding-left: 35px;
+  }
+  .order-info-all{
+    font-size: 24px;
+    color: #929292;
+    .pos(@r: 8%);
+  }
+
+  .order-item{
+    height: 140px;
+    list-style: none;
+    padding-left: 0;
+    .item-li{
+      width: 25%;
+      height: 140px;
+      overflow: hidden;
+      font-size: 24px;
+      color: #000;
+    }
+  }
+  .order-item-num{
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #FA6E51;
+    padding: 2px 12px;
+    .border-radius(10px);
+    .pos(@t: 18px; @r: 49px);
+  }
+  .order-item-sub{
+    margin-top: 97px;
+    margin-bottom: 20px;
+  }
+}
+
+.entry{
+  margin-top: 20px;
+  padding-bottom: 140px;
+
+  .entry-act{
+    height: 88px;
+    line-height: 88px;
+    background: #fff;
+    .border(bottom);
+    .entry-act-title{
+      font-size: 30px;
+      color: #010101;
+      padding-left: 118px;
+    }
+    .entry-act-money{
+      color: #FA6E51 !important;
+    }
+    .entry-act-num{
+      font-size: 28px;
+      color: #3c3c3c;
+      position: absolute;
+      right: 8%;
+    }
+  }
+
+  .entry-account{
+    .bg(@x: 40px; @y: -626px);
+  }
+  .entry-inte{
+    .bg(@x: 40px; @y: -734px);
+  }
+  .entry-crash{
+    .bg(@x: 40px; @y: -830px);
+  }
+  .entry-msg{
+    .bg(@x: 40px; @y: -944px);
+  }
+  .entry-speak{
+    .bg(@x: -986px; @y: 24px);
+  }
+  .entry-par{
+    .bg(@x: -986px; @y: -72px);
+  }
+  .entry-contact{
+    .bg(@x: -986px; @y: -184px);
+  }
+  .entry-baby{
+    .bg(@x: -986px; @y: -300px);
+  }
+  .entry-travel{
+    .bg(@x: -986px; @y: -402px);
+  }
+  .entry-friends{
+    .bg(@x: -986px; @y: -520px);
+  }
+  .entry-collect{
+    .bg(@x: -986px; @y: -647px);
+  }
+  .entry-Wetchat{
+    .bg(@x: -986px; @y: -745px);
+  }
+  .entry-gift{
+    .bg(@x: -986px; @y: -846px);
+  }
+  .entry-edit{
+    .bg(@x: -986px; @y: -940px);
+  }
+  .entry-message{
+    .bg(@x: -986px; @y: 24px);
+  }
+  .act-title{
+    font-size: 30px;
+    color: #010101;
+    padding-left: 27px;
+  }
+  .entry-seller{
+    width: 45px;
+    height: 48px;
+    margin-top: 5px;
+    margin-left: 39px;
+    background-image: url(/static/img/site/mobile/icons_fx.png);
+    background-repeat: no-repeat;
+    background-position: 4px -400px;
+  }
+}
+.entry-bottom{
+  padding-bottom: 140px;
+}
+
+.foot-btn {
+  padding-bottom: 88px !important;
+}

@@ -1,0 +1,107 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.bg(@url: url(/static/img/site/mobile/icons.png);  @repeat:no-repeat; @x:x; @y:y ){
+  background: @url @repeat @x @y;
+};
+
+.buy{
+  background: #f6f6f6;
+  text-align: center;
+  .buy-banner{
+    width: 100%;
+    height: 340px;
+    background: #fff url("/static/img/site/mobile/buybanner.jpg") no-repeat;
+    .border(bottom);
+  }
+  .banner-msg{
+    padding: 50px 0 0 230px;
+    color: #fff;
+    .banner-succ{
+      font-size: 36px;
+    }
+    .banner-addr{
+      font-size: 30px;
+      line-height: 55px;
+    }
+  }
+  .banner-order, .banner-index{
+    width: 260px;
+    .border-radius(8px);
+    font-size: 28px;
+    line-height: 70px;
+    border: 1px solid #999;
+    margin-top: 80px;
+  }
+  .banner-order{
+    margin-left: 100px;
+  }
+  .banner-index{
+    margin-left: 30px;
+  }
+
+  .buy-title{
+    //padding: 46px 167px 44px 163px;
+    padding: 46px 80px 44px 173px;
+    border-bottom: 1px solid #c5c5c5;
+    .title-msg{
+      font-size: 28px;
+      //line-height: 50px;
+      width: 390px;
+      text-align: left;
+      //padding-left: 100px;
+      //.bg(@x: -16px; @y: -2798px);
+    }
+    .buy-bg{
+      width: 80px;
+      height: 50px;
+      margin-right: 20px;
+    }
+  }
+
+  .buy-info{
+    width: 656px;
+    padding: 58px 0 75px 0;
+    border-top: 1px solid #c5c5c5;
+    .info-msg{
+      line-height: 55px;
+      padding-left: 140px;
+      .bg(@x: 22px; @y: -2858px);
+    }
+  }
+
+  .rebate{
+    border-top: 1px dashed #c5c5c5;
+    border-bottom: 1px solid #c5c5c5;
+    .rebate-msg{
+      height: 70px;
+      .bg(@x: 22px; @y: -2926px);
+      line-height: 35px;
+    }
+  }
+  .size{
+    font-size: 30px;
+  }
+  .buy-link{
+    padding: 55px 188.5px 140px 188.5px;
+    overflow: hidden;
+    .a-link{
+      width: 130px;
+      height: 160px;
+      .link-media{
+        font-size: 26px;
+        color: #929292;
+        margin-top: 125px;
+      }
+    }
+
+    .buy-link-wechat{
+      .bg(@x: 10px; @y: -3021px);
+    }
+    .buy-link-friends{
+      margin-left: 113px;
+      .bg(@x: -11px; @y: -5616px);
+      background-size: 117% auto;
+    }
+  }
+}

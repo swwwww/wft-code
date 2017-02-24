@@ -1,0 +1,53 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/location/location.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner fullscreen-v2">
+    <section class="com-inner-head">
+    </section>
+
+    <section class="com-inner-content">
+        <div class="tc ma" style="margin: 30px 0 90px;">
+            <img src="/static/img/site/mobile/playsky_logo_big.png" style="width: 408px; height: 134px;"/>
+        </div>
+        <div class="location">
+            <h1 style="font-size: 36p;">正在为您开启亲子旅程...</h1>
+        </div>
+        <div class="index">
+            <a href="http://wan.wanfantian.com/app/index.php">点我下载客户端</a>
+        </div>
+
+        <input type="hidden" id="page_data" value='{$page_data|json_encode}'>
+
+    </section>
+    <section class="com-inner-foot"></section>
+</section>
+{/block}
+
+{block name="js" append}
+{literal}
+<script type="text/javascript">
+    function open() {
+        var page_data = $('#page_data').val();
+        var page_arr = JSON.parse(page_data);
+        var type = page_arr['type'];
+        var id = page_arr['id'];
+
+        var ios_url = 'deyiwanfantian://app?type=' + type + '&id=' + id;
+        var and_url = 'wanfantian://com.deyi.wanfantian?type=' + type + '&id=' + id;
+        var config = {
+            ios : ios_url,
+            android: and_url,
+            download : 'http://wan.wanfantian.com/app/index.php',
+            timeout: 2 * 60 * 1000
+        };
+
+        M.app.open(config);
+    }
+    open();
+</script>
+{/literal}
+{/block}

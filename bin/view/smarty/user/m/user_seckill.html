@@ -1,0 +1,81 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我要秒杀"}{/block}
+
+{block name="css" append}
+    {css file="css/user/m/user_seckill.css"}
+    {css file="css/mobile/custom.css"}
+    {css file="css/mobile/iosOverlay.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="wrapper">
+    <div class="in-seck">
+        <div class="in-link tr">
+            <a href="{$BASE_URL_MODULE}user/PointsRules" class="db">资格券规则</a>
+        </div>
+        <div class="in-num">
+            <span class="num">{$res.qualify_num}</span>
+            <span class="aside">次秒杀资格</span>
+            <p class="num-rate">{$res.exchange_score}积分=1次秒杀资格</p>
+        </div>
+    </div>
+    <div class="in-exchange">
+        <span class="tips">
+            <i class="icon dib vm"></i>
+            {$res.score}&nbsp;&nbsp;还可兑换{($res.score/$res.exchange_score)|string_format:"%d"}次
+        </span>
+        <a id="js_exchange" class="confirm fr">兑换</a>
+    </div>
+    <ul class="in-list"></ul>
+    <div id="nav-drop"></div>
+    <input type="hidden" id="change" value="{$res.qualify_num}">
+    <input type="hidden" id="ex_chance" value='{($res.score/$res.exchange_score)|string_format:"%d"}'>
+    <input type="hidden" id="shop_sid" value="{$res.sid}">
+</section>
+{/block}
+
+{block name="js" append}
+    {js file="js/util/loading/loading.js"}
+    {js file="js/lib/dropload.js"}
+    {js file="js/lib/template.js"}
+    {js file="js/user/seckill.js"}
+    {literal}
+    <script id="list" type="text/html">
+        {{if res[0]}}
+        {{each res}}
+        <li class="item clearfix">
+            <div class="item-pic fl">
+                <a class="db" href="javascript: ;">
+                    <img class="pic-img" src={{$value.cover}}>
+                </a>
+            </div>
+            <div class="item-info fr">
+                <a class="item-title ellipsis tl db" href="{{$BASE_URL_MODULE}}/ticket/CommodityDetail?id={{$value.id}}">
+                    {{$value.title}}
+                </a>
+                <a class="item-msg db" href="javascript: ;">
+                    {{$value.editor_talk}}
+                </a>
+                <div class="item-operate clearfix">
+                    <span class="status fl">资格券+
+                        <i>¥</i>
+                        <mark class="status-mark">{{$value.price}}</mark>
+                    </span>
+                    <a class="button fr db" id="js_go_buy" href="{{if $value.change}} {{$BASE_URL_MODULE}}/ticket/CommodityDetail?id={{$value.id}}{{else}}javascript:;{{/if}}">
+                        立刻购买
+                    </a>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+        {{else}}
+        {{if gif_flag==1}}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {{/if}}
+        {{/if}}
+    </script>
+    {/literal}
+{/block}

@@ -1,0 +1,781 @@
+* {
+    margin:0;
+    padding:0
+}
+html {
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    background-color:#eb5042
+}
+body {
+    width:100%;
+    height:100%;
+    color:#734620;
+    font:14px"Microsoft YaHei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    background:url("/static/img/ad/grasp/exp/fu.png") no-repeat center;
+    background-size:contain;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-appearance:none
+}
+ul, li {
+    list-style:none
+}
+img {
+    border:0
+}
+a {
+    text-decoration:none
+}
+input, label, select {
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent
+}
+input, fieldset {
+    border:0
+}
+i {
+    font-style:normal
+}
+.btnbox .btn, .gameover a, #infoDia #submitbtn, .tipDia a {
+    height:30px;
+    line-height:27px;
+    border:1px solid #9d821b;
+    background-color:#f7f03b;
+    display:inline-block;
+    padding:0 10px;
+    box-shadow:0 -3px 0 #b39522 inset;
+    border-radius:7px 7px 7px 7px;
+    background-clip:padding-box;
+    color:#e08b1b
+}
+#infoDia, .tipDia, .nonetwork, .shareDia, .endDia {
+    display:none;
+    z-index:200;
+    width:70%;
+    background:#ff5134;
+    border-radius:10px 10px 10px 10px;
+    background-clip:padding-box;
+    color:#fff;
+    font-size:16px;
+    text-align:center;
+    padding:10px
+}
+#infoDia .closeDia, .tipDia .closeDia, .nonetwork .closeDia, .shareDia .closeDia, .endDia .closeDia {
+    width:35px;
+    height:35px;
+    background:url("/static/img/ad/grasp/exp/close.png") no-repeat 0 0;
+    position:absolute;
+    right:-16px;
+    top:-16px;
+    background-size:35px 35px
+}
+.bg {
+    width:100%;
+    min-height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    background:url("/static/img/ad/grasp/exp/bgmid.png") repeat-y center;
+    background-size:100% auto
+}
+.bg:before {
+    content:'';
+    display:block;
+    width:100%;
+    padding-top:15.8%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:url("/static/img/ad/grasp/exp/bgtop.png") no-repeat top center;
+    background-size:100%
+}
+.bg:after {
+    content:'';
+    display:block;
+    width:100%;
+    padding-top:15.80%;
+    background:url("/static/img/ad/grasp/exp/bgbottom.png") no-repeat bottom center;
+    background-size:100%;
+    position:absolute;
+    bottom:0;
+    left:0
+}
+.bg-content {
+    position:relative;
+    padding:6% 0 8%;
+    z-index:9
+}
+.bg-mid {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    -webkit-transform:translate(-50%, -50%)
+}
+@media screen and (max-height: 600px) {
+    .bg-index {
+        padding-top:0
+    }
+}
+.btnbox {
+    width:70%;
+    margin:0 15%;
+    overflow:hidden
+}
+.btnbox .btn:nth-of-type(1) {
+    float:left
+}
+.btnbox .btn:nth-of-type(2) {
+    float:right
+}
+.btnbox .indexlb {
+    width:56px;
+    text-align:center
+}
+.index {
+    position:relative;
+    top:0;
+    left:50%;
+    width:100%;
+    padding-top:124%;
+    background:url("/static/img/ad/grasp/exp/indexbg.png") no-repeat center top;
+    background-size:90%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0)
+}
+.index .startbtn {
+    position:absolute;
+    top:39%;
+    left:50%;
+    width:100%;
+    padding-top:14%;
+    background:url("/static/img/ad/grasp/exp/startbtn.png") no-repeat center;
+    background-size:46%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0)
+}
+.index p {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0);
+    color:#fff;
+    font-size:12px
+}
+.index p:nth-of-type(2) {
+    position:absolute;
+    top:96%;
+    left:50%
+}
+.index .help, .index .mito {
+    width:100%;
+    padding-top:10%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0)
+}
+.index .help {
+    position:absolute;
+    top:43%;
+    left:50%;
+    background-image:url("/static/img/ad/grasp/exp/iconbtn.png");
+    background-repeat:no-repeat;
+    background-size:34%;
+    background-position:center 10%
+}
+.index .mito {
+    position:absolute;
+    top:51%;
+    left:50%;
+    background-image:url("/static/img/ad/grasp/exp/iconbtn.png");
+    background-repeat:no-repeat;
+    background-size:34%;
+    background-position:center 83%
+}
+.game {
+    width:100%;
+    height:100%;
+    background:#eb5042 url("/static/img/ad/grasp/exp/bg.jpg") no-repeat center top;
+    background-size:contain;
+    position:relative;
+    overflow:hidden
+}
+.game .panel {
+    width:100%;
+    height:30px;
+    overflow:hidden;
+    position:absolute;
+    top:2%;
+    left:0
+}
+.game .panel .time, .game .panel .score {
+    float:left;
+    width:35%;
+    height:30px;
+    line-height:30px;
+    background-color:#ffe400;
+    border-radius:5px 5px 5px 5px;
+    background-clip:padding-box;
+    overflow:hidden;
+    color:#915006;
+    padding-left:2%;
+    font-weight:bold;
+    box-sizing:border-box
+}
+.game .panel .time span, .game .panel .score span {
+    display:inline-block;
+    float:right;
+    width:60%;
+    height:24px;
+    line-height:24px;
+    text-align:center;
+    margin:3px 6px 3px 0;
+    background-color:#feb200;
+    border-radius:5px 5px 5px 5px;
+    background-clip:padding-box
+}
+.game .panel .time span i, .game .panel .score span i {
+    font-weight:bold
+}
+.game .panel .time {
+    margin:0 3% 0 12%
+}
+.game .panel .score {
+    margin:0 12% 0 3%
+}
+.game .toprope {
+    position:absolute;
+    top:11%;
+    left:0;
+    width:100%;
+    height:9px;
+    background:url("/static/img/ad/grasp/exp/toprope.png") repeat-x center top;
+    background-size:9px 9px
+}
+.game-content {
+    width:23%;
+    padding-top:37%;
+    position:absolute;
+    top:10%;
+    left:0
+}
+.game-content .xdbox, .game-content .xybox, .game-content .ybbox, .game-content .ybothbox, .game-content .ybklbox, .game-content .ybfhbox {
+    position:absolute;
+    width:100%;
+    top:0
+}
+.game-content .xdbox i, .game-content .xybox i, .game-content .ybbox i, .game-content .ybothbox i, .game-content .ybklbox i, .game-content .ybfhbox i {
+    display:block;
+    width:25%;
+    background:url("/static/img/ad/grasp/exp/clinch.png") no-repeat;
+    background-size:100%;
+    padding-top:90%;
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0)
+}
+.game-content .xdbox span, .game-content .xybox span, .game-content .ybbox span, .game-content .ybothbox span, .game-content .ybklbox span, .game-content .ybfhbox span {
+    display:block;
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0)
+}
+.game-content .xdbox {
+    padding-top:163%
+}
+.game-content .xdbox .xd {
+    padding-top:108%;
+    background:url("/static/img/ad/grasp/exp/xd.png") no-repeat;
+    background-size:100%
+}
+.game-content .xybox {
+    padding-top:171%
+}
+.game-content .xybox .xy {
+    padding-top:116%;
+    background:url("/static/img/ad/grasp/exp/xy.png") no-repeat;
+    background-size:100%
+}
+.game-content .ybbox {
+    padding-top:161%
+}
+.game-content .ybbox .yb {
+    padding-top:100%;
+    background:url("/static/img/ad/grasp/exp/yb.png") no-repeat;
+    background-size:100%
+}
+.game-content .ybklbox {
+    padding-top:161%
+}
+.game-content .ybklbox .ybkl {
+    padding-top:100%;
+    background:url("/static/img/ad/grasp/exp/ybkl.png") no-repeat;
+    background-size:100%
+}
+.game-content .ybfhbox {
+    padding-top:161%
+}
+.game-content .ybfhbox .ybfh {
+    padding-top:100%;
+    background:url("/static/img/ad/grasp/exp/ybfh.png") no-repeat;
+    background-size:100%
+}
+.game .rope {
+    width:25%;
+    padding-top:66%;
+    position:absolute;
+    top:41%;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0);
+    background:url("/static/img/ad/grasp/exp/rope.png") no-repeat;
+    background-size:100%
+}
+.game #bag {
+    width:68%;
+    padding-top:40%;
+    position:absolute;
+    top:65%;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0);
+    background:url("/static/img/ad/grasp/exp/bag.png") no-repeat;
+    background-size:100%
+}
+.gameover {
+    color:#fff;
+    text-align:center
+}
+.gameover P {
+    font-size:15px;
+    line-height:24px
+}
+.gameover P i {
+    font-size:24px
+}
+.gameover a {
+    margin-top:13px;
+    width:70px
+}
+.gameover a:nth-of-type(1) {
+    margin-top:20px
+}
+.takebag {
+    width:100%
+}
+.takebag h4 {
+    width:100%;
+    padding-top:14%;
+    background-image:url("/static/img/ad/grasp/exp/icontext.png");
+    background-repeat:no-repeat;
+    background-size:66%;
+    background-position:center 94%
+}
+.takebag p {
+    margin-top:5px;
+    text-align:center;
+    font-size:15px;
+    color:#fff
+}
+.takebag ul {
+    width:100%;
+    padding:0 5%;
+    margin-top:5%;
+    overflow:hidden
+}
+.takebag ul li {
+    float:left;
+    margin:10px 1%;
+    width:28%;
+    font-size:12px;
+    color:#fff;
+    text-align:center
+}
+.takebag ul li div {
+    width:100%;
+    padding-top:100%;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:center 63%;
+    background-size:115%;
+    position:relative
+}
+.takebag ul li div.shake {
+    animation:shake_box 0.1s ease-in-out;
+    -webkit-animation:shake_box 0.1s ease-in-out 5
+}
+.takebag ul li div a.lucky {
+    position:absolute;
+    top:0;
+    right:0;
+    display:none;
+    width:100%;
+    height:127%;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:center 84%;
+    background-size:115%;
+    -webkit-animation:open 0.4s linear forwards;
+    animation:open 0.4s linear forwards
+}
+.takebag ul li div a.lucky h3 {
+    font-weight:normal;
+    font-size:12px;
+    color:#000;
+    text-align:center;
+    margin:20px 10px 0
+}
+@media screen and (max-width: 320px) {
+    .takebag ul li div a.lucky h3 {
+        margin-top:12px
+    }
+}
+.takebag .btnbox {
+    margin-top:7%
+}
+@keyframes shake_box {
+    0% {
+        transform:translate(0px, 0px) rotate(0deg)
+    }
+    20% {
+        transform:translate(1.5px, -2.5px) rotate(-1.5deg)
+    }
+    40% {
+        transform:translate(-2.5px, 0.5px) rotate(-0.5deg)
+    }
+}
+@-webkit-keyframes shake_box {
+    0% {
+        -webkit-transform:translate(0px, 0px) rotate(0deg)
+    }
+    20% {
+        -webkit-transform:translate(1.5px, -2.5px) rotate(-1.5deg)
+    }
+    40% {
+        -webkit-transform:translate(-2.5px, 0.5px) rotate(-0.5deg)
+    }
+}
+@-webkit-keyframes open {
+    0% {
+        -webkit-transform:scale(1, 0)
+    }
+    100% {
+        -webkit-transform:scale(1, 1)
+    }
+}
+.mybox h4, .rules h4, .rank h4 {
+    width:100%;
+    padding-top:14%
+}
+.mybox h4 {
+    background-image:url("/static/img/ad/grasp/exp/icontext.png");
+    background-repeat:no-repeat;
+    background-size:66%;
+    background-position:center 62%
+}
+.mybox ul {
+    width:70%;
+    margin:0 15% 15px
+}
+.mybox ul li {
+    padding:10px;
+    margin-top:10px;
+    background-color:#f7e632;
+    color:#e18f1c
+}
+.mybox ul li time {
+    display:block;
+    color:#734620
+}
+.mybox ul li a {
+    display:block
+}
+.mybox .nodata {
+    width:100%;
+    text-align:center;
+    font-size:16px;
+    color:#fff;
+    margin:15px 0
+}
+.mybox .btnbox {
+    width:80%;
+    margin:0 10%
+}
+.rules h4 {
+    background-image:url("/static/img/ad/grasp/exp/icontext.png");
+    background-repeat:no-repeat;
+    background-size:66%;
+    background-position:center 6%
+}
+.rules .content {
+    background-color:#f7e632;
+    width:70%;
+    margin:10px 10%;
+    padding:10px 5%
+}
+.rules .content h3 {
+    font-weight:normal;
+    margin-top:8px
+}
+.rules .content p {
+    text-indent:2em;
+    margin-top:8px
+}
+.rank h4 {
+    background-image:url("/static/img/ad/grasp/exp/icontext.png");
+    background-repeat:no-repeat;
+    background-size:66%;
+    background-position:center 34%
+}
+.rank .content {
+    background-color:#f7e632;
+    width:70%;
+    min-height:286px;
+    margin:10px 10%;
+    padding:5%
+}
+.rank .content ul {
+    border:2px solid #734620;
+    padding:5px 0;
+    max-height:312px;
+    overflow:hidden
+}
+.rank .content ul li {
+    line-height:26px
+}
+.rank .content ul li:nth-of-type(1) {
+    font-weight:bold
+}
+.rank .content ul li.self {
+    border-top:1px solid #734620
+}
+.rank .content ul li div {
+    width:56%;
+    margin:0 auto;
+    position:relative;
+    text-align:center
+}
+.rank .content ul li div span {
+    width:100%;
+    display:block;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden
+}
+.rank .content ul li div:before {
+    content:attr(rank);
+    position:absolute;
+    top:0;
+    left:-40%
+}
+.rank .content ul li div:after {
+    content:attr(score);
+    position:absolute;
+    top:0;
+    right:-40%
+}
+.rank .content ul li div:before, .rank .content ul li div:after {
+    display:block;
+    width:40%;
+    text-align:center
+}
+.rank .content ul li.nodata {
+    text-align:center;
+    font-size:16px
+}
+.popup {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:black;
+    z-index:100;
+    -webkit-opacity:0.8;
+    opacity:.8;
+    filter:alpha(opacity=80)
+}
+.gamepop {
+    display:block
+}
+.gametip {
+    width:70%;
+    padding:8px 5%;
+    position:fixed;
+    top:20%;
+    left:10%;
+    z-index:999;
+    background:repeating-linear-gradient(-30deg, #eb5042, #eb5042 15px, #e04438 0, #e04438 30px);
+    background:-webkit-repeating-linear-gradient(-30deg, #eb5042, #eb5042 15px, #e04438 0, #e04438 30px);
+    border-radius:10px 10px 10px 10px;
+    background-clip:padding-box
+}
+.gametip h4 {
+    width:60%;
+    padding-top:12%;
+    margin:0 auto;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:center 1%
+}
+.gametip p {
+    line-height:22px;
+    color:#fff;
+    margin-top:5px
+}
+.gametip ul {
+    overflow:hidden
+}
+.gametip ul li {
+    width:50%;
+    padding-top:5px;
+    margin-top:5px;
+    float:left
+}
+.gametip ul li.tip_dyyb {
+    padding-top:20%;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:left 6%
+}
+.gametip ul li.tip_yboth {
+    padding-top:20%;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:left 15%
+}
+.gametip ul li.tip_xd {
+    padding-top:26%;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:left 24%
+}
+.gametip ul li.tip_xy {
+    padding-top:27%;
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:left 37%
+}
+.gametip ul li div {
+    width:40px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    font-size:12px;
+    margin:-38% 0 0 59%;
+    position:relative
+}
+.gametip ul li div.tagy {
+    background-color:#ffea00;
+    color:#4e2a13
+}
+.gametip ul li div.tagr {
+    background-color:#f87400;
+    color:#fff;
+    margin-top:-49%
+}
+.gametip ul li div.tagy:after, .gametip ul li div.tagr:after {
+    content:'';
+    display:block;
+    width:100%;
+    padding-top:23%;
+    position:absolute;
+    top:20px;
+    left:-10px
+}
+.gametip ul li div.tagy:after {
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:center -345px;
+    background-size:100px 750px
+}
+.gametip ul li div.tagr:after {
+    background-image:url("/static/img/ad/grasp/exp/icongame.png");
+    background-repeat:no-repeat;
+    background-size:80%;
+    background-position:center -366px;
+    background-size:100px 750px
+}
+#infoDia {
+    position:fixed;
+    top:30%;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0);
+    overflow:hidden
+}
+#infoDia p {
+    height:25px;
+    margin:0 auto 10px;
+    padding:0 15px;
+    line-height:25px;
+    overflow:hidden;
+    width:160px
+}
+#infoDia p label {
+    float:left;
+    width:50px
+}
+#infoDia p input {
+    float:left;
+    width:100px;
+    height:25px;
+    padding:0 5px;
+    border:none;
+    border-radius:5px 5px 5px 5px;
+    background-clip:padding-box
+}
+#infoDia #submitbtn {
+    padding:0 20px
+}
+#infoDia .errortip {
+    font-size:12px;
+    margin-bottom:10px
+}
+.tipDia, .nonetwork {
+    position:fixed;
+    top:30%;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0)
+}
+.tipDia a {
+    margin-top:10px
+}
+.nonetwork h3 {
+    text-align:center;
+    font-weight:normal;
+    margin-bottom:15px
+}
+.shareDia, .endDia {
+    position:fixed;
+    top:0;
+    left:50%;
+    transform:translate(-50%, 0);
+    -webkit-transform:translate(-50%, 0);
+    background:none;
+    width:100%
+}
+.shareDia img {
+    width:100%
+}
+.endDia img {
+    width:80%
+}

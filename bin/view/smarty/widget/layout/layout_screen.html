@@ -1,0 +1,76 @@
+{extends file="widget/layout/base.html"}
+{block name="in_title"}{$title|default:""}{/block}
+
+{block name="meta_viewport"}
+{/block}
+
+{block name="css" append}
+{/block}
+
+{block name="body"}
+{resource resource="User" var="user_resource" method="nowUser"}
+{resource resource="Init" var="init_resource" method="set"}
+<!-- 主页面容器 -->
+<section class="com-panel" id="mobh5">
+
+    {block name="inner"}
+    <!-- 主界面具体展示内容 -->
+    <section class="inner"> </section>
+    {/block}
+
+    {block name="footer"}
+    <!-- 主界面尾部 -->
+    <div class="foot-nav">
+        {foreach $init_resource.theme as $key => $res}
+        <a class="fn-item {if $res.show_type == 'sprite'}{$res.nav_name}{/if}{if $nav_name == $res.nav_name} current{/if}" href="{$BASE_URL_MODULE}{$res.nav_url}">
+            {if $res.show_type != 'sprite'}
+            <img class="icon" src="{if $nav_name == $res.nav_name}{$res.image_selected}{else}{$res.image}{/if}" />
+            {/if}
+            <span class="font {if $res.show_type == 'sprite'}reserve{/if}">{$res.title}</span>
+        </a>
+        {/foreach}
+
+            <!--<a class="fn-item recommend{if $nav_name == 'recommend'} current{/if}" href="{$BASE_URL_MODULE}recommend/index">-->
+                <!--<span class="font reserve">精选</span>-->
+            <!--</a>-->
+            <!--<a class="fn-item play{if $nav_name == 'play'} current{/if}" href="{$BASE_URL_MODULE}play/playIndex?sort=1">-->
+                <!--<span class="font reserve">遛娃</span>-->
+            <!--</a>-->
+            <!--<a class="fn-item ticket{if $nav_name == 'ticket'} current{/if}" href="{$BASE_URL_MODULE}ticket/buyTicket?rid=0&rid_name=全部区域">-->
+                <!--<span class="font reserve">买票</span>-->
+            <!--</a>-->
+            <!--<a class="fn-item user{if $nav_name == 'user'} current{/if}"id="my_menu"  href="{$BASE_URL_MODULE}user/center" >-->
+                <!--<span class="font reserve">我的</span>-->
+            <!--</a>-->
+    </div>
+    {/block}
+    {block name="toTop"}
+    <a class="toTop green-top" href="javascript: window.scrollTo(0,0);">
+        <i></i>顶部
+    </a>
+    {/block}
+
+    {block name ="foot-btn"}
+    <div class="foot-btn green-top">
+        <div class="foot-item">
+            <a class="item-icon" href="/recommend/index"></a>
+            {if $user_resource.user}
+            <a class="item-enter" href="/user/center">您好,{$user_resource.user.username}</a>
+            <a class="item-register" href="/auth/logout">注销</a>
+            {else}
+            <a class="item-enter" href="/auth/login">登录</a>
+            <a class="item-register" href="/auth/login">注册</a>
+            {/if}
+            <!--<a class="item-return" href="javascript: window.scrollTo(0,0);">回到顶部</a>-->
+        </div>
+        <div class="copyright">Copyright ©2016 玩翻天</div>
+    </div>
+    {/block}
+</section>
+{/block}
+{block name="js" append}
+<script>
+    $('.ui-tab-ul').on('click', '.ui-tab-item', M.util.tab_handlers.onTabItemHover);
+</script>
+{/block}
+

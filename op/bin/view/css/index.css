@@ -1,0 +1,6 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.accordion-toggle {
+    display: block;
+    cursor: pointer;
+}

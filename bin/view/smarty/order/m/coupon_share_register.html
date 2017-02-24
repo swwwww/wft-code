@@ -1,0 +1,31 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"打开链接"}{/block}
+{block name="css" append}
+{css file="css/order/m/coupon_share.css"}
+{/block}
+{block name="inner"}
+<header class="banner">
+    <div class="banner-info">
+        <p>输入手机号领取红包</p>
+        <input style="text-align: center" id="tel" type="text" value="" name="tel" placeholder="请输入您的手机号码"/>
+        <span id="get">马上领取</span>
+    </div>
+</header>
+<h5>
+    <span>看朋友们的手气如何</span>
+</h5>
+<div class="item inner">
+    <div class="item-list more">
+
+        <div class="item-list-content">
+            <img src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg">
+            <span>
+                <mark class="name">sw</mark>
+                <mark class="time">2016-12-12</mark><br/>
+                <mark class="info">换个姿势领，金额会更高</mark>
+            </span>
+            <span class="price">3.00元</span>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,231 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"{$res.title}活动订单详情"}{/block}
+{block name="css" append}
+{css file="css/ticket/m/commodity_order.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="inner">
+    <a class="title" href="/ticket/commodityDetail?id={$res.param.id}">
+        <span class="title-commodity">{$res.title}</span>
+        <i></i>
+    </a>
+    <div class="order">
+        <div class="order-price">
+            <a class="introduce price">
+                <p>
+                    <mark>总价：</mark>
+                    <span>￥{$res.money}</span>
+                </p>
+            </a>
+        </div>
+
+        <div class="order-info">
+            <a class="introduce package">
+                <p>
+                    <mark>套系名称：</mark>
+                    <span>{$res.attend_way}</span>
+                </p>
+                <p>
+                    <mark>订单号：</mark>
+                    <span>{$res.order_id}</span>
+                </p>
+            </a>
+        </div>
+
+        <div class="order-tip">
+            <a class="introduce date">
+                <p>
+                    <mark>使用时间：</mark>
+                    {if $res.attend_start_time|date_format:'%Y-%m-%d' == $res.attend_end_time|date_format:'%Y-%m-%d'}
+                    <span>{$res.attend_start_time|date_format:'%Y-%m-%d'}</span>
+                    {else}
+                    <span>{$res.attend_start_time|date_format:'%Y-%m-%d'}—{$res.attend_end_time|date_format:'%Y-%m-%d'}</span>
+                    {/if}
+                    <i></i>
+                </p>
+            </a>
+            <a class="introduce exchange">
+                <p>
+                    <mark>兑换方式：</mark>
+                    <span>{$res.get_way}</span>
+                </p>
+            </a>
+            <a class="introduce special">
+                <p>
+                    <mark>特别说明：</mark>
+                    <span>{$res.special_info}</span>
+                    <i></i>
+                </p>
+            </a>
+            <a class="introduce unsubscribe">
+                <p>
+                    <mark>退订说明：</mark>
+                    <span>{$res.back_money}</span>
+                </p>
+            </a>
+        </div>
+
+        <div class="order-detail">
+            <a class="introduce name">
+                <p>
+                    <mark>商家名称：</mark>
+                    <span>{$res.organizer_name}</span>
+                </p>
+            </a>
+            <a class="introduce address">
+                <p>
+                    <mark>出行地点：</mark>
+                    <span>{$res.attend_address}</span>
+                    <i></i>
+                </p>
+            </a>
+            <a class="introduce tel" href="tel:{$res.ask_phone}">
+                <p>
+                    <mark>联系电话：</mark>
+                    <span>{$res.ask_phone}</span>
+                </p>
+            </a>
+        </div>
+
+        <div class="order-user">
+            <div class="order-user-title">
+                <p>联系人</p>
+            </div>
+            <div class="information">
+                <p class="information-id">
+                    <span class="information-id-name">{$res.linker_name}</span>
+                    <span class="information-id-tel">{$res.linker_phone}</span>
+                </p>
+                <p class="information-addr">{$res.linker_addr}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="state">
+        <div class="state-list">
+            {foreach $res.order_list as $val}
+            <div class="state-list-item">
+                <p class="item-code">
+                    <mark>验证码：</mark>
+                    {if $val.status == 0}
+                    <span>{$val.code}</span>
+                    {else}
+                    <del>{$val.code}</del>
+                    {/if}
+                </p>
+                {if $val.status == 0}
+                <p class="item-info">
+                    <mark>订单状态：</mark>
+                    <span class="unused">未使用</span>
+                </p>
+                {if $res.back == 1}
+                <a class="item-btn single_refund" data-title="{$val.code}" data-code={$val.code}>申请退款</a>
+                {else}
+                {/if}
+                {else if $val.status == 1}
+                <p class="item-info">
+                    <mark>订单状态：</mark>
+                    <span class="used">已使用</span>
+                </p>
+                {else if $val.status == 2}
+                <p class="item-info">
+                    <mark>订单状态：</mark>
+                    <span class="refunding">已退款</span>
+                </p>
+                {else if $val.status == 3}
+                <p class="item-info">
+                    <mark>订单状态：</mark>
+                    <span class="refunded">退款中</span>
+                </p>
+                {else if $val.status == 4}
+                <p class="item-info">
+                    <mark>订单状态：</mark>
+                    <span class="refunded">已过期</span>
+                </p>
+                {/if}
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <!--add_status 0 不显示  1.退款到支付账户(可以点击)  2.正在向支付账户退款 3.已退至支付账户-->
+    {if $res.add_status == 0}
+
+    {elseif $res.add_status == 1}
+        <!--<a id="full_refund">申请全部退款</a>-->
+
+    {elseif $res.add_status == 2}
+        <a>正在向支付账户退款</a>
+
+    {elseif $res.add_status == 3}
+        <a>已退至支付账户</a>
+
+    {/if}
+</section>
+
+<div class="matte1" style="display: none"></div>
+<input type="hidden" id="order_detail" data-sn="{$res.param.rid}" data-type="0" />
+<input type="hidden" id="order_pay" data-pay="{$res.info[0].data}" value='{$res.info[0].data}' />
+
+{if $wechat_flag}
+<!--蒙层-->
+<div class="matte"></div>
+<!--支付成功的弹窗-->
+<section class="succ-pop js-succ-pop pr"> <!-- style="display: none"-->
+    <div class="head-top clearfix">
+        <i class="close-btn dib fl"></i>
+        <i class="share-btn js-share-btn dib fr"></i>
+    </div>
+
+    <div class="share-info gradient pr">
+        <h2 class="info-title pa">支付成功</h2>
+        <i class="share-succ db"></i>
+        <span class="get-msg pa">
+            分享给好友获得<mark class="lottery-chance">{$res.share.lottery_number}次</mark>抽奖机会
+        </span>
+
+        <img class="share-logo" src="{$res.share.image_pay_success}">
+
+        <div class="bottom-btn pr">
+            <p class="share-to js-share-btn dib">分享抢现金</p>
+            <i class="icon-hand js-share-btn dib pa"></i>
+            <!--<a class="dib order-detail dib pa close-btn" href="javascript:;">查看订单详情</a>-->
+        </div>
+    </div>
+</section>
+{/if}
+<div id="js-refund-confirm" class="popup-traveller" style="display: none">
+    <i class="travel-icon db"></i>
+    <p class="ship-refund">
+        <span class="ship-span db tc">确认退款</span>
+        <!--<mark class="ship-mark db tc">为-->
+            <!--<i id="js-refund-title" class="ship-i fsn">划船票</i>票退款-->
+        <!--</mark>-->
+    </p>
+    <div class="footer-btn">
+        <a id="js-sure-commodity-refund" class="confirm-btn" href="javascript: ;">是</a>
+        <a class="cancel-btn"  href="javascript: ;">否</a>
+    </div>
+</div>
+
+<input type="hidden" value={$res.order_id} id="data">
+{include file="widget/common/ele_wechat_share.html"}
+{include file="widget/common/ele_share_guide.html"}
+
+<!--客服-->
+{if $res.customer_service_group_id}
+    <input type="hidden" id="product_type" value="4">
+    {include file="service/elem_service.html" type="order"}
+{/if}
+
+{if $res.pay_status ==0}
+    {include file="widget/common/ele_order_detail.html" state = "0"}
+{else}
+    {include file="widget/common/ele_order_detail.html" state = "1"}
+{/if}
+{/block}
+
+{block name="js" append}
+{js file="js/order/order_base.js"}
+{js file="js/share/share.js"}
+{/block}

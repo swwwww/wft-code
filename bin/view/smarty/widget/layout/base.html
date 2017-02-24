@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if IE 6 ]><html class="ie6"><![endif]-->
+<!--[if IE 7 ]><html class="ie7"><![endif]-->
+<!--[if IE 8 ]><html class="ie8"><![endif]-->
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+    {$widget_css=array() scope="global"}
+    {$widget_js=array() scope="global"}
+    {* 提前捕获body部分，已获取widget的js和css *}
+    {capture name="main_body"}{block name="body"}{/block}{/capture}
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {block name="title"}
+                {block name="in_title"}
+                    {$title|default:"玩翻天-孩子们的游玩管家,家长们的遛娃宝典"}
+                {/block}
+            {/block}
+        </title>
+        <!--<meta name="renderer" content="webkit">-->
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+        {block name="meta_viewport"}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+        {/block}
+        {block name="meta_keyword"}
+        <meta name="keywords" content="{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子活动，{$wft_global_set.custom_city_cn}亲子游攻略，{$wft_global_set.custom_city_cn}孩子游玩的好地方，{$wft_global_set.custom_city_cn}周末带孩子玩，{$wft_global_set.custom_city_cn}儿童剧，少儿户外活动，体验式亲子游，幼儿园亲子游戏，亲子活动策划方案， 亲子互动游戏，亲子游玩管家，玩翻天" />
+        {/block}
+        {block name="meta_desc"}
+            <meta name="description" content="玩翻天是0-12岁家长必备的遛娃神器、孩子们的游玩管家。专注组织口碑优良的精品亲子遛娃活动，全力解决家长“去哪儿玩”、“怎么玩”、“好好玩”的三大痛点问题。是深受广大家长信赖的中国家庭亲子游玩消费媒体第一品牌。" />
+        {/block}
+        <meta name="screen-orientation" content="portrait">
+        <meta http-equiv="cache-control" content="no-siteapp" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="玩翻天-孩子们的游玩管家">
+        <meta property="og:title" content="玩翻天WAP{$wft_global_set.custom_city_cn}站点">
+        <meta property="og:description" content="玩翻天是0-12岁家长必备的遛娃神器、孩子们的游玩管家。专注组织口碑优良的精品亲子遛娃活动，全力解决家长“去哪儿玩”、“怎么玩”、“好好玩”的三大痛点问题。是深受广大家长信赖的中国家庭亲子游玩消费媒体第一品牌。">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="shortcut icon" href="{$BASE_URL}favicon.ico">
+
+        <script>
+            var base_host = '{$BASE_HOST}';
+            var base_url = '{$BASE_URL}';
+            var base_url_static = '{$BASE_URL_STATIC}';
+            var base_url_module = '{$BASE_URL_MODULE}';
+            var base_url_cloud = '{$BASE_URL_CLOUD}';
+            var yii_csrf_token = '{$YII_CSRF_TOKEN}';
+        </script>
+        {block name="css"}
+            {css file="css/mobase.css"}
+            {css file="css/mobile/layout.css"}
+            <script src="{$BASE_URL_STATIC}js/lib/zepto.min.js"></script>
+            <script src="{$BASE_URL_STATIC}js/lib/deferred.js?v1"></script>
+            <script src="{$BASE_URL_STATIC}js/lib/callbacks.js?v1"></script>
+            <script src="{$BASE_URL_STATIC}js/lib/touch.js?v1"></script>
+            <script src="https://api.map.baidu.com/api?v=2.0&ak=GV8LhKCvXUSLkcawKrQVcC6k&s=1"></script>
+            {js file="js/util/mo.ext.js"}
+            {js file="js/mobase.js"}
+            {js file="js/util/dao.js"}
+        {/block}
+        {foreach $widget_css as $css}{$css nofilter}{/foreach}
+        <!--[if lte IE 9]>
+            <script>
+                (function(){
+                    var el = ["header","footer","nav","article","aside","section","address","hgroup","menu","dialog","figure","figcaption","time"],i=0,len=el.length;
+                    for(;i<len;i++){ document.createElement(el[i]); }
+                })();
+            </script>
+        <![endif]-->
+    </head>
+    <body>
+        {$smarty.capture.main_body nofilter}
+        {block name="js"}{*引入所需的js文件 *}
+
+        {/block}
+        {*百度统计 *}
+        {foreach $widget_js as $js}{$js nofilter}{/foreach}
+        {if !$YII_DEBUG}
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement('script');
+              hm.src = '//hm.baidu.com/hm.js?a1b66f5bbc7b8808ef15aef7c152d9eb';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(hm, s);
+            })();
+
+            M.lazyload.init();
+        </script>
+        {/if}
+    </body>
+</html>

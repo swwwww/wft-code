@@ -1,0 +1,67 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.top-head{
+  position: fixed;
+  top: 0;
+  width: 750px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #c9c9c9;
+  -webkit-box-shadow: 0 5px 10px #bdbdbd;
+  -moz-box-shadow: 0 5px 10px #bdbdbd;
+  box-shadow: 0 5px 10px #bdbdbd;
+  z-index: 2;
+  .right-border{
+    border-right: 1px solid #c9c9c9;
+  }
+  .want-field{
+    width: 374.5px;
+    font-size: 26px;
+    text-align: center;
+    position: relative;
+  }
+  .field-left:after{
+    position: absolute;
+    top: 76px;
+    left: 98px;
+    content: '';
+    display: inline-block;
+    height: 4px;
+    width: 175px;
+    text-align: center;
+    background-color: #ffcd54;
+  }
+}
+
+.activity-item{
+  padding-top: 95px;
+  .item-list{
+    margin-bottom: 20px;
+    padding: 20px 30px;
+    background-color: #ffffff;
+
+  }
+  .item-img{
+    width: 160px;
+    height: 160px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+   .item-msg{
+     width: 500px;
+     vertical-align: top;
+     height: 160px;
+   }
+  .item-title{
+    font-size: 32px;
+  }
+  .item-info{
+    font-size: 24px;
+    color: #c9c9c9;
+    width: 100%;
+    bottom: 0;
+  }
+}

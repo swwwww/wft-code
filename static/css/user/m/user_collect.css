@@ -1,0 +1,206 @@
+#oNav {
+  display: block;
+  width: 750px;
+  background: #fff;
+  font-size: 0;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+#oNav .item {
+  float: left;
+  width: 250px;
+  height: 70px;
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+}
+#oNav .item p {
+  height: 30px;
+  font-size: 24px;
+  margin-top: 20px;
+}
+.align {
+  margin-top: 10px;
+}
+.shop {
+  width: 250px;
+}
+.kidsplay {
+  width: 250px;
+}
+.kidsplay p {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.item.active mark {
+  width: 250px;
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+  background: #ffc75a;
+  right: 0;
+}
+.ticket-list {
+  width: 100%;
+}
+.ticket-list .ticket-list-item {
+  display: block;
+  padding: 20px 25px 20px 20px;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  margin-bottom: 20px;
+  position: relative;
+}
+.ticket-list .ticket-list-item img {
+  float: left;
+  width: 160px;
+  height: 160px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+}
+.ticket-list .ticket-list-item .item-content {
+  float: left;
+  width: 525px;
+  margin-left: 20px;
+  overflow: hidden;
+}
+.item-content .ticket-title {
+  float: left;
+  height: 80px;
+  width: 525px;
+  font-size: 34px;
+  line-height: 40px;
+  color: #000;
+}
+.item-content .ticket-detail {
+  float: left;
+  width: 525px;
+  line-height: 40px;
+  padding: 5px 0;
+  overflow: hidden;
+}
+.item-content .ticket-detail span {
+  float: left;
+  font-size: 30px;
+  color: #fa6e51;
+}
+.item-content .ticket-detail mark {
+  float: left;
+  font-size: 20px;
+  color: #bbbbbb;
+  margin-left: 15px;
+  text-decoration: line-through;
+}
+.item-content .ticket-detail i {
+  float: right;
+  font-size: 24px;
+  color: #bbbbbb;
+  font-style: normal;
+}
+.item-content .ticket-tip {
+  float: left;
+  width: 525px;
+  line-height: 31px;
+  overflow: hidden;
+}
+.item-content .ticket-tip span {
+  float: left;
+  font-size: 24px;
+  margin-left: 5px;
+  color: #bbbbbb;
+}
+.item-content .ticket-tip mark {
+  float: left;
+  font-size: 24px;
+  margin-left: 10px;
+  color: #bbbbbb;
+}
+.item-content .ticket-tip i {
+  float: right;
+  padding-left: 30px;
+  font-size: 24px;
+  color: #bbbbbb;
+  font-style: normal;
+  background: #fff url("/static/img/site/mobile/seller.png") no-repeat 0 -1093px;
+}
+.tips-show {
+  position: absolute;
+  width: 54px;
+  height: 30px;
+  top: 20px;
+  left: 38px;
+  background: #fa6e51;
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+}
+.like-list-item {
+  display: block;
+  padding: 20px 25px 20px 20px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+.like-list-item img {
+  float: left;
+  width: 160px;
+  height: 160px;
+}
+.like-list-item .item-detail {
+  float: left;
+  width: 525px;
+  margin-left: 20px;
+  color: #000;
+  overflow: hidden;
+}
+.like-list-item .item-detail .item-detail-name {
+  height: 60px;
+  font-size: 28px;
+}
+.like-list-item .item-detail .item-detail-intro {
+  height: 62px;
+  line-height: 31px;
+  font-size: 22px;
+  overflow: hidden;
+}
+.like-list-item .item-detail .item-detail-addr {
+  padding-top: 10px;
+  overflow: hidden;
+  line-height: 32px;
+}
+.like-list-item .item-detail .item-detail-addr span {
+  float: left;
+  height: 30px;
+  padding: 0 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  line-height: 30px;
+  color: #929292;
+  border: 1px solid #929292;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+}
+.like-list-item .item-detail .item-detail-addr mark {
+  float: right;
+  font-size: 22px;
+  padding-left: 30px;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -99px -782px;
+}
+.like-list-item .tips-show {
+  position: absolute;
+  width: 54px;
+  height: 30px;
+  top: 20px;
+  left: 20px;
+  background: #8bc052;
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+}
+.dropload-down {
+  padding-bottom: 50px;
+}

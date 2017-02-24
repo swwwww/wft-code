@@ -1,0 +1,39 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的baby"}{/block}
+
+{block name="css" append}
+    {css file="css/user/m/user_baby.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="wrapper">
+    <div class="edit-baby">
+
+        {foreach $res as $key => $baby_list}
+            <a class="item db" href="../user/editbaby?id={$baby_list.id}">
+                <img src={$baby_list.img}>
+                <div class="item-info fl">
+                    <div class="name">{$baby_list.name}</div>
+                    <div class="date">出生日期：{$baby_list.birth|date_format: '%Y-%m-%d'}</div>
+                </div>
+                <div class="item-aside fr">
+                    {if $baby_list.sex == 1}
+                    <i class="icon nan dib"></i>
+                    {elseif $baby_list.sex ==2}
+                    <i class="icon nv dib"></i>
+                    {/if}
+                    <span>{date('Y')-$baby_list.birth|date_format: '%Y'}岁</span>
+                </div>
+            </a>
+        {/foreach}
+
+        {if count($res)<3}
+        <a class="item db tc add" href="../user/editbaby">
+            添加宝宝资料
+        </a>
+        {/if}
+    </div>
+    <input type="hidden" value='{$res|json_encode}'>
+</section>
+{/block}

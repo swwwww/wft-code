@@ -1,0 +1,16 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"活动成员"}{/block}
+{block name="css" append}
+    {css file="css/play/m/play_member.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<ul class="member">
+    {foreach $res.members as $key => $val}
+        <li>
+            <img class="person-img lazyload dib"  src="{$val.image}" onerror="javascript:this.src='/static/img/site/mobile/com_small.png'">
+        </li>
+    {/foreach}
+</ul>
+{/block}

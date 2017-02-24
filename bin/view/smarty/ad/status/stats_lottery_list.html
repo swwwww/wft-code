@@ -1,0 +1,61 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<style>
+body{
+    padding: 5px 6px;
+}
+td{
+padding: 4px;
+}
+h3{
+padding: 25px 0 6px;
+color: red;
+font-size: 18px;
+}
+</style>
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+
+<!-- 主界面具体展示内容 -->
+<h3>抽奖活动列表</h3>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>名称</td>
+        <td>负责人</td>
+        <td>中奖概率</td>
+        <td>创建时间</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    {foreach $lottery as $val}
+    <tr>
+        <td>{$val.id}</td>
+        <td>{$val.name}</td>
+        <td>{$val.owner}</td>
+        <td>{$val.chance}</td>
+        <td>{$val.created}</td>
+        <td><a href="{$BASE_URL_MODULE}stats/getLotteryStatsDetail?lottery_id={$val.id}">查看详情</a></td>
+    </tr>
+    {/foreach}
+    </tbody>
+</table>
+
+
+{/block}
+
+{block name="js" append}
+{literal}
+
+{/literal}
+{/block}

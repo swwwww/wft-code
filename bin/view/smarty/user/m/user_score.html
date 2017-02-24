@@ -1,0 +1,96 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的积分"}{/block}
+
+{block name="css" append}
+    {css file="css/user/m/user_score.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<main class="align w">
+    <section class="wrapper clearfix">
+        <div class="in-header">
+            <div class="user">
+                <img class="user-img vm" src={$res.img}>
+                <span class="user-name">{$res.username}</span>
+                <i class="user-type dib">{$res.user_detail}</i>
+                <a class="points-rule fr" href="/user/scoreRules">积分规则</a>
+            </div>
+            <div class="marks tc">
+                <span class="marks-num">{$res.score}</span>积分
+            </div>
+            <div class="mid-nav">
+                {if $res.today_sign == 0}
+                <a class="nav-a nav-sign fl vm" href="javascript: ;">
+                    <i class="icon dib vm"></i>
+                    签到赚积分
+                </a>
+                {else}
+                <a class="sign-done fl" id="sign">
+                    <i class="icon"></i>
+                    已签到 明日+{$res.tomorrow_score}
+                    <div class="tips">已连续签到 {$res.sign_day} 天</div>
+                </a>
+                {/if}
+                <a class="nav-a nav-share fr"  href="http://a.app.qq.com/o/simple.jsp?pkgname=com.deyi.wanfantian&g_f=991653">
+                    <i class="icon dib vm"></i>邀请有礼
+                </a>
+            </div>
+        </div>
+        <input type="hidden" value='{$res|json_encode}'>
+        <a class="has-chance db pr" href="{$BASE_URL_MODULE}user/seckill">
+            <h2 class="title">积分换秒杀资格</h2>
+            <span class="num">已有资格 {$res.cash_coupon}张</span>
+            <i class="arrowent"></i>
+        </a>
+        <ul class="in-list i-bnr"></ul>
+    </section>
+
+    <input class="shop_id" type="hidden" value="{$res.sid}">
+
+    <div id="tips-dia"></div><!--提示-->
+</main>
+{/block}
+
+{block name="js" append}
+{js file="js/user/my_points.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    {{if res[0]}}
+    {{each res}}
+ <li class="item">
+    <a href="/ticket/commodityDetail?id={{$value.id}}"  class="item-pic fl" >
+        <img class="item-img" src={{$value.cover}}>
+    </a>
+
+    <div class="item-info db fr">
+        <h2><a class="title" href="javascript: ;">{{$value.title}}</a></h2>
+        <div class="intro w">
+            <a class="item-intro db"  href="/ticket/commodityDetail?id={{$value.id}}" title="">
+                {{$value.editor_talk}}
+            </a>
+        </div>
+
+        <div class="item-operate">
+                <span class="status fl">
+                    <i class="status-i">¥</i>
+                    <mark class="status-mark">{{$value.price}}</mark>
+                    <span class="status-score">-{{$value.integral}}积分</span>
+                </span>
+            <a class="button fr" href="/ticket/commodityDetail?id={{$value.id}}">去换购</a> <!--disabled-->
+        </div>
+    </div>
+ </li>
+    {{/each}}
+    {{else}}
+    {{if gif_flag==1}}
+    <div class="no-data">
+        <img src="/static/img/site/mobile/nodata.gif" />
+    </div>
+    {{/if}}
+    {{/if}}
+</script>
+{/literal}
+{/block}

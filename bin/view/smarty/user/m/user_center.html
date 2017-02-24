@@ -1,0 +1,254 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="in_title"}{$title|default:"个人中心"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_center.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="person w">
+    <div class="person-info">
+        <img src=" {if $user_resource.user}{$res.img}{else}{$BASE_URL_MODULE}static/img/site/sample/truth.jpg{/if}" class="person-info-img person-info-photo dib">
+        <div class="person-info-sort tc dib">
+            <div class="person-info-name w tc">
+                {if $user_resource.user}
+                    <span class="dib username">{$res.username}</span>
+                <a href="/user/editMyInfo"><div class="dib person-info-edit icons fr"></div></a> <!--编辑icon-->
+                {else}
+                    <a href="{$BASE_URL_MODULE}auth/login" class="dib username">未登录用户</a>
+                {/if}
+            </div>
+            <div class="w person-sex">
+                {if $user_resource.user}
+                {if $res.sex == 2}
+                <span class="dib"> {$res.sex_name} <mark class="person-info-icon-woman">{$res.sex_logo}</mark></span>
+                {else}
+                <span class="dib"> {$res.sex_name} <mark class="person-info-icon-man">{$res.sex_logo}</mark></span>
+                {/if}
+                <span class="person-info-uid dib">| UID:{$res.uid}</span>
+                {else}
+                    <a href="{$BASE_URL_MODULE}auth/login" class="login-in">点击登录</a>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <!--<a href="javascript: ;" class="person-invite icons"> 邀请有礼</a>-->
+</section>
+
+<section class="order">
+    <div  class="order-info pr">
+        <div  class="order-info-order">
+            <a href="{$BASE_URL_MODULE}user/order">
+                <span class="order-info-title dib">我的订单</span>
+                <span class="order-info-all">查看全部订单 </span>
+            </a>
+            <i class="arrow-right"></i>
+        </div>
+
+        <ul class="order-item" id="order-item">
+            <li class="item-li fl tc">
+                <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=1">
+                    <span class="order-icons db order-pay"></span>
+                    {if $res.need_pay >0}
+                        <span class="order-item-num dib">{$res.need_pay}</span>
+                    {/if}
+                    <p class="order-item-sub">待付款</p>
+                </a>
+            </li>
+
+            <li class="item-li fl tc">
+                <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=2">
+                    <span class="order-icons db order-use"></span>
+                    {if $res.unuse_coupon >0}
+                        <span class="order-item-num dib">{$res.unuse_coupon}</span>
+                    {/if}
+                    <p class="order-item-sub">待使用</p>
+                </a>
+            </li>
+
+            <li class="item-li fl tc">
+                <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=3">
+                    <span class="order-icons db order-eval"></span>
+                    {if $res.need_comment>0}
+                        <span class="order-item-num dib">{$res.need_comment}</span>
+                    {/if}
+                    <p class="order-item-sub">待点评</p>
+                </a>
+            </li>
+
+            <li class="item-li fl tc">
+                <a class="dib w pr" href="{$BASE_URL_MODULE}user/order?order_status=4">
+                    <span class="order-icons db order-refund"></span>
+                    {if $res.order_refund>0}
+                        <span class="order-item-num dib">{$res.order_refund}</span>
+                    {/if}
+                    <p class="order-item-sub">退款/返利</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="entry">X
+    <a href="{$BASE_URL_MODULE}user/remainAccount" class="entry-act db pr entry-account">
+        <p>
+            <span class="entry-act-title dib">账户余额</span>
+            <span class="entry-act-num entry-act-money">￥{if $user_resource.user}{$res.money}{else}0{/if}</span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+
+    <a href="{$BASE_URL_MODULE}user/scores" class="entry-act db pr entry-inte">
+        <p>
+            <span class="entry-act-title dib">我的积分</span>
+            <span class="entry-act-num">{$res.score}</span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+
+    <a href="{$BASE_URL_MODULE}coupon/userCoupon" class="entry-act db pr entry-crash">
+        <p>
+            <span class="entry-act-title dib">现金券兑换</span>  <!--暂缺-->
+            <span class="entry-act-num">{if $user_resource.user}{$res.cashcoupon}{else}0{/if}张</span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+    {if $res.is_seller == 1}
+    <a href="{$BASE_URL_MODULE}seller/seller" class="entry-act db pr">
+        <i class="entry-seller dib"></i>
+        <p class="dib">
+            <span class="act-title dib">销售员中心</span>
+            <span class="entry-act-num"></span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+    {/if}
+
+</section>
+
+<!--<section class="entry">-->
+    <!--<a href="#" class="entry-act db pr entry-msg">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">发言</span>-->
+            <!--<span class="entry-act-num entry-act-money">{$res.cashcoupon}</span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+
+    <!--<a href="#" class="entry-act db pr entry-speak">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">消息</span>-->
+            <!--<span class="entry-act-num">{$res.post_num}</span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+<!--</section>-->
+
+<!--<section class="entry">
+    <a href="#" class="entry-act db pr entry-par">
+        <p>
+            <span class="entry-act-title dib">玩伴圈</span>
+            <span class="entry-act-num entry-act-money">{$res.c_num}</span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+</section>-->
+
+
+<section class="entry">
+    <!--<a href="{$BASE_URL_MODULE}" class="entry-act db pr entry-par">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">同城团</span>    &lt;!&ndash;暂缺&ndash;&gt;-->
+            <!--<span class="entry-act-num entry-act-money">{$res.c_num}</span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+
+    <a href="{$BASE_URL_MODULE}user/addressList" class="entry-act db pr entry-contact">
+        <p>
+            <span class="entry-act-title dib">联系人/收货地址</span>
+            <span class="entry-act-num entry-act-money"></span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+
+    <!--<a href="#" class="entry-act db pr entry-baby">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">我家Baby</span>-->
+            <!--<span class="entry-act-num entry-act-money"></span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+
+    <a href="{$BASE_URL_MODULE}play/playSelectTraveller" class="entry-act db pr entry-travel">
+        <p>
+            <span class="entry-act-title dib">出行人</span>
+            <span class="entry-act-num"></span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+
+    <!--<a href="#" class="entry-act db pr entry-friends">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">好友玩伴</span>-->
+            <!--<span class="entry-act-num"></span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+</section>
+
+<section class="entry entry-bottom">
+    <a href="{$BASE_URL_MODULE}user/babyList" class="entry-act db pr entry-baby">
+        <p>
+            <span class="entry-act-title dib">我家Baby</span>
+            <span class="entry-act-num entry-act-money"></span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+
+    <a  href="{$BASE_URL_MODULE}user/userCollect" class="entry-act db pr entry-collect">
+        <p>
+            <span class="entry-act-title dib">我的收藏</span> <!--暂缺-->
+            <span class="entry-act-num"></span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+
+    <a  href="{$BASE_URL_MODULE}user/myMessage" class="entry-act db pr entry-message">
+        <p>
+            <span class="entry-act-title dib">消息</span> <!--暂缺-->
+            <span class="entry-act-num"></span>
+        </p>
+        <i class="arrow-right"></i>
+    </a>
+</section>
+
+<!--<section class="entry entry-bottom">-->
+    <!--<a href="#" class="entry-act db pr entry-Wetchat">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">绑定微信号</span>-->
+            <!--<span class="entry-act-num entry-act-money">{$res.weixin_bind_tips}</span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+
+    <!--<a href="#" class="entry-act db pr entry-gift">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">好评有礼</span>-->
+            <!--<span class="entry-act-num">{$res.comments_prize}</span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+
+    <!--<a href="#" class="entry-act db pr entry-edit">-->
+        <!--<p>-->
+            <!--<span class="entry-act-title dib">小编约稿</span>-->
+            <!--<span class="entry-act-num">{$res.invitation}</span>-->
+        <!--</p>-->
+        <!--<i class="arrow-right"></i>-->
+    <!--</a>-->
+<!--</section>-->
+{/block}
+
+

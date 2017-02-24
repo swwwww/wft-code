@@ -1,0 +1,40 @@
+{block name="css" append}
+    {css file="css/ui/service.css"}
+{/block}
+        <!--"0"表示未付款订单 "1"表示已付款订单-->
+{if $res.customer_service_group_id}
+    {if $state == "0"}
+    <section class="items">
+        <a class="items-service" href="javascript:;">联系客服</a>
+        <a class="items-order" href="javascript:;">取消订单</a>
+        <a class="items-pay" href="javascript:;">去支付</a>
+    </section>
+    {else if $state == "1"}
+    <section class="items">
+        <a class="items-service" href="javascript:;">联系客服</a>
+    </section>
+    {/if}
+{else}
+    {if $state == "0"}
+    <section class="items otherCity">
+        <a class="items-order" href="javascript:;">取消订单</a>
+        <a class="items-pay" href="javascript:;">去支付</a>
+    </section>
+    {/if}
+{/if}
+<!--取消确定弹窗-->
+<section id="js_sure_cancel" class="mark-pos cancel" style="display: none">
+    <div class="cancel-head">确认取消订单？</div>
+    <div class="cancel-foot">
+        <a class="cancel-foot-cancel" id="js_cancel">取消</a>
+        <a class="cancel-foot-sure" id="js_sure">确定</a>
+    </div>
+</section>
+<!--遮罩层-->
+<div class="mark" id="mark_share" style="display: none"></div>
+{capture append="widget_js"}
+{js file="js/order/elem_order_detail.js"}
+{/capture}
+
+
+

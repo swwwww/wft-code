@@ -1,0 +1,165 @@
+
+{extends file="widget/layout/base.html"}
+{block name="css" append}
+<link rel="stylesheet" href="{$BASE_URL_STATIC}css/page/main.css?v=20140905">
+<link rel="stylesheet" href="{$BASE_URL_STATIC}css/ui/tab.css">
+<link rel="stylesheet" href="{$BASE_URL_STATIC}css/ui/carousel.css">
+<link rel="stylesheet" href="{$BASE_URL_STATIC}css/ui/button.css?v=20140904">
+{/block}
+
+{block name="body"}
+    {resource resource="User" var="user_resource" method="nowUser"}
+    <div class="header" id="top">
+        <div class="container">
+            {block name="header-top"}
+            <div class="header-top">
+                <div class="h-top-slogan">
+                    <h3 class="h-top-title">
+                        <a href="{$global_domain_name|domainFix}"></a>
+                    </h3>
+                    <span class="split">-</span>
+                    <h4 class="h-top-city">{$zx_province}</h4>
+                    [<a class="h-top-city-choose" href="javascript:;">切换城市</a>]
+                </div>
+                <div class="h-top-user">
+                    <a id="ht_inex" href="{$global_domain_name|domainFix}">全站首页</a>
+                    <span class="split">-</span>
+                    {if !$user_resource.user_vo}
+                    <a id="ht_login" href="{$BASE_URL}auth/login">登录</a>
+                    <span class="split">-</span>
+                    <a id="ht_regist" href="{$BASE_URL}auth/regist">注册</a>
+                    {else}
+                    <span class="c-middlegray">你好,</span>
+                    <a id="ht_login1" href="{$BASE_URL}user">{$user_resource.user_vo.cn_name|default:$user_resource.user_vo.user_name}</a>
+                    <span class="split">-</span>
+                    <a id="ht_regist2" href="{$BASE_URL}auth/logout">退出</a>
+                    {/if}
+                </div>
+            </div>
+            {/block}
+        </div>
+    </div>
+    <div class="header-bar">
+        <div class="container">
+            {block name="header-wrap"}
+            <div class="header-wrap pr">
+                <div class="h-wrap-logo dib">
+                    <a href="{$BASE_URL}">
+                        <img style="width: 64px; height: 64px;" src="{$BASE_URL_STATIC}img/site/zx-logo.png" alt=""/>
+                    </a>
+                </div>
+                <div class="h-wrap-title dib">
+                    <h1 class="h-site-name"></h1>
+                    <h2 class="h-site-info">人</h2>
+                </div>
+                <div class="h-wrap-culture dib">
+                    <p class="h-site-win">！</p>
+                    <div class="h-site-win clearfix">
+                        <div class="broadcast-icon"></div>
+                        <div class="broadcast-wrap js-broadcast-wrap"></div>
+                    </div>
+                </div>
+                <div class="h-wrap-wechat">
+                    <img src="{$default_img|imageFix:qrcode_public}" alt="">
+                </div>
+                <div class="h-wrap-search">
+                    <div class="site-search">
+                        <input class="site-search-text" type="text" placeholder="搜索品牌和资讯">
+                        <input type="button" class="btn btn-orange site-search-btn" value="搜索">
+                    </div>
+                    <div class="h-wrap-guide pr">
+                        <span class="h-guide-wechat">微信关注我:<p></p></span>
+                        {if !$user_resource.user_vo}
+                        <a class="h-guide-start" href="{$BASE_URL}auth/regist">马上开通</a>
+                        {else}
+                        <a class="h-guide-enter" href="{$user_resource.user_vo.user_name|domainFix}">我的个人主页</a>
+                        <a class="h-guide-start" href="{$BASE_URL}admin/user" target="_blank">我的后台管理</a>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+            {/block}
+        </div>
+    </div>
+    <div class="header-inner">
+        <div class="container">
+            {block name="header-nav"}
+            <div class="header-nav pr">
+                <ul class="h-nav-list clearfix">
+                    <li class="h-nav-item{if $nav_name=='index' || $nav_name==''} active{/if}">
+                        <a class="h-nav-item-a" href="/">首页</a>
+                    </li>
+                    {if !$user_resource.user_vo}
+                    <li class="h-nav-item{if $nav_name=='auth'} active{/if}">
+                        <a class="h-nav-item-a" href="/auth/regist">网站申请</a>
+                    </li>
+                    {/if}
+                </ul>
+                <div class="h-nav-guide">
+                    {if !$user_resource.user_vo}
+                    <a class="h-nav-guide-a" href="/auth/regist" title=">我想入驻</a>
+                    {else}
+                    <a class="h-nav-guide-a" href="/admin/user" title="后台管理入口">后台管理</a>
+                    {/if}
+                </div>
+            </div>
+            {/block}
+        </div>
+    </div>
+    {block name="mainer"}<div class="mainer"></div>{/block}
+
+    {block name="greenway"}
+    <div class="greenway">
+        <div class="green-qq">
+            <a title="QQ客服" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3050649230&amp;site=qq&amp;menu=yes">QQ客服</a>
+        </div>
+        <a class="green-top" href="#top" onclick="window.scrollTo(0,0); return false;">
+            <span class="icon-top">◇</span>
+            <span class="text-top">顶部</span>
+        </a>
+    </div>
+    {/block}
+
+    {block name="footer"}
+    <div class="footer">
+        <div class="container">
+            <div class="footer-inner fw">
+                <div class="footer-about">
+                    <p class="f-about-company">
+                        <a href="{$BASE_URL}" target="_blank">关于我们</a>
+                        <span class="split">|</span>
+                        <a href="{$BASE_URL}" target="_blank">联系我们</a>
+                        <span class="split">|</span>
+                        <a href="{$BASE_URL}" target="_blank">友情链接</a>
+                        <span class="split">|</span>
+                        <a href="" target="_blank">触屏版</a>
+                    </p>
+                    <p class="f-about-copy">
+                        <span>&copy;{$smarty.now|date_format:"%Y"} </span>
+                        <a target="_blank" href="http://www.miibeian.gov.cn">号</a>
+                    </p>
+                </div>
+                <div class="footer-thanks">
+                    <p>
+                        <span class="f-thanks-title">友情鸣谢：</span>
+                        <a class="f-thanks-item" href="https://www.upyun.com/" target="_blank">
+                            <img src="http://upfiles.b0.upaiyun.com/logo/90x45.png" alt="UPYUN">
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+            {block name="linker"}
+            <div class="linker">
+                <div class="container">
+                    <div class="linker-inner">
+                        <h2 class="dib">友情链接：</h2>
+                        <p class="dib"><a href="http://baidu.com">百度</a></p>
+                    </div>
+                </div>
+            </div>
+            {/block}
+        </div>
+    </div>
+    {/block}
+{/block}

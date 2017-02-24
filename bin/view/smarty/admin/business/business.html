@@ -1,0 +1,217 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"遛娃学院：让孩子们在快乐中成长"}{/block}
+
+{block name="css" append}
+{css file="css/admin/business/bootstrap.min.css"}
+{css file="css/admin/business/wft.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+
+<header id="header">
+    <!--nav start-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!--小屏幕导航按钮和logo-->
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--小屏幕导航按钮和logo-->
+                <a href="index.html" class="navbar-brand">
+                    <!--玩翻天-->
+                    <img src="/static/img/pc/logo.gif">
+                </a>
+            </div>
+            <!--导航-->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://wan.wanfantian.com/www/index/school">遛娃学院</a></li>
+                    <li><a href="https://wan.wanfantian.com/">用户版</a></li>
+                    <li><a href="https://play.wanfantian.com/">WAP版</a></li>
+                    <li><a href="{$BASE_URL_MODULE}business/business" class="current">商家版</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav><!--nav end-->
+</header>
+<!--header-->
+<div class="container-fluid header" id="bus-head">
+    <div class="row  bus-head img-responsive">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 col-sm-12 col-xs-12">
+            <div class="textBox img-responsive">
+                <h3>玩翻天<br>专业服务儿童游乐品牌商的O2O垂直整合平台</h3>
+                <h4>已得到<span class="bold">30万</span>用户和<span class="bold">2000</span>家商户的认可和信赖</h4>
+                <p>
+                    景点、商场、游乐园等娱乐休闲业态<br>
+                    <span class="bus-head-club">---剧院、少年宫等文化体育场馆</span>
+                    <span class="bus-head-club"> ---科技馆、博物馆等科普教育基地</span>
+                    <span class="bus-head-club">---烘焙、陶艺、DIY等趣味体验形式</span>
+                    <span class="bus-head-club">只要符合0-12岁儿童玩乐需求，你就是玩翻天的精准合作商户！</span>
+                </p>
+                <a href="{$BASE_URL_MODULE}business/applicationIn" role="button" target="_self" class="btn btn-default btn-join">我要入驻</a>
+            </div>
+            <div class="container center-img">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-5">
+                    <a href="{$BASE_URL_MODULE}business/applicationIn" role="button1" target="_self" class="btn btn-default btn-join1">我要入驻</a>
+                </div>
+                <div class="col-xs-5">
+                    <a href="javascript:;" role="button" target="_self" class="btn btn-default btn-login  align-right">我要登陆</a>
+                </div>
+                <div class="col-xs-1"></div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12 col-xs-12 center-img"><!--商家登陆  foremBox-->
+            <div class="foremBox">
+                <form action="#" method="post">
+                    <ul>
+                        <li class="from-title">已合作的商家登录</li>
+                        <li><input type="text" id="js_com_phone" name="phone" placeholder="输入商家名或ID" class="textInput"></li>
+                        <li><input type="password" id="js_com_phone_code" name="password" placeholder="输入密码" class="textInput"></li>
+                        <li><input type="checkbox" id="js_check_box" class="dib" value=""><span class="dib">记住密码</span> </li>
+                        <li><a id="js-login" class="btnInput db tc">确定</a></li>
+                        <li class="fg-pw" ><a href="{$BASE_URL_MODULE}business/setpassword">忘记密码</a></li>
+                        <li class="cg-pw"><a href="{$BASE_URL_MODULE}business/changePassword">修改密码</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12 fill"></div>
+    </div>
+</div>
+<!--header end-->
+
+<!--join hands-->
+<div class="container-fluid" id="Co-op">
+    <div class="raw">
+        <div class="col-md-1 col-sm-1"></div>
+        <div class="col-md-6 col-sm-6 Co-op-case"><!--center-img -->
+            <div class="case">
+                <h2>玩翻天商户合作经典服务案例</h2>
+                <ul>
+                    <li><b>武汉海昌极地海洋公园</b>3000张家庭年卡48小时买完&nbsp;累计销售过万张</li>
+                    <li><b>武汉科技馆</b>一手报道武汉科技馆遛娃地，一天10w+查看</li>
+                    <li><b>武汉荟聚购物中心新春嘉年华</b>整合商户大礼包，吸引10000组家庭到场</li>
+                    <li><b>圣诞老人</b>一周时间80余家幼儿园报名，覆盖8000家庭参与其中</li>
+                    <li><b>幻贝家</b>在玩翻天创下了单个游乐场的销售冠军</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-5"> </div>
+    </div>
+</div>
+
+<!--content start-->
+<div class="container-fluid" id="content2" >
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2 center-img resp-pc"><!--PC 端自适应-->
+            <img src="/static/img/pc/bz_r1_c2.png" alt="亲子游戏策划" title="亲子游戏策划" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-5  center">
+            <p><span class="bold">最真挚的游玩地攻略——第一时间原创精品报道</span>
+                采编最新活动、精确传递商家信息、权威热门玩法推荐、深受家长信赖追捧</p>
+        </div>
+
+        <div class="col-md-3 col-md-offset-1 center-img resp-phone"><!--移动端自适应-->
+            <img src="/static/img/pc/bz_r1_c2.png" alt="亲子游戏策划" title="亲子游戏策划" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row grayBg">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 center">
+            <p><span class="bold">最简单有效的营销推广——秒杀、转发、推送、团购</span>
+                APP推送  + 头条焦点  + 微信公众号  + 朋友圈，焦距新玩法</p>
+        </div>
+        <div class="col-md-3 center-img">
+            <img src="/static/img/pc/bz_r3_c14.png" alt="亲子活动策划" title="亲子活动策划" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2 center-img resp-pc"> <!--PC端自适应-->
+            <img src="/static/img/pc/bz_r5_c3.png" alt="家庭亲子游戏" title="家庭亲子游戏" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-5 center">
+            <p><span class="bold">最真实的用户评价——第一手的家长汇报及评论</span>
+                家长的及时图文点评，有效增强商家好评度，全面提升商家服务水平</p>
+        </div>
+        <div class="col-md-3 col-md-offset-2 center-img resp-phone"><!--移动端自适应-->
+            <img src="/static/img/pc/bz_r5_c3.png" alt="家庭亲子游戏" title="家庭亲子游戏" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row grayBg">
+        <div class="col-md-2"></div>
+        <div class="col-md-5 center">
+            <p><span class="bold">最新奇有效的定制活动——H5游戏、投票、线下活动</span>
+                策划创意爆点、为品牌量身定制会员活动、开发微信介入等新玩法</p>
+        </div>
+        <div class="col-md-3 center-img resp-pc"><!--PC端自适应-->
+            <img src="/static/img/pc/bz_r7_c15.png" alt="亲子活动定制" title="亲子活动定制" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-3 col-md-offset-0 center-img resp-phone"><!--移动端自适应-->
+            <img src="/static/img/pc/bz_r7_c15.png" alt="亲子活动定制" title="亲子活动定制" class="cont-img img-responsive">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div><!--content end-->
+
+<div class="container" id="contact">
+    <h2 class="contact-title">联系我们</h2>
+    <div class="raw">
+        <div class="col-md-6 col-sm-6">
+            <div class="col-sm-6">
+                <div class="Wuhan">
+                    <dl>
+                        <dt>武汉站</dt>
+                        <dd><b>地址: </b> 武汉市汉阳区龟山北路一号汉阳造文化创意产业园9栋2楼三号</dd>
+                        <dd><b>座机:</b> 4008007221</dd>
+                        <dd><b>商务合作:</b> 18672962818</dd>
+                        <dd><b>QQ:</b> 277026888</dd>
+                        <dd><b>微信:</b> wanfantian8</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="col-sm-6 center-img">
+                <img src="/static/img/pc/fot_r4_c11wuhan.png" class="img-responsive Qcode">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6">
+            <div class="col-sm-6">
+                <div class="Nanjing">
+                    <dl>
+                        <dt>南京站</dt>
+                        <dd><b>地址:</b> 南京市栖霞区马群中山门大街紫金尚园商办综合楼413室</dd>
+                        <dd><b>座机:</b> 4008007221</dd>
+                        <dd><b>商务合作:</b> 18802720597</dd>
+                        <dd><b>QQ: </b>2249504783</dd>
+                        <dd><b>微信:</b> Wanfantiannanjing</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="col-sm-6 center-img">
+                <img src="/static/img/pc/fot_r3_c18nanjing.png" class="img-responsive Qcode">
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js" append}
+    {js file="js/lib/bootstrap.min.js"}
+    {js file="js/admin/business/login.js"}
+
+{/block}

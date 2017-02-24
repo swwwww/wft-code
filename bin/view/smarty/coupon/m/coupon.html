@@ -1,0 +1,253 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的现金券"}{/block}
+
+{block name="css" append}
+{css file="css/coupon/m/coupon.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="main">
+
+    <form class="coupon-form db" autocomplete="off" id="sub">
+        <input  class="db fl" type="text" placeholder="可兑换邀请码" id="code">
+        <input class="fr js-exchange" type="submit" value="兑换">
+    </form>
+
+    <!-- <h3>
+         <span>可用现金券</span>
+     </h3>
+
+     <section class="cash">
+         <p class="cash-shape"></p>
+                 <span class="cash-price fl tc">
+                     ￥<mark class="cash-price-content">20</mark>.00
+                 </span>
+                 <span class="cash-info fl">
+                     <mark class="cash-info-type">遛娃学院活动现金券</mark>
+                     <mark class="cash-info-intro">·仅限溜娃学院活动使用</mark>
+                     <mark class="cash-info-intro">·2015-11-23至2015-12-23</mark>
+                 </span>
+     </section>
+     <section class="cash new">
+         <p class="cash-shape"></p>
+                 <span class="cash-price fl tc">
+                     ￥<mark class="cash-price-content">5</mark>.00
+                 </span>
+                 <span class="cash-info">
+                     <mark class="cash-info-type">新人现金券</mark>
+                     <mark class="cash-info-intro">·仅限新注册用户使用</mark>
+                     <mark class="cash-info-intro">·2015-11-23至2015-12-23</mark>
+                 </span>
+         <p class="cash-sign pr">
+             <span class="pa new-person">新用户</span>
+         </p>
+     </section>
+     <section class="cash">
+         <p class="cash-shape"></p>
+                 <span class="cash-price fl tc">
+                     ￥<mark class="cash-price-content">20</mark>.00
+                 </span>
+                 <span class="cash-info">
+                     <mark class="cash-info-type">商品现金券</mark>
+                     <mark class="cash-info-intro">·所有玩翻天商品使用</mark>
+                     <mark class="cash-info-intro">·2015-11-23至2015-12-23</mark>
+                 </span>
+     </section>
+     <section class="cash">
+         <p class="cash-shape"></p>
+                 <span class="cash-price fl tc">
+                     ￥<mark class="cash-price-content">20</mark>.00
+                 </span>
+                 <span class="cash-info">
+                     <mark class="cash-info-type">遛娃学院活动现金券</mark>
+                     <mark class="cash-info-intro">·仅限溜娃学院活动使用</mark>
+                     <mark class="cash-info-intro">·2015-11-23至2015-12-23</mark>
+                 </span>
+         <article class="cash-introduce">
+             <p>可用场次</p>
+             <span>·仅限银杏湖主题乐园 2016/5/18  10:00~15:30</span>
+             <span>·仅限银杏湖主题乐园 2016/5/18  10:00~15:30</span>
+         </article>
+     </section>
+     <h3>
+         <span>已失效的券</span>
+     </h3>
+     <div class="wrap">
+         <section class="cash invalid">
+             <p class="cash-shape"></p>
+                     <span class="cash-price fl tc">
+                         ￥<mark class="cash-price-content">20</mark>.00
+                     </span>
+                     <span class="cash-info">
+                         <mark class="cash-info-type">商品现金券</mark>
+                         <mark class="cash-info-intro">·所有玩翻天商品使用</mark>
+                         <mark class="cash-info-intro">·2015-11-23至2015-12-23</mark>
+                     </span>
+                 <span class="cash-failure">
+                     <mark>已失效</mark>
+                 </span>
+         </section>
+         <section class="cash invalid">
+             <p class="cash-shape"></p>
+                     <span class="cash-price fl tc">
+                         ￥<mark class="cash-price-content">20</mark>.00
+                     </span>
+                     <span class="cash-info">
+                         <mark class="cash-info-type">商品现金券</mark>
+                         <mark class="cash-info-intro">·所有玩翻天商品使用</mark>
+                         <mark class="cash-info-intro">·2015-11-23至2015-12-23</mark>
+                     </span>
+                 <span class="cash-failure">
+                     <mark>已使用</mark>
+                 </span>
+         </section>
+     </div>-->
+    {if $res.use_len}
+    <h5><span>可用现金券</span></h5>
+    {/if}
+    <section class="coupon-item" id="data_list"></section>
+
+</div>
+<!--<section class="coupon-item-not"></section>-->
+
+<div id="tips-dia"></div><!--提示-->
+
+<input type="hidden" name="data" id="data" value='{$res.data}'>
+
+{/block}
+
+{block name="js" append}
+{js file="js/coupon/user_coupon.js"}
+{js file="js/lib/dropload.js"}
+{js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+    {{if can_use_len > 0}}
+    {{each res}}
+    {{if ($value.type == 1 && $value.isvalid)}} <!--活动-->
+    <a class="cash db {{if $value.isvalid == 0}}invalid{{/if}}" href="/coupondetail?cid={{$value.cid}}&id={{$value.id}}">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl tc">
+                ￥<mark class="cash-price-content">{{$value.price}}</mark>
+            </span>
+            <span class="cash-info">
+                <mark class="cash-info-type">{{$value.title}}</mark>
+                <mark class="cash-info-intro">·{{$value.description}}</mark>
+                <mark class="cash-info-intro">·{{$value.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.end_time | dateFormat:'yyyy-MM-dd'}}</mark>
+            </span>
+        {{if $value.eventinfo[0]}}
+        <article class="cash-introduce">
+            <p>可用场次</p>
+            {{each $value.eventinfo}}
+            <span>·{{$value.eventinfo.name}} {{$value.eventinfo.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.eventinfo.end_time | dateFormat:'yyyy-MM-dd'}}</span>
+            {{/each}}
+        </article>
+        {{/if}}
+    </a>
+    {{else if ($value.type == 2 && $value.isvalid)}}<!--商品-->
+    <a class="cash db {{if $value.isvalid == 0}}invalid{{/if}}" href="/coupondetail?cid={{$value.cid}}&id={{$value.id}}">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl tc">
+                ￥<mark class="cash-price-content">{{$value.price}}</mark>
+            </span>
+            <span class="cash-info">
+                <mark class="cash-info-type">{{$value.title}}</mark>
+                <mark class="cash-info-intro">·{{$value.description}}</mark>
+                <mark class="cash-info-intro">·{{$value.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.end_time | dateFormat:'yyyy-MM-dd'}}</mark>
+            </span>
+        {{if $value.eventinfo[0]}}
+            <article class="cash-introduce">
+                <p>可用场次</p>
+                {{each $value.eventinfo}}
+                <span>·{{$value.eventinfo.name}} {{$value.eventinfo.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.eventinfo.end_time | dateFormat:'yyyy-MM-dd'}}</span>
+                {{/each}}
+            </article>
+        {{/if}}
+    </a>
+    {{else if ($value.isnew && $value.isvalid)}} <!--新人券-->
+    <a class="cash new{{if $value.isvalid == 0}}invalid{{/if}}" href="/coupondetail?cid={{$value.cid}}&id={{$value.id}}">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl tc">
+                ￥<mark class="cash-price-content">{{$value.price}}</mark>
+            </span>
+            <span class="cash-info">
+                <mark class="cash-info-type">{{$value.title}}</mark>
+                <mark class="cash-info-intro">·{{$value.description}}</mark>
+                <mark class="cash-info-intro">·{{$value.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.end_time | dateFormat:'yyyy-MM-dd'}}</mark>
+            </span>
+        <p class="cash-sign pr">
+            <span class="pa new-person">新用户</span>
+        </p>
+    </a>
+    {{/if}}
+    {{/each}}
+    {{/if}}
+
+    {{if no_use_len>0}}
+    <h5><span>已失效的券</span></h5>
+    {{each res}}
+    {{if ($value.type == 1 && !$value.isvalid)}} <!--活动-->
+    <section class="cash {{if $value.isvalid == 0}}invalid{{/if}}">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl tc">
+                ￥<mark class="cash-price-content">{{$value.price}}</mark>
+            </span>
+            <span class="cash-info pr">
+                <mark class="cash-info-type">{{$value.title}}</mark>
+                <mark class="cash-info-intro">·{{$value.description}}</mark>
+                <mark class="cash-info-intro">·{{$value.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.end_time | dateFormat:'yyyy-MM-dd'}}</mark>
+
+                <span class="cash-invalid pa">
+                    {{if $value.is_pass}}已过期{{else if $value.is_pay}}已使用{{/if}}
+                </span>
+            </span>
+    </section>
+    {{else if ($value.type == 2 && !$value.isvalid)}}<!--商品-->
+    <section class="cash {{if $value.isvalid == 0}}invalid{{/if}}">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl tc">
+                ￥<mark class="cash-price-content">{{$value.price}}</mark>
+            </span>
+            <span class="cash-info">
+                <mark class="cash-info-type">{{$value.title}}</mark>
+                <mark class="cash-info-intro">·{{$value.description}}</mark>
+                <mark class="cash-info-intro">·{{$value.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.end_time | dateFormat:'yyyy-MM-dd'}}</mark>
+                 <span class="cash-invalid pa">
+                    {{if $value.is_pass}}已过期{{else if $value.is_pay}}已使用{{/if}}
+                </span>
+            </span>
+        {{if $value.eventinfo[0]}}
+        <article class="cash-introduce">
+            <p>可用场次</p>
+            {{each $value.eventinfo}}
+            <span>·{{$value.eventinfo.name}} {{$value.eventinfo.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.eventinfo.end_time | dateFormat:'yyyy-MM-dd'}}</span>
+            {{/each}}
+        </article>
+        {{/if}}
+    </section>
+    {{else if ($value.isnew && $value.isvalid === 0)}} <!--新人券-->
+    <section class="cash new {{if $value.isvalid == 0}}invalid{{/if}}">
+        <p class="cash-shape"></p>
+            <span class="cash-price fl tc">
+                ￥<mark class="cash-price-content">{{$value.price}}</mark>
+            </span>
+            <span class="cash-info">
+                <mark class="cash-info-type">{{$value.title}}</mark>
+                <mark class="cash-info-intro">·{{$value.description}}</mark>
+                <mark class="cash-info-intro">·{{$value.begin_time | dateFormat:'yyyy-MM-dd'}}至{{$value.end_time | dateFormat:'yyyy-MM-dd'}}</mark>
+                 <span class="cash-invalid pa">
+                    {{if $value.is_pass}}已过期{{else if $value.is_pay}}已使用{{/if}}
+                </span>
+            </span>
+        <p class="cash-sign pr">
+            <span class="pa new-person">新用户</span>
+        </p>
+    </section>
+    {{/if}}
+    {{/each}}
+
+    {{/if}}
+</script>
+{/literal}
+{/block}

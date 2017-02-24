@@ -1,0 +1,59 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"太空飞鸡战"}{/block}
+
+{block name="css" append}
+{css file="css/ad/battle/index.css"}
+{css file="css/ad/battle/battle_index.css"}
+
+{/block}
+
+{block name="inner"}
+    <!--游戏页面背景-->
+<div id="container">
+    <div class="result-bg">
+        <i class="db gradient-head head-box result-top-bg"></i>
+        <a class="my-prise db" href="/lottery/record/lottery_id/6">我的礼物</a>
+    </div>
+
+    <section class="score-prise result-box">
+        <i class="icon-moon-right pa dib"></i>
+        <i class="icon-ship-left pa dib"></i>
+        <div class="succ-prise">
+            <div class="cash-prise result-get">
+                <i class="circle-left db"></i>
+                <i class="circle-right db"></i>
+                <span class="cash-name db pr">{$cash_vo.cash_name}</span>
+                <span class="cash-desc  result-cash db pr">{if $cash_vo.type == 5}玩翻天客服5个工作日内将</br>与您联系，为您发放大奖{else}已放入您的玩翻天账户<br/>请尽快前往使用{/if}</span>
+            </div>l
+        </div>
+    </section>
+
+    <div class="result-btn">
+        <button class="cash-btn pr {if $platform.wft}icon-share-btn{else}js-share-btn{/if}">真好玩！分享给好友</button>
+        <a class="result-try-again pr db" href="/lottery/market/lottery_id/6/luck/1">再抽一次</a>
+        <a data-type="2" data-id="" class="result-to-use db pr {if $platform.version == '4.2.0'}js-action-redirect{/if}" href="{if !($platform.version == '4.2.0')}{$BASE_URL_MODULE}{/if}">去玩翻天使用</a>
+    </div>
+</div>
+
+
+<div class="share-box js-share-to js-close-btn" style="display: none">
+    <!--share to-->
+    <i class="share-img db"></i>
+    <p class="share-info">
+        点击分享给好友!<br/>
+        获 得 更 多 游 戏 机 会！
+    </p>
+    <i class="db start-ufo"></i>
+</div>
+
+<input type="hidden" id="hide_lottery_vo" value='{$cash_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+
+{/block}
+
+{block name="js" append}
+{js file="js/ad/battle/base_loading.js"}
+{js file="js/ad/battle/battle.js"}
+{js file="js/util/app_bridge.js"}
+{/block}
+

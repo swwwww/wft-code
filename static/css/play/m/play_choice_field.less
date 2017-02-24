@@ -1,0 +1,116 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.arrow(@t:none; @l:none; @b:none; @r:none){
+  .border(all; @width:2px; @color:#999);
+  .transform-rotate(45deg);
+  right: @r;
+  bottom: @b;
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  overflow: hidden;
+  border-bottom: none;
+  border-left: none;
+}
+
+.sel {
+  overflow: hidden;
+    & .list {
+    margin-top: 20px;
+  }
+  .list-item {
+    padding: 35px 70px 35px 40px;
+    overflow: hidden;
+    .border(top);
+    .border(bottom);
+    margin-bottom: 20px;
+    & .item-info{
+      width: 470px;
+      line-height: 42px;
+    }
+    & .start-time, .attend-num {
+      font-size: 24px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .attend-num{
+      display: block;
+      margin-top: 10px;
+    }
+    .shop-name{
+      display: block;
+      white-space: nowrap;
+      width: 485px;
+      font-size: 28px;
+      color: #929292;
+    }
+
+
+  }
+  .state {
+    margin-top: 22px;
+    font-size: 28px;
+    display: block;
+    position: relative;
+
+    .state-status{
+      display: block;
+      line-height: 43px;
+      float: right;
+      margin-top: 17px;
+    }
+    .vip-play-icon{
+      top: 75px;
+      right: 145px;
+      width: 125px;
+      height: 35px;
+      padding: 3px 3px;
+      border-radius: 5px;
+      background: #ffcd54 url(/static/img/site/mobile/vips/vip_five.png) no-repeat center;
+    }
+    .price-width{
+      height: 43px;
+      width: 160px;
+      text-align: right;
+    }
+  }
+}
+.other-state {
+  background: #f5f5f5;
+  color: #929292;
+}
+.link-state{
+  background-color: #fff;
+}
+.apply{
+  color: #fb5f39;
+}
+.no-link{
+  background-color: #f5f5f5;
+}
+
+.arrow-right{
+  .arrow(@r:35px; @b:35%);
+}
+
+
+.want-go{
+  position: fixed;
+  bottom: 0;
+  width: 750px;
+  height: 88px;
+  line-height: 88px;
+  background-color: #ffd25b;
+  font-size: 28px;
+  .want-tips{
+    margin-left: 30px;
+    color: #7f7353;
+  }
+  .want-left{
+    margin-right: 65px;
+  }
+  .want-color{
+    color: #b57426;
+  }
+}

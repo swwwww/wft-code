@@ -1,0 +1,169 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="in_title"}{$title|default:"遛娃学院：让孩子们在快乐中成长"}{/block}
+
+{block name="meta_keyword"}
+<meta name="keywords" content="{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子户外活动，{$wft_global_set.custom_city_cn}亲子活动定制，{$wft_global_set.custom_city_cn}亲子游攻略，{$wft_global_set.custom_city_cn}孩子游玩的好地方，{$wft_global_set.custom_city_cn}农家乐活动，{$wft_global_set.custom_city_cn}少儿户外活动，亲子活动策划方案，亲子互动游戏" />
+{/block}
+
+{block name="meta_desc"}
+    <meta name="description" content="{$wft_global_set.custom_city_cn}亲子活动：自然科学探索课堂，打糍粑、办年货、烤红薯......带孩子观世界，才有世界观；解密创意场馆，警察历史博物馆用测谎仪、蜜蜂科技馆当蜂农、舰艇科技馆当舰长，保护孩子的好奇心，开启智慧之门；职业体验（小小牙医、小小消防员、小小银行家、小小图书管理员等），为孩子们提供社会实践基地，角色扮演体验社会百态；
+    节日派对，传播多元节日文化，洋节不再止余‘凑热闹’；亲子探险训练营，徒步武大，小小探险家，我是侦查兵......户外体验、团队协作、领导能力，在玩中渗透培养，在玩中接触社会；官方微信公众号:玩翻天亲子">
+{/block}
+{block name="css" append}
+{css file="css/play/m/play_index.css"}
+{/block}
+
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main">
+    <ul id="oNav" class="clearfix">
+        <a id="js-hot" class="oNav-link sel_1 fl {if $res.sort == 1 || $res.sort == 0}cur{/if}" href="{$BASE_URL_MODULE}play/playindex?sort=1">
+            <li class="item pr">
+                <p class="item-name">本周最热</p>
+                <i class="line-b fl"></i>
+            </li>
+        </a>
+        <a id="js-new" class="oNav-link sel_2 fl {if $res.sort == 2}cur{/if}" href="{$BASE_URL_MODULE}play/playindex?sort=2">
+            <li class="item pr">
+                <p class="item-name">最新活动</p>
+                <i class="line-b fl"></i>
+            </li>
+        </a>
+        <a id="js-back" class="oNav-link sel_3 fl {if $res.sort == 3}cur{/if}" href="{$BASE_URL_MODULE}play/playindex?sort=3">
+            <li class="item pr">
+                <p class="item-diff item-name">精彩回顾</p>
+                <i class="line-b fl"></i>
+            </li>
+        </a>
+    </ul>
+
+    <section class="ticket-item">
+        {if $res|@count-1}
+        {foreach $res as $key => $val}
+        {if $key !== 'sort'}
+        <a class="db pr" href="{$BASE_URL_MODULE}play/playActivity?id={$val.id}">
+            <!--<img class="activity-logo pa" src="/static/img/site/mobile/activity_logo.png" />-->
+            {if $val.n_tags[0]}
+            <div class="n_tags pa">
+                {foreach $val.n_tags as $key => $n_msg}
+                <img class="crazy-logo dib" src="{$n_msg.img}" alt="{$n_msg.name}" />
+                {/foreach}
+            </div>
+            {/if}
+            <div class="adv-list-info {if $val.tags|@count}list-bottom{/if} pr">
+                <span class="adv-img" style="background: url({$val.image}) no-repeat center center;background-size: cover;"></span>
+                {if $val.tags|@count}
+                <div class="tag-list">
+                    {foreach $val.tags as $key => $msg}
+                    <i class="adv-tag dib">{$msg}</i>
+                    {/foreach}
+                </div>
+                {/if}
+                <p class="adv-font clearfix pr">
+                    <span class="adv-title">{$val.title}</span><br>
+                    <span class="time pr">
+                        <mark class="date-bottom">{$val.date}</mark>
+                    </span>
+                    <span class="num pr">
+                        <mark class="date-bottom">{$val.session_num}</mark>场可选
+                    </span>
+                    {if $val.circle}
+                    <span class="addr dib pa {if $val.tags|@count}addr-circle{/if}"><i class="addr-icon dib"></i>{$val.circle}</span>
+                    {/if}
+                </p>
+                    {if $val.joined_num}
+                    <div class="new pa join-num">
+                        累计有<mark>{$val.joined_num}</mark>人参加
+                    </div>
+                    {else}
+                        {if $val.sort != 3}
+                        <div class="new pa join-num">
+                            活动报名中
+                        </div>
+                        {/if}
+                    {/if}
+                <div class="least-price pa {if $val.vip_free}top-vip{else}top-common{/if}">￥<mark>{$val.low_money}</mark>起</div>
+                {if $val.vip_free}
+                    <i class="vip-logo db pa"></i>
+                {/if}
+                <!--<i class="label-icon db pa">-->
+                    <!--<span class="label-info pa">遛娃</span>-->
+                <!--</i>-->
+            </div>
+        </a>
+        {/if}
+        {/foreach}
+        {else if ($res|@count)}
+        <div class="no-data">
+            <img src="/static/img/site/mobile/nodata.gif" />
+        </div>
+        {/if}
+        <div class="list-item"></div>
+    </section>
+
+    <a class="make-activity" href="{$BASE_URL_MODULE}play/privateParty"></a>
+    <input type="hidden" id="sort" value='{$res.sort}'>
+</section>
+{/block}
+
+{block name="js" append}
+    {js file="js/play/play_list.js"}
+    {js file="js/lib/dropload.js"}
+    {js file="js/lib/template.js"}
+{literal}
+<script id="list" type="text/html">
+        {{if res[0]}}
+       {{each res as val i}}
+        <a class="db pr" href="/play/playActivity?id={{val.id}}">
+            <!--<img class="activity-logo pa" src="/static/img/site/mobile/activity_logo.png" />-->
+            {{if val.n_tags[0]}}
+            <div class="n_tags pa">
+                {{each val.n_tags as n_msg}}
+                <img class="crazy-logo dib" src="{{n_msg.img}}" alt="{{n_msg.name}}" />
+                {{/each}}
+            </div>
+           {{/if}}
+            <div class="adv-list-info {{if val.tags.length}}list-bottom{{/if}} pr">
+                <!--<img class="adv-img" src="http://userpic.deyi.com/ucenter/data/avatar/000/57/28/99_avatar_middle.jpg"/>-->
+                <span class="adv-img" style="background: url({{val.image}}) no-repeat center center;background-size: cover;"></span>
+                {{if val.tags[0]}}
+                <div class="tag-list">
+                    {{each val.tags as msg}}
+                    <i class="adv-tag dib">{{msg}}</i>
+                    {{/each}}
+                </div>
+                {{/if}}
+                <p class="adv-font clearfix">
+                    <span class="adv-title db">{{val.title}}</span>
+                    <span class="time dib">
+                        <mark class="date-bottom">{{val.date}}</mark>
+                    </span>
+                    <span class="num dib">
+                        <mark class="date-bottom">{{val.session_num}}</mark>场可选
+                    </span>
+                    {{if val.circle}}
+                    <span class="addr dib pa {{if val.tags.length}}addr-circle{{/if}}"> <i class="addr-icon dib"></i>{{val.circle}}</span>
+                    {{/if}}
+                </p>
+                {{if val.joined_num}}
+                    <div class="new pa join-num">累计已有<mark>{{val.joined_num}}</mark>人报名</div>
+                {{else}}
+                    {{if val.sort !=3}}
+                        <div class="new pa join-num">活动报名中</div>
+                    {{/if}}
+                {{/if}}
+                <div class="least-price pa {{if val.vip_free}}top-vip{{else}}top-common{{/if}}">￥<mark>{{val.low_money}}</mark>起</div>
+                {{if val.vip_free}}
+                    <i class="vip-logo db pa"></i>
+                {{/if}}
+               <!-- <i class="label-icon db pa">
+                    <span class="label-info pa">遛娃</span>
+                </i>-->
+            </div>
+        </a>
+        {{/each}}
+        {{/if}}
+</script>
+{/literal}
+{/block}

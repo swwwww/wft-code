@@ -1,0 +1,52 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的验证码"}{/block}
+
+{block name="css" append}
+{css file="css/user/m/user_code_sn.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="store">  <!--ticket/commodityorder-->
+    <a href="{if $res.order_type == 1}/ticket/commodityOrder?order_sn={$res.order_id}{else if $res.order_type == 2}/orderWap/orderPlayDetail?order_sn={$res.order_id}{/if}"
+        class="store-info dib pr">
+        <p class="store-title">{$res.title}</p>
+        <p class="store-msg">使用时间：<time class="store-msg-time">
+            {$res.attend_start_time|date_format: '%m'}月{$res.attend_start_time|date_format: '%d'}日至
+            {$res.attend_end_time|date_format: '%m'}月{$res.end_dateline|date_format: '%d'}日
+        </time></p>
+        <p class="store-msg">预约地点： {$res.linker_addr}</p>
+        <i class="store-arrow"></i>
+    </a>
+
+</section>
+
+<section class="auth-code">
+    {foreach $res.order_list as $key => $v}
+    <div class="code-per pr">
+        <div class="code-left">
+            <p class="left-title">验证码：
+                <span class="code-sn">
+                    {if $v.zyb_code}
+                        {$v.zyb_code}
+                    {else}
+                        {$v.code}
+                    {/if}
+                </span>
+            </p>
+            <!--<span class="ticket-type">{$v.add_status}</span>-->
+        </div>
+        {if $v.status == 0}
+        <div class="code-font code-right">未使用</div>
+        {elseif $v.status == 1}
+        <div class="code-font code-right">已使用</div>
+        {elseif $v.status == 2}
+        <div class="code-font code-finish">已退款</div>
+        {elseif $v.status == 3}
+        <div class="code-font code-back">退款中</div>
+        {/if}
+    </div>
+    {/foreach}
+</section>
+
+{/block}

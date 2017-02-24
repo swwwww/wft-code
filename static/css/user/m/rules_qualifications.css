@@ -1,0 +1,29 @@
+.ag-header,
+.ag-main {
+  width: 90%;
+  margin: 0 auto;
+}
+.ag-header p,
+.ag-main p {
+  display: inline-block;
+  text-align: justify;
+  margin-top: 3%;
+  line-height: 1.5em;
+  font-size: 26px;
+  color: #555;
+}
+.ag-header h2,
+.ag-main h2 {
+  font-size: 34px;
+  line-height: 2em;
+}
+.ag-header {
+  padding: 5% 0 3%;
+  box-sizing: border-box;
+}
+.ag-main .join-btn {
+  color: #fb6050;
+  font-size: 28px;
+  text-decoration: underline;
+  line-height: 3em;
+}

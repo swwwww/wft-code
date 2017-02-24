@@ -1,0 +1,1000 @@
+#startGame,
+#resultPanel {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+#startGame .max-score,
+#resultPanel .max-score {
+  color: #ffffff;
+  font-size: 32px;
+  position: absolute;
+  top: 162px;
+}
+#startGame .max-score .pv-num,
+#resultPanel .max-score .pv-num {
+  font-size: 32px;
+  font-weight: 600;
+  color: #e65060;
+}
+.share-box {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 750px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+#startGame .head-box,
+#resultPanel .head-box,
+#container .head-box,
+.share-box .head-box {
+  height: 655px;
+}
+#startGame .gradient-head,
+#resultPanel .gradient-head,
+#container .gradient-head,
+.share-box .gradient-head {
+  width: 750px;
+  /*没有对IE进行适配*/
+  background: -ms-linear-gradient(top, rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.9), rgba(33, 33, 33, 0.2));
+  background: -moz-linear-gradient(top, rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.9), rgba(33, 33, 33, 0.2));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(33, 33, 33, 0.7)), to(rgba(33, 33, 33, 0.7)));
+  background: -webkit-linear-gradient(top, #000000, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.2));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.2));
+}
+#startGame .start-ufo,
+#resultPanel .start-ufo,
+#container .start-ufo,
+.share-box .start-ufo {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/start_ufo.png") center 64px no-repeat;
+  width: 750px;
+  height: 551px;
+  position: absolute;
+  bottom: 0px;
+}
+.start-game,
+.replay,
+.get-prise,
+.last-prise,
+.btn1,
+.cash-btn,
+.try-agin,
+.send-ph,
+.phone-get-prise,
+.result-try-again,
+.result-to-use {
+  -webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -ms-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+.replay {
+  margin-top: 25px;
+}
+.replay,
+.get-prise,
+.last-prise,
+.btn1,
+.cash-btn,
+.try-agin {
+  width: 410px;
+  margin-bottom: 25px;
+  color: #FFFFFF;
+  text-align: center;
+}
+.replay,
+.get-prise,
+.last-prise,
+.cash-btn,
+.try-agin {
+  font-size: 38px;
+  font-weight: 600;
+  height: 80px;
+  line-height: 80px;
+}
+.btn1 {
+  font-size: 32px;
+  padding: 10px 0;
+}
+.replay,
+.get-prise,
+.btn1,
+.cash-btn {
+  -webkit-box-shadow: 0px 9px 0px #de192e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 9px 0px #de192e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 9px 0px #de192e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  background-color: #e65060;
+}
+.last-prise {
+  -webkit-box-shadow: 0px 9px 0px #f7bc2b, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 9px 0px #f7bc2b, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 9px 0px #f7bc2b, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  background-color: #fdcc54;
+}
+#rule,
+.prise-box,
+.broadcast,
+.score-prise,
+.phone,
+.result-box {
+  background-color: #28293b;
+  border: 10px solid #3c3d50;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  width: 650px;
+}
+#rule,
+.score-prise,
+.phone {
+  position: fixed;
+}
+.prise-box {
+  position: absolute;
+}
+.broadcast {
+  position: relative;
+}
+#rule,
+.prise-box,
+.score-prise,
+.phone {
+  padding: 0px 10px 25px 10px;
+  color: #FFFFFF;
+}
+#rule,
+.prise-box,
+.score-prise,
+.phone {
+  height: 620px;
+}
+.prise-box {
+  height: 570px;
+}
+.prise-box,
+.broadcast,
+.score-prise,
+.result-box {
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.score-prise {
+  top: 21.5%;
+}
+.prise-box {
+  top: 25.5%;
+}
+#startGame {
+  /*抽奖*/
+}
+#startGame .head-box {
+  height: 655px;
+}
+#startGame .game-rule,
+#startGame .go-prise {
+  background-color: #fdcc54;
+  padding: 0 20px;
+  font-size: 32px;
+  height: 65px;
+  line-height: 65px;
+  position: absolute;
+  z-index: 2;
+}
+#startGame .game-rule {
+  top: 35px;
+  left: 0px;
+  border-top-right-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+}
+#startGame .go-prise {
+  bottom: 21%;
+  right: 0px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.02), -13px 16px 6px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.02), -13px 16px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 9px 0px rgba(0, 0, 0, 0.02), -13px 16px 6px rgba(0, 0, 0, 0.4);
+}
+#startGame .icon-head {
+  width: 739px;
+  background: url("http://img.wanfantian.com/static/img/ad/battle/start_title1.png") center 64px no-repeat;
+  position: absolute;
+  top: 4%;
+}
+#startGame .icon-food {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/food1-comm.png") center 64px no-repeat;
+  width: 739px;
+  height: 255px;
+  position: absolute;
+  top: 412px;
+  z-index: -1;
+}
+#startGame .prise-head {
+  position: absolute;
+  text-align: center;
+  width: 750px;
+  top: 8%;
+}
+#startGame .prise-head .good-luck {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/prise_good_luck.png") center no-repeat;
+  width: 497px;
+  height: 56px;
+  margin-left: 16%;
+}
+#startGame .prise-head .new-year,
+#startGame .prise-head .hurry-up {
+  color: #ffffff;
+}
+#startGame .prise-head .new-year {
+  font-size: 52px;
+  font-weight: 600;
+}
+#startGame .prise-head .hurry-up {
+  margin: 8px auto;
+  font-size: 32px;
+}
+#startGame .lottery {
+  margin-top: 12px;
+  width: 615px;
+  height: 100%;
+  font-size: 0;
+}
+#startGame .middle-border {
+  border: 1px solid #3c3d50;
+}
+#startGame .m-middle {
+  border-left: 1px solid #3c3d50;
+  border-right: 1px solid #3c3d50;
+}
+#startGame .lr-border {
+  border-top: 1px solid #3c3d50;
+  border-bottom: 1px solid #3c3d50;
+}
+#startGame .prise-monkey,
+#startGame .prise-chicken {
+  width: 120px;
+  height: 91px;
+}
+#startGame .prise-monkey {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/food1_bk.png") center no-repeat;
+}
+#startGame .prise-chicken {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/food2_bk.png") center no-repeat;
+}
+#startGame .get-active {
+  border: 8px solid #fdcc54;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+}
+#startGame .prize {
+  width: 33.3%;
+  height: 33.3%;
+  float: left;
+}
+#startGame .catch-checken {
+  color: #FFFFFF;
+  font-size: 25px;
+  text-align: center;
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  text-decoration: underline;
+}
+#startGame .broadcast,
+#startGame .broad-cast {
+  bottom: -13%;
+  /*3%*/
+}
+#startGame .broadcast .icon-speak,
+#startGame .broad-cast .icon-speak {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/speak.png") center no-repeat;
+  width: 107px;
+  height: 107px;
+  position: absolute;
+  top: -9px;
+  left: -32px;
+}
+#startGame .broadcast .speak-content,
+#startGame .broad-cast .speak-content {
+  height: 90px;
+  line-height: 90px;
+  color: #ffffff;
+  font-size: 32px;
+  padding-left: 87px;
+  width: 630px;
+  overflow: hidden;
+}
+#startGame .broadcast .prise-user,
+#startGame .broad-cast .prise-user {
+  color: #fdcc54;
+}
+#startGame .broadcast .prise-item,
+#startGame .broad-cast .prise-item {
+  color: #e65060;
+}
+.phone-get-prise,
+.start-game,
+.try-agin,
+.result-try-again,
+.result-to-use {
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  z-index: 2;
+  -webkit-box-shadow: 0px 9px 0px #fcbc1e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 9px 0px #fcbc1e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 9px 0px #fcbc1e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  color: #563300;
+  background-color: #fdcc54;
+}
+.try-agin {
+  position: fixed;
+  z-index: 10;
+}
+.phone-get-prise,
+.start-game,
+.try-agin {
+  height: 95px;
+  line-height: 95px;
+  width: 410px;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.try-agin {
+  top: 46%;
+}
+.start-game {
+  left: 50%;
+  top: 42%;
+  text-align: center;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.phone-get-prise {
+  color: #d13f49;
+  top: 75%;
+}
+#resultPanel .head-box,
+.share-box .head-box {
+  height: 290px;
+}
+#resultPanel .sorry .my-prise,
+.share-box .sorry .my-prise {
+  top: -265px;
+}
+#resultPanel .lose-cry,
+.share-box .lose-cry {
+  /*display: none;*/
+  background: url(http://img.wanfantian.com/static/img/ad/battle/lose_ufo.png) center 100% no-repeat;
+  width: 750px;
+  height: 554px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10000;
+}
+#resultPanel .sorry-icon,
+.share-box .sorry-icon,
+#resultPanel .good-icon,
+.share-box .good-icon {
+  width: 440px;
+  height: 122px;
+  position: absolute;
+  right: 20%;
+}
+#resultPanel .sorry-icon,
+.share-box .sorry-icon {
+  top: 6.5%;
+  background: url(http://img.wanfantian.com/static/img/ad/battle/sorrry.png) center no-repeat;
+}
+#resultPanel .good-icon,
+.share-box .good-icon {
+  top: 7%;
+  background: url(http://img.wanfantian.com/static/img/ad/battle/good.png) center no-repeat;
+}
+#resultPanel .share-img,
+.share-box .share-img {
+  background: url(http://img.wanfantian.com/static/img/ad/battle/share_arrow.png) center no-repeat;
+  width: 114px;
+  height: 98px;
+  position: absolute;
+  top: 3%;
+  right: 4%;
+}
+#resultPanel .share-info,
+.share-box .share-info {
+  font-size: 52px;
+  color: #FFFFFF;
+  position: absolute;
+  top: 11%;
+  left: 11%;
+  text-align: center;
+}
+#resultPanel .good-chance,
+.share-box .good-chance {
+  margin-top: 50px;
+  margin-bottom: 62px;
+  line-height: 60px;
+  letter-spacing: 2px;
+}
+#resultPanel .result-info,
+.share-box .result-info,
+#resultPanel .good-info,
+.share-box .good-info {
+  top: 18.5%;
+  width: 750px;
+  text-align: center;
+}
+#resultPanel .strike,
+.share-box .strike {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 600;
+  text-align: center;
+}
+.icon-moon-right,
+.icon-moon-left,
+.icon-ship-left {
+  width: 152px;
+  height: 151px;
+  top: -80px;
+  zoom: 0.8;
+}
+.icon-moon-right {
+  left: -32px;
+  background: url(http://img.wanfantian.com/static/img/ad/battle/satellite.png) center no-repeat;
+}
+.icon-moon-left {
+  right: -32px;
+  background: url(http://img.wanfantian.com/static/img/ad/battle/satellite.png) center no-repeat;
+}
+.icon-ship-left {
+  right: -32px;
+  height: 196px;
+  background: url(http://img.wanfantian.com/static/img/ad/battle/right_ufo.png) center no-repeat;
+}
+#rule {
+  width: 695px;
+  height: 615px;
+  margin: 0 auto;
+  position: relative;
+  bottom: 80%;
+  z-index: 111120;
+}
+#rule .rule-head {
+  top: 10px;
+}
+#rule .rule-head .rule-title {
+  font-size: 60px;
+  font-weight: 600;
+  left: 20%;
+  top: -55px;
+  text-align: center;
+  background-color: #fa6e51;
+  width: 375px;
+  height: 95px;
+  line-height: 95px;
+}
+#rule .rule-item {
+  display: block;
+  padding: 106px 10px 25px 45px;
+  font-size: 28px;
+  line-height: 45px;
+  text-align: justify;
+}
+#rule .icon-tir-up,
+#rule .icon-tir-down {
+  width: 0;
+  height: 0;
+  border-top: 31px solid transparent;
+  border-bottom: 26px solid transparent;
+  border-left: 56px solid #e34d2d;
+  z-index: -1;
+}
+#rule .icon-tir-up {
+  top: -85px;
+  left: 131px;
+}
+#rule .icon-tir-down {
+  top: 10px;
+  right: 150px;
+}
+#rule .icon-moon-left,
+#rule .icon-tir-up {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH();
+}
+/*抽奖奖品*/
+.lose-prise .lose-icon {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/bad_lucky.png") center no-repeat;
+  width: 571px;
+  height: 715px;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  z-index: 111111;
+}
+.lose-prise .try-agin {
+  top: 76%;
+  padding: 0;
+  width: 460px;
+  position: fixed;
+  z-index: 100;
+}
+/*积分弹窗*/
+.score-prise {
+  width: 648px;
+  height: 610px;
+  z-index: 6;
+}
+.score-prise .icon-score-not,
+.score-prise .icon-score-yes {
+  width: 369px;
+  left: 21%;
+}
+.score-prise .icon-score-not {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/score_not_enght.png") center no-repeat;
+  height: 73px;
+  top: 10%;
+}
+.score-prise .icon-score-yes {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/get_prise.png") center no-repeat;
+  height: 110px;
+  top: -7%;
+}
+.score-prise .score-btn {
+  position: absolute;
+  top: 67%;
+}
+.score-prise .score-info {
+  font-size: 35px;
+  top: 34%;
+  left: 19%;
+  text-align: center;
+  height: 55px;
+  line-height: 55px;
+  letter-spacing: 3px;
+}
+.score-prise .score-num {
+  color: #fdcc54;
+}
+.score-prise .score-game {
+  position: relative;
+  top: 61%;
+  width: 600px;
+}
+.score-prise .game-change {
+  font-size: 36px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  position: absolute;
+  top: 135px;
+}
+.score-prise .succ-prise {
+  text-align: center;
+  top: 10%;
+}
+.score-prise .succ-prise .cash-prise {
+  width: 515px;
+  height: 235px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-color: #3c3d51;
+  margin: 0 auto;
+  position: relative;
+  top: 115px;
+}
+.score-prise .succ-prise .prise-info,
+.score-prise .succ-prise .cash-prise {
+  color: #FFFFFF;
+}
+.score-prise .succ-prise .prise-info {
+  font-size: 34px;
+  position: relative;
+  top: 80px;
+}
+.score-prise .succ-prise .cash-name {
+  font-size: 52px;
+  font-weight: bolder;
+  top: 24px;
+  color: #f5ce57;
+}
+.score-prise .succ-prise .cash-desc {
+  font-size: 32px;
+  top: 45px;
+  letter-spacing: 2px;
+}
+.score-prise .succ-prise .result-cash {
+  top: 35px;
+}
+.score-prise .succ-prise .result-get {
+  top: 62px;
+}
+.score-prise .succ-prise .circle-left,
+.score-prise .succ-prise .circle-right {
+  background-color: #28293b;
+  width: 76px;
+  height: 76px;
+  border-radius: 38px;
+  -webkit-border-radius: 38px;
+  position: absolute;
+  top: 88px;
+}
+.score-prise .succ-prise .circle-left {
+  left: 91%;
+}
+.score-prise .succ-prise .circle-right {
+  left: -6%;
+}
+.result-box {
+  height: 365px;
+  width: 648px;
+  top: 18.5%;
+  z-index: 6;
+  position: absolute;
+}
+.get-color {
+  color: #d13f49;
+  top: 75%;
+}
+/*新用户输入手机*/
+.phone {
+  width: 600px;
+  height: 620px;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  /*11%*/
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  z-index: 11112;
+}
+.phone .phone-title {
+  display: block;
+  color: #ffffff;
+  font-size: 38px;
+  text-align: center;
+  position: relative;
+  top: 40px;
+  letter-spacing: 4px;
+}
+.phone .cash-name {
+  color: #fdcc54;
+  font-size: 45px;
+  font-weight: 700;
+}
+.phone .phone-text {
+  background-color: #ffffff;
+  height: 80px;
+  line-height: 80px;
+  padding-left: 15px;
+  width: 460px;
+  font-size: 38px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  margin: 0px auto;
+}
+.phone .bottom-phone {
+  margin-top: 35px;
+}
+.phone .send-ph {
+  position: absolute;
+  top: 8px;
+  right: 55px;
+  height: 66px;
+  line-height: 66px;
+  color: #ffffff;
+  font-size: 28px;
+  padding: 0 20px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  background-color: #b2b2b2;
+}
+.phone .send-active {
+  top: 3px;
+  background-color: #fa6e51;
+  -webkit-box-shadow: 0px 7px 0px #de192e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 7px 0px #de192e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 7px 0px #de192e, 0px 9px 25px rgba(0, 0, 0, 0.7);
+}
+.phone .input-box {
+  position: relative;
+  top: 88px;
+}
+/*领取奖品页面*/
+.result-bg {
+  background: url("http://img.wanfantian.com/static/img/ad/battle/result_bg.jpg") center no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+}
+.result-bg .gradient-head {
+  width: 750px;
+  /*没有对IE进行适配*/
+  background: -ms-linear-gradient(top, rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.9), rgba(33, 33, 33, 0.2)) !important;
+  background: -moz-linear-gradient(top, rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.7), rgba(33, 33, 33, 0.9), rgba(33, 33, 33, 0.2)) !important;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(33, 33, 33, 0.7)), to(rgba(33, 33, 33, 0.7))) !important;
+  background: -webkit-linear-gradient(top, #000000, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.2)) !important;
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.2)) !important;
+}
+.result-bg .icon-myprise {
+  background: url(http://img.wanfantian.com/static/img/ad/battle/my_prise_title.png) center no-repeat;
+  width: 395px;
+  height: 110px;
+  position: absolute;
+  z-index: 11111;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.result-btn {
+  position: absolute;
+  top: 57%;
+  width: 100%;
+  height: 440px;
+}
+.result-btn .cash-btn,
+.result-btn .result-try-again,
+.result-btn .result-to-use {
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.result-btn .start-game,
+.result-btn .result-try-again,
+.result-btn .result-to-use {
+  width: 410px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+.result-btn .result-try-again {
+  top: 30%;
+}
+.result-btn .result-to-use {
+  top: 60%;
+}
+.result-top-bg,
+.my-top-bg {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 550px !important;
+  width: 100%;
+  z-index: 1;
+}
+.result-top-bg {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.my-top-bg {
+  position: absolute;
+}
+.my-prise,
+.total-score {
+  display: inline-block;
+  height: 66px;
+  line-height: 66px;
+  font-size: 24px;
+  color: #FFFFFF;
+  background-color: #fa6e51;
+  position: relative;
+  z-index: 2;
+  right: 0;
+  top: 20px;
+  float: right;
+  padding-right: 15px;
+  -webkit-border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.my-prise {
+  padding-left: 70px;
+}
+.total-score {
+  padding-left: 20px;
+}
+.my-prise:before {
+  display: inline-block;
+  content: '';
+  background: url("http://img.wanfantian.com/static/img/ad/battle/prise-img.png") center no-repeat;
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  top: 8px;
+  left: 11px;
+}
+.cash-box {
+  padding-top: 33%;
+}
+.cash-notice {
+  color: #FFFFFF;
+  padding: 0 50px;
+  font-size: 26px;
+  position: relative;
+  margin-bottom: 40px;
+  z-index: 2;
+}
+.cash-item {
+  z-index: 1;
+  margin: 40px auto;
+  position: relative;
+}
+.cash-item .cash-item-list {
+  background-color: #28293b;
+  border: 6px solid #3c3d50;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  width: 470px;
+  margin-left: 50px;
+  color: #FFFFFF;
+}
+.cash-item .my-get {
+  width: 140px;
+  margin-right: 50px;
+  margin-top: 9px;
+  webkit-box-shadow: 0px 9px 0px #f8401a, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 9px 0px #f8401a, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 9px 0px #f8401a, 0px 9px 25px rgba(0, 0, 0, 0.7);
+  background-color: #fa6e51;
+}
+.cash-item .list-info {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  color: #fdcc54;
+  font-size: 42px;
+  font-weight: 600;
+}
+.my-wft {
+  left: 50%;
+  width: 396px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  margin-bottom: 95px;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.top-75 {
+  top: 75%;
+}
+.user_pv {
+  margin-top: -20px;
+  font-size: 28px;
+  color: #FFFFFF;
+  text-align: center;
+}
+.user_pv .pv-num {
+  font-size: 32px;
+  font-weight: 600;
+  color: #e65060;
+}
+#resultPanel {
+  z-index: 2;
+}
+.start-game {
+  z-index: 1;
+}
+.matte {
+  z-index: 5;
+}
+.js-share-to {
+  z-index: 100 !important;
+}
+.textc {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.score-prise .score-game {
+  top: 365px;
+}
+.prise-has-got {
+  color: #fff;
+  width: 140px;
+  margin-right: 50px;
+  margin-top: 9px;
+  font-size: 38px;
+  font-weight: 600;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+}
+.lottery-card .cash-btn {
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.lottery-card .prise-start {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  top: 12%;
+}
+div#music {
+  position: fixed;
+  z-index: 5;
+  top: 9vh;
+  right: 4vw;
+  width: 13vw;
+  height: 13vw;
+  border: 4px solid #ef1639;
+  border-radius: 50%;
+  background: #fff;
+}
+div#music > img.music_pointer {
+  position: absolute;
+  top: 24%;
+  right: 2.5%;
+  width: 28.421%;
+}
+div#music > img.music_disc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 79%;
+  margin: auto;
+}
+div#music > img.music_play {
+  -webkit-animation: music_disc 4s linear infinite;
+  -o-animation: music_disc 4s linear infinite;
+  animation: music_disc 4s linear infinite;
+}
+@-webkit-keyframes music_disc {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes music_disc {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*iphone4*/

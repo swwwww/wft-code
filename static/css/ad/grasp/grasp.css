@@ -1,0 +1,1052 @@
+body {
+  background-color: #503c8c;
+}
+.start-game .prise-foot,
+.get-prise .prise-foot,
+.has-prise .prise-foot {
+  width: 750px;
+  height: auto;
+  position: fixed;
+  bottom: -8px;
+}
+.start-game .rule-btn,
+.get-prise .rule-btn,
+.has-prise .rule-btn,
+.start-game .prise-btn,
+.get-prise .prise-btn,
+.has-prise .prise-btn,
+.start-game .go-index,
+.get-prise .go-index,
+.has-prise .go-index,
+.start-game .continue,
+.get-prise .continue,
+.has-prise .continue {
+  width: 247px;
+  height: 185px;
+  background-size: 247px 134px;
+}
+.start-game .rule-btn,
+.get-prise .rule-btn,
+.has-prise .rule-btn {
+  margin-left: 45px;
+  background: url(/static/img/ad/grasp/1_act_rule.png) no-repeat center;
+}
+.start-game .prise-btn,
+.get-prise .prise-btn,
+.has-prise .prise-btn {
+  margin-right: 45px;
+  background: url(/static/img/ad/grasp/1_my_prise.png) no-repeat center;
+}
+.start-game .rule-handle,
+.get-prise .rule-handle,
+.has-prise .rule-handle {
+  margin-left: 45px;
+  width: 81px;
+  height: 163px;
+  background: url(/static/img/ad/grasp/1_handle.png) no-repeat center;
+}
+.main-bg {
+  width: 100%;
+  height: 100%;
+}
+.sale-out {
+  width: 390px;
+  height: 123px;
+  bottom: 58px;
+  left: 23%;
+}
+.content {
+  background-color: #3e2d74;
+  width: 750px;
+}
+.content .home {
+  background: url('/static/img/ad/grasp/1_index_bg.png') no-repeat center;
+  background-size: 100% 100%;
+  max-width: 750px;
+  width: 100%;
+  height: 1180px;
+}
+.content .head {
+  max-width: 750px;
+  margin: 300px auto;
+}
+.content .head .head-img {
+  width: 720px;
+}
+.content .head .head-notice {
+  width: 410px;
+  margin-top: -25px;
+}
+.content .start {
+  margin-top: 960px;
+  width: 750px;
+}
+.content .start .start-img {
+  width: 420px;
+}
+.content .start .game-change {
+  color: #b06735;
+  background-color: #facf23;
+  width: 106px;
+  height: 106px;
+  font-size: 77px;
+  font-weight: bolder;
+  border-radius: 53px;
+  margin-top: -190px;
+  margin-left: 195px;
+}
+.content .start .tri-css {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 35px solid #facf23;
+  transform: rotate(220deg);
+  -ms-transform: rotate(220deg);
+  -moz-transform: rotate(220deg);
+  -webkit-transform: rotate(220deg);
+  -o-transform: rotate(220deg);
+  top: 20px;
+  left: 569px;
+  overflow: hidden;
+}
+.content .start .game-pv {
+  font-size: 26px;
+  color: #ffffff;
+}
+.content .foot {
+  padding: 20px;
+  max-width: 750px;
+  height: 180px;
+}
+.content .foot .rule-handle {
+  margin: 0 50px 85px 50px;
+}
+.start-game {
+  width: 750px;
+  height: 100%;
+  background: url(/static/img/ad/grasp/1-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+.start-game .index-title {
+  padding-top: 6%;
+  width: 750px;
+  height: 118px;
+  background: url(/static/img/ad/grasp/1-titile.png) no-repeat center;
+}
+.start-game .index-body,
+.start-game .body-title,
+.start-game .title-name,
+.start-game .start-btn {
+  width: 750px;
+  position: absolute;
+}
+.start-game .index-body {
+  height: 1052px;
+  margin-top: -138px;
+  background: url(/static/img/ad/grasp/ufo3.png) no-repeat 148% 46%;
+  zoom: 1;
+}
+.start-game .body-title {
+  height: 206px;
+  background-size: 725px 206px;
+  margin-top: 27%;
+  background: url(/static/img/ad/grasp/1-game-title1.png) no-repeat center;
+}
+.start-game .title-name {
+  height: 105px;
+  margin-top: 48%;
+  background-size: 430px 105px;
+  background: url(/static/img/ad/grasp/1_midd.png) no-repeat center;
+}
+.start-game .start-btn {
+  height: 126px;
+  top: 77%;
+  background-size: 421px 126px;
+  background: url(/static/img/ad/grasp/1_start_game.png) no-repeat center;
+  zoom: 0.9;
+  left: 35px;
+}
+.start-game .game-change {
+  color: #b06735;
+  text-align: center;
+  background-color: #facf23;
+  width: 106px;
+  height: 106px;
+  font-size: 77px;
+  font-weight: bolder;
+  border-radius: 53px;
+  top: -72px;
+  left: 560px;
+}
+.start-game .tri-css {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 35px solid #facf23;
+  transform: rotate(220deg);
+  -ms-transform: rotate(220deg);
+  -moz-transform: rotate(220deg);
+  -webkit-transform: rotate(220deg);
+  -o-transform: rotate(220deg);
+  top: 20px;
+  left: 569px;
+}
+.start-game .game-pv {
+  width: 100%;
+  font-size: 26px;
+  color: #ffffff;
+  position: absolute;
+  margin-top: 123%;
+}
+/*游戏页*/
+.game-body {
+  width: 750px;
+  height: 100%;
+  background: url(/static/img/ad/grasp/2-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+.game-body .head-title {
+  padding-top: 8%;
+}
+.game-body .show-time,
+.game-body .show-score {
+  width: 320px;
+  height: 75px;
+  color: #ffffff;
+  font-size: 30px;
+}
+.game-body .time-num,
+.game-body .score-num {
+  width: 80px;
+  position: absolute;
+  margin: 22px 196px;
+  text-align: center;
+}
+.game-body .show-time {
+  background: url(/static/img/ad/grasp/2-times.png) no-repeat center;
+}
+.game-body .show-score {
+  background: url(/static/img/ad/grasp/2-scores.png) no-repeat center;
+}
+.game-body .bottom-substrate {
+  display: inline-block;
+  text-align: center;
+  width: 750px;
+  height: 218px;
+  background-size: 693px 218px;
+  background: url(/static/img/ad/grasp/2-substrate.png) no-repeat center;
+  position: fixed;
+  bottom: 0;
+}
+.game-body .bottom-substrate .btn-save {
+  margin: 20px auto;
+  width: 378px;
+  height: 177px;
+  background-size: 378px 177px;
+  background: url(/static/img/ad/grasp/2-save-earth.png) no-repeat center;
+}
+.head-title {
+  padding: 6%;
+}
+.head-title .title-font {
+  width: 100%;
+  height: 120px;
+  background-size: 401px 120px;
+  zoom: 0.9;
+}
+.head-title .user-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 38px;
+  vertical-align: bottom;
+  margin-right: 15px;
+}
+.head-title .wx-name {
+  width: 100%;
+  margin-top: 10px;
+}
+.head-title .user-info {
+  color: #ffffff;
+  vertical-align: top;
+}
+.head-title .user-name {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+.head-title .my-score {
+  font-size: 22px;
+  background-color: #FA7319;
+  padding: 2px 20px;
+  border-radius: 10px;
+}
+.get-prise {
+  width: 750px;
+  height: 100%;
+  background: url(/static/img/ad/grasp/3-bg.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+.get-prise .title-font {
+  background: url(/static/img/ad/grasp/3-title.png) no-repeat center;
+}
+.get-prise .prise-item {
+  width: 750px;
+  height: 849px;
+  position: absolute;
+  margin-top: -85px;
+  background-size: 401px 120px;
+  background: url(/static/img/ad/grasp/3-shelf1.png) no-repeat center;
+}
+.get-prise .row-item {
+  width: 590px;
+  margin: 0 auto;
+}
+.get-prise .row-item a {
+  display: block;
+  width: 296px;
+  height: 230px;
+  background-size: 161px 149px;
+}
+.get-prise .row-item .prise-box {
+  background: url(/static/img/ad/grasp/3-prise-box.png) no-repeat center 85px;
+}
+.get-prise .row-item .shake-box {
+  position: relative;
+  top: 38px;
+  background: url(/static/img/ad/grasp/3-shake-box.gif) no-repeat 64px 28px;
+}
+.get-prise .left-incon,
+.get-prise .right-incon {
+  width: 50%;
+}
+.get-prise .exchange-value {
+  color: #ffffff;
+  font-size: 22px;
+  width: 294px;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 10px;
+}
+.get-prise .mt20 {
+  margin-top: 20px;
+}
+.get-prise .purse-three {
+  margin-bottom: 20px;
+}
+.get-prise .prise-foot {
+  bottom: 7px;
+}
+.has-prise .title-font {
+  background-size: 100% 100%;
+  background: url(/static/img/ad/grasp/4-title.png) no-repeat center;
+  height: 80px;
+  zoom: 1.5;
+}
+.has-prise .head-title {
+  height: 215px;
+  background: url(/static/img/ad/grasp/4-head.png) no-repeat center;
+  background-size: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+.has-prise .head-title .wx-name {
+  margin-top: 25px;
+}
+.has-prise .prise-body {
+  background: url(/static/img/ad/grasp/4-bg1.png) repeat-y;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  padding-bottom: 18px;
+}
+.has-prise .prise-bg {
+  width: 660px;
+  background-color: #36255e;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.has-prise .no-tip {
+  width: 504px;
+  height: 371px;
+  background: url(/static/img/ad/grasp/4-ufo.png) no-repeat center;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  margin: 0 auto;
+  padding-top: 110px;
+}
+.has-prise .tip {
+  color: #ffffff;
+  padding-bottom: 70px;
+}
+.has-prise .tip-info {
+  font-size: 55px;
+  font-weight: bold;
+}
+.has-prise .tip-bottom {
+  font-size: 42px;
+}
+.has-prise .prise-box {
+  padding-top: 30px;
+}
+.has-prise .prise-box .prise-item {
+  width: 610px;
+  height: 430px;
+  background-color: #6b50bd;
+  color: #ffffff;
+  margin: 0 auto;
+  padding-bottom: 25px;
+  border-radius: 25px;
+}
+.has-prise .prise-box .prise-logo {
+  width: 142px;
+  height: 182px;
+  background: url(/static/img/ad/grasp/4-logo.png) repeat-y;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  margin-left: 40px;
+  margin-top: 15px;
+}
+.has-prise .prise-box .pen-logo {
+  width: 189px;
+  height: 135px;
+  background: url(/static/img/ad/grasp/4-pen.png) repeat-y;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  margin-left: 40px;
+  margin-top: 15px;
+}
+.has-prise .prise-box .pen-prise {
+  width: 320px !important;
+  margin-left: 35px !important;
+}
+.has-prise .prise-box .pen-item {
+  height: 210px !important;
+}
+.has-prise .prise-box .pen-title {
+  margin-top: 80px;
+  font-weight: lighter !important;
+  margin-bottom: 10px !important;
+}
+.has-prise .prise-box .pen-msg {
+  font-size: 38px !important;
+  font-weight: bold !important;
+}
+.has-prise .prise-box .prise-msg {
+  margin-left: 20px;
+  width: 380px;
+  height: 182px;
+  vertical-align: text-bottom;
+}
+.has-prise .prise-box .prise-value {
+  height: 75px;
+  line-height: 75px;
+  font-size: 32px;
+}
+.has-prise .prise-box .prise-title {
+  font-size: 34px;
+  font-weight: bold;
+}
+.has-prise .prise-box .prise-instr {
+  height: 38px;
+  line-height: 38px;
+  font-size: 22px;
+}
+.has-prise .prise-box .msg-item {
+  margin: 20px 45px;
+  line-height: 45px;
+  text-align: justify;
+}
+.has-prise .prise-box .info-msg {
+  color: #ffffff;
+  font-size: 26px;
+}
+.has-prise .input-code {
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 45px;
+}
+.has-prise .pb45 {
+  padding-bottom: 45px;
+}
+.has-prise .backspace {
+  width: 100%;
+  height: 35px;
+}
+.has-prise .input-in {
+  font-size: 28px;
+  color: #ffffff;
+}
+.has-prise .submit {
+  font-size: 38px !important;
+  margin-left: 20px !important;
+}
+.has-prise .prise-foot {
+  height: 185px;
+  position: static;
+}
+.input-item {
+  width: 100%;
+  margin-top: 35px;
+  text-align: center;
+}
+.item-msg,
+.input-in {
+  height: 65px;
+  line-height: 65px;
+  padding: 0 20px;
+  background-color: #5e46a6;
+  border-radius: 25px;
+}
+.item-msg {
+  padding: 0 10px 0 20px;
+  width: 545px;
+}
+.code-in {
+  width: 320px;
+}
+.msg-code {
+  font-size: 30px;
+  font-weight: bold;
+}
+.code-no {
+  font-size: 30px;
+  z-index: 10;
+}
+.copy-btn,
+.submit {
+  color: #b06735;
+  background-color: #ffe600;
+  font-size: 34px;
+  font-weight: bold;
+  height: 65px;
+  line-height: 65px;
+  padding: 0 20px;
+  border-radius: 25px;
+  margin-left: -35px;
+}
+.copy-notice {
+  color: #ffffff;
+  font-size: 28px !important;
+  font-weight: bold;
+  height: 65px;
+  line-height: 65px;
+  text-decoration: underline;
+}
+/*弹窗部分*/
+.pop-rule {
+  width: 750px;
+}
+.start-rule {
+  background-color: #8E73DE;
+  color: #ffffff;
+  font-size: 32px;
+  padding: 66px 35px 20px 35px;
+  width: 556px;
+  position: fixed;
+  margin: 0 auto;
+  top: 120px;
+  left: 55px;
+  right: 75px;
+  z-index: 2;
+  border-radius: 80px;
+}
+.start-rule .rules-title {
+  width: 391px;
+  height: 100px;
+  background: url(/static/img/ad/grasp/1-rule-logo.png) no-repeat center;
+  margin: -140px 0 0 -60px;
+}
+.start-rule .btn-colse {
+  width: 391px;
+  height: 136px;
+  background: url(/static/img/ad/grasp/1-colse.png) no-repeat center;
+  margin: -116px 0 0 372px;
+}
+.start-rule .item-img {
+  height: 300px;
+}
+.start-rule .item-img .arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  transform: rotate(220deg);
+  -ms-transform: rotate(220deg);
+  -moz-transform: rotate(220deg);
+  -webkit-transform: rotate(220deg);
+  -o-transform: rotate(220deg);
+  margin-top: 96px;
+}
+.start-rule .green-child,
+.start-rule .ball {
+  width: 165px;
+  height: 260px;
+}
+.start-rule .add_score,
+.start-rule .cut_score {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  font-size: 38px;
+  padding: 10px 0;
+  width: 134px;
+  border-radius: 30px;
+  margin-top: 35px;
+}
+.start-rule .add_score {
+  margin-left: 175px;
+  background-color: #FA7319;
+}
+.start-rule .add_arrow {
+  margin-left: 175px;
+  border-bottom: 35px solid #FA7319;
+}
+.start-rule .cut_score {
+  background-color: #2A1F4F;
+  margin-left: 435px;
+}
+.start-rule .cut_arrow {
+  margin-left: 440px;
+  border-bottom: 35px solid #2A1F4F;
+}
+.start-rule .green-child {
+  background: url(/static/img/ad/grasp/1-child.png) no-repeat center;
+  margin-top: 20px;
+}
+.start-rule .ball {
+  background: url(/static/img/ad/grasp/2-ball.png) no-repeat center;
+  margin-left: 270px;
+  margin-top: 20px;
+}
+.start-rule .item-font {
+  text-align: justify;
+}
+.start-rule .bottom-msg {
+  margin: 20px 0;
+  background-color: #6B50BD;
+  padding: 20px 45px;
+  border-radius: 35px;
+  font-size: 28px;
+}
+.start-rule .pop-title {
+  font-size: 30px;
+  height: 45px;
+  line-height: 45px;
+  padding-bottom: 80px;
+}
+.start-rule .start-btn {
+  width: 320px;
+  height: 144px;
+  margin: 0 auto 20px auto;
+  padding-bottom: 25px;
+  background: url(/static/img/ad/grasp/2-start.png) no-repeat center;
+}
+.start-rule .title-score {
+  width: 100%;
+  display: inline-block;
+  font-size: 68px;
+  font-weight: bold;
+  text-align: center;
+}
+.start-rule .to-get-prise,
+.start-rule .try-again,
+.start-rule .focous-us {
+  width: 320px;
+  height: 144px;
+  margin: 35px auto;
+}
+.start-rule .to-get-prise {
+  background: url(/static/img/ad/grasp/2-imdd-start.png) no-repeat center;
+}
+.start-rule .try-again {
+  background: url(/static/img/ad/grasp/2-try-again.png) no-repeat center;
+}
+.start-rule .focous-us {
+  background: url(/static/img/ad/grasp/2-focus-us.png) no-repeat center;
+}
+.start-rule .q_code_img {
+  width: 274px;
+  height: 274px;
+  margin: 0 auto 60px auto;
+  zoom: 1.5;
+  padding: 10px;
+}
+.start-rule .code-title {
+  text-align: center;
+  font-size: 46px;
+  font-weight: bold;
+  border-radius: 15px;
+}
+.start-rule .q_color {
+  background-color: #6B50BD;
+  margin-bottom: 60px;
+}
+.share-to {
+  width: 613px;
+  height: 1132px;
+  position: fixed;
+  top: 8px;
+  left: 75px;
+  right: 75px;
+  margin: 0 auto;
+  background-size: 100% 100%;
+  background: url(/static/img/ad/grasp/share-to.png) no-repeat center;
+  z-index: 2;
+}
+.tips-msg {
+  top: 350px;
+  padding-bottom: 90px;
+}
+.tips-font {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 54px;
+  font-weight: bold;
+}
+/*p3 弹窗*/
+.socre-not {
+  height: 650px;
+}
+.not-enought,
+.try-again {
+  width: 408px;
+  height: 389px;
+  margin-left: 85px;
+}
+.not-enought {
+  background: url(/static/img/ad/grasp/3-not-enought.png) no-repeat center;
+  margin-top: -165px;
+}
+.try-again-logo {
+  width: 400px;
+  height: 441px;
+  background: url(/static/img/ad/grasp/3-chayidain.png) no-repeat center;
+  margin: 0 auto;
+}
+.close-ph,
+.socre-colse {
+  width: 117px;
+  height: 117px;
+}
+.close-ph {
+  background: url(/static/img/ad/grasp/1-colse.png) no-repeat center;
+  margin: -100px 0 0 502px;
+}
+.socre-colse {
+  background: url(/static/img/ad/grasp/1-colse.png) no-repeat center;
+  margin: -570px 0 0 502px;
+}
+.score-font {
+  margin-top: 48%;
+}
+.again-font {
+  margin-top: 3%;
+}
+.not-font {
+  text-align: center;
+  font-size: 54px;
+  font-weight: bolder;
+}
+.go-start-game {
+  width: 320px;
+  height: 144px;
+  margin: 40px auto;
+  background: url(/static/img/ad/grasp/3-btn-sure.png) no-repeat center;
+}
+.ph-notice {
+  text-align: center;
+  height: 90px;
+  line-height: 90px;
+  font-size: 52px;
+  font-weight: bolder;
+}
+.ph-input {
+  width: 500px;
+  height: 110px;
+  line-height: 110px;
+  background-color: #ffffff;
+  padding: 0 20px;
+  border-radius: 25px;
+  margin: 130px auto 40px auto;
+}
+.ph-submit {
+  width: 540px;
+  height: 140px;
+  margin: 40px auto;
+  background: url(/static/img/ad/grasp/ph-sure-btn.png) no-repeat center;
+}
+.good-luck {
+  background-color: #FA7319;
+}
+.good-luck .luck-close {
+  width: 117px;
+  height: 117px;
+  background: url(/static/img/ad/grasp/3-colse.png) no-repeat center;
+  margin: -126px 0 0 502px;
+}
+.good-luck .luck-child {
+  width: 346px;
+  height: 353px;
+  background: url(/static/img/ad/grasp/3-get-prise.png) no-repeat center;
+  margin: -190px 0 0 100px;
+}
+.good-luck .give-friend {
+  margin-top: 30%;
+  font-size: 38px;
+}
+.good-luck .luck-color {
+  background-color: #B06735;
+}
+.good-luck .tell-msg {
+  width: 100%;
+  font-size: 24px;
+}
+.time-limit {
+  font-size: 22px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt50 {
+  margin-top: 50px;
+}
+.img-pos {
+  height: 310px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.qcode-img {
+  width: 274px;
+  padding: 30px;
+  bottom: -15px;
+  left: 120px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.continue {
+  margin-right: 45px;
+  background: url(/static/img/ad/grasp/4-continue_to.png) no-repeat center;
+}
+.go-index {
+  margin-left: 45px;
+  background: url(/static/img/ad/grasp/3_return_index.png) no-repeat center;
+}
+/*相关的游戏元素*/
+.toprope {
+  position: absolute;
+  width: 750px;
+  top: 14%;
+  height: 41px;
+  background: url(/static/img/ad/grasp/2-rop.png) repeat-x center top;
+}
+.rope {
+  width: 25%;
+  padding-top: 66%;
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  background: url(/static/img/ad/grasp/2-arm.png) no-repeat;
+  background-size: 100%;
+}
+.game-content {
+  width: 23%;
+  padding-top: 37%;
+  position: absolute;
+  top: 16%;
+  left: 0;
+}
+.game-content .xybox,
+.game-content .ybbox {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.game-content .xybox i,
+.game-content .ybbox i {
+  display: block;
+  width: 77px;
+  height: 182px;
+  background: url("/static/img/ad/grasp/2-sweep.png") no-repeat;
+  background-size: 100%;
+  padding-top: 90%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.game-content .xybox span,
+.game-content .ybbox span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+}
+.game-content .xybox {
+  padding-top: 275%;
+}
+.game-content .xybox .xy {
+  padding-top: 180%;
+  /*116*/
+  background: url("/static/img/ad/grasp/2-ET.png") no-repeat;
+  background-size: 100%;
+}
+.game-content .ybbox {
+  padding-top: 203.5%;
+}
+.game-content .ybbox .yb {
+  padding-top: 100%;
+  background: url("/static/img/ad/grasp/2-ball.png") no-repeat;
+  background-size: 100%;
+}
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translateX(10px);
+  }
+}
+@-moz-keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+  0%,
+  100% {
+    -moz-transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -moz-transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    -moz-transform: translateX(10px);
+  }
+}
+a.shake {
+  animation-name: shake;
+  animation-duration: 1s;
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 1s;
+  -moz-name: shake;
+  -moz-animation-duration: 1s;
+}
+@media only screen and (min-width: 751px) and (min-height: 675px) {
+  .start-game {
+    height: 1225px;
+  }
+  .start-game .prise-foot,
+  .get-prise .prise-foot,
+  .has-prise .prise-foot {
+    padding-top: 115%;
+    height: 185px;
+    position: static;
+  }
+  .has-prise .prise-foot {
+    padding-top: 0;
+  }
+}
+.green-top {
+  display: none !important;
+}
+.bak {
+  width: 320px;
+  height: 75px;
+  line-height: 75px;
+  background-color: #6b50bd;
+  color: #ffffff;
+}
+#js_focous,
+.img-pos,
+.good-luck {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.code-no {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -o-user-select: text !important;
+  user-select: text !important;
+}
+.get-in {
+  padding: 50px;
+  bottom: -31px;
+  left: 108px;
+}
+.tool-b {
+  padding-bottom: 120px;
+}
+.tool-contain {
+  top: 330px;
+}

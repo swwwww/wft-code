@@ -1,0 +1,34 @@
+{block name="css" append}
+    {css file="css/ui/service.css"}
+{/block}
+
+{capture append="widget_css"}
+    {if $type == "order"}
+    <style type="text/css">
+        #YSF-BTN-HOLDER{
+            width: 210px !important;
+        }
+    </style>
+    {/if}
+{/capture}
+
+<!--商品/订单信息-->
+{if $type == "order"}
+    <input type="hidden" id="service_info" value='{$res.service_info|json_encode}'>
+{else if $type == "good"}
+    <input type="hidden" id="service_info" value='{$res.service_info|json_encode}'>
+{/if}
+
+<!--客服id-->
+<input type="hidden" id="group_id_info" value='{$res.customer_service_group_id}'>
+
+<!--用户信息-->
+<input type="hidden" id="user_info" value='{$user_resource.user|json_encode}'>
+
+
+
+{capture append="widget_js"} <!--https://qiyukf.com/script/af6a4bc5d33bb8db674e589951a37411.js-->
+<!--https://qiyukf.com/script/20dace3b28e84989bbb7ae12da28a6e3.js--><!--me-->
+    <script src="https://qiyukf.com/script/af6a4bc5d33bb8db674e589951a37411.js?uid={$user_resource.user.uid}&name={$user_resource.user.username}&mobile={$user_resource.user.phone}" charset="utf-8"></script>
+    {js file="js/service/service_config.js"}
+{/capture}

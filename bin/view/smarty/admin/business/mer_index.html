@@ -1,0 +1,144 @@
+{extends file="widget/layout/layout_pc.html"}
+{block name="in_title"}{$title|default:"玩翻天商家后台---首页"}{/block}
+
+{block name="css" append}
+    {css file="css/admin/business/mer_index.css"}
+    {css file="css/admin/business/mer_other.css"}
+
+{/block}
+{block name="inner"}
+<section class="inner">
+    <div class="head">
+        <div class="head-login">
+            <a class="head-login-btn" id="js_login_btn" href="{$BASE_URL_MODULE}business/logout">{if $business_user_resource.user.name}退出{/if}</a>
+            <span class="head-login-user" id="js_organizer_name">{$business_user_resource.user.name}</span>
+        </div>
+
+        <div class="head-code">
+            <span class="head-code-title">玩翻天 商家版</span>
+            <a class="head-code-btn" id="code_btn" href="javascript:;">验证</a>
+            <input type="text" id="code" class="head-code-input" placeholder="输入用户的验证码" />
+        </div>
+
+        <div class="head-info info-left" id="last_info">
+            <div class="head-info-item item-left">
+                <span>昨日消费笔数：</span>
+                <mark class="num">{$res.count_data.y_sale_number}</mark>
+            </div>
+            <div class="head-info-item item-right">
+                <span>昨日消费金额：</span>
+                <mark class="money">￥{$res.count_data.y_sale_money}</mark>
+            </div>
+        </div>
+
+        <div class="head-info info-right" id="recent_info">
+            <div class="head-info-item item-left">
+                <span>近30日消费笔数：</span>
+                <mark class="num">{$res.count_data.t_sale_number}</mark>
+            </div>
+            <div class="head-info-item item-right">
+                <span>近30日消费金额：</span>
+                <mark class="money">￥{$res.count_data.t_sale_money}</mark>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="nav dib">
+            {include file="admin/business/elem_mer_nav.html"}
+        </div>
+        <section class="module" id="index_module">
+            <div class="index-nav">
+                <a class="nav-state selling active" href="/admin/business/index?on_sale=1">
+                    <span>在售商品（{$res.count_data.coupon_in_num}）</span>
+                </a>
+                <a class="nav-state unsold" href="/admin/business/index?on_sale=2">
+                    <span>未售商品（{$res.count_data.coupon_out_num}）</span>
+                </a>
+                <a class="nav-detail" href='/admin/business/manageOrder?time_start={date("Y-m-d")}&time_end={date("Y-m-d")}&sort_type=2&view_type=2'>今日消费明细</a>
+            </div>
+            <div class="index-cate">
+                <span class="cate-pic">商品图片</span>
+                <span class="cate-title">商品名称</span>
+                <span class="cate-state">销售情况</span>
+                <span class="cate-sold">已使用</span>
+                <span class="cate-push">推送位置</span>
+                <span class="cate-option">操作</span>
+            </div>
+            {if $res.coupon_list_on|@count > 0}
+            <div class="index-list">
+                {if $res.param.on_sale == 1}
+                {foreach $res.coupon_list_on as $val}
+                <div class="list-item">
+                    <div class="item-pic">
+                        <img src="{$val.coupon_img}" />
+                    </div>
+                    <div class="item-title">
+                        <p class="item-title-info">{$val.coupon_name}</p>
+                    </div>
+                    <div class="item-state">
+                        <p class="item-state-intro">售出{$val.coupon_sale_number}/总量{$val.coupon_total_number}</p>
+                        <span class="item-state-shape">
+                            <mark class="yellow-state" style="width: {$val.coupon_sale_number/$val.coupon_total_number*100}%"></mark>
+                        </span>
+                    </div>
+                    <span class="item-sold">{$val.use_number}</span>
+                    <span class="item-push">{$val.tag}</span>
+                    <div class="item-option">
+                        <a class="item-option-order" data-id="{$val.coupon_id}" href="/admin/business/manageOrder?coupon_name ={$val.coupon_name}">订单</a>
+                        <a class="item-option-preview" data-id="{$val.coupon_id}" href="/admin/business/goodsDetail?coupon_id={$val.coupon_id}">预览</a>
+                    </div>
+                </div>
+                {/foreach}
+                {/if}
+            </div>
+            {/if}
+            {if $res.coupon_list_out|@count > 0}
+            <div class="index-list">
+                {if $res.param.on_sale == 2}
+                {foreach $res.coupon_list_out as $val}
+                <div class="list-item">
+                    <div class="item-pic">
+                        <img src="{$val.coupon_img}" />
+                    </div>
+                    <div class="item-title">
+                        <p class="item-title-info">{$val.coupon_name}</p>
+                    </div>
+                    <div class="item-state">
+                        <p class="item-state-intro">售出{$val.coupon_sale_number}/总量{$val.coupon_total_number}</p>
+                        <span class="item-state-shape">
+                            {if $val.coupon_total_number == 0}
+                            <mark class="yellow-state" style="width: 0%"></mark>
+                            {else}
+                            <mark class="yellow-state" style="width: {$val.coupon_sale_number/$val.coupon_total_number * 100}%"></mark>
+                            {/if}
+                        </span>
+                    </div>
+                    <span class="item-sold">{$val.use_number}</span>
+                    <span class="item-push">{$val.tag}</span>
+                    <div class="item-option">
+                        <a class="item-option-order" data-id="{$val.coupon_id}" href="/admin/business/manageOrder?coupon_name={$val.coupon_name}">订单</a>
+                        <a class="item-option-preview" data-id="{$val.coupon_id}" href="/admin/business/goodsDetail?coupon_id={$val.coupon_id}">预览</a>
+                    </div>
+                </div>
+                {/foreach}
+                {/if}
+            </div>
+            {/if}
+        </section>
+    </div>
+    <div class="popup">
+    </div>
+    <div class="popup-matte" style="display: none"></div>
+
+    <div class="footer footer-index">
+        <ul class="pagination"></ul>
+    </div>
+    <input id="on_sale" type="hidden" value='{$res.param.on_sale}' />
+    <input id="page_info" type="hidden" value='{$res.page_info}' />
+</section>
+{/block}
+
+{block name="js" append}
+    {js file="js/admin/business/index.js"}
+{/block}

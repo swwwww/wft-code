@@ -1,0 +1,45 @@
+{
+    "sites": [{
+        "name": "wan.wanfantian.com",
+        "title": "玩翻天旧版",
+        "slug": "wan.wanfantian_com",
+        "url": "http://172.16.2.10",
+        "preview_url": "http://172.16.2.10:90",
+        "buildOption": {
+            "module": {
+                "title": "模块",
+                "type": "singleSelect",
+                "options": {
+                    "全部": "all"
+                }
+            }
+        },
+        "shell": {
+            "build": "/var/www/node/op/bin/command/wan.wanfantian.com/build.sh",
+            "deploy": "/var/www/node/op/bin/command/play.wanfantian.com/deploy.sh",
+            "version_list": "ls -l /html/code/online/wan.wanfantian.com/ | awk '{print $9}' | egrep '[0-9]+' | sort -nr | head -20",
+            "now_version": "ls -l /html/code/online/wan.wanfantian.com/ | awk '{print $9}' | egrep '[0-9]+' | sort -nr | head -1 | tr -d '\n' | tr -d '\r'"
+        }
+    }, {
+        "name": "play.wanfantian.com",
+        "title": "玩翻天新版",
+        "slug": "play.wanfantian_com",
+        "url": "http://play.wanfantian.com",
+        "preview_url": "http://playp.wanfantian.com",
+        "buildOption": {
+            "module": {
+                "title": "模块",
+                "type": "singleSelect",
+                "options": {
+                    "全部": "all"
+                }
+            }
+        },
+        "shell": {
+            "build": "/var/www/node/op/bin/command/play.wanfantian.com/build.sh",
+            "deploy": "/var/www/node/op/bin/command/play.wanfantian.com/deploy.sh",
+            "version_list": "ls -l /html/code/online/play.wanfantian.com/ | awk '{print $9}' | egrep '[0-9]+' | sort -nr | head -20",
+            "now_version": "ls -l /html/code/online/play.wanfantian.com/ | awk '{print $9}' | egrep '[0-9]+' | sort -nr | head -1 | tr -d '\n' | tr -d '\r'"
+        }
+    }]
+}

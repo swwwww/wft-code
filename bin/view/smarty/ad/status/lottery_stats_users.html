@@ -1,0 +1,119 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{/block}
+
+{block name="head_back"}
+
+{/block}
+{block name="head_forward"}
+
+{/block}
+{block name="inner"}
+<div class="container">
+    <div class="row" style="margin-top: 10px">
+        {include file="ad/status/ele_status_nav.html"}
+
+        <a class=" btn-success btn-sm" href="/stats/getLotteryUsersOld" role="button">旧用户数据统计 下载</a>
+        <a class=" btn-success btn-sm " href="/stats/getLotteryUsersnew" role="button">新用户数据统计 下载</a>
+    </div>
+
+    <div class="row">
+        <h3>用户数据统计 新用户</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>日期</td>
+                <td>新用户 uv</td>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $lottery_user_count.new_uv as $key => $val}
+            <tr>
+                <td>{$val.log_date}</td>
+                <td>{$val.num}</td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <h3>用户数据统计 老用户</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>日期</td>
+                <td>老用户 uv</td>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $lottery_user_count.old_uv as $key => $val}
+            <tr>
+                <td>{$val.log_date}</td>
+                <td>{$val.num}</td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <!-- 主界面具体展示内容 -->
+
+        <h3>列表统计</h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>用户ID</td>
+                <td>领奖绑定手机</td>
+                <td>领奖状态</td>
+                <td>用户名</td>
+                <td>用户手机号</td>
+                <td>小孩年龄</td>
+                <td>注册时间</td>
+                <td>奖券名称</td>
+                <td>类型</td>
+                <td>结束时间</td>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $lottery_user as $key => $row}
+            <tr>
+                <td>{$row.uid}</td>
+                <td>{$row.bind_phone}</td>
+                {if $row.record_status eq '1'}
+                <td>已领</td>
+                {elseif $row.record_status eq '0'}
+                <td>未领</td>
+                {/if}
+                <td>{$row.username}</td>
+                <td>{$row.phone}</td>
+                <td>{$row.child_old}</td>
+                <td>{$row.dateline}</td>
+                <td>{$row.cash_name}</td>
+                {if $row.type eq '1'}
+                <td>A类</td>
+                {elseif $row.type eq '2'}
+                <td>B类</td>
+                {elseif $row.type eq '4'}
+                <td>特等奖</td>
+                {/if}
+                <td>{$row.cash_end_time}</td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+
+{/block}
+
+{block name="js" append}
+{literal}
+
+{/literal}
+{/block}

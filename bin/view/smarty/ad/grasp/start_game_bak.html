@@ -1,0 +1,77 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"几古家活动-首页"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/grasp.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="start-game">
+    <i class="index-title db"></i>
+
+    <div class="index-body">
+        <i class="body-title dib"></i>
+        <i class="title-name dib"></i>
+        <a id="js_start" class="start-btn db pr" data-chance="{$lottery_vo.op_total}" data-login="{if $user_resource.user}yes{else}no{/if}" href="javascript:;">
+            <span class="game-change dib fr pa">{$lottery_vo.op_total}</span>
+            <i class="tri-css pa"></i>
+        </a>
+        <span class="game-pv dib tc">已有{$lottery_vo.pv}人登陆几古星球</span>
+    </div>
+
+    <div class="db prise-foot clearfix">
+        <a id="js_rule" class="rule-btn dib fl" href="javascript: ;"></a>
+        <i class="rule-handle dib"></i>
+        <a id="js_go_prise" class="prise-btn dib fr" data-first-game="{$lottery_vo.is_first_game}" href="javascript:;"></a>
+    </div>
+</div>
+
+<!--弹窗部分-->
+<i class="matte dib" style="display: none"></i>
+
+<!--首次点击我的奖品的弹窗-->
+<section id="js_frist_in" class="start-rule tips-msg" style="display: none">
+    <span class="tips-font db">地球人~</span>
+    <span class="tips-font db">先玩游戏才能赢奖品哦!</span>
+</section>
+
+<!--游戏规则部分-->
+<section id="js_rule_msg" class="start-rule" style="display: none"> <!-- style="display: none"-->
+    <i class="rules-title db pa"></i>
+    <i class="js_btn_close btn-colse db pa"></i>
+
+    <p class="rule-head dib tc">神秘的外星来客【几古】不小心掉入黑洞娃娃机，请帮忙解救他们回家吧~</p>
+    <div class="item-img dib">
+        <i class="green-child pa"></i>
+        <span class="add_score">+10分</span>
+        <i class="arrow pa add_arrow"></i>
+    </div>
+
+    <div class="item-img dib">
+        <i class="ball pa"></i>
+        <span class="cut_score">-5分</span>
+        <i class="arrow pa cut_arrow"></i>
+    </div>
+
+    <div class="rule-item">
+        <p class="item-font">1.每救出1个【几古】+10分，救出【陨石】-5分</p>
+        <p class="item-font">2.得分100分以上者可参与抽奖</p>
+        <p class="item-font">3.每人每天自动获得5次游戏机会，分享本页面给好友，每邀请1位新朋友点击链接，还可额外“再玩1次”（每天最多可获得20次游戏机会噢）</p>
+    </div>
+
+    <div class="bottom-msg">
+        <p class="foot-font tc">10000张价值360元【几古的家】开业免费体验券等你来抽~</p>
+    </div>
+</section>
+<!--引导分享-->
+<div class="share-to" style="display: none"></div>
+
+<input type="hidden" id="hide_lottery_vo" value='{$lottery_vo|json_encode}'/>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="js" append}
+{js file="js/ad/grasp/grasp.js"}
+{/block}
+

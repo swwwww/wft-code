@@ -1,0 +1,62 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"你想去的日期"}{/block}
+
+{block name="css" append}
+{css file="css/lib/calendar.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<!--日历-->
+<div id="calendar_box" style="display: block;"></div>
+
+<article class="append-html dn">
+    <section class="join-people">
+        <div class="join-head">大约有多少人参加这场活动?</div>
+        <div class="item clearfix">
+            <span class="item-kind dib fl">成人</span>
+            <div class="item-check dib fr">
+                <i class="sub-person dib disabled-btn"></i>
+                <span id="js_person_num" class="person-num" data-type="" data-min="">0</span>
+                <i class="add-person dib"></i>
+            </div>
+        </div>
+
+        <div class="item clearfix">
+            <span class="item-kind dib fl">儿童</span>
+            <div class="item-check dib fr">
+                <i class="sub-person dib disabled-btn"></i>
+                <span id="js_child_num" class="person-num"  data-min="">0</span>
+                <i class="add-person dib"></i>
+            </div>
+        </div>
+    </section>
+
+    <a id="js-submit-btn" class="db submit-btn disabled">提交</a>
+</article>
+
+<input type="hidden" id="calendar" name="calendar" readonly="readonly" data-value="" value=""/>
+<input type="hidden" id="play_id" value="{$res.play_id}"/>
+
+<!--提交成功提示-->
+<div class="matte" style="display: none"></div>
+<section id="js_succ_submit" class="succ-submit"  style="display: none">
+    <img class="succ-img" src="/static/img/site/mobile/act-succ-submit.png">
+    <div class="content">
+       <div class="content-main">
+           <h2 class="submit-title">提交成功!</h2>
+           <pre id="js_succ_msg" class="content-msg"></pre>
+           <!--<p class="content-msg">我们已经收到您想去的消息!</p>
+           <p class="content-msg">我们会记录想去的人数并增开新的场次有您想去</p>
+           <p class="content-msg">的场次后我们会立刻通知您。</p>-->
+       </div>
+        <a class="db submit" href="{$address_refer}">好的，知道了</a>
+    </div>
+</section>
+{block name="js" append}
+{js file="js/util/calendar.js"}
+{/block}
+{/block}
+
+{block name="js" append}
+    {js file="js/play/gather_date.js"}
+{/block}

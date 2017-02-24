@@ -1,0 +1,95 @@
+{extends file="widget/layout/base.html"}
+
+{block name="in_title"}{$title|default:""}{/block}
+
+{block name="meta_viewport"}
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+{/block}
+
+{block name="css" append}
+<link rel="stylesheet" href="{$BASE_URL_STATIC}css/ui/tab.css">
+{/block}
+
+{block name="body"}
+    {resource resource="User" var="user_resource" method="nowUser"}
+    <!-- 主页面容器 -->
+    <section class="com-slide-panel" id="mobh5">
+
+        <!-- 主页面标题 -->
+        {block name="header"}
+        <header id="header">
+            <div class="c-inav">
+                <section>
+                    {block name="head_back"}
+                    <button class="back">
+                        <a class="action left" href="javascript:;">返回</a>
+                    </button>
+                    {/block}
+                </section>
+                <section>
+                    <span class="title">
+                        {block name="head_title"}
+                            {$mobile_title|default:""}
+                        {/block}
+                    </span>
+                </section>
+                <section>
+                    {block name="head_forward"}
+                    <button class="menu js-slide-menu">
+                    </button>
+                    {/block}
+                </section>
+            </div>
+        </header>
+        {/block}
+
+        {block name="inner"}
+        <!-- 主界面具体展示内容 -->
+        <section class="inner">
+        </section>
+        {/block}
+
+        {block name="footer"}
+        <!-- 主界面尾部 -->
+        <section class="fullscreen">
+            <footer class="footer c-footer">
+                <section class="footer-t dfr">
+                    <p class="ft-user-info">
+                        {if true}
+                            <a href="http://">首页</a>
+                            <span class="split">|</span>
+                            <a href="/auth/login">登录</a>
+                            <span class="split">|</span>
+                            <a href="/auth/regist">注册</a>
+                        {else}
+                            <a href="http://.com">首页</a>
+                            <span class="split">|</span>
+                            <span class="f12">你好,</span>
+                            <a href="{$user_resource.user_vo.user_name|domainFix}">{$user_resource.user_vo.cn_name|default:$user_resource.user_vo.user_name}</a>
+                            <span class="split">|</span>
+                            <a href="/auth/logout">退出</a>
+                        {/if}
+                    </p>
+                    <p class="ft-gototop">
+                        <a class="ft-gototop-a" href="javascript: scroll(0, 0);">top<b></b> </a>
+                    </p>
+                </section>
+                <h3 class="copyright">© </h3>
+                <h4 class="f12 mt5">
+                    <a class="support-action" href="">触屏版</a>
+                    <span class="split">-</span>
+                    <a class="support-action" href="">电脑版</a>
+                </h4>
+                <h4 class="support"><a href="">技术支持</a></h4>
+        </section>
+        {/block}
+
+    </section>
+{/block}
+
+{block name="js" append}
+<script>
+$('.ui-tab-ul').on('click', '.ui-tab-item', M.util.tab_handlers.onTabItemHover);
+</script>
+{/block}
+

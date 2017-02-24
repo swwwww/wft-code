@@ -1,0 +1,212 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+/*nav*/
+body{
+  max-width: 750px;
+}
+.main{
+  margin-bottom: 45px;
+}
+.menu{
+  background-color: #fff;
+  height: 80px;
+  line-height: 80px;
+  display: block;
+  width: 750px;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  .menu-list-ul{
+    font-size: 26px;
+    color: #000;
+    padding-left: 0;
+  }
+  .menu-list-li{
+    .eq_divide(5); //平分五等分
+  }
+  .menu-list-cur{
+    .border(bottom; @width: 4px; @color: #fb8c00);
+  }
+}
+.item-order-list{
+  margin-top: 100px;
+}
+
+/*order part*/
+.order{
+  margin-top: 20px;
+  background-color: #FFFFFF;
+  .order-head{
+    height: 68px;
+    line-height: 68px;
+    .border(bottom);
+    .order-head-title{
+      font-size: 26px;
+      margin-left: 35px;
+    }
+    .order-head-status{
+      //float: right;
+      font-size: 24px;
+      //font-weight: 500;
+      color: #ff9442;
+      margin-right: 25px;
+    }
+    .status-item{
+      margin-left: 45px;
+    }
+    .order-head-stop, .order-head-notice{
+      font-size: 20px;
+      margin-left: 81px;
+    }
+    .order-head-stop{
+      color: #929292;
+    }
+    .order-head-notice{
+      color: #DB493C;
+    }
+
+  }
+
+  .order-msg{
+    .order-msg-img{
+      width: 160px;
+      height: 160px;
+      margin: 20px 26px 20px 32px;
+    }
+    .order-msg-info{
+      .border(bottom);
+      margin-locaright: 10px;
+    }
+    .order-msg-title{
+      display: block;
+      font-size: 32px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .order-msg-time, .order-msg-way,.order-msg-addr{
+      display: block;
+      font-size: 24px;
+      line-height: 31px;
+      color: #929292;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .order-msg-foot{
+      height: 68px;
+      line-height: 68px;
+      font-size: 26px;
+      margin: 0 28px 0 32px;
+      position: relative;
+    }
+    .order-msg-paid,.order-msg-num{
+      display: inline-block;
+      color: #929292;
+    }
+    .order-msg-paid{
+      margin-left: 55px;
+    }
+    .order-msg-qcode{
+      color: #fa6e51;
+      line-height: 44px;
+      padding: 0 21px;
+      .border(all; @color: #fa6e51);
+      position: absolute;
+      right: 0;
+      margin-top: 11.5px;
+      .border-radius(5px);
+    }
+    .order-msg-cancel, .order-msg-del{
+      font-size: 26px;
+      color: #888888;
+      margin-left: 35px;
+      .border(all; @color: #888);
+      line-height: 44px;
+      padding: 0 18px;
+      margin-top: 11.5px;
+      .border-radius(5px);
+    }
+
+    .order-msg-cancel{
+      position: absolute;
+      right: 138px;
+    }
+    .order-msg-del{
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.mark {
+  width: 750px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.mark-pos {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.cancel{
+  z-index: 2;
+  width: 540px;
+  height: 258px;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 26px;
+  -moz-border-radius: 26px;
+  border-radius: 26px;
+  .cancel-head{
+    font-size: 36px;
+    color: #000;
+    text-align: center;
+    padding-bottom: 64px;
+    margin-top: 69px;
+    border-bottom: 2px solid #CED2D6;
+  }
+  .cancel-foot{
+    font-size: 34px;
+    line-height: 75px;
+    width: 100%;
+  }
+  .cancel-foot-cancel{
+    border-right:  2px solid #CED2D6;;
+  }
+  .cancel-foot-cancel,.cancel-foot-sure{
+    color: #027BFF;
+    display: inline-block;
+    line-height: 68px;
+    width: 48.85%;
+    text-align: center;
+  }
+}
+#tips-dia{
+  width: 450px;
+  display: none;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  z-index: 99999;
+  text-align: center;
+  letter-spacing: 2px;
+  -webkit-transform: translate(-50%, -40%);
+  -moz-transform: translate(-50%, -40%);
+  -ms-transform: translate(-50%, -40%);
+  transform: translate(-50%, -40%);
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 10px 10px 10px 10px;
+  font-size: 26px;
+}

@@ -1,0 +1,308 @@
+{extends file="widget/layout/layout_screen.html"}
+{block name="title"}{$title|default:"玩翻天"}{/block}
+{block name="css" append}
+{css file="css/recommend/m/index.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main-s" style="display: block">
+    <div class="head-main">
+        <a class="head-area" href="{$BASE_URL_MODULE}recommend/selectCity">
+            <span class="area-info"></span>
+            <i class="arrow-down"></i>
+        </a>
+        <a class="head-info" href="javascript:;">搜索商品活动或游玩地</a>
+    </div>
+    <section class="wrapper">
+        <div class="swipe" id="slider">
+            <div class="container">
+                <ul class="swipe-wrap">
+                    {foreach $res.maps as $val}
+                    {if $val.type < 7}
+                    <li class="pic">
+                        <a href="{if $val.type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$val.id}{else if $val.type==2}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}{else if $val.type==4}{$BASE_URL_MODULE}discover/playDetail?id={$val.id}{else if $val.type==5}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}{else}{$val.url}{/if}">
+                            <img src="{$val.cover}" />
+                        </a>
+                    </li>
+                    {/if}
+                    {/foreach}
+                    {foreach $res.maps as $val}
+                    {if $val.type < 7}
+                    <li class="pic">
+                        <a href="{if $val.type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$val.id}{else if $val.type==2}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}{else if $val.type==4}{$BASE_URL_MODULE}discover/playDetail?id={$val.id}{else if $val.type==5}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}{else}{$val.url}{/if}">
+                            <img src="{$val.cover}" />
+                        </a>
+                    </li>
+                    {/if}
+                    {/foreach}
+                </ul>
+
+            </div>
+            <ol class="dots" id="dots">
+                {foreach $res.maps as $key => $val}
+                {if $val@index == 0}
+                <li class="item active"></li>
+                {else}
+                <li class="item"></li>
+                {/if}
+                {/foreach}
+                {foreach $res.maps as $key => $val}
+                <li class="item"></li>
+                {/foreach}
+            </ol>
+        </div>
+        <div class="index-category">
+            <div class="index-wrap">
+                {foreach $res.module_pic as $val}
+                <a class="item" href="{if $val.type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$val.id}
+                {else if $val.type==4}{$BASE_URL_MODULE}discover/playDetail?id={$val.id}
+                {else if $val.type==5}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}
+                {else if $val.type==10}{$BASE_URL_MODULE}user/scores
+                {else if $val.type==11}{$BASE_URL_MODULE}user/remainAccount
+                {else if $val.type==12}{$BASE_URL_MODULE}user/seckill
+                {else if $val.type==13}{$BASE_URL_MODULE}user/userCoupon
+                {else if $val.type==14}{$BASE_URL_MODULE}discover/playList{$val.url}
+                {else if $val.type==16}{$BASE_URL_MODULE}play/playActivity?id={$val.id}
+                {else if $val.type==17}{$BASE_URL_MODULE}discover/discoverDetail
+                {else if $val.type==18}{$BASE_URL_MODULE}member/specialArea
+                {else}{$BASE_URL_MODULE}member/specialArea{/if}">
+                    <img src="{$val.cover}" />
+                    <span>{$val.title}</span>
+                    {if $val.is_new == 1}
+                    <i class="new-tip">NEW</i>
+                    {/if}
+                </a>
+                {/foreach}
+            </div>
+        </div>
+        <h2 class="scroll">
+            <span class="scroll-title">公告</span>
+            <div class="scroll-container">
+                {foreach $res.top_talk as $val}
+                <a class="scroll-message" href="{if $val.type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$val.id}
+                {else if $val.type==4}{$BASE_URL_MODULE}discover/playDetail?id={$val.id}
+                {else if $val.type==5}{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}
+                {else if $val.type==10}{$BASE_URL_MODULE}user/scores
+                {else if $val.type==11}{$BASE_URL_MODULE}user/remainAccount
+                {else if $val.type==12}{$BASE_URL_MODULE}user/seckill
+                {else if $val.type==13}{$BASE_URL_MODULE}user/userCoupon
+                {else if $val.type==14}{$BASE_URL_MODULE}discover/playList
+                {else if $val.type==16}{$BASE_URL_MODULE}play/playActivity?id={$val.id}
+                {else if $val.type==17}{$BASE_URL_MODULE}discover/discoverDetail
+                {else if $val.type==18}{$BASE_URL_MODULE}member/specialArea
+                {else}{$val.url}{/if}">{$val.title}</a>
+                {/foreach}
+            </div>
+        </h2>
+
+        <div class="coupon">
+            <ul class="coupon-list">
+                {foreach $res.sale_list as $val}
+                <li>
+                    <a href="{$BASE_URL_MODULE}ticket/commodityDetail?id={$val.id}">
+                        <img src="{$val.cover}" />
+                        <span>¥{$val.price}起</span>
+                        <p>{$val.title}</p>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+
+        <section class="choice">
+            <h3 class="choice-title">
+                <p>精选</p>
+            </h3>
+            <div class="inner">
+                <ul class="index-list lists">
+                    {foreach $res.choice_list as $value}
+                    {if $value.type == 16}
+                    <li class="index-item">
+                        <a class="db pr" href="{$BASE_URL_MODULE}play/playActivity?id={$value.id}">
+                            <img class="photo lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/index_big.png" />
+                            <aside class="aside activity">
+                                <p class="title">{$value.title}</p>
+                                <span class="date">{$value.session_str}</span>
+                            </aside>
+                            <div class="new-tag">
+                                {foreach $value.tags as $val}
+                                <span class="tag-item">{$val}</span>
+                                {/foreach}
+                                <mark class="new-addr">{$value.note}</mark>
+                            </div>
+                            <span class="price">￥<mark>{$value.low_money}</mark>起</span>
+                            {if $value.status ==1}
+                            <span class="num">活动报名中</span>
+                            {else if $value.status == 2}
+                                {if $value.buy_num > 0}
+                                <span class="num">累计有{$value.buy_num}人参加</span>
+                                {/if}
+                            {else if $value.status == 3}
+                            <span class="num">停止报名</span>
+                            {else if $value.status == 4}
+                            <span class="num">即将开始</span>
+                            {/if}
+                            <i class="label-icon db pa">
+                                <span class="label-info pa">遛娃</span>
+                            </i>
+                            <div class="n_tags">
+                                {foreach $value.n_tags as $val}
+                                <img class="new-pic" src="{$val.img}" />
+                                {/foreach}
+                            </div>
+                            {if $value.vip_free}
+                            <i class="icon-vip db pa"></i>
+                            {/if}
+                        </a>
+                    </li>
+                    {else}
+                    <li class="index-item">
+                            <a href="{if $value.type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$value.id}{else if $value.type==4}/discover/playDetail?id={$value.id}{else if $value.type==5}/ticket/commodityDetail?id={$value.id}{else if $value.type==2}{$value.url}{/if}">
+                            <img class="photo lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/index_big.png" />
+                            <aside class="aside">
+                                <p class="title">{$value.title}</p>
+                                {foreach $value.prise as $val}
+                                <span class="tip">{$val}</span>
+                                {/foreach}
+                            </aside>
+                            <span class="price">￥<mark>{$value.low_money}</mark>起</span>
+                            {if $value.status == 1}
+                            <span class="num">有票</span>
+                            {else if $value.status == 2}
+                                {if $value.buy_num > 0}
+                                <span class="num">已售{$value.buy_num}份</span>
+                                {/if}
+                            {else if $value.status == 3}
+                            <span class="num">已售罄</span>
+                            {else if $value.status == 4}
+                            <span class="num">即将开始</span>
+                            {/if}
+                            {if $value.vip_free}
+                            <i class="icon-vip db pa"></i>
+                            {/if}
+                        </a>
+                    </li>
+                    {/if}
+                    {/foreach}
+                </ul>
+            </div>
+        </section>
+    </section>
+    {if $res.notice[0].show == 1}
+    <div id="notice" class="notice">
+        <a class="notice-link" href="{if $res.notice[0].object_type==1}{$BASE_URL_MODULE}discover/specialInfo?id={$res.notice[0].object_id}
+                {else if $res.notice[0].object_type==4}{$BASE_URL_MODULE}discover/playDetail?id={$res.notice[0].object_id}
+                {else if $res.notice[0].object_type==5}{$BASE_URL_MODULE}ticket/commodityDetail?id={$res.notice[0].object_id}
+                {else if $res.notice[0].object_type==6}{$res.notice[0].object_url}
+
+                {else if $res.notice[0].object_type==10}{$BASE_URL_MODULE}user/scores
+                {else if $res.notice[0].object_type==11}{$BASE_URL_MODULE}user/remainAccount
+                {else if $res.notice[0].object_type==12}{$BASE_URL_MODULE}user/seckill
+                {else if $res.notice[0].object_type==13}{$BASE_URL_MODULE}user/userCoupon
+                {else if $res.notice[0].object_type==14}{$BASE_URL_MODULE}discover/playList{$res.notice[0].object_url}
+                {else if $res.notice[0].object_type==16}{$BASE_URL_MODULE}play/playActivity?id={$res.notice[0].object_id}
+                {else if $res.notice[0].object_type==17}{$BASE_URL_MODULE}discover/discoverDetail
+                {else if $res.notice[0].object_type==18}{$BASE_URL_MODULE}member/specialArea
+                {else}{$BASE_URL_MODULE}member/specialArea{/if}">
+            <div class="notice-link-wrap">
+                <img class="link-pic" src="{$res.notice[0].image}" />
+                <span class="link-cross"></span>
+            </div>
+        </a>
+        <div class="notice-matte"></div>
+    </div>
+    {/if}
+    <input type="hidden" id="notice_value" data-id='{$res.notice[0].id}' data-show='{$res.notice[0].show}' value="" />
+</section>
+<section class="search-ele" id="search_box" style="display: none">
+    {include file="widget/common/ele_search.html"}
+</section>
+{/block}
+{block name="js" append}
+{js file="js/recommend/carousel.js"}
+{/block}
+{block name="js" append}
+{js file="js/recommend/index.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/fx.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="more" type="text/html">
+    {{each res}}
+    {{if $value.type == 16}}
+    <li class="index-item">
+        <a href="{$BASE_URL_MODULE}play/playActivity?id={{$value.id}}">
+            <img class="photo lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/index_big.png" />
+            <aside class="aside">
+                <p class="title">{{$value.title}}</p>
+                <span class="date">{{$value.session_str}}</span>
+            </aside>
+            <div class="new-tag">
+                {{each $value.tags}}
+                <span class="tag-item">{{$value}}</span>
+                {{/each}}
+                <mark class="new-addr">{{$value.note}}</mark>
+            </div>
+            <span class="price">￥<mark>{{$value.low_money}}</mark>起</span>
+            {{if $value.status ==1}}
+            <span class="num">活动报名中</span>
+            {{else if $value.status == 2}}
+                {{if $value.buy_num > 0}}
+                <span class="num">累计有{{$value.buy_num}}人参加</span>
+                {{/if}}
+            {{else if $value.status == 3}}
+            <span class="num">停止报名</span>
+            {{else if $value.status == 4}}
+            <span class="num">即将开始</span>
+            {{/if}}
+            <i class="label-icon db pa">
+                <span class="label-info pa">遛娃</span>
+            </i>
+            <div class="n_tags">
+                {{each $value.n_tags}}
+                <img class="new-pic" src="{{$value.img}}" />
+                {{/each}}
+            </div>
+            {{if $value.vip_free}}
+            <i class="icon-vip db pa"></i>
+            {{/if}}
+        </a>
+    </li>
+    {{else}}
+    <li class="index-item">
+        <a href="{{if $value.type==1}}{$BASE_URL_MODULE}discover/specialInfo?id={{$value.id}}{{else if $value.type==4}}/discover/playdetail?id={{$value.id}}{{else if $value.type==5}}/ticket/commodityDetail?id={{$value.id}}{{else if $value.type==2}}{{$value.url}}{{/if}}">
+            <img class="photo lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/index_big.png" />
+            <aside class="aside">
+                <p class="title">{{$value.title}}</p>
+                {{each $value.prise}}
+                <span class="tip">{{$value}}</span>
+                {{/each}}
+            </aside>
+            <span class="price">￥<mark>{{$value.low_money}}</mark>起</span>
+            {{if $value.status == 1}}
+            <span class="num">有票</span>
+            {{else if $value.status == 2}}
+                {{if $value.buy_num > 0}}
+                <span class="num">已售{{$value.buy_num}}份</span>
+                {{/if}}
+            {{else if $value.status == 3}}
+            <span class="num">已售罄</span>
+            {{else if $value.status == 4}}
+            <span class="num">即将开始</span>
+            {{/if}}
+            {{if $value.vip_free}}
+            <i class="icon-vip db pa"></i>
+            {{/if}}
+        </a>
+    </li>
+    {{/if}}
+    {{/each}}
+</script>
+{/literal}
+{/block}

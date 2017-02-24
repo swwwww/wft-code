@@ -1,0 +1,177 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"玩翻天"}{/block}
+
+{block name="meta_keyword"}
+<meta name="keywords" content="{$wft_global_set.custom_city_cn}亲子游，{$wft_global_set.custom_city_cn}亲子户外活动，玩翻天2周年庆，武汉会员充值，{$wft_global_set.custom_city_cn}亲子活动定制，武汉亲子旅游免费送，充值成功免费送会员活动" />
+{/block}
+
+{block name="meta_desc"}
+<meta name="description" content="玩翻天两周年庆充值成功会员活动免费送，充值688=688任意花+4场免费亲子游玩，还有988,1688好礼等你来拿。官方微信公众号:玩翻天亲子">
+{/block}
+
+{block name="css" append}
+{css file="css/member/m/share_link.css"}
+{css file="css/mobile/common_elem.css"}
+{/block}
+{block name="inner"}
+<section class="head pr">
+    {if $platform.wft}
+        <a class="head-link link-rule" href="javascript:;">活动规则</a>
+        <i class="icon-share-btn icon-pic">分享好友</i>
+    {else}
+        <a class="head-link link-rule" href="javascript:;">活动规则</a>
+    {/if}
+    <div class="head-main">
+        <img src="/static/img/site/mobile/share_header.png">
+    </div>
+    <p class="head-data">已有<mark>{$res.vip_num}</mark>人领取成功</p>
+</section>
+<div class="main">
+    <div class="main-title">
+        <div class="main-title-info">
+            <h3>玩翻天亲子游</h3>
+            <p>全年40000场任你选</p>
+        </div>
+        <a class="main-title-more" href="{$BASE_URL_MODULE}play/playIndex?sort=1">查看更多>></a>
+    </div>
+    <div class="main-list">
+        <div class="main-list-item">
+            <div class="item-title">
+                <h4>自然科学探索课堂</h4>
+                <p>打板栗、挖花生、扎稻草人……带孩子观世界，才有世界观</p>
+            </div>
+            <img src="/static/img/site/mobile/list_pic_0.png" />
+            <p class="item-info">
+                <span class="item-info-rated">好评率: <mark>99%</mark></span>
+                <span class="item-info-price">单价: <mark>128</mark>元/人</span>
+            </p>
+
+        </div>
+        <div class="main-list-item">
+            <div class="item-title">
+                <h4>亲子探险训练营</h4>
+                <p>武大徒步、小小探险家、我是侦察兵……户外生存、团队协作、领导能力，在玩中渗透培养</p>
+            </div>
+            <img src="/static/img/site/mobile/list_pic_1.png" />
+            <p class="item-info">
+                <span class="item-info-rated">好评率: <mark>96%</mark></span>
+                <span class="item-info-price">单价: <mark>88</mark>元/组</span>
+            </p>
+
+        </div>
+        <div class="main-list-item">
+            <div class="item-title">
+                <h4>解密创意场馆</h4>
+                <p>警察史博物馆用测谎仪、蜜蜂科技馆当蜂农……保护孩子的好奇心，开启智慧之门</p>
+            </div>
+            <img src="/static/img/site/mobile/list_pic_2.png" />
+            <p class="item-info">
+                <span class="item-info-rated">好评率: <mark>100%</mark></span>
+                <span class="item-info-price">单价: <mark>88</mark>元/组</span>
+            </p>
+
+        </div>
+    </div>
+</div>
+<div class="cate-list">
+    <img src="/static/img/site/mobile/cate_list.png">
+    <a class="free-btn" href="javascript:;"></a>
+    <a class="paycheck-btn" href="javascript:;"></a>
+    <a class="cate-more" href="{$BASE_URL_MODULE}member/goodsMore"></a>
+</div>
+<div class="swipe" id="slider">
+    <div class="container">
+        <ul class="swipe-wrap">
+            {foreach $res.goods as $val}
+            <li class="pic">
+                <a href="javascript:;">
+                    {if $val.img}
+                    <img src="/static/img/ad/guide/{$val.img}" />
+                    {else}
+                    <img src="/static/img/site/mobile/com_small.png" />
+                    {/if}
+                    <span class="intro">{$val.info}</span>
+                    <mark class="price">￥{$val.price}</mark>
+                    <i class="num">已售{$val.sold}份</i>
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+<section class="foot">
+    <img src="/static/img/site/mobile/footer_pic.png" />
+</section>
+
+<a class="fixed-btn {if $platform.version|string_format:'%d' >= 4}js-action-redirect{/if}" href="{if $platform.version|string_format:'%d' >= 4}javascript:;{else}{$BASE_URL_MODULE}orderWap/chargeMoney{/if}" data-type="2" data-id="{$vip_share_user_id}" data-v='{$platform.version|string_format:"%d"}'>
+    <img src="/static/img/site/mobile/fixed-btn.png" />
+</a>
+
+<div class="popup free-popup">
+    <div class="popup-wrap">
+        <div class="popup-title spe">
+            <p>充值送好礼</p>
+            <span>前5000位充值成功的用户，赠送万达儿童乐园双项体验券1份。玩翻天将根据用户下单时间，短信通知获得此礼品的用户。 <br/>*多次充值也</span>
+        </div>
+        <div class="popup-matte"></div>
+        <div class="popup-main">
+            <div class="main-list">
+                <div class="item">
+                    <img class="item-banner" src="/static/img/site/mobile/free-banner.png">
+                    <div class="item-info">
+                        <p class="item-info-title">万达儿童乐园双项体验券</p>
+                        <p class="item-info-price">价值：90元</p>
+                    </div>
+                    <div class="item-intro">
+                        <p class="item-intro-present"><span>礼品介绍：</span>前5000位充值成功的用户，凭玩翻天帐户手机号，前往汉街万达儿童乐园一楼服务台领取1份双项体验券（含太空碰碰车+迷你自旋滑车免费游玩券各1张）。</p>
+                        <p class="item-intro-tip"><span>温馨提示：</span>充值成功后的36小时后再前往门店领取。领取时间：2016年12月9日-12月31日（12月9日之前获得礼品的用户，请在12月9日后领取）。使用时间：2016年12月9日-12月31日（逾期作废）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="cross-btn">+</span>
+    </div>
+</div>
+<div class="s-matte"></div>
+<div class="popup normal-popup">
+    <div class="popup-wrap">
+        <div class="popup-title">活动规则</div>
+        <div class="popup-matte text-matte"></div>
+        <div class="popup-main">
+            <p>1. 玩翻天2周年庆会员充值回馈活动，充值则免费送亲子游，充值奖励如下：<br/>
+                一次性充值688元，免费赠送4场亲子游，总价值320元，有效期一年。<br/>
+                一次性充值988元，免费赠送8场亲子游，总价值640元，有效期一年。<br/>
+                一次性充值1688元，免费赠送16场亲子游，总价值1280元，有效期一年。<br/>
+                （充值其他金额，不参加赠送亲子游。）</p>
+            <p>2. 每位充值用户，还有机会多领取3场亲子游。<br/>
+                充值成功后分享给好友，每位好友充值成功，可多获得1场亲子游。最高可多获得3次。</p>
+            <p>3. 前5000位充值成功的用户，还可免费获得：万达儿童乐园双项体验券1份（含太空碰碰车+迷你自旋滑车免费游玩券各1张）。玩翻天将根据用户下单时间，短信通知获得此礼品的用户。</p>
+            <p>4. 参加此活动获得的亲子游，在玩翻天【我的】-【免费亲子游】中查看。</p>
+            <p>5. 充值的金额，可以在玩翻天上购买商品和亲子游。查看帐户金额，在玩翻天【我的】-【钱包】中查看。</p>
+            <p>6. 同一用户可以多次充值688元/988元/1688元，赠送的亲子游可以累加。赠送的亲子游有效期均为一年。</p>
+            <p>7. 赠送的亲子游，可以在玩翻天的【遛娃】板块标注【会员免费】的亲子游中任意选择。</p>
+            <p>8. 充值到帐户【钱包】的金额不可退。后续使用【钱包】在玩翻天上支付商品、亲子游发生退款时，退款退到用户的玩翻天【钱包】中。</p>
+            <p>9. 赠送的亲子游需在有效期内使用，过期无效。赠送的亲子游将以次数进行兑换，兑换成功后，若需要取消，请在报名的亲子游开始前48小时以外申请退订，退订成功后亲子游次数返还到帐户；若在距亲子游开始时间的48小时以内，不接受退订申请。</p>
+            <p>10. 活动中若发现作弊行为，玩翻天有权取消用户所获得的赠送/奖励，让更多小玩家可以享受到福利。</p>
+            <p>*本次活动在法律范围内 最终解释权归玩翻天所有</p>
+            <p>有问题请咨询客服小玩，微信号：wft20160301。长按识别二维码，立即添加</p>
+            <img class="guide-code" src="/static/img/site/mobile/guide_code.png">
+        </div>
+        <span class="cross-btn">+</span>
+    </div>
+</div>
+{include file="widget/common/ele_wechat_share.html"}
+{/block}
+
+{block name="toTop"}
+{/block}
+
+{block name ="foot-btn"}
+{/block}
+
+{block name="js" append}
+    {js file="js/lib/fx.js"}
+    {js file="js/member/guide_page.js"}
+    {js file="js/share/share.js"}
+    {js file="js/util/app_bridge.js"}
+{/block}

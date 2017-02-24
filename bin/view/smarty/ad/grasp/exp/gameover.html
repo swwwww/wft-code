@@ -1,0 +1,28 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="in_title"}{$title|default:"我的订单详情"}{/block}
+
+{block name="css" append}
+{css file="css/ad/grasp/style0.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<div class="gameover">
+    <p>本局游戏积分<i>1230分</i></p>
+    <p>邀请好友帮你玩游戏，增加积分，更多大奖等你拿哟</p>
+    <a id="againbtn" url="game.html" chance="3">再玩一次</a><br>
+    <a>我要抽福袋</a><br>
+    <a id="share" isweixin="1" isapp="">点我分享</a>
+</div>
+<section>
+    <div class="popup"></div>
+    <div class="shareDia">
+        <img src="/static/img/ad/grasp/exp/share.png"/>
+    </div>
+</section>
+{/block}
+
+{block name="js" append}
+{js file="js/ad/grasp/exp/game.min.js"}
+{js file="js/ad/grasp/exp/main.min.js"}
+{/block}

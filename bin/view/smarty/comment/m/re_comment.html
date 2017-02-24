@@ -1,0 +1,87 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="css" append}
+{css file="css/comment/m/re_commend.css"}
+{css file="css/lib/photoswipe.css"}
+{/block}
+
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<input type="hidden" id="data" value='{$res.data}' />
+
+<section class="inner">
+    <div class="rated-list-item" data-id="">
+        <div class="rated-user">
+            <span class="rated-id">{$res.username}</span>
+                        <span class="rated-star user-rated">
+                            <mark style={$res.score}></mark>
+                        </span>
+            {if $val.accept == 1}
+            <span class="rated-hot">小编采纳</span>
+            {else}
+            {/if}
+        </div>
+        <p class="rated-time">{$res.dateline|date_format:'%Y-%m-%d'}</p>
+        {foreach $res.message as $text}
+        {if $text.t == 1}
+        <p class="rated-text">{$text.val}</p>
+        {/if}
+        {/foreach}
+        <ul class="img-list gallery" id="Gallery">
+            {foreach $val.message as $pic}
+            {if $pic.t == 2}
+            <li>
+                <a class="gallery-link" href="{$pic.val}">
+                    <img class="gallery-img" src="{$pic.val}"/>
+                </a>
+            </li>
+            {/if}
+            {/foreach}
+        </ul>
+        <p class="rated-detail">
+            <span class="comment">{$res.reply_number}</span>
+            {if $val.is_like == 1}
+            <span class="like active" data-mid="{$res.id}">{$res.like_number}</span>
+            {else}
+            <span class="like" data-mid="{$res.id}">{$res.like_number}</span>
+            {/if}
+        </p>
+        <img class="prof-id" src="{$res.img}"/>
+        <div class="like-list">
+            <span></span>
+            {foreach $res.like_list as $val}
+            <img src="{$val.img}" />
+            {/foreach}
+        </div>
+    </div>
+    <div class="reply-list">
+        {foreach $res.reply_list as $val}
+        <div class="reply">
+            <p class="reply-info">
+                <img src="{$val.img}" />
+                <span>{$val.username}</span>
+                <mark>{$val.dateline|date_format:'%Y-%m-%d'}</mark>
+            </p>
+            {foreach $val.message as $mes}
+            {if $mes.t=1}
+            <p class="reply-text">{$mes.val}</p>
+            {/if}
+            {/foreach}
+        </div>
+        {/foreach}
+        <div id="c_btn">
+            <input id="c_input" type="text" placeholder="说点什么吧！" value="" />
+            <mark id="post">点评</mark>
+        </div>
+    </div>
+</section>
+{/block}
+{block name ="foot-btn"}
+{/block}
+
+{block name="js" append}
+{js file="js/comment/re_comment.js"}
+{js file="js/lib/klass.min.js"}
+{js file="js/lib/code.photoswipe-3.0.5.min.js"}
+{js file="js/lib/photoSwipe.js"}
+{js file="js/comment/comment_common.js"}
+{/block}

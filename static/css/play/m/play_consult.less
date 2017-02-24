@@ -1,0 +1,93 @@
+@import "../../common/normalize.less";
+@import "../../common/variable.less";
+
+.cons{
+  margin-bottom: 130px;
+  overflow: hidden;
+  .cons-ques{
+    .border(top; @color: #dededf);
+    textarea{
+      width: 680px;
+      height: 315px;
+      padding: 40px 25px 0 45px;
+      font-size: 30px;
+      line-height: 40px;
+      border: none;
+      background: #f5f5f5;
+      .border(bottom, @color: #dcdcdc);
+    }
+    .cons-ques-put{
+      width: 157px;
+      line-height: 63px;
+      font-size: 30px;
+      text-align: center;
+      background: #fa6e51;
+      color: #fff;
+      .border-radius(10px);
+      .pos(@r:22px; @b:22px);
+    }
+  }
+}
+
+.cons-dial{
+  padding: 42px 30px 42px 125px;
+  background: #fff;
+  .border(bottom; @color: #e5e5e5);
+  .cons-dial-info {
+    color: #333333;
+    overflow: hidden;
+  }
+  .cons-dial-ques{
+    margin: 30px 0;
+  }
+  .cons-dial-ans{
+    padding: 35px 20px;
+    background: #fff5dd;
+    .border-radius(10px);
+  }
+  .answer-info {
+    color: #333333;
+    overflow: hidden;
+    line-height: 50px;
+    margin: 0 0 30px 40px;
+  }
+  .cons-name, .answer-name {
+    font-size: 28px;
+  }
+  .answer-name {
+    margin-left: 46px;
+  }
+  .answer-time,.cons-time {
+    font-size: 24px;
+    margin-right: 60px;
+  }
+  //倒三角
+  .triangle-up{
+    width: 0;
+    height: 0;
+    .border(left; @width: 10px; @color: transparent);
+    .border(right; @width: 10px; @color: transparent);
+    .border(top; @width: 20px; @color: #fff5dd);
+    .pos(@t: 72px; @l: 78px);
+    z-index: 999;
+  }
+
+  .cons-portrait, .portrait-margin{
+    display: block;
+    width: 70px;
+    height: 70px;
+    .border-radius(35px);
+  }
+  .cons-portrait{
+    .pos(@t:30px; @l:25px);
+  }
+  .portrait-margin{
+    .pos( @t:25px; @l:20px);
+  }
+
+}
+
+.answer-content, .cons-dial-ques{
+  font-size: 28px;
+}
+

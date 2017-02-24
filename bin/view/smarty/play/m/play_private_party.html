@@ -1,0 +1,59 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"团体定制"}{/block}
+
+{block name="css" append}
+{css file="css/play/m/play_private_party.css"}
+{/block}
+{block name="inner"}
+<div class="inner">
+    <section class="item">
+        <p class="item-title">你想定制一场怎样的活动？</p>
+        <ul class="item-main">
+            {foreach $res.data.tags as $value}
+            <li class="item-main-nav" data-id="{$value.id}">
+                <img class="icons" src="{$value.image}" />
+                <span>{$value.title}</span>
+                <i class="state"></i>
+            </li>
+            {/foreach}
+        </ul>
+        <div class="item-tip">为了丰富您的团体定制，活动分类最多可选择3个!</div>
+    </section>
+
+    <section class="item margin-diff">
+        <p class="item-title">大约有多少人参加这场活动？</p>
+        <div class="item-num">
+            <div class="item-num-enter adult">
+                <span>成人</span>
+                <input type="tel" id="adult_num" placeholder="请输入人数" value="" />
+            </div>
+            <div class="item-num-enter child">
+                <span>儿童</span>
+                <input type="tel" id="child_num" placeholder="请输入人数" value=""/>
+            </div>
+        </div>
+    </section>
+
+    <section class="item">
+        <p class="item-title">您的联系方式是？</p>
+        <div class="item-info">
+            <div class="item-info-list name">
+                <span>您的姓名</span>
+                <input type="text" id="name_info" value='{$res.info.username}'/>
+                <i class="reset-btn"></i>
+            </div>
+            <div class="item-info-list phone">
+                <span>联系电话</span>
+                <input type="text" id="phone_info" value='{$res.info.phone}'/>
+                <i class="reset-btn"></i>
+            </div>
+        </div>
+    </section>
+    <p class="intro">根据您提交的定制需求，小玩将在24小时内与您联系</p>
+    <a class="btn-style submit" id="submit" href="javascript:;">提交</a>
+    <a class="btn-style tel" href="tel:{$res.data.phone}">联系小玩：{$res.data.phone}</a>
+</div>
+{/block}
+{block name="js" append}
+{js file="js/play/play_private_party.js"}
+{/block}

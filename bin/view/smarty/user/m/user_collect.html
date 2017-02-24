@@ -1,0 +1,197 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"收藏"}{/block}
+{block name="css" append}
+{css file="css/user/m/user_collect.css"}
+{/block}
+{block name="inner"}
+<section class="inner">
+    <ul id="oNav">
+        <li class="item good active">
+            <p>商品</p>
+            <mark></mark>
+        </li>
+        <li class="item kidsplay">
+            <p>活动</p>
+            <mark></mark>
+        </li>
+        <li class="item shop">
+            <p>游玩地</p>
+            <mark></mark>
+        </li>
+    </ul>
+    <section class="align" id="good"></section>
+    <section class="align" id="activity" style="display: none"></section>
+    <section class="align" id="place" style="display: none"></section>
+</section>
+{/block}
+{block name="js" append}
+{js file="js/user/user_collect.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/dropload.js"}
+{/block}
+{block name="js" append}
+{js file="js/lib/template.js"}
+{literal}
+<script id="good_list" type="text/html">
+    <div class="ticket-list">
+        {{each good}}
+        <a class="ticket-list-item" href="/ticket/commodityDetail?id={{$value.coupon_id}}">
+            <img src="{{$value.cover}}" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.name}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <mark>￥{{$value.low_money}}</mark>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已售{{$value.buy_number}}份</span>
+                        {{else}}
+                        <span>有票</span>
+                        {{/if}}
+                        <i>{{$value.circle}}</i>
+                    </span>
+            </div>
+            {{if $value.labels =='NEW'}}
+            <span class="tips-show">最新</span>
+            {{else if $value.labels =='HOT'}}
+            <span class="tips-show">热门</span>
+            {{else}}
+            {{/if}}
+        </a>
+        {{/each}}
+    </div>
+</script>
+
+<script id="kidsplay_list" type="text/html">
+    <div class="ticket-list">
+        {{each kidsplay}}
+        <a class="ticket-list-item" href="/play/playactivity?id={{$value.id}}">
+            <img src="{{$value.cover}}" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.title}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <i>{{$value.start_time | dateFormat:'MM月dd日'}}-{{$value.end_time | dateFormat:'MM月dd日'}} {{$value.num}}场</i>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已有{{$value.buy_number}}人报名</span>
+                        {{else}}
+                        <span>报名中</span>
+                        {{/if}}
+                        <i>{{$value.circle}}</i>
+                    </span>
+            </div>
+        </a>
+        {{/each}}
+    </div>
+</script>
+
+<script id="shop_list" type="text/html">
+    <div class="ticket-list">
+        {{each shop}}
+        <a class="like-list-item" href="/discover/playDetail?id={{$value.id}}">
+            <img src="{{$value.cover}}" />
+            <div class="item-detail">
+                <p class="item-detail-name">{{$value.title}}</p>
+                <p class="item-detail-intro">{{$value.editor_talk}}</p>
+                <p class="item-detail-addr">
+                    {{each $value.tag}}
+                    <span>{{$value}}</span>
+                    {{/each}}
+                    <mark>{{$value.address}}</mark>
+                </p>
+            </div>
+            {{if $value.coupon_have == 1}}
+            <span class="tips-show">有票</span>
+            {{else}}
+            <span class="tips-show">无票</span>
+            {{/if}}
+        </a>
+        {{/each}}
+    </div>
+</script>
+<script id="good_more" type="text/html">
+    <div class="ticket-list">
+        {{each good}}
+        <a class="ticket-list-item" href="/ticket/commodityDetail?id={{$value.coupon_id}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.name}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <mark>￥{{$value.low_money}}</mark>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已售{{$value.buy_number}}份</span>
+                        {{else}}
+                        <span>有票</span>
+                        {{/if}}
+                        <i>{{$value.circle}}</i>
+                    </span>
+            </div>
+            {{if $value.labels =='NEW'}}
+            <span class="tips-show">最新</span>
+            {{else if $value.labels =='HOT'}}
+            <span class="tips-show">热门</span>
+            {{else}}
+            {{/if}}
+        </a>
+        {{/each}}
+    </div>
+</script>
+
+<script id="kidsplay_more" type="text/html">
+    <div class="ticket-list">
+        {{each kidsplay}}
+        <a class="ticket-list-item" href="/play/playactivity?id={{$value.id}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+            <div class="item-content">
+                <span class="ticket-title">{{$value.title}}</span>
+                    <span class="ticket-detail">
+                        <span>￥{{$value.price}}</span>
+                        <i>{{$value.start_time | dateFormat:'MM月dd日'}}-{{$value.end_time | dateFormat:'MM月dd日'}} {{$value.num}}场</i>
+                    </span>
+                    <span class="ticket-tip">
+                        {{if $value.buy_number > 0}}
+                        <span>已有{{$value.buy_number}}人报名</span>
+                        {{else}}
+                        <span>报名中</span>
+                        {{/if}}
+                        <i>{{$value.circle}}</i>
+                    </span>
+            </div>
+        </a>
+        {{/each}}
+    </div>
+</script>
+
+<script id="shop_more" type="text/html">
+    <div class="ticket-list">
+        {{each shop}}
+        <a class="like-list-item" href="/discover/playDetail?id={{$value.id}}">
+            <img class="lazyload" data-src="{{$value.cover}}" src="/static/img/site/mobile/com_small.png" />
+            <div class="item-detail">
+                <p class="item-detail-name">{{$value.title}}</p>
+                <p class="item-detail-intro">{{$value.editor_talk}}</p>
+                <p class="item-detail-addr">
+                    {{each $value.tag}}
+                    <span>{{$value}}</span>
+                    {{/each}}
+                    <mark>{{$value.address}}</mark>
+                </p>
+            </div>
+            {{if $value.coupon_have == 1}}
+            <span class="tips-show">有票</span>
+            {{else}}
+            <span class="tips-show">无票</span>
+            {{/if}}
+        </a>
+        {{/each}}
+    </div>
+</script>
+{/literal}
+{/block}

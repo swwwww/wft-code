@@ -1,0 +1,45 @@
+{extends file="widget/layout/layout_fullscreen.html"}
+{block name="title"}{$title|default:"切换城市"}{/block}
+{block name="css" append}
+{css file="css/recommend/m/select-city.css"}
+{/block}
+{block name="inner"}
+<!-- 主界面具体展示内容 -->
+<section class="main city-list">
+    <div class="cur-city">
+        <span class="tip">当前城市</span>
+        <span class="info">武汉</span>
+    </div>
+    <div class="open-city">
+        <div class="tip">已开通城市</div>
+        <ul class="list">
+            <li>
+                <a class="city" href="javascript:;" data-city='武汉'>
+                    <img src="http://wan.wanfantian.com/uploads/2016/02/05/252d6c8de528622a4f3d924cf5528cb2.png" />
+                    <span>武汉</span>
+                </a>
+            </li>
+            <li>
+                <a class="city" href="javascript:;" data-city='南京'>
+                    <img src="http://wan.wanfantian.com/uploads/2016/02/05/fbb03fc8333393418d17fa31f74fd6da.png" />
+                    <span>南京</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <aside class="more-city">更多城市即将开通</aside>
+</section>
+{/block}
+{block name="js" append}
+{literal}
+<script>
+(function(){
+$(document).on(M.click_tap, '.city', function(){
+    var city = $(this).attr('data-city');
+    M.location.setCustomCity(city);
+    window.location = base_url_module;
+});
+})();
+</script>
+{/literal}
+{/block}

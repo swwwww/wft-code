@@ -1,0 +1,410 @@
+.head {
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+.head .head-banner {
+  display: block;
+  width: 100%;
+  height: 375px;
+}
+.head .head-detail {
+  padding: 25px 25px 20px 25px;
+  line-height: 40px;
+  white-space: pre-wrap;
+  display: inline-block;
+  text-align: justify;
+  font-size: 26px;
+}
+.nav {
+  background: #fff;
+  overflow: hidden;
+}
+.nav .nav-list {
+  height: 54px;
+  margin: 0 auto;
+  border: 1px solid #ffcd54;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.nav .nav-list .item {
+  float: left;
+  width: 232px;
+  height: 54px;
+  font-size: 28px;
+  line-height: 54px;
+  text-align: center;
+  color: #ffcd54;
+}
+.nav .nav-list #place {
+  border-right: 1px solid #ffcd54;
+}
+.nav .nav-list #excercise {
+  border-right: 1px solid #ffcd54;
+}
+.nav .nav-list .item.active {
+  color: #fff;
+  background: #ffcd54;
+}
+.nav .nav-choose {
+  display: none;
+  height: 80px;
+  margin: 25px auto 0;
+  overflow: hidden;
+}
+.nav .nav-choose .item {
+  float: left;
+  width: 250px;
+  height: 80px;
+  font-size: 26px;
+  line-height: 80px;
+  text-align: center;
+  color: #929292;
+  overflow: hidden;
+  position: relative;
+}
+.nav .nav-choose .item span {
+  float: left;
+  margin-top: 20px;
+  width: 249px;
+  height: 35px;
+  line-height: 35px;
+  border-right: 1px solid #bdbdbd;
+}
+.nav .nav-choose .good_num span {
+  border-right: 0;
+}
+.nav .nav-choose .close span {
+  width: 250px;
+  border-left: 1px solid #bdbdbd;
+}
+.nav .nav-choose .item.active {
+  color: #000;
+}
+.nav .nav-choose .item.active i {
+  position: absolute;
+  width: 120px;
+  height: 4px;
+  background: #ffcd54;
+  bottom: 0;
+  right: 65px;
+}
+.nav .nav-choose.good {
+  width: 500px;
+}
+.nav .nav-choose.excercise {
+  width: 500px;
+}
+.commodity {
+  width: 695px;
+  margin: 15px auto;
+}
+.commodity .place-list {
+  display: none;
+}
+.commodity .place-list .item {
+  width: 695px;
+  padding-bottom: 15px;
+  margin-bottom: 17px;
+  background: #fff;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+  position: relative;
+}
+.commodity .place-list .item .item-detail {
+  overflow: hidden;
+}
+.commodity .place-list .item .item-detail img {
+  display: block;
+  width: 695px;
+  height: 395px;
+}
+.commodity .place-list .item .item-detail p {
+  padding: 10px 15px;
+  font-size: 28px;
+  color: #000;
+  line-height: 35px;
+}
+.commodity .place-list .item .item-detail span {
+  float: left;
+  padding: 10px 15px 20px 15px;
+  font-size: 24px;
+  line-height: 30px;
+  color: #6a6a6a;
+}
+.commodity .place-list .item .item-aside {
+  display: block;
+  width: 695px;
+  overflow: hidden;
+  line-height: 37px;
+}
+.commodity .place-list .item .item-aside .price {
+  float: left;
+  margin-left: 15px;
+  font-size: 24px;
+  color: #9d9d9d;
+}
+.commodity .place-list .item .item-aside .price mark {
+  font-size: 28px;
+  color: #fa6749;
+}
+.commodity .place-list .item .item-aside .addr {
+  float: right;
+  margin-right: 15px;
+  padding-left: 30px;
+  font-size: 24px;
+  color: #9d9d9d;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -98px -779px;
+}
+.commodity .place-list .tip-price {
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  padding: 0 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: absolute;
+  top: 300px;
+  left: 0;
+}
+.commodity .place-list .tip-num {
+  height: 34px;
+  border-radius: 17px 0 0 17px;
+  padding: 0 15px 0 25px;
+  font-size: 20px;
+  line-height: 34px;
+  position: absolute;
+  top: 300px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+.commodity .good-list {
+  display: none;
+}
+.commodity .good-list .item {
+  width: 695px;
+  padding-bottom: 15px;
+  margin-bottom: 17px;
+  background: #fff;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+  position: relative;
+}
+.commodity .good-list .item .item-detail {
+  overflow: hidden;
+}
+.commodity .good-list .item .item-detail img {
+  display: block;
+  width: 695px;
+  height: 395px;
+}
+.commodity .good-list .item .item-detail p {
+  padding: 10px 15px;
+  font-size: 28px;
+  color: #000;
+  line-height: 35px;
+}
+.commodity .good-list .item .item-detail span {
+  float: left;
+  padding: 10px 15px 20px 15px;
+  font-size: 24px;
+  line-height: 30px;
+  color: #6a6a6a;
+}
+.commodity .good-list .item .item-aside {
+  display: block;
+  width: 695px;
+  overflow: hidden;
+  line-height: 37px;
+}
+.commodity .good-list .item .item-aside .price {
+  float: left;
+  margin-left: 15px;
+  font-size: 24px;
+  color: #9d9d9d;
+}
+.commodity .good-list .item .item-aside .price mark {
+  font-size: 28px;
+  color: #fa6749;
+}
+.commodity .good-list .item .item-aside .prise {
+  float: left;
+  font-size: 20px;
+  height: 30px;
+  padding: 0 5px;
+  line-height: 30px;
+  border: 1px solid #fa6e51;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  margin: 10px 0 0 10px;
+  color: #fa6e51;
+}
+.commodity .good-list .item .item-aside .addr {
+  float: right;
+  margin-right: 15px;
+  padding-left: 30px;
+  font-size: 24px;
+  color: #9d9d9d;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -98px -779px;
+}
+.commodity .good-list .tip-price {
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  padding: 0 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: absolute;
+  top: 300px;
+  left: 0;
+}
+.commodity .good-list .tip-num {
+  height: 34px;
+  border-radius: 17px 0 0 17px;
+  padding: 0 15px 0 25px;
+  font-size: 20px;
+  line-height: 34px;
+  position: absolute;
+  top: 300px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+.commodity .excercise-list {
+  display: none;
+}
+.commodity .excercise-list .item {
+  width: 695px;
+  padding-bottom: 15px;
+  margin-bottom: 17px;
+  background: #fff;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  overflow: hidden;
+  position: relative;
+}
+.commodity .excercise-list .item .item-detail {
+  overflow: hidden;
+}
+.commodity .excercise-list .item .item-detail img {
+  display: block;
+  width: 695px;
+  height: 395px;
+}
+.commodity .excercise-list .item .item-detail p {
+  padding: 10px 15px;
+  font-size: 28px;
+  color: #000;
+  line-height: 35px;
+}
+.commodity .excercise-list .item .item-detail span {
+  float: left;
+  padding: 10px 15px 20px 15px;
+  font-size: 24px;
+  line-height: 30px;
+  color: #6a6a6a;
+}
+.commodity .excercise-list .item .item-aside {
+  display: block;
+  width: 695px;
+  overflow: hidden;
+  line-height: 37px;
+}
+.commodity .excercise-list .item .item-aside .price {
+  float: left;
+  margin-left: 15px;
+  font-size: 24px;
+  color: #9d9d9d;
+}
+.commodity .excercise-list .item .item-aside .price mark {
+  font-size: 28px;
+  color: #fa6749;
+}
+.commodity .excercise-list .item .item-aside .event {
+  float: left;
+  margin-left: 15px;
+  font-size: 24px;
+  color: #9d9d9d;
+}
+.commodity .excercise-list .item .item-aside .addr {
+  float: right;
+  margin-right: 15px;
+  padding-left: 30px;
+  font-size: 24px;
+  color: #9d9d9d;
+  background: url("/static/img/site/mobile/commodity.png") no-repeat -98px -779px;
+}
+.commodity .excercise-list .item .tip-price {
+  width: 196px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 26px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: absolute;
+  top: 280px;
+  left: 0;
+  display: inline-block;
+}
+.commodity .excercise-list .item .tip-num {
+  height: 34px;
+  border-radius: 17px 0 0 17px;
+  padding: 0 15px 0 25px;
+  font-size: 20px;
+  line-height: 34px;
+  position: absolute;
+  top: 300px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+.no-data {
+  text-align: center;
+  background: none;
+}
+.no-data img {
+  border: none 0;
+  vertical-align: top;
+  background: none;
+}
+.dropload-down {
+  padding-bottom: 50px;
+}
+.label-icon {
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  color: #ffffff;
+  display: block;
+  height: 0;
+  border-width: 0px 45px 45px;
+  border-style: none solid solid;
+  border-color: transparent transparent #ff6d29;
+  position: absolute;
+  width: 75px;
+  right: -40px;
+  top: 18px;
+}
+.label-info {
+  font-size: 30px;
+  right: 4px;
+  top: 1px;
+}
+.vip-logo {
+  height: 25px;
+  width: 196px;
+  margin: 0 auto;
+  top: 340px;
+  left: 0;
+  padding: 15px 0;
+  background-size: 125px 25px;
+  background: #ffcd54 url("/static/img/site/mobile/vips/vip_five.png") no-repeat center;
+}
